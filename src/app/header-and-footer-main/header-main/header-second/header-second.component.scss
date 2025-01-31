@@ -65,7 +65,7 @@
 .container-account-favorites-bag {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 
   span {
     font-size: 15px;
@@ -75,6 +75,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 3px;
 
     >i {
       background-image: url(https://res.cloudinary.com/dyqsqg7pk/image/upload/v1738324151/imgs-backend-estoque/img-home-page/sprite_qjrjg8.png);

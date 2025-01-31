@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  api-angular-front:
+    build: ./project-angular-estoque
+    image: angular-docker
+    ports:
+      - 8081:80
+
+  postgres_estoque_java:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: "postgresEstoque"
+      POSTGRES_PASSWORD: "Postgre12345Estoque"
+    volumes:
+      - postgres_volume_data_estoque_java:/var/lib/postgresql/data
+    ports:
+      - 5438:5432
+
+  redis:
+    image: redis:6.0.7
+    container_name: redis
+    restart: always
+    volumes:
+      - redis_volume_data_estoque_java:/data
+    ports:
+    - 7001:6379
+
+  redis_insight:
+    image: redislabs/redisinsight:latest
+    container_name: redis_insight
+    restart: always
+    ports:
+      - 5500:8001
+    volumes:
+    - redis_insight_volume_data_estoque_java:/db
+
+volumes:
+  postgres_volume_data_estoque_java:
+  redis_volume_data_estoque_java:
+  redis_insight_volume_data_estoque_java:

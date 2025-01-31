@@ -8,6 +8,10 @@ export interface ResultData {
   data: User;
 }
 
+export interface ResultData {
+  data: User;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +19,20 @@ export class UserService {
   private baseUrl = environment.BASE_URL;
 
   constructor(private _http: HttpClient) { }
+
+  GetUser(userId: string){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      // 'Authorization': `Bearer ${token}`,
+      // 'uid': userId
+    });
+
+    const options = {
+      headers: headers,
+    };
+
+    return this._http.get<ResultData>(`/api/public/user/find-by-id/${userId}`, options).pipe(take(1));
+  }
 
   CreateUser(user: unknown){
     const headers = new HttpHeaders({
@@ -28,18 +46,4 @@ export class UserService {
 
     return this._http.post<ResultData>(`/api/public/user/create`, user, options).pipe(take(1));
   }
-
-  // GetFlashSaleProductByProductFlashSaleId(productOfferFlashId: string, userId: string, token: string){
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${token}`,
-  //     'uid': userId
-  //   });
-
-  //   const options = {
-  //     headers: headers,
-  //   };
-
-  //   return this._http.get<ResultData>(`/api/flash-sale-product-all-info/get-flash-sale-product-by-product-flash-sale-id/${productOfferFlashId}`, options).pipe(take(1));
-  // }
 }

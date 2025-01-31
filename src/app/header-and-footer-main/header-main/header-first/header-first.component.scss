@@ -1,0 +1,38 @@
+.container-header-border-red {
+  border-top: 1px solid rgb(0 0 0 / 11%);
+  border-bottom: 1px solid #00000029;
+  font-size: 13px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-first-header{
+  display: flex;
+  justify-content: center;
+  line-height: 1;
+  padding: 8px 0px;
+  width: 1200px;
+
+  >span {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.container-help-store {
+  display: flex;
+  // width: 10%;
+  gap: 15px;
+
+  a {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgb(112, 112, 112);
+    cursor: pointer;
+  }
+}

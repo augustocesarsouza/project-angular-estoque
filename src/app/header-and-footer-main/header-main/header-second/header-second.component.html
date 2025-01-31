@@ -13,7 +13,13 @@
       <app-svg-loupe width="18px" height="18px" fill="#000"></app-svg-loupe>
     </div>
     <div class="container-account-favorites-bag">
-      <div>
+      <div
+        (click)="onClickAccount()"
+        (keydown.enter)="onClickAccount()"
+        tabindex="0"
+        (mouseenter)="mouseEnterAccount()"
+        (mouseleave)="mouseLeaveAccount()"
+      >
         <i class="icon-account"></i>
         <span class="span-account-header">Conta</span>
       </div>

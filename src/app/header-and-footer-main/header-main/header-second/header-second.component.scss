@@ -75,7 +75,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3px;
+    // gap: 3px;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      border-bottom: 1px solid rgb(0, 0, 0);
+    }
 
     >i {
       background-image: url(https://res.cloudinary.com/dyqsqg7pk/image/upload/v1738324151/imgs-backend-estoque/img-home-page/sprite_qjrjg8.png);
@@ -88,6 +94,8 @@
     >span {
       font-size: 13px;
       line-height: 1;
+      color: rgb(0, 0, 0);
+      // cursor: pointer;
     }
   }
 }
@@ -126,3 +134,4 @@
     }
   }
 }
+

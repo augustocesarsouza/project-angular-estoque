@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  width: 100%;
+}
+
+.container-all-nav-category {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  height: 45px;
+  width: 100%;
+}
+
+.container-category {
+  display: flex;
+  gap: 40px;
+
+  >h1 {
+    font-size: 15px;
+    color: #fff;
+  }
+}

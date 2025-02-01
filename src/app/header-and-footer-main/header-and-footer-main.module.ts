@@ -8,6 +8,7 @@ import { SvgArrowTopComponent } from './header-main/svg-arrow-top/svg-arrow-top.
 import { AccountFavoritesBagComponent } from './header-main/account-favorites-bag/account-favorites-bag.component';
 import { ModalAccountComponent } from './header-main/modal-account/modal-account.component';
 import { BagEmptyComponent } from './header-main/bag-empty/bag-empty.component';
+import { AllNavCategoryComponent } from './header-main/all-nav-category/all-nav-category.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BagEmptyComponent } from './header-main/bag-empty/bag-empty.component';
     SvgArrowTopComponent,
     AccountFavoritesBagComponent,
     ModalAccountComponent,
-    BagEmptyComponent
+    BagEmptyComponent,
+    AllNavCategoryComponent
   ],
   exports: [HeaderComponent],
   imports: [

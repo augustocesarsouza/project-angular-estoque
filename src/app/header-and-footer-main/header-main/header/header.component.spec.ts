@@ -10,6 +10,7 @@ import { AccountFavoritesBagComponent } from '../account-favorites-bag/account-f
 import { ModalAccountComponent } from '../modal-account/modal-account.component';
 import { BagEmptyComponent } from '../bag-empty/bag-empty.component';
 import { SvgArrowTopComponent } from '../svg-arrow-top/svg-arrow-top.component';
+import { AllNavCategoryComponent } from '../all-nav-category/all-nav-category.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -20,7 +21,7 @@ describe('HeaderComponent', () => {
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
       declarations: [HeaderComponent, HeaderFirstComponent, HeaderSecondComponent,
         AccountFavoritesBagComponent, ModalAccountComponent, BagEmptyComponent,
-        SvgArrowTopComponent
+        SvgArrowTopComponent, AllNavCategoryComponent
       ],
       // providers: [UserService],
     })

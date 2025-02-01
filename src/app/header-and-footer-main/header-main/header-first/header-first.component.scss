@@ -19,36 +19,20 @@
 }
 
 .container-help {
-  // width: 560px;
-  // position: relative;
-  // overflow: hidden;
-  // display: block;
-  // margin: 0;
-  // padding: 0;
-  // margin-left: 210px;
-
   width: 560px;
   position: relative;
   overflow: hidden;
   display: block;
-  margin-right: 300px;
+  margin-right: 280px;
 }
 
 .container-all-spans {
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // width: 1680px;
-  // position: absolute;
-  // left: 0;
-  // animation: slideAnimation 6s infinite;
-
   display: flex;
   align-items: center;
   justify-content: center;
   width: max-content;
   position: relative;
-  transition: transform 1s ease-in-out;
+  transition: transform 1s ease;
 
   >span {
     font-size: 13px;
@@ -60,20 +44,12 @@
   }
 }
 
-@keyframes slideAnimation {
-  0%, 11% { transform: translateX(0px); } /* Primeiro span no centro */
-  22%, 33% { transform: translateX(-560px); } /* Segundo span no centro */
-  44%, 55% { transform: translateX(-1120px); } /* Terceiro span no centro */
-  66%, 100% { transform: translateX(0px); } /* Retorna ao início */
-}
-
 // -560px, -1100px
 
 .container-help-store {
   display: flex;
   gap: 15px;
   z-index: 10;
-
 
   a {
     font-size: 12px;

@@ -11,6 +11,7 @@ export class HeaderFirstComponent implements AfterViewInit, OnDestroy {
 
   whichSpanShow = 0;
   intervalId!: number;
+  setTimeoutId!: number;
 
   constructor(private ngZone: NgZone){}
 
@@ -24,18 +25,20 @@ export class HeaderFirstComponent implements AfterViewInit, OnDestroy {
     const container = this.containerAllSpans.nativeElement as HTMLElement;
     if (!container) return;
 
+    clearTimeout(this.intervalId);
     this.intervalId = window.setInterval(() => {
       const firstSpan = container.firstElementChild as HTMLElement;
 
-      container.style.transition = "transform 1s ease-in-out";
+      container.style.transition = "transform 1s ease";
       container.style.transform = "translateX(-560px)";
 
-      setTimeout(() => {
-        container.appendChild(firstSpan); // Move o primeiro para o final
-        container.style.transition = "none"; // Remove transição para resetar posição
-        container.style.transform = "translateX(0)"; // Reseta posição
-      }, 1000);
-    }, 2000);
+      clearTimeout(this.setTimeoutId);
+      this.setTimeoutId = setTimeout(() => {
+        container.appendChild(firstSpan);
+        container.style.transition = "none";
+        container.style.transform = "translateX(0)";
+      }, 1000) as unknown as number;
+    }, 2000)as unknown as number;
   }
 
   ngOnDestroy(): void {

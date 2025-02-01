@@ -1,35 +1,30 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-header-second',
   templateUrl: './header-second.component.html',
   styleUrl: './header-second.component.scss'
 })
-export class HeaderSecondComponent {
+export class HeaderSecondComponent implements AfterViewInit {
+  @ViewChild('ContainerModalAccount') ContainerModalAccount!: ElementRef<HTMLDivElement>;
+  ShowModalAccount = false;
+
+  ngAfterViewInit(): void {
+    this.ContainerModalAccount.nativeElement.style.display = 'none';
+  }
 
   onClickAccount(){
     console.log('Account clicked');
   }
 
   mouseEnterAccount(){
-    console.log('mouseEnterAccount');
+    this.ContainerModalAccount.nativeElement.style.display = 'flex';
   }
 
   mouseLeaveAccount(){
-    console.log('mouseLeaveAccount');
+    this.ContainerModalAccount.nativeElement.style.display = 'none';
   }
 }
 
-// position: absolute; -- ISSO AQUI É DO CONTAINER FLUTUANDO Account
-// left: -100px;
-// top: 6px;
-// min-height: 100px;
-// width: 260px;
-// padding: 25px 20px 20px;
-// box-sizing: border-box;
-// background: #fff;
-// border: 1.5px solid #ddd;
-// box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-// overflow: visible;
-// z-index: 2;
-// text-align: left;
+// Quando entrar no modal ele tem que continuar ativo o "flex"
+

@@ -12,45 +12,6 @@
 
       <app-svg-loupe width="18px" height="18px" fill="#000"></app-svg-loupe>
     </div>
-    <div class="container-account-favorites-bag">
-      <div
-        (click)="onClickAccount()"
-        (keydown.enter)="onClickAccount()"
-        tabindex="0"
-        (mouseenter)="mouseEnterAccount()"
-        (mouseleave)="mouseLeaveAccount()"
-      >
-        <i class="icon-account"></i>
-        <span class="span-account-header">Conta</span>
-      </div>
-      <div>
-        <i class="icon-favorite"> </i>
-        <span class="span-favorite-header">Favoritos</span>
-      </div>
-      <div>
-        <i class="icon-bag">
-          <span>
-            <span>0</span>
-          </span>
-        </i>
-        <span class="span-bag-header">Sacola</span>
-      </div>
-
-      <div class="container-modal-account" #ContainerModalAccount>
-        <app-svg-arrow-top></app-svg-arrow-top>
-
-        <button>Entrar / Criar conta</button>
-        <div class="container-my-account-my-orders">
-          <div class="container-my-account">
-            <i class=""></i>
-            <span>Minha conta</span>
-          </div>
-          <div class="container-my-orders">
-            <i class=""></i>
-            <span>Minha pedidos</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-account-favorites-bag></app-account-favorites-bag>
   </div>
 </div>

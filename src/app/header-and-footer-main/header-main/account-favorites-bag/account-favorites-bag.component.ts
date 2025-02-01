@@ -14,8 +14,6 @@ export class AccountFavoritesBagComponent implements OnDestroy, AfterViewInit {
   intervalId!: number;
 
   ngAfterViewInit(): void {
-    console.log();
-
     this.ContainerModalAccount.nativeElement.style.display = 'none';
     this.ContainerModalBag.nativeElement.style.display = 'none';
   }

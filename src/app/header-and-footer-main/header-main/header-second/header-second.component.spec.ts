@@ -4,6 +4,10 @@ import { HeaderSecondComponent } from './header-second.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AllSvgModule } from '../../../all-svg/all-svg.module';
+import { AccountFavoritesBagComponent } from '../account-favorites-bag/account-favorites-bag.component';
+import { ModalAccountComponent } from '../modal-account/modal-account.component';
+import { BagEmptyComponent } from '../bag-empty/bag-empty.component';
+import { SvgArrowTopComponent } from '../svg-arrow-top/svg-arrow-top.component';
 
 describe('HeaderSecondComponent', () => {
   let component: HeaderSecondComponent;
@@ -12,7 +16,9 @@ describe('HeaderSecondComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
-      declarations: [HeaderSecondComponent],
+      declarations: [HeaderSecondComponent, AccountFavoritesBagComponent, ModalAccountComponent,
+        BagEmptyComponent, SvgArrowTopComponent
+      ],
       // providers: [FlashSaleProductAllInfoService],
     })
     .compileComponents();

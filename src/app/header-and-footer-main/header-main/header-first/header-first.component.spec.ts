@@ -27,8 +27,11 @@ describe('HeaderFirstComponent', () => {
   });
 
   it('should render span pix', () => {
-    const span = fixture.nativeElement.querySelector('.container-first-header > span');
-    expect(span.textContent).toBe("Pague com PIX e ganhe 3% OFF");
+    const span = fixture.nativeElement.querySelectorAll('.container-all-spans > span');
+    expect(span.length).toEqual(3);
+    expect(span[0].textContent).toBe("Pague com PIX e ganhe 3% OFF");
+    expect(span[1].textContent).toBe("Até 3x sem juros");
+    expect(span[2].textContent).toBe("Entrega Expressa* | Retire em Loja");
   });
 
   it('should render two link', () => {

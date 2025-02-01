@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 124px;
+  top: -10px;
+
+  >svg {
+    width: 100%;
+    height: auto;
+  }
+}

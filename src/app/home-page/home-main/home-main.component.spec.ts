@@ -7,6 +7,11 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AllSvgModule } from '../../all-svg/all-svg.module';
 import { HeaderFirstComponent } from '../../header-and-footer-main/header-main/header-first/header-first.component';
 import { HeaderSecondComponent } from '../../header-and-footer-main/header-main/header-second/header-second.component';
+import { AccountFavoritesBagComponent } from '../../header-and-footer-main/header-main/account-favorites-bag/account-favorites-bag.component';
+import { ModalAccountComponent } from '../../header-and-footer-main/header-main/modal-account/modal-account.component';
+import { BagEmptyComponent } from '../../header-and-footer-main/header-main/bag-empty/bag-empty.component';
+import { SvgArrowTopComponent } from '../../header-and-footer-main/header-main/svg-arrow-top/svg-arrow-top.component';
+import { AllNavCategoryComponent } from '../../header-and-footer-main/header-main/all-nav-category/all-nav-category.component';
 
 describe('HomeMainComponent', () => {
   let component: HomeMainComponent;
@@ -15,7 +20,9 @@ describe('HomeMainComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
-      declarations: [HomeMainComponent, HeaderComponent, HeaderFirstComponent, HeaderSecondComponent]
+      declarations: [HomeMainComponent, HeaderComponent, HeaderFirstComponent, HeaderSecondComponent,
+        AccountFavoritesBagComponent, ModalAccountComponent, BagEmptyComponent, SvgArrowTopComponent, AllNavCategoryComponent
+      ]
     })
     .compileComponents();
 

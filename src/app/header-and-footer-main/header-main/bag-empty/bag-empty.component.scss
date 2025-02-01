@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  width: 100%;
+}
+
+.container-bag-empty {
+  >h1 {
+    font-size: 14px;
+    width: 100%;
+    margin-bottom: 7px;
+  }
+
+  > app-svg-arrow-top {
+    right: 10px;
+  }
+}
+
+.container-spans-all {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  line-height: 1.2;
+
+  >span {
+    font-size: 14px !important;
+    color: rgb(0, 0, 0) !important;
+  }
+}

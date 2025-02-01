@@ -1,0 +1,42 @@
+<div class="container-account-favorites-bag">
+  <div
+    (click)="onClickAccount()"
+    (keydown.enter)="onClickAccount()"
+    tabindex="0"
+    (mouseenter)="mouseEnterAccount()"
+    (mouseleave)="mouseLeaveAccount()"
+  >
+    <i class="icon-account"></i>
+    <span class="span-account-header" #spanAccountHeader>Conta</span>
+  </div>
+  <div>
+    <i class="icon-favorite"> </i>
+    <span class="span-favorite-header">Favoritos</span>
+  </div>
+  <div (mouseenter)="mouseEnterBag()" (mouseleave)="mouseLeaveBag()">
+    <i class="icon-bag">
+      <span>
+        <span>0</span>
+      </span>
+    </i>
+    <span class="span-bag-header" #spanBagHeader>Sacola</span>
+  </div>
+
+  <div
+    class="container-modal-account"
+    #ContainerModalAccount
+    (mouseenter)="mouseEnterAccount()"
+    (mouseleave)="mouseLeaveAccount()"
+  >
+    <app-modal-account></app-modal-account>
+  </div>
+
+  <div
+    class="container-modal-bag"
+    #ContainerModalBag
+    (mouseenter)="mouseEnterBag()"
+    (mouseleave)="mouseLeaveBag()"
+  >
+    <app-bag-empty></app-bag-empty>
+  </div>
+</div>

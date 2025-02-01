@@ -1,3 +1,7 @@
+:host {
+  display: flex;
+}
+
 .container-second-header {
   display: flex;
   width: 100%;
@@ -61,77 +65,3 @@
     margin-right: 5px;
   }
 }
-
-.container-account-favorites-bag {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-
-  span {
-    font-size: 15px;
-  }
-
-  >div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    // gap: 3px;
-    cursor: pointer;
-    user-select: none;
-
-    &:hover {
-      border-bottom: 1px solid rgb(0, 0, 0);
-    }
-
-    >i {
-      background-image: url(https://res.cloudinary.com/dyqsqg7pk/image/upload/v1738324151/imgs-backend-estoque/img-home-page/sprite_qjrjg8.png);
-      background-repeat: no-repeat;
-      width: 20px;
-      height: 20px;
-      margin-bottom: 1px;
-    }
-
-    >span {
-      font-size: 13px;
-      line-height: 1;
-      color: rgb(0, 0, 0);
-      // cursor: pointer;
-    }
-  }
-}
-
-.icon-account {
-  background-position: -36px -142px;
-}
-
-.icon-favorite{
-  background-position: -97px -142px;
-}
-
-.icon-bag{
-  height: 21px !important;
-  background-position: -178px 0px;
-
-  position: relative;
-
-  >span {
-    position: absolute;
-    right: -5px;
-    top: -2px;
-    color: rgb(255, 255, 255);
-    width: 15px;
-    height: 15px;
-    background-color: black;
-    text-align: center;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    >span {
-      font-size: 9px;
-      font-weight: 500;
-    }
-  }
-}
-

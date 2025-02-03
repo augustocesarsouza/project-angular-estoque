@@ -1,10 +1,78 @@
 <div class="container-all-nav-category">
   <div class="container-category">
-    <h1>NOVIDADES</h1>
-    <h1>FEMININO</h1>
-    <h1>MASCILINO</h1>
-    <h1>INFANTIL</h1>
-    <h1>CASA</h1>
-    <h1>MARCAS</h1>
+    <app-svg-arrow-top-category
+      class="svg-arrow-top-category-feminine"
+      *ngIf="whichCategoryMouseEnterOrLeave === 'feminine'"
+    ></app-svg-arrow-top-category>
+    <app-svg-arrow-top-category
+      class="svg-arrow-top-category-masculine"
+      *ngIf="whichCategoryMouseEnterOrLeave === 'masculine'"
+    ></app-svg-arrow-top-category>
+    <app-svg-arrow-top-category
+      class="svg-arrow-top-category-children"
+      *ngIf="whichCategoryMouseEnterOrLeave === 'children'"
+    ></app-svg-arrow-top-category>
+    <app-svg-arrow-top-category
+      class="svg-arrow-top-category-home"
+      *ngIf="whichCategoryMouseEnterOrLeave === 'home'"
+    ></app-svg-arrow-top-category>
+    <app-svg-arrow-top-category
+      class="svg-arrow-top-category-branch"
+      *ngIf="whichCategoryMouseEnterOrLeave === 'branch'"
+    ></app-svg-arrow-top-category>
+    <h1 (mouseenter)="mouseEnterCategory('news')" (mouseleave)="mouseLeaveCategory()">
+      <span>NOVIDADES</span>
+    </h1>
+    <h1 (mouseenter)="mouseEnterCategory('feminine')" (mouseleave)="mouseLeaveCategory()">
+      <span>FEMININO</span>
+    </h1>
+    <h1 (mouseenter)="mouseEnterCategory('masculine')" (mouseleave)="mouseLeaveCategory()">
+      <span>MASCULINO</span>
+    </h1>
+    <h1 (mouseenter)="mouseEnterCategory('children')" (mouseleave)="mouseLeaveCategory()">
+      <span>INFANTIL</span>
+    </h1>
+    <h1 (mouseenter)="mouseEnterCategory('home')" (mouseleave)="mouseLeaveCategory()">
+      <span>CASA</span>
+    </h1>
+    <h1 (mouseenter)="mouseEnterCategory('branch')" (mouseleave)="mouseLeaveCategory()">
+      <span>MARCAS</span>
+    </h1>
   </div>
+
+  <app-modal-news
+    [mouseEnterCategory]="mouseEnterCategory"
+    [mouseLeaveCategory]="mouseLeaveCategory"
+    [getContainerModalNews]="getContainerModalNews"
+  ></app-modal-news>
+
+  <app-modal-feminine
+    [mouseEnterCategory]="mouseEnterCategory"
+    [mouseLeaveCategory]="mouseLeaveCategory"
+    [getContainerModalFeminine]="getContainerModalFeminine"
+  ></app-modal-feminine>
+
+  <app-modal-masculine
+    [mouseEnterCategory]="mouseEnterCategory"
+    [mouseLeaveCategory]="mouseLeaveCategory"
+    [getContainerModalMasculine]="getContainerModalMasculine"
+  ></app-modal-masculine>
+
+  <app-modal-children
+    [mouseEnterCategory]="mouseEnterCategory"
+    [mouseLeaveCategory]="mouseLeaveCategory"
+    [getContainerModalChildren]="getContainerModalChildren"
+  ></app-modal-children>
+
+  <app-modal-home
+    [mouseEnterCategory]="mouseEnterCategory"
+    [mouseLeaveCategory]="mouseLeaveCategory"
+    [getContainerModalHome]="getContainerModalHome"
+  ></app-modal-home>
+
+  <app-modal-branch
+    [mouseEnterCategory]="mouseEnterCategory"
+    [mouseLeaveCategory]="mouseLeaveCategory"
+    [getContainerModalBranch]="getContainerModalBranch"
+  ></app-modal-branch>
 </div>

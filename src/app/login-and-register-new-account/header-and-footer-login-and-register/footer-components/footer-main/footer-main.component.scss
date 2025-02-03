@@ -1,0 +1,39 @@
+.container-footer-main {
+  display: flex;
+  justify-content: center;
+
+  >div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1100px;
+  }
+}
+
+.container-category {
+  display: flex;
+  flex-direction: column;
+
+  >h1 {
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+
+  >span {
+    font-size: 12px;
+  }
+}
+
+.container-social-and-payment-method {
+  display: flex;
+  height: 100%;
+}
+
+.container-social {
+  display: flex;
+
+  >h1 {
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+}

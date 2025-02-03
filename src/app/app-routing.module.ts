@@ -5,9 +5,9 @@ import { HomeMainComponent } from './home-page/home-main/home-main.component';
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
   {path: '', component: HomeMainComponent},
-  // {path: 'buyer',
-  //   loadChildren: () => import('./login-and-register-user/login-and-register-user.module').then(m => m.LoginUserModule)
-  // },
+  {path: 'user',
+    loadChildren: () => import('./login-and-register-new-account/login-and-register-new-account.module').then(m => m.LoginAndRegisterNewAccountModule)
+  },
 ];
 
 @NgModule({

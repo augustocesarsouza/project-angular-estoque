@@ -11,6 +11,6 @@ export class ModalAccountComponent {
   constructor(private router: Router){}
 
   onClickEnterCreateAccount(){
-    // this.router.navigate(['/buyer/login']);
+    this.router.navigate(['/user/login']);
   }
 }

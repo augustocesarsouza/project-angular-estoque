@@ -11,6 +11,12 @@ import { ModalAccountComponent } from '../modal-account/modal-account.component'
 import { BagEmptyComponent } from '../bag-empty/bag-empty.component';
 import { SvgArrowTopComponent } from '../svg-arrow-top/svg-arrow-top.component';
 import { AllNavCategoryComponent } from '../all-nav-category/all-nav-category.component';
+import { ModalNewsComponent } from '../modal-news/modal-news.component';
+import { ModalFeminineComponent } from '../modal-feminine/modal-feminine.component';
+import { ModalMasculineComponent } from '../modal-masculine/modal-masculine.component';
+import { ModalChildrenComponent } from '../modal-children/modal-children.component';
+import { ModalHomeComponent } from '../modal-home/modal-home.component';
+import { ModalBranchComponent } from '../modal-branch/modal-branch.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -21,7 +27,9 @@ describe('HeaderComponent', () => {
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
       declarations: [HeaderComponent, HeaderFirstComponent, HeaderSecondComponent,
         AccountFavoritesBagComponent, ModalAccountComponent, BagEmptyComponent,
-        SvgArrowTopComponent, AllNavCategoryComponent
+        SvgArrowTopComponent, AllNavCategoryComponent, ModalNewsComponent,
+        ModalFeminineComponent,ModalMasculineComponent,
+        ModalChildrenComponent, ModalHomeComponent, ModalBranchComponent
       ],
       // providers: [UserService],
     })

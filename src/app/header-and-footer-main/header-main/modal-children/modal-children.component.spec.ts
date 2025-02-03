@@ -11,9 +11,14 @@ describe('ModalChildrenComponent', () => {
       declarations: [ModalChildrenComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ModalChildrenComponent);
     component = fixture.componentInstance;
+
+    component.mouseEnterCategory = jasmine.createSpy('mouseEnterCategory');
+    component.mouseLeaveCategory = jasmine.createSpy('mouseLeaveCategory');
+    component.getContainerModalChildren = jasmine.createSpy('getContainerModalChildren');
+
     fixture.detectChanges();
   });
 

@@ -11,9 +11,14 @@ describe('ModalBranchComponent', () => {
       declarations: [ModalBranchComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ModalBranchComponent);
     component = fixture.componentInstance;
+
+    component.mouseEnterCategory = jasmine.createSpy('mouseEnterCategory');
+    component.mouseLeaveCategory = jasmine.createSpy('mouseLeaveCategory');
+    component.getContainerModalBranch = jasmine.createSpy('getContainerModalBranch');
+
     fixture.detectChanges();
   });
 

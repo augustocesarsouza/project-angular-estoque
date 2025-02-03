@@ -11,9 +11,14 @@ describe('ModalHomeComponent', () => {
       declarations: [ModalHomeComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ModalHomeComponent);
     component = fixture.componentInstance;
+
+    component.mouseEnterCategory = jasmine.createSpy('mouseEnterCategory');
+    component.mouseLeaveCategory = jasmine.createSpy('mouseLeaveCategory');
+    component.getContainerModalHome = jasmine.createSpy('getContainerModalHome');
+
     fixture.detectChanges();
   });
 

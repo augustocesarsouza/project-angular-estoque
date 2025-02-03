@@ -6,17 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './all-nav-category.component.scss'
 })
 export class AllNavCategoryComponent implements OnInit {
-  // @ViewChild('containerModalFeminine') containerModalFeminine!: ElementRef<HTMLDivElement>;
   containerModalFeminine!: HTMLDivElement;
-  // @ViewChild('containerModalMasculine') containerModalMasculine!: ElementRef<HTMLDivElement>;
   containerModalMasculine!: HTMLDivElement;
-  // @ViewChild('containerModalNews') containerModalNews!: ElementRef<HTMLDivElement>;
   containerModalNews!: HTMLDivElement;
-  // @ViewChild('containerModalChildren') containerModalChildren!: ElementRef<HTMLDivElement>;
   containerModalChildren!: HTMLDivElement;
-  // @ViewChild('containerModalHome') containerModalHome!: ElementRef<HTMLDivElement>;
   containerModalHome!: HTMLDivElement;
-  // @ViewChild('containerModalBranch') containerModalBranch!: ElementRef<HTMLDivElement>;
   containerModalBranch!: HTMLDivElement;
   whichCategoryMouseEnterOrLeave = "";
 
@@ -87,6 +81,3 @@ export class AllNavCategoryComponent implements OnInit {
     this.containerModalBranch = container;
   }
 }
-
-
-// FAZER A SEPARAÇÃO AMANHA COMPONENT FICAR MENOR

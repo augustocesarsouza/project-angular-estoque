@@ -11,9 +11,14 @@ describe('ModalFeminineComponent', () => {
       declarations: [ModalFeminineComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ModalFeminineComponent);
     component = fixture.componentInstance;
+
+    component.mouseEnterCategory = jasmine.createSpy('mouseEnterCategory');
+    component.mouseLeaveCategory = jasmine.createSpy('mouseLeaveCategory');
+    component.getContainerModalFeminine = jasmine.createSpy('getContainerModalFeminine');
+
     fixture.detectChanges();
   });
 

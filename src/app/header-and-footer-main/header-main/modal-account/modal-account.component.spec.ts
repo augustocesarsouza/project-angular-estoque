@@ -35,7 +35,7 @@ describe('ModalAccountComponent', () => {
   it('should render button', () => {
     const button = fixture.nativeElement.querySelector('.button-enter-create-new-account');
     expect(button).not.toBeNull();
-    expect(button.textContent).toBe("Entrar / Criar conta");
+    expect(button.textContent.trim()).toBe("Entrar / Criar conta");
   });
 
   it('should render icon my-account', () => {

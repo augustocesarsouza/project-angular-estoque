@@ -7,12 +7,14 @@ import { RegisterMainComponent } from './register-components/register-main/regis
 import { HeaderAndFooterLoginAndRegisterModule } from './header-and-footer-login-and-register/header-and-footer-login-and-register.module';
 import { AllSvgModule } from '../all-svg/all-svg.module';
 import { LoginComponent } from './login-components/login/login.component';
+import { CreateAccountComponent } from './login-components/create-account/create-account.component';
 
 @NgModule({
   declarations: [
     LoginMainComponent,
     RegisterMainComponent,
-    LoginComponent
+    LoginComponent,
+    CreateAccountComponent
   ],
   imports: [
     CommonModule,

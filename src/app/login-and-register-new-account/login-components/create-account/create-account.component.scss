@@ -1,0 +1,44 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 440px;
+  padding: 30px;
+  background: #fff;
+}
+
+.header-create-account{
+  font-size: 19px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.container-second-part-create-account {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 15px;
+  gap: 15px;
+
+  >span {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+}
+
+.container-button-register {
+  display: flex;
+  width: 100%;
+
+  >button {
+    width: 100%;
+    height: 47px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalBranchComponent } from './modal-branch.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { AllSvgModule } from '../../../all-svg/all-svg.module';
+import { BranchLelisLelisHomeImgBoboComponent } from '../branch-lelis-lelis-home-img-bobo/branch-lelis-lelis-home-img-bobo.component';
 
 describe('ModalBranchComponent', () => {
   let component: ModalBranchComponent;
@@ -8,7 +12,8 @@ describe('ModalBranchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ModalBranchComponent]
+      imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
+      declarations: [ModalBranchComponent, BranchLelisLelisHomeImgBoboComponent],
     })
     .compileComponents();
 

@@ -17,6 +17,7 @@ import { ModalMasculineComponent } from '../modal-masculine/modal-masculine.comp
 import { ModalChildrenComponent } from '../modal-children/modal-children.component';
 import { ModalHomeComponent } from '../modal-home/modal-home.component';
 import { ModalBranchComponent } from '../modal-branch/modal-branch.component';
+import { BranchLelisLelisHomeImgBoboComponent } from '../branch-lelis-lelis-home-img-bobo/branch-lelis-lelis-home-img-bobo.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -29,7 +30,7 @@ describe('HeaderComponent', () => {
         AccountFavoritesBagComponent, ModalAccountComponent, BagEmptyComponent,
         SvgArrowTopComponent, AllNavCategoryComponent, ModalNewsComponent,
         ModalFeminineComponent,ModalMasculineComponent,
-        ModalChildrenComponent, ModalHomeComponent, ModalBranchComponent
+        ModalChildrenComponent, ModalHomeComponent, ModalBranchComponent, BranchLelisLelisHomeImgBoboComponent
       ],
       // providers: [UserService],
     })

@@ -18,6 +18,7 @@ import { ModalMasculineComponent } from '../../header-and-footer-main/header-mai
 import { ModalChildrenComponent } from '../../header-and-footer-main/header-main/modal-children/modal-children.component';
 import { ModalHomeComponent } from '../../header-and-footer-main/header-main/modal-home/modal-home.component';
 import { ModalBranchComponent } from '../../header-and-footer-main/header-main/modal-branch/modal-branch.component';
+import { BranchLelisLelisHomeImgBoboComponent } from '../../header-and-footer-main/header-main/branch-lelis-lelis-home-img-bobo/branch-lelis-lelis-home-img-bobo.component';
 
 describe('HomeMainComponent', () => {
   let component: HomeMainComponent;
@@ -28,7 +29,8 @@ describe('HomeMainComponent', () => {
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
       declarations: [HomeMainComponent, HeaderComponent, HeaderFirstComponent, HeaderSecondComponent,
         AccountFavoritesBagComponent, ModalAccountComponent, BagEmptyComponent, SvgArrowTopComponent, AllNavCategoryComponent, ModalNewsComponent, ModalFeminineComponent,ModalMasculineComponent,
-        ModalChildrenComponent, ModalHomeComponent, ModalBranchComponent
+        ModalChildrenComponent, ModalHomeComponent, ModalBranchComponent,
+         BranchLelisLelisHomeImgBoboComponent
       ]
     })
     .compileComponents();

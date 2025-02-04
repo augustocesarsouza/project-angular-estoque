@@ -10,6 +10,7 @@ import { ModalMasculineComponent } from '../modal-masculine/modal-masculine.comp
 import { ModalChildrenComponent } from '../modal-children/modal-children.component';
 import { ModalHomeComponent } from '../modal-home/modal-home.component';
 import { ModalBranchComponent } from '../modal-branch/modal-branch.component';
+import { BranchLelisLelisHomeImgBoboComponent } from '../branch-lelis-lelis-home-img-bobo/branch-lelis-lelis-home-img-bobo.component';
 
 describe('AllNavCategoryComponent', () => {
   let component: AllNavCategoryComponent;
@@ -19,7 +20,8 @@ describe('AllNavCategoryComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
       declarations: [AllNavCategoryComponent, ModalNewsComponent, ModalFeminineComponent,
-        ModalMasculineComponent, ModalChildrenComponent, ModalHomeComponent, ModalBranchComponent
+        ModalMasculineComponent, ModalChildrenComponent, ModalHomeComponent, ModalBranchComponent,
+        BranchLelisLelisHomeImgBoboComponent
       ]
     })
     .compileComponents();

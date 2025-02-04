@@ -10,14 +10,55 @@
   background-color: black;
   height: 45px;
   width: 100%;
+
+  position: relative;
 }
 
 .container-category {
   display: flex;
+  align-items: center;
   gap: 40px;
+  height: 100%;
+  position: relative;
+  z-index: 5;
 
   >h1 {
     font-size: 15px;
     color: #fff;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
+}
+
+.container-img-bobo {
+  display: flex;
+  height: 39px;
+  margin-bottom: 10px;
+}
+
+.svg-arrow-top-category-feminine {
+  left: 150px;
+  pointer-events: none;
+}
+
+.svg-arrow-top-category-masculine{
+  left: 267px;
+  pointer-events: none;
+}
+
+.svg-arrow-top-category-children{
+  left: 383px;
+  pointer-events: none;
+}
+
+.svg-arrow-top-category-home {
+  left: 476px;
+  pointer-events: none;
+}
+
+.svg-arrow-top-category-branch {
+  left: 565px;
+  pointer-events: none;
 }

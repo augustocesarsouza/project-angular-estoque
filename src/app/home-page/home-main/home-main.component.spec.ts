@@ -12,6 +12,13 @@ import { ModalAccountComponent } from '../../header-and-footer-main/header-main/
 import { BagEmptyComponent } from '../../header-and-footer-main/header-main/bag-empty/bag-empty.component';
 import { SvgArrowTopComponent } from '../../header-and-footer-main/header-main/svg-arrow-top/svg-arrow-top.component';
 import { AllNavCategoryComponent } from '../../header-and-footer-main/header-main/all-nav-category/all-nav-category.component';
+import { ModalNewsComponent } from '../../header-and-footer-main/header-main/modal-news/modal-news.component';
+import { ModalFeminineComponent } from '../../header-and-footer-main/header-main/modal-feminine/modal-feminine.component';
+import { ModalMasculineComponent } from '../../header-and-footer-main/header-main/modal-masculine/modal-masculine.component';
+import { ModalChildrenComponent } from '../../header-and-footer-main/header-main/modal-children/modal-children.component';
+import { ModalHomeComponent } from '../../header-and-footer-main/header-main/modal-home/modal-home.component';
+import { ModalBranchComponent } from '../../header-and-footer-main/header-main/modal-branch/modal-branch.component';
+import { BranchLelisLelisHomeImgBoboComponent } from '../../header-and-footer-main/header-main/branch-lelis-lelis-home-img-bobo/branch-lelis-lelis-home-img-bobo.component';
 
 describe('HomeMainComponent', () => {
   let component: HomeMainComponent;
@@ -21,7 +28,9 @@ describe('HomeMainComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
       declarations: [HomeMainComponent, HeaderComponent, HeaderFirstComponent, HeaderSecondComponent,
-        AccountFavoritesBagComponent, ModalAccountComponent, BagEmptyComponent, SvgArrowTopComponent, AllNavCategoryComponent
+        AccountFavoritesBagComponent, ModalAccountComponent, BagEmptyComponent, SvgArrowTopComponent, AllNavCategoryComponent, ModalNewsComponent, ModalFeminineComponent,ModalMasculineComponent,
+        ModalChildrenComponent, ModalHomeComponent, ModalBranchComponent,
+         BranchLelisLelisHomeImgBoboComponent
       ]
     })
     .compileComponents();

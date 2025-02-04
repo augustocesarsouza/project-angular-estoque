@@ -9,6 +9,14 @@ import { AccountFavoritesBagComponent } from './header-main/account-favorites-ba
 import { ModalAccountComponent } from './header-main/modal-account/modal-account.component';
 import { BagEmptyComponent } from './header-main/bag-empty/bag-empty.component';
 import { AllNavCategoryComponent } from './header-main/all-nav-category/all-nav-category.component';
+import { SvgArrowTopCategoryComponent } from './header-main/svg-arrow-top-category/svg-arrow-top-category.component';
+import { ModalNewsComponent } from './header-main/modal-news/modal-news.component';
+import { ModalFeminineComponent } from './header-main/modal-feminine/modal-feminine.component';
+import { ModalMasculineComponent } from './header-main/modal-masculine/modal-masculine.component';
+import { ModalChildrenComponent } from './header-main/modal-children/modal-children.component';
+import { ModalHomeComponent } from './header-main/modal-home/modal-home.component';
+import { ModalBranchComponent } from './header-main/modal-branch/modal-branch.component';
+import { BranchLelisLelisHomeImgBoboComponent } from './header-main/branch-lelis-lelis-home-img-bobo/branch-lelis-lelis-home-img-bobo.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +27,15 @@ import { AllNavCategoryComponent } from './header-main/all-nav-category/all-nav-
     AccountFavoritesBagComponent,
     ModalAccountComponent,
     BagEmptyComponent,
-    AllNavCategoryComponent
+    AllNavCategoryComponent,
+    SvgArrowTopCategoryComponent,
+    ModalNewsComponent,
+    ModalFeminineComponent,
+    ModalMasculineComponent,
+    ModalChildrenComponent,
+    ModalHomeComponent,
+    ModalBranchComponent,
+    BranchLelisLelisHomeImgBoboComponent
   ],
   exports: [HeaderComponent],
   imports: [

@@ -1,0 +1,55 @@
+:host {
+  display: flex;
+}
+
+.container-header-main {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px;
+  background: #fff;
+  width: 100%;
+}
+
+.container-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  width: 1100px;
+  // margin: 0px 120px;
+
+  >h1 {
+    font-size: 25px;
+    text-transform: uppercase;
+  }
+}
+
+.logo-estoque {
+  background-image: url(https://restoque.assets.cdn.linxcommerce.io/custom/content/themes/Estoque/Imagens/black-logo.png) !important;
+  background-size: contain;
+  scale: 1;
+  background-repeat: no-repeat;
+  display: block;
+  width: 135px;
+  height: 78px;
+  font-size: 0;
+  text-align: center;
+}
+
+.container-help-and-site-security {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  line-height: 1;
+
+  >span {
+    font-size: 12px;
+  }
+
+  >i {
+    background-image: url(https://res.cloudinary.com/dyqsqg7pk/image/upload/v1738324151/imgs-backend-estoque/img-home-page/sprite_qjrjg8.png);
+    background-position: 0px -60px;
+    width: 79px;
+    height: 26px;
+  }
+}

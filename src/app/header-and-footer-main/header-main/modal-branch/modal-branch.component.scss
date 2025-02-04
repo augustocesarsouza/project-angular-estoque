@@ -1,0 +1,101 @@
+.container-modal-branch{
+  display: none;
+  justify-content: space-around;
+  position: absolute;
+  left: 0px;
+  top: 45px;
+  background: #ffffff;
+  width: 100%;
+  padding: 20px 30px;
+
+  >div {
+    width: 960px;
+    display: flex;
+    position: relative;
+    gap: 15px;
+
+    >div:nth-of-type(1),
+    >div:nth-of-type(2),
+    >div:nth-of-type(3){
+      border-right: 1px solid rgba(0, 0, 0, 0.171);
+    }
+  }
+}
+
+.container-each-category-inner-branch {
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  >h1 {
+    margin-bottom: 10px !important;
+  }
+
+  >strong {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  >h4 {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 7px;
+
+    >span{
+      cursor: pointer;
+
+      &:hover {
+        border-bottom: 1px solid rgb(0, 0, 0);
+      }
+    }
+  }
+
+  >a {
+    font-size: 14px;
+    cursor: pointer;
+  }
+}
+
+.span-img-branch-john-john{
+  background-image: url("https://d23fp1w7e5916f.cloudfront.net/Custom/Content/Themes/Estoque/Imagens/Marcas/john-john.png?v3");
+  width: 130px;
+  height: 36px;
+  margin-bottom: 10px;
+}
+
+.span-img-branch-dudalina{
+  background-image: url(https://d23fp1w7e5916f.cloudfront.net/Custom/Content/Themes/Estoque/Imagens/Marcas/dudalina-fem.png?v3);
+  width: 158px;
+  height: 31px;
+  margin-bottom: 10px;
+}
+
+.span-img-branch-individual{
+  background-image: url(https://d23fp1w7e5916f.cloudfront.net/Custom/Content/Themes/Estoque/Imagens/Marcas/logo_individual.png?v4);
+  width: 150px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-bottom: 10px;
+}
+
+.header-h3-news {
+  font-size: 14px;
+}
+
+.header-see-all {
+  display: flex;
+  line-height: 1;
+  cursor: pointer;
+
+  >span {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    margin: 0px !important;
+  }
+}

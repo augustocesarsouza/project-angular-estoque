@@ -1,7 +1,14 @@
 <ng-container>
   <app-svg-arrow-top class="svg-arrow-top"></app-svg-arrow-top>
 
-  <button class="button-enter-create-new-account">Entrar / Criar conta</button>
+  <button
+    class="button-enter-create-new-account"
+    (click)="onClickEnterCreateAccount()"
+    (keydown.enter)="onClickEnterCreateAccount()"
+    tabindex="0"
+  >
+    Entrar / Criar conta
+  </button>
   <div class="container-my-account-my-orders">
     <div class="container-my-account">
       <i class=""></i>

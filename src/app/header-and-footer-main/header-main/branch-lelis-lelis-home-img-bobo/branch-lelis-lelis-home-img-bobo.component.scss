@@ -1,0 +1,89 @@
+:host {
+  display: flex;
+}
+
+.container-each-category-inner-branch {
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-right: 1px solid rgba(0, 0, 0, 0.171);
+
+  >h1 {
+    margin-bottom: 10px !important;
+  }
+
+  >strong {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  >h4 {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 7px;
+
+    >span{
+      cursor: pointer;
+
+      &:hover {
+        border-bottom: 1px solid rgb(0, 0, 0);
+      }
+    }
+  }
+
+  >a {
+    font-size: 14px;
+    cursor: pointer;
+  }
+}
+
+.container-img-bobo {
+  display: flex;
+}
+
+.span-img-branch-lelis{
+  background-image: url("https://d23fp1w7e5916f.cloudfront.net/Custom/Content/Themes/Estoque/Imagens/Marcas/le-lis.svg?v3");
+  width: 140px;
+  height: 19px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.span-img-branch-lelis-home{
+  background-image: url("https://d23fp1w7e5916f.cloudfront.net/Custom/Content/Themes/Estoque/Imagens/Marcas/le-lis-casa.png?v4");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 140px;
+  height: 19px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.span-img-branch-bobo{
+  background-image: url("https://d23fp1w7e5916f.cloudfront.net/Custom/Content/Themes/Estoque/Imagens/Marcas/bobo.png?v3");
+  width: 100px;
+  height: 37px;
+}
+
+.header-see-all {
+  display: flex;
+  line-height: 1;
+  cursor: pointer;
+
+  >span {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    margin: 0px !important;
+  }
+}
+
+.header-h3-news {
+  font-size: 14px;
+}

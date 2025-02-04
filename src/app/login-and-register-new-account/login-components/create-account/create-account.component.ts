@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-account',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class CreateAccountComponent {
 
+  constructor(private router: Router){}
+
+  onClickRegisterAccount() {
+    this.router.navigate(['/user/register']);
+  }
 }

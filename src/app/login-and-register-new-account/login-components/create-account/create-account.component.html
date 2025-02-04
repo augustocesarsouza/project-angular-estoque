@@ -3,7 +3,12 @@
 <div class="container-second-part-create-account">
   <span>Acesse o formulário de cadastro:</span>
 
-  <div class="container-button-register">
+  <div
+    class="container-button-register"
+    (click)="onClickRegisterAccount()"
+    (keydown.enter)="onClickRegisterAccount()"
+    tabindex="0"
+  >
     <button>CADASTRAR</button>
   </div>
   <span>Primeira compra? Cadastre-se agora e receba um cupom de 15% OFF* no seu e-mail!</span>

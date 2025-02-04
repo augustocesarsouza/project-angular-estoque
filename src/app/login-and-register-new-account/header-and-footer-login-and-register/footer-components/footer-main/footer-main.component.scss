@@ -1,12 +1,32 @@
 .container-footer-main {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 
-  >div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 1100px;
+.container-main-between-first-and-second-footer {
+  width: 1100px;
+}
+
+.container-first-footer-layer {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #00000021;
+  padding-bottom: 50px;
+  margin-bottom: 25px;
+}
+
+.container-second-footer-layer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  >span {
+    font-size: 12px;
+    width: 688px;
+    line-height: 1.2;
+    color: #707070;
   }
 }
 
@@ -17,6 +37,7 @@
   >h1 {
     font-size: 13px;
     text-transform: uppercase;
+    color: rgb(112, 112, 112);
   }
 
   >span {
@@ -26,14 +47,70 @@
 
 .container-social-and-payment-method {
   display: flex;
+  flex-direction: column;
   height: 100%;
+  align-items: flex-end;
+  gap: 45px;
 }
 
 .container-social {
   display: flex;
+  flex-direction: column;
+
+  >h1 {
+    font-size: 13px;
+    color: rgb(63, 63, 63);
+    text-transform: uppercase;
+  }
+}
+
+.container-svg-facebook {
+  display: flex;
+  background: black;
+  padding: 6px 2px;
+  width: 30px;
+  height: 30px;
+
+  >svg {
+    width: 100%;
+    height: auto;
+    fill: #fff;
+  }
+}
+
+.container-mastercard-visa-and-others {
+  width: 100%;
+  height: 100%;
+
+  >i {
+    width: 330px;
+    height: 30px;
+    display: block;
+    margin-top: 15px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(https://d23fp1w7e5916f.cloudfront.net/custom/content/themes/shared/images/payment-methods-new.png?v2);
+  }
+}
+
+.header-social-estoque {
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+.header-payment-method {
+  line-height: 1;
+  text-align: right;
+}
+
+.container-certifications-and-seals-platform{
+  display: flex;
+  align-items: center;
+  gap: 20px;
 
   >h1 {
     font-size: 13px;
     text-transform: uppercase;
+    color: #707070;
   }
 }

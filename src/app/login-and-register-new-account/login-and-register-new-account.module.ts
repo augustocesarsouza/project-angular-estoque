@@ -5,16 +5,20 @@ import { LoginAndRegisterNewAccountRoutingModule } from './login-and-register-ne
 import { LoginMainComponent } from './login-components/login-main/login-main.component';
 import { RegisterMainComponent } from './register-components/register-main/register-main.component';
 import { HeaderAndFooterLoginAndRegisterModule } from './header-and-footer-login-and-register/header-and-footer-login-and-register.module';
+import { AllSvgModule } from '../all-svg/all-svg.module';
+import { LoginComponent } from './login-components/login/login.component';
 
 @NgModule({
   declarations: [
     LoginMainComponent,
-    RegisterMainComponent
+    RegisterMainComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
     LoginAndRegisterNewAccountRoutingModule,
-    HeaderAndFooterLoginAndRegisterModule
+    HeaderAndFooterLoginAndRegisterModule,
+    AllSvgModule
   ]
 })
 export class LoginAndRegisterNewAccountModule { }

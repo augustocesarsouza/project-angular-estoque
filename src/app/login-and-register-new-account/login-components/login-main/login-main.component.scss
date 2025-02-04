@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-login-and-create-account-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #efefef;
+  height: 424px;
+}
+
+.container-login-and-create-account {
+  display: flex;
+  justify-content: space-between;
+  width: 930px;
+  margin-top: 40px;
+
+  user-select: none;
+}

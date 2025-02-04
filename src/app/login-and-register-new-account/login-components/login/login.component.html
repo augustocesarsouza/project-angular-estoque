@@ -1,0 +1,36 @@
+<h1 class="header-already-client">Já sou cliente</h1>
+<div class="container-input-email-and-type-password">
+  <div class="container-input-email-and-password">
+    <label for="email">E-mail:</label>
+    <input type="text" id="email" />
+  </div>
+  <div class="container-input-email-and-password">
+    <label for="password">Digite sua senha:</label>
+    <input type="password" id="password" #inputTypePassword />
+    <app-svg-eye-open
+      width="15px"
+      height="15px"
+      fill="black"
+      (click)="onClickEyeOpen()"
+      (keydown.enter)="onClickEyeOpen()"
+      tabindex="0"
+      *ngIf="showEyeOpen"
+    ></app-svg-eye-open>
+    <app-svg-eye-close
+      width="15px"
+      height="15px"
+      fill="black"
+      (click)="onClickEyeClose()"
+      (keydown.enter)="onClickEyeClose()"
+      tabindex="0"
+      *ngIf="!showEyeOpen"
+    ></app-svg-eye-close>
+  </div>
+</div>
+<div class="container-span-forgot-my-password">
+  <span class="span-forgot-my-password">Esqueci minha senha</span>
+</div>
+
+<div class="container-enter-input">
+  <button><i></i>Entrar</button>
+</div>

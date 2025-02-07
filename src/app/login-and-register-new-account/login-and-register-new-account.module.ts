@@ -8,13 +8,21 @@ import { HeaderAndFooterLoginAndRegisterModule } from './header-and-footer-login
 import { AllSvgModule } from '../all-svg/all-svg.module';
 import { LoginComponent } from './login-components/login/login.component';
 import { CreateAccountComponent } from './login-components/create-account/create-account.component';
+import { FirstPartRegisterComponent } from './register-components/first-part-register-components/first-part-register/first-part-register.component';
+import { SecondPartRegisterMainComponent } from './register-components/second-part-register-components/second-part-register-main/second-part-register-main.component';
+import { MyAccountFirstPartComponent } from './register-components/first-part-register-components/my-account-first-part/my-account-first-part.component';
+import { MyOrdersFirstPartComponent } from './register-components/first-part-register-components/my-orders-first-part/my-orders-first-part.component';
 
 @NgModule({
   declarations: [
     LoginMainComponent,
     RegisterMainComponent,
     LoginComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    FirstPartRegisterComponent,
+    SecondPartRegisterMainComponent,
+    MyAccountFirstPartComponent,
+    MyOrdersFirstPartComponent,
   ],
   imports: [
     CommonModule,

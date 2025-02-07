@@ -1,0 +1,197 @@
+:host {
+  // width: 66%;
+  width: 100%;
+
+}
+
+.container-second-part-register-user {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
+}
+
+.container-finish-your-register,
+.container-add-address,
+.container-register-password {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  width: 600px;
+  padding-left: 30px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  margin-bottom: 20px;
+
+  >h1 {
+    font-size: 16px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+}
+
+.container-all-info-finish-your-register {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  user-select: none;
+}
+
+.container-info-input-finish-your-register {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%;
+}
+
+.container-input-all {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  >label {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  >input {
+    border: 0;
+    filter: none;
+    flex: 1;
+    flex-shrink: 0;
+    padding: 12px;
+    border: 1px solid #73737347;
+    font-size: 15px;
+    height: 44px !important;
+    flex: 0 !important;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #00000063;
+    }
+  }
+
+  >select {
+    display: block;
+    width: 100%;
+    height: 45px;
+    padding: 6px 20px;
+    box-sizing: border-box;
+    color: #000;
+    font-family: Roboto;
+    background-color: #fff;
+    background-image: none;
+    border: 1.5px solid #ddd;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+
+    &:focus{
+      outline: none;
+    }
+  }
+}
+
+.span-info-botton-telefone {
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.container-find-your-cep {
+  display: flex;
+  line-height: 1;
+  cursor: pointer;
+  margin-top: 5px;
+
+  >span {
+    font-size: 10px;
+    border-bottom: 1px solid rgb(112, 112, 112);
+    text-transform: uppercase;
+    color: rgb(112, 112, 112);
+  }
+}
+
+.container-info-require-to-register-password {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  // margin-top: 17px;
+
+  >span {
+    font-size: 12px;
+    color: rgb(255, 0, 0);
+
+    &::before {
+      // content: "✖";
+      // color: red;
+      margin-right: 5px;
+      font-family: 'Lato', sans-serif;
+    }
+  }
+}
+
+.valid::before {
+  content: "✔";
+  color: green;
+}
+
+.invalid::before {
+  content: "✖";
+  color: red;
+}
+
+.container-checkout-confirm-password {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  margin-top: 15px;
+  user-select: none;
+
+  >label {
+    display: flex;
+    align-items: center;
+    line-height: 1.1;
+
+    >input {
+      margin-right: 5px;
+
+      width: 17px;
+      height: 15px;
+      position: relative;
+      top: -1px;
+    }
+  }
+}
+
+.container-button-register {
+  display: flex;
+  height: 32px;
+
+  >button {
+    width: 100%;
+    background-color: rgb(179, 179, 179);
+    color: rgb(102, 102, 102);
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    // cursor: pointer;
+    cursor: not-allowed;
+    // transition: background-color 0.3s ease-in-out;
+  }
+}
+
+.span-confirm-password-should-be-equal-password {
+  font-size: 12px;
+  color: red;
+
+  display: none;
+}
+
+.span-errors-form {
+  font-size: 12px;
+  color: red;
+  line-height: 1;
+  margin-top: 3px;
+  display: none;
+}

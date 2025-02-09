@@ -1,0 +1,36 @@
+.container-my-orders {
+  margin-bottom: 30px;
+}
+
+.container-svg-and-my-orders {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  margin-bottom: 27px;
+
+  >i {
+    background-image: url(https://res.cloudinary.com/dyqsqg7pk/image/upload/v1738324151/imgs-backend-estoque/img-home-page/sprite_qjrjg8.png);
+    background-position: -178px -64px;
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 20px;
+    margin-bottom: 1px;
+    filter: invert(53%) sepia(0%) saturate(0%) hue-rotate(0deg);
+    margin-right: 10px;
+  }
+
+  >span {
+    font-size: 13px;
+    font-weight: 700;
+  }
+}
+
+.container-info-about-my-orders{
+  display: flex;
+  margin-left: 30px;
+
+  >span {
+    font-size: 13px;
+    font-weight: 600;
+  }
+}

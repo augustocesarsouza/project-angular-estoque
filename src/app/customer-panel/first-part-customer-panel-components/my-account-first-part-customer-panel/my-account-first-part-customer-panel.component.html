@@ -1,0 +1,30 @@
+<div class="container-my-account" #containerMyAccount>
+  <div
+    class="container-svg-and-my-account"
+    (click)="onClickMyAccount()"
+    (keydown.enter)="onClickMyAccount()"
+    tabindex="0"
+    (mouseenter)="onMouseEnter(containerMyAccountSpan)"
+    (mouseleave)="onMouseLeave(containerMyAccountSpan)"
+  >
+    <i></i>
+    <div class="container-my-account-span" #containerMyAccountSpan>
+      <span>Minha Conta</span>
+    </div>
+  </div>
+  <div class="container-info-about-my-account">
+    <div
+      (click)="onClickRegistrationData()"
+      (keydown.enter)="onClickRegistrationData()"
+      tabindex="0"
+    >
+      <span>Dados pessoais</span>
+    </div>
+    <div>
+      <span>Alterar senha</span>
+    </div>
+    <div>
+      <span>Endereços</span>
+    </div>
+  </div>
+</div>

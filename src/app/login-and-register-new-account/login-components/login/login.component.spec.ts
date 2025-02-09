@@ -43,13 +43,13 @@ describe('LoginComponent', () => {
   });
 
   it('should render svg eye open', () => {
-    const eyeOpen = fixture.nativeElement.querySelector('.container-input-email-and-password > app-svg-eye-close');
+    const eyeOpen = fixture.nativeElement.querySelector('.container-input-and-eyes > app-svg-eye-close');
     expect(eyeOpen).not.toBeNull();
   });
 
   it('should render svg eye close', () => {
     component.showEyeOpen = true;
-    const eyeClose = fixture.nativeElement.querySelector('.container-input-email-and-password > app-svg-eye-close');
+    const eyeClose = fixture.nativeElement.querySelector('.container-input-and-eyes > app-svg-eye-close');
     expect(eyeClose).not.toBeNull();
   });
 

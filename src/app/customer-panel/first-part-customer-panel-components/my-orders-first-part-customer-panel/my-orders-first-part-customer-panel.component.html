@@ -1,0 +1,20 @@
+<div class="container-my-orders" #containerMyOrders>
+  <div
+    class="container-svg-and-my-orders"
+    (click)="onClickMyOrders()"
+    (keydown.enter)="onClickMyOrders()"
+    tabindex="0"
+    (mouseenter)="onMouseEnter(spanMyOrders)"
+    (mouseleave)="onMouseLeave(spanMyOrders)"
+  >
+    <i></i>
+    <div>
+      <span #spanMyOrders class="span-my-orders">Meus Pedidos - Auto Atendimento</span>
+    </div>
+  </div>
+</div>
+<div class="container-info-about-my-orders">
+  <div>
+    <span>Trocas e Devoluções solicitadas</span>
+  </div>
+</div>

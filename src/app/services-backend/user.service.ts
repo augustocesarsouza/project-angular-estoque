@@ -34,7 +34,7 @@ export class UserService {
     return this._http.get<ResultData>(`/api/public/user/find-by-id/${userId}`, options).pipe(take(1));
   }
 
-  CreateUser(user: unknown){
+  createAccount(user: unknown){
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       // 'Authorization': 'Bearer your-auth-token' // Se necessário
@@ -43,6 +43,11 @@ export class UserService {
     const options = {
       headers: headers,
     };
+
+    // Colocar "Bearer" token e validar se der error o token tiver sem validação vai lançar error
+
+    console.log(options);
+
 
     return this._http.post<ResultData>(`/api/public/user/create`, user, options).pipe(take(1));
   }

@@ -1,0 +1,38 @@
+<div class="container-first-part-register-main">
+  <div class="container-header-register">
+    <span class="span-img-user-without-img">AC</span>
+    <div class="container-name-user">
+      <span>Olá,</span>
+      <div class="container-name-user-and-exit">
+        <span>{{ user.name }}</span>
+        <span (click)="onClickLogOut()" (keydown.enter)="onClickLogOut()" tabindex="0">Sair</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-my-account-my-orders-vale-purchase">
+    <app-my-account-first-part-customer-panel
+      [updateWhichContainerWasClicked]="updateWhichContainerWasClicked"
+      [whichContainerWasClicked]="whichContainerWasClicked"
+    ></app-my-account-first-part-customer-panel>
+    <app-my-orders-first-part-customer-panel
+      [updateWhichContainerWasClicked]="updateWhichContainerWasClicked"
+      [whichContainerWasClicked]="whichContainerWasClicked"
+    ></app-my-orders-first-part-customer-panel>
+    <div class="container-vale-purchase" #containerValePurchase>
+      <div
+        class="container-svg-and-vale-purchase"
+        (click)="onClickContainerValePurchase()"
+        (keydown.enter)="onClickContainerValePurchase()"
+        tabindex="0"
+        (mouseenter)="onMouseEnter(spanValePurchase)"
+        (mouseleave)="onMouseLeave(spanValePurchase)"
+      >
+        <i></i>
+        <div>
+          <span #spanValePurchase class="span-vale-purchase">Vale Compra</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

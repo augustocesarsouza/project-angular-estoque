@@ -1,0 +1,110 @@
+:host {
+  // width: 87%;
+  flex: 0 0 33.33333%;
+  max-width: 87%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-first-part-register-main {
+  width: 90%;
+}
+
+.container-header-register {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 15px;
+  padding: 0px 15px;
+  height: 80px;
+}
+
+.span-img-user-without-img {
+  width: 45px;
+  height: 45px;
+  margin: 0px !important;
+  background: #909090;
+  color: #fff;
+  text-align: center;
+  line-height: 45px;
+  font-size: 20px;
+  margin-right: 15px !important;
+}
+
+.container-name-user {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  font-size: 16px;
+  width: 75%;
+}
+
+.container-name-user-and-exit{
+  display: flex;
+  align-items: baseline;
+  line-height: 1;
+  justify-content: space-between;
+
+  >span:nth-of-type(1){
+    font-weight: 600;
+  }
+
+  >span:nth-of-type(2){
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    color: rgb(112, 112, 112);
+    border-bottom: 1px solid #000000;
+  }
+}
+
+.container-my-account-my-orders-vale-purchase {
+  background: #fff;
+  padding: 5px 0px;
+  // color: rgba(105, 105, 105, 0.7);
+  color: rgb(0 0 0);
+}
+
+.container-vale-purchase {
+  padding-left: 14px;
+  // padding-top: 5px;
+  // margin-bottom: 15px;
+  display: flex;
+  height: 50px;
+}
+
+.container-svg-and-vale-purchase {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  width: 100%;
+  cursor: pointer;
+
+  >i {
+    background-image: url(https://res.cloudinary.com/dyqsqg7pk/image/upload/v1738324151/imgs-backend-estoque/img-home-page/sprite_qjrjg8.png);
+    background-position: -143px -106px;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 15px;
+    margin-right: 10px;
+    filter: invert(15%) sepia(0%) saturate(0%) hue-rotate(0deg);
+  }
+
+  >div {
+    line-height: 1;
+    padding-bottom: 3px;
+
+    >span {
+      font-size: 13px;
+      font-weight: 700;
+    }
+  }
+
+  &:hover {
+    >div {
+      >span {
+        border-bottom: 1px solid rgb(0, 0, 0);
+      }
+    }
+  }
+}

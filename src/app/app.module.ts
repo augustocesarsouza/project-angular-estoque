@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { HomePageModule } from './home-page/home-page.module';
 import { AllSvgModule } from './all-svg/all-svg.module';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HeaderAndFooterLoginAndRegisterModule } from './header-and-footer-login-and-register/header-and-footer-login-and-register.module';
+import { CustomerPanelModule } from './customer-panel/customer-panel.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, HomePageModule, AllSvgModule],
+  imports: [BrowserModule, AppRoutingModule, HomePageModule, AllSvgModule, HeaderAndFooterLoginAndRegisterModule, CustomerPanelModule],
   providers: [provideClientHydration(), provideHttpClient(withFetch()),],
   bootstrap: [AppComponent],
 })

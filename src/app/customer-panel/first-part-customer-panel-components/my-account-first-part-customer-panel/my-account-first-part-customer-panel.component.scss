@@ -1,0 +1,66 @@
+.container-my-account{
+  border-left: 5px solid rgb(0, 0, 0);
+  margin-bottom: 20px;
+  padding-left: 14px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.container-svg-and-my-account {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  margin-bottom: 7px;
+  cursor: pointer;
+
+  >i {
+    background-image: url(https://res.cloudinary.com/dyqsqg7pk/image/upload/v1738324151/imgs-backend-estoque/img-home-page/sprite_qjrjg8.png);
+    background-position: -36px -142px;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 1px;
+    filter: invert(15%) sepia(0%) saturate(0%) hue-rotate(0deg);
+    margin-right: 10px;
+  }
+
+  &:hover {
+    >div {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.884);
+    }
+  }
+
+  >div {
+    display: flex;
+    line-height: 1;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.884);
+
+    >span {
+      font-size: 13px;
+      font-weight: 700;
+    }
+  }
+}
+
+.container-info-about-my-account {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-left: 30px;
+
+  >div {
+    line-height: 1;
+    margin-bottom: 5px;
+
+    >span {
+      font-size: 12px;
+      font-weight: 500;
+      color: #000000b5;
+      cursor: pointer;
+
+      &:hover {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.747);
+      }
+    }
+  }
+}

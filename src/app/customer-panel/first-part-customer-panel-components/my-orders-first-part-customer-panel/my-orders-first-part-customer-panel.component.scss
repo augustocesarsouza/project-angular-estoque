@@ -1,0 +1,75 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.container-my-orders {
+  display: flex;
+  align-items: center;
+  margin-bottom: 13px;
+  padding-left: 14px;
+  height: 51px;
+}
+
+.container-svg-and-my-orders {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    >div {
+      >span {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.884);
+      }
+    }
+  }
+
+  >i {
+    background-image: url(https://res.cloudinary.com/dyqsqg7pk/image/upload/v1738324151/imgs-backend-estoque/img-home-page/sprite_qjrjg8.png);
+    background-position: -178px -64px;
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 20px;
+    margin-bottom: 1px;
+    filter: invert(15%) sepia(0%) saturate(0%) hue-rotate(0deg);
+    margin-right: 10px;
+  }
+
+  >div {
+    // display: flex;
+    line-height: 1;
+    padding-bottom: 5px;
+
+    >span {
+      font-size: 13px;
+      font-weight: 700;
+    }
+  }
+}
+
+.container-info-about-my-orders{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  >div {
+    width: 100%;
+    text-align: center;
+    padding-right: 30px;
+
+    >span {
+      font-size: 13px;
+      font-weight: 600;
+    }
+  }
+
+  &:hover {
+    >div {
+      >span {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.884);
+      }
+    }
+  }
+}

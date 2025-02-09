@@ -1,0 +1,12 @@
+<app-header-main header="Painel do Cliente"></app-header-main>
+<div class="container-register-all-part">
+  <div>
+    <app-first-part-customer-panel [user]="user" *ngIf="user"></app-first-part-customer-panel>
+    <div class="container-account-created-successfully" *ngIf="urlName === 'register'">
+      <h1>PARABÉNS</h1>
+      <span>Seu cadastro foi realizado com sucesso</span>
+    </div>
+    <router-outlet *ngIf="urlName !== 'register'"></router-outlet>
+  </div>
+</div>
+<app-footer-main></app-footer-main>

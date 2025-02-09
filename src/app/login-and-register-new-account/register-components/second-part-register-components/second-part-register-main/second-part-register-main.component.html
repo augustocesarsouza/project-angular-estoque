@@ -127,7 +127,11 @@
       <div class="container-info-input-finish-your-register">
         <div class="container-input-all">
           <label for="recipient-name">Nome do destinatário:</label>
-          <input type="text" id="recipient-name" />
+          <input
+            type="text"
+            id="recipient-name"
+            (input)="changeInputRecipientName($event, labelAddress)"
+          />
         </div>
         <div class="container-input-all">
           <label for="address" #labelAddress>* Endereço:</label>
@@ -158,8 +162,13 @@
           >
         </div>
         <div class="container-input-all">
-          <label for="complement-optional">Complemento (opcional):</label>
-          <input type="text" id="complement-optional" #inputComplementOptional />
+          <label for="complement-optional" #labelComplementOptional>Complemento (opcional):</label>
+          <input
+            type="text"
+            id="complement-optional"
+            #inputComplementOptional
+            (input)="changeInputComplementOptional($event, labelComplementOptional)"
+          />
         </div>
       </div>
 
@@ -196,8 +205,12 @@
         </div>
 
         <div class="container-input-all">
-          <label for="reference-point">Ponto de referência (opcional)</label>
-          <input type="text" id="reference-point" />
+          <label for="reference-point" #labelReferencePoint>Ponto de referência (opcional)</label>
+          <input
+            type="text"
+            id="reference-point"
+            (change)="changeInputReferencePoint($event, labelReferencePoint)"
+          />
         </div>
       </div>
     </div>

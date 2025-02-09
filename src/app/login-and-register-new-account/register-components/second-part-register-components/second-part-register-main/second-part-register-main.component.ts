@@ -1,6 +1,11 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import Inputmask from 'inputmask';
 import { CepService } from '../../../service/cep.service';
+import { environment } from '../../../../../environments/environment';
+import { Router } from '@angular/router';
+import CryptoJS from 'crypto-js';
+import { WhereIsComingCustomerPanelAndRegisterUserService } from '../../../service/where-is-coming-customer-panel-and-register-user.service';
+import { UserService } from '../../../../services-backend/user.service';
 
 interface AllStates {
   state: string;
@@ -28,7 +33,7 @@ interface AddressCep {
   templateUrl: './second-part-register-main.component.html',
   styleUrl: './second-part-register-main.component.scss'
 })
-export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
+export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, OnDestroy {
   allStates!: AllStates[];
   cpfInvalid = false;
   cpfError = false;
@@ -61,9 +66,6 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
   neighborhoodIsValid = false;
   cityIsValid = false;
   stateIsValid = false;
-
-  selectedGender = '';
-  selectedState = '';
 
    // Complete Your Registration
    @ViewChild('inputNameUser') inputNameUser!: ElementRef<HTMLInputElement>;
@@ -125,7 +127,30 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
 
   canClickedRegisterUser = false;
 
-  constructor(private cepService: CepService){}
+  valueInputName = "";
+  valueInputLastName = "";
+  valueInputBirthdate = "";
+  valueInputCpf = "";
+  valueInputEmail = "";
+  valueInputLandline = "";
+  valueInputCellPhone = "";
+
+  valueInputCep = "";
+  valueInputTitle = "";
+  valueInputRecipientName = "";
+  valueInputAddress = "";
+  valueInputNumberHome = "";
+  valueInputComplementOptional = "";
+  valueInputNeighborhood = "";
+  valueInputCity = "";
+  valueInputReferencePoint = "";
+
+  selectedGender = '';
+  selectedState = '';
+
+  constructor(private cepService: CepService, private userService: UserService, private router: Router,
+    private whereIsComingCustomerPanelAndRegisterUserService: WhereIsComingCustomerPanelAndRegisterUserService
+  ){}
 
   ngOnInit(): void {
     this.allStates = [
@@ -238,6 +263,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
   async changeInputCep(e: Event, divCep: HTMLDivElement, label: HTMLLabelElement){
     const input = e.target as HTMLInputElement;
     const valueCep = input.value.replace(/[_]/g, "").replace(/\D/g, '');
+    this.valueInputCep = input.value;
 
     if(valueCep.length <= 0){
       input.style.borderColor = "red";
@@ -293,6 +319,12 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
 
           const selectElement = this.selectStates.nativeElement;
           selectElement.value = addressValue.uf;
+
+          this.selectedState = addressValue.uf;
+          this.valueInputNeighborhood = addressValue.bairro;
+          this.valueInputCity = addressValue.localidade;
+          this.valueInputAddress = addressValue.logradouro;
+
           console.log(addressValue);
         }
       }else {
@@ -414,6 +446,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
   changeInputNameUser(e: Event, label: HTMLLabelElement) {
     const input = e.target as HTMLInputElement;
     const valueInput = input.value;
+    this.valueInputName = valueInput;
 
     if(valueInput.length >= 3){
       this.changeInputToBlack(input, this.spanErrorNameUser.nativeElement, label);
@@ -427,6 +460,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
   changeInputLastName(e: Event, label: HTMLLabelElement) {
     const input = e.target as HTMLInputElement;
     const valueInput = input.value;
+    this.valueInputLastName = valueInput;
 
     if(valueInput.length >= 3){
       this.changeInputToBlack(input, this.spanErrorLastName.nativeElement, label);
@@ -440,6 +474,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
   changeInputBirthdate(e: Event, label: HTMLLabelElement) {
     const input = e.target as HTMLInputElement;
     const valueInput = input.value.replace(/[_/\s]/g, "");
+    this.valueInputBirthdate = input.value;
 
     if(valueInput.length >= 8){
       this.changeInputToBlack(input, this.spanErrorBirthDate.nativeElement, label);
@@ -466,6 +501,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
 
   changeInputCpf(e: Event, label: HTMLLabelElement) {
     const input = e.target as HTMLInputElement;
+    this.valueInputCpf = input.value;
     const valueInput = input.value.replace(/[_.-]/g, "");
 
     if(valueInput.length >= 11){
@@ -480,6 +516,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
   changeInputEmail(e: Event, label: HTMLLabelElement) {
     const input = e.target as HTMLInputElement;
     const valueInput = input.value.replace(/[_.-]/g, "");
+    this.valueInputEmail = input.value;
 
     if(valueInput.length > 0 && valueInput.includes("@gmail") || valueInput.includes("@hotmail")){
       this.changeInputToBlack(input, this.spanErrorEmail.nativeElement, label);
@@ -492,27 +529,41 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
 
   changeInputLandline(e: Event) {
     const input = e.target as HTMLInputElement;
+    const valueInputClean = input.value;
     const valueInput = input.value.replace(/[_\-\s()]/g, "");
-    console.log(valueInput);
+
+    if(valueInput.length >= 10){
+      // mandar isso para DB "valueInputClean"
+      this.valueInputLandline = valueInputClean;
+    }else {
+      // se for menor que 10, manda vazio para o DB
+      this.valueInputLandline = "";
+    }
   }
 
   changeInputCellPhone(e: Event, label: HTMLLabelElement) {
     const input = e.target as HTMLInputElement;
+    const valueInputClean = input.value;
     const valueInput = input.value.replace(/[_\-\s()]/g, "");
+    this.valueInputCellPhone = valueInputClean;
 
     if(valueInput.length >= 11){
       this.changeInputToBlack(input, this.spanErrorCellPhone.nativeElement, label);
       this.cellPhoneIsValid = true;
+
+      // se for maior que 11 mandar isso para DB "valueInputClean"
     }else {
       this.changeInputToRed(input, this.spanErrorCellPhone.nativeElement, label);
       this.cellPhoneIsValid = false;
+      // Se for menor 11 nao mandar nada
+      this.valueInputCellPhone = "";
     }
   }
 
   changeInputTitle(e: Event, label: HTMLLabelElement) {
     const input = e.target as HTMLInputElement;
     const valueInput = input.value;
-
+    this.valueInputTitle = valueInput;
     if(valueInput.length > 0){
       this.changeInputToBlack(input, this.spanErrorTitle.nativeElement, label);
       this.titleIsValid = true;
@@ -522,9 +573,16 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
     }
   }
 
+  changeInputRecipientName(e: Event, label: HTMLLabelElement) {
+    const input = e.target as HTMLInputElement;
+    const valueInput = input.value;
+    this.valueInputRecipientName = valueInput;
+  }
+
   changeInputAddress(e: Event, label: HTMLLabelElement) {
     const input = e.target as HTMLInputElement;
     const valueInput = input.value;
+    this.valueInputAddress = valueInput;
 
     const regex = /\b(Rua|Avenida|Alameda)\b/i;
 
@@ -540,6 +598,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
   changeInputNumberHome(e: Event, label: HTMLLabelElement) {
     const input = e.target as HTMLInputElement;
     const valueInput = input.value;
+    this.valueInputNumberHome = valueInput;
 
     if(valueInput.length > 0){
       this.changeInputToBlack(input, this.spanErrorNumberHome.nativeElement, label);
@@ -550,9 +609,16 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
     }
   }
 
+  changeInputComplementOptional(e: Event, label: HTMLLabelElement) {
+    const input = e.target as HTMLInputElement;
+    const valueInput = input.value;
+    this.valueInputComplementOptional = valueInput;
+  }
+
   changeInputNeighborhood(e: Event, label: HTMLLabelElement) {
     const input = e.target as HTMLInputElement;
     const valueInput = input.value;
+    this.valueInputNeighborhood = valueInput;
 
     if(valueInput.length > 0){
       this.changeInputToBlack(input, this.spanErrorNeighborhood.nativeElement, label);
@@ -566,6 +632,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
   changeInputCity(e: Event, label: HTMLLabelElement) {
     const input = e.target as HTMLInputElement;
     const valueInput = input.value;
+    this.valueInputCity = valueInput;
 
     if(valueInput.length > 0){
       this.changeInputToBlack(input, this.spanErrorCity.nativeElement, label);
@@ -588,6 +655,19 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
       this.changeInputToRed(selected, this.spanErrorState.nativeElement, label);
       this.stateIsValid = false;
     }
+  }
+
+  changeInputReferencePoint(e: Event, label: HTMLLabelElement) {
+    const input = e.target as HTMLInputElement;
+    const valueInput = input.value;
+    this.valueInputReferencePoint = valueInput;
+    // if(valueInput.length > 0){
+    //   this.changeInputToBlack(input, this.spanErrorCity.nativeElement, label);
+    //   this.cityIsValid = true;
+    // }else {
+    //   this.changeInputToRed(input, this.spanErrorCity.nativeElement, label);
+    //   this.cityIsValid = false;
+    // }
   }
 
   changeInputToRed (input: HTMLInputElement, span: HTMLSpanElement | null, label: HTMLLabelElement){
@@ -636,8 +716,11 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
     this.validateIfCheckboxIsCheckedAndPasswordAndConfirmPasswordIsEqual();
   }
 
+  setTimeoutId!: number;
+
   onClickRegister() {
     if(typeof window === 'undefined')return;
+    this.router.navigate(['/painel-do-cliente']);
 
     if(!this.canClickedRegisterUser)return;
 
@@ -711,9 +794,60 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit {
     }
 
     if(canSendRegister){
-      console.log("pode ser criado");
-      // só pegar os objetos agora e criar o backend
+      const objCreate = {
+        name: this.valueInputName,
+        lastName: this.valueInputLastName,
+        birthDate: this.valueInputBirthdate,
+        gender: this.selectedGender,
+        cpf: this.valueInputCpf,
+        email: this.valueInputEmail,
+        landline: this.valueInputLandline,
+        cellPhone: this.valueInputCellPhone,
+        password: this.valueInputPassword,
+        userAddressCreateValidatorDTO: {
+            cep: this.valueInputCep,
+            title: this.valueInputTitle,
+            recipientName: this.valueInputRecipientName,
+            address: this.valueInputAddress,
+            numberHome: this.valueInputNumberHome,
+            complement: this.valueInputComplementOptional,
+            neighborhood: this.valueInputNeighborhood,
+            city: this.valueInputCity,
+            state: this.selectedState,
+            referencePoint: this.valueInputReferencePoint,
+            userId: ""
+        },
+        userImage: ""
+      };
 
+      this.userService.createAccount(objCreate).subscribe({
+        next: (success) => {
+          const userDTO = success.data;
+
+          const secretKey = environment.angularAppSecretKeyUser;
+
+          const encrypted = CryptoJS.AES.encrypt(JSON.stringify(userDTO), secretKey).toString();
+
+          localStorage.setItem('user', encrypted);
+          this.whereIsComingCustomerPanelAndRegisterUserService.updateUrlName("register");
+
+          this.setTimeoutId = setTimeout(() => {
+            this.router.navigate(['/painel-do-cliente']);
+          }, 500)as unknown as number;
+          // se for com sucesso transferir para a rota "painel-do-cliente" e Passe o data que foi criado agora no "Local Storage"
+        },
+        error: error => {
+          if(error.status === 400){
+            console.log(error);
+          }
+        }
+      });
+
+      console.log(objCreate);
     }
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.setTimeoutId);
   }
 }

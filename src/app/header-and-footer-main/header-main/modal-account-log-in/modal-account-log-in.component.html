@@ -1,0 +1,39 @@
+<ng-container>
+  <app-svg-arrow-top class="svg-arrow-top"></app-svg-arrow-top>
+
+  <!-- <button
+    class="button-enter-create-new-account"
+    (click)="onClickEnterCreateAccount()"
+    (keydown.enter)="onClickEnterCreateAccount()"
+    tabindex="0"
+  >
+    Entrar / Criar conta
+  </button> -->
+  <span class="span-user-log-in"
+    >Olá, <span class="span-user-name">{{ user.name }}</span></span
+  >
+  <div class="container-my-account-my-orders">
+    <div
+      class="container-my-account"
+      (click)="onClickMyAccount()"
+      (keydown.enter)="onClickMyAccount()"
+      tabindex="0"
+    >
+      <i class=""></i>
+      <span>Minha conta</span>
+    </div>
+    <div class="container-my-orders">
+      <i class=""></i>
+      <span>Minha pedidos</span>
+    </div>
+    <div
+      class="container-exit-user"
+      (click)="onClickExitMyAccount()"
+      (keydown.enter)="onClickExitMyAccount()"
+      tabindex="0"
+    >
+      <i class=""></i>
+      <span>Sair</span>
+    </div>
+  </div>
+</ng-container>

@@ -46,9 +46,6 @@ export class UserService {
 
     // Colocar "Bearer" token e validar se der error o token tiver sem validação vai lançar error
 
-    console.log(options);
-
-
     return this._http.post<ResultData>(`/api/public/user/create`, user, options).pipe(take(1));
   }
 }

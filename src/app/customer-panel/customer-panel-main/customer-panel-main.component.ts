@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserLocalStorage } from '../../get-user-local-storage/user-local-storage';
 import { User } from '../../interface-entity/user';
 import { WhereIsComingCustomerPanelAndRegisterUserService } from '../../login-and-register-new-account/service/where-is-coming-customer-panel-and-register-user.service';
+import { UserLocalStorage } from '../../get-user-local-storage/user-local-storage';
+import { UpdateUserService } from '../service/update-user.service';
 
 @Component({
   selector: 'app-customer-panel-main',
@@ -10,16 +11,32 @@ import { WhereIsComingCustomerPanelAndRegisterUserService } from '../../login-an
   styleUrl: './customer-panel-main.component.scss'
 })
 export class CustomerPanelMainComponent implements OnInit, OnDestroy {
-  user!: User
+  user!: User;
   urlName = "";
 
   setTimeoutId!: number;
 
-  constructor(private router: Router, private whereIsComingCustomerPanelAndRegisterUserService: WhereIsComingCustomerPanelAndRegisterUserService){
+  constructor(private router: Router, private whereIsComingCustomerPanelAndRegisterUserService: WhereIsComingCustomerPanelAndRegisterUserService,
+    private updateUserService: UpdateUserService
+  ){
   }
 
   ngOnInit(): void {
     const userResult = UserLocalStorage();
+
+    if(!userResult.isNullUserLocalStorage){
+      const user = userResult.user;
+      if(user){
+        this.user = user;
+        console.log(user);
+      }
+    }
+
+    if(userResult.isNullUserLocalStorage){
+      localStorage.removeItem('user');
+      this.router.navigate(['/user/login']);
+      return;
+    };
 
     this.whereIsComingCustomerPanelAndRegisterUserService.urlName$.subscribe((urlName) => {
       if(urlName === "register"){
@@ -27,23 +44,18 @@ export class CustomerPanelMainComponent implements OnInit, OnDestroy {
 
         this.setTimeoutId = setTimeout(() => {
           this.urlName = "a";
-        }, 1000)as unknown as number;
+        }, 4000)as unknown as number;
         // Na Pagina inicial quando passar o mouse na "Conta" se tiver usuario é para mostrar algo diferente quando eu passar o mouse falando que eu já loguei
       }
     });
 
-    // if(userResult.isNullUserLocalStorage){
-    //   localStorage.removeItem('user');
-    //   this.router.navigate(['/user/login']);
-    //   return;
-    // };
+    this.updateUserService.updateUser$.subscribe((userUpdate) => {
+      if(userUpdate){
+        console.log("osidudh9i");
 
-    if(!userResult.isNullUserLocalStorage){
-      const user = userResult.user;
-      if(user){
-        this.user = user;
+        this.user = userUpdate;
       }
-    }
+    });
   }
 
   ngOnDestroy(): void {

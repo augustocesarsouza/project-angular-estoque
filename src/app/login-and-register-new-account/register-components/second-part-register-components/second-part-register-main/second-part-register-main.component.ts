@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import CryptoJS from 'crypto-js';
 import { WhereIsComingCustomerPanelAndRegisterUserService } from '../../../service/where-is-coming-customer-panel-and-register-user.service';
 import { UserService } from '../../../../services-backend/user.service';
+import { UpdateUserService } from '../../../../customer-panel/service/update-user.service';
 
 interface AllStates {
   state: string;
@@ -149,7 +150,8 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
   selectedState = '';
 
   constructor(private cepService: CepService, private userService: UserService, private router: Router,
-    private whereIsComingCustomerPanelAndRegisterUserService: WhereIsComingCustomerPanelAndRegisterUserService
+    private whereIsComingCustomerPanelAndRegisterUserService: WhereIsComingCustomerPanelAndRegisterUserService,
+    private updateUserService: UpdateUserService
   ){}
 
   ngOnInit(): void {
@@ -325,7 +327,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
           this.valueInputCity = addressValue.localidade;
           this.valueInputAddress = addressValue.logradouro;
 
-          console.log(addressValue);
+          // console.log(addressValue);
         }
       }else {
         input.style.borderColor = "red";
@@ -577,6 +579,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
     const input = e.target as HTMLInputElement;
     const valueInput = input.value;
     this.valueInputRecipientName = valueInput;
+    console.log(label);
   }
 
   changeInputAddress(e: Event, label: HTMLLabelElement) {
@@ -613,6 +616,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
     const input = e.target as HTMLInputElement;
     const valueInput = input.value;
     this.valueInputComplementOptional = valueInput;
+    console.log(label);
   }
 
   changeInputNeighborhood(e: Event, label: HTMLLabelElement) {
@@ -661,6 +665,8 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
     const input = e.target as HTMLInputElement;
     const valueInput = input.value;
     this.valueInputReferencePoint = valueInput;
+    console.log(label);
+
     // if(valueInput.length > 0){
     //   this.changeInputToBlack(input, this.spanErrorCity.nativeElement, label);
     //   this.cityIsValid = true;
@@ -830,10 +836,9 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
 
           localStorage.setItem('user', encrypted);
           this.whereIsComingCustomerPanelAndRegisterUserService.updateUrlName("register");
+          this.updateUserService.updateupdateUser(userDTO);
 
-          this.setTimeoutId = setTimeout(() => {
-            this.router.navigate(['/painel-do-cliente']);
-          }, 500)as unknown as number;
+          this.router.navigate(['/painel-do-cliente']);
           // se for com sucesso transferir para a rota "painel-do-cliente" e Passe o data que foi criado agora no "Local Storage"
         },
         error: error => {
@@ -842,8 +847,6 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
           }
         }
       });
-
-      console.log(objCreate);
     }
   }
 

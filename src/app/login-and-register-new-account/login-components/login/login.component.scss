@@ -12,6 +12,22 @@
   text-transform: uppercase;
 }
 
+.container-error-when-log-in{
+  display: flex;
+  align-items: center;
+  background-color: rgb(255 0 0 / 17%);
+  padding: 10px 7px;
+  gap: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+
+  >span {
+    font-size: 14px;
+    color: #000000a6;
+    font-weight: 500;
+  }
+}
+
 .container-input-email-and-type-password {
   display: flex;
   flex-direction: column;

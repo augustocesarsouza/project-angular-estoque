@@ -1,6 +1,6 @@
 import {  AfterViewInit, Component, ElementRef, OnDestroy, ViewChild, OnInit } from '@angular/core';
 import { User } from '../../../interface-entity/user';
-import { UserLocalStorage } from '../../../get-user-local-storage/user-local-storage';
+import { UserLocalStorage } from '../../../function-user/get-user-local-storage/user-local-storage';
 
 @Component({
   selector: 'app-account-favorites-bag',

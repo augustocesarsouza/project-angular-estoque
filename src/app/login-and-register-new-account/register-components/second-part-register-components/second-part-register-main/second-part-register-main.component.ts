@@ -1,12 +1,11 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import Inputmask from 'inputmask';
 import { CepService } from '../../../service/cep.service';
-import { environment } from '../../../../../environments/environment';
 import { Router } from '@angular/router';
-import CryptoJS from 'crypto-js';
 import { WhereIsComingCustomerPanelAndRegisterUserService } from '../../../service/where-is-coming-customer-panel-and-register-user.service';
 import { UserService } from '../../../../services-backend/user.service';
 import { UpdateUserService } from '../../../../customer-panel/service/update-user.service';
+import { EncryptedUser } from '../../../../function-user/get-user-local-storage/encrypted-user';
 
 interface AllStates {
   state: string;
@@ -723,6 +722,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
   }
 
   setTimeoutId!: number;
+  clickRegister = false;
 
   onClickRegister() {
     if(typeof window === 'undefined')return;
@@ -826,15 +826,15 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
         userImage: ""
       };
 
+      if(this.clickRegister) return;
+
       this.userService.createAccount(objCreate).subscribe({
         next: (success) => {
+          this.clickRegister = true;
           const userDTO = success.data;
 
-          const secretKey = environment.angularAppSecretKeyUser;
+          EncryptedUser(userDTO);
 
-          const encrypted = CryptoJS.AES.encrypt(JSON.stringify(userDTO), secretKey).toString();
-
-          localStorage.setItem('user', encrypted);
           this.whereIsComingCustomerPanelAndRegisterUserService.updateUrlName("register");
           this.updateUserService.updateupdateUser(userDTO);
 

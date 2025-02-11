@@ -10,11 +10,11 @@ export class UpdateUserService {
 
   updateUser$ = this.updateUser.asObservable();
 
-   updateupdateUser(updateUser: User) {
-   this.updateUser.next(updateUser);
-   }
+  updateupdateUser(updateUser: User) {
+  this.updateUser.next(updateUser);
+  }
 
-   get currentupdateUser(): User | null {
-   return this.updateUser.getValue();
-   }
+  get currentupdateUser(): User | null {
+  return this.updateUser.getValue();
+  }
 }

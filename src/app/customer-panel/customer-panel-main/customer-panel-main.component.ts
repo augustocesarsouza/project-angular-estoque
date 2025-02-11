@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../interface-entity/user';
 import { WhereIsComingCustomerPanelAndRegisterUserService } from '../../login-and-register-new-account/service/where-is-coming-customer-panel-and-register-user.service';
-import { UserLocalStorage } from '../../get-user-local-storage/user-local-storage';
 import { UpdateUserService } from '../service/update-user.service';
+import { UserLocalStorage } from '../../function-user/get-user-local-storage/user-local-storage';
 
 @Component({
   selector: 'app-customer-panel-main',
@@ -31,6 +31,8 @@ export class CustomerPanelMainComponent implements OnInit, OnDestroy {
         console.log(user);
       }
     }
+
+    // CONTINUAR painel-do-cliente
 
     if(userResult.isNullUserLocalStorage){
       localStorage.removeItem('user');

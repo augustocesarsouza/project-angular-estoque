@@ -4,12 +4,12 @@ import { RegisterMainComponent } from './register-main.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AllSvgModule } from '../../../all-svg/all-svg.module';
-import { HeaderMainComponent } from '../../header-and-footer-login-and-register/header-components/header-main/header-main.component';
 import { FirstPartRegisterComponent } from '../first-part-register-components/first-part-register/first-part-register.component';
 import { SecondPartRegisterMainComponent } from '../second-part-register-components/second-part-register-main/second-part-register-main.component';
-import { FooterMainComponent } from '../../header-and-footer-login-and-register/footer-components/footer-main/footer-main.component';
 import { MyAccountFirstPartComponent } from '../first-part-register-components/my-account-first-part/my-account-first-part.component';
 import { MyOrdersFirstPartComponent } from '../first-part-register-components/my-orders-first-part/my-orders-first-part.component';
+import { HeaderMainComponent } from '../../../header-and-footer-login-and-register/header-components/header-main/header-main.component';
+import { FooterMainComponent } from '../../../header-and-footer-login-and-register/footer-components/footer-main/footer-main.component';
 
 describe('RegisterMainComponent', () => {
   let component: RegisterMainComponent;

@@ -56,7 +56,6 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
   genderIsValid = false;
   cpfIsValid = false;
   emailIsValid = false;
-  // landlineIsValid = false;
   cellPhoneIsValid = false;
 
   cepIsValid = false;
@@ -68,14 +67,14 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
   stateIsValid = false;
 
    // Complete Your Registration
-   @ViewChild('inputNameUser') inputNameUser!: ElementRef<HTMLInputElement>;
-   @ViewChild('inputLastName') inputLastName!: ElementRef<HTMLInputElement>;
-   @ViewChild('selectGender') selectGender!: ElementRef<HTMLInputElement>;
-   @ViewChild('inputBirthdate') inputBirthdate!: ElementRef<HTMLInputElement>;
-   @ViewChild('inputCpf') inputCpf!: ElementRef<HTMLInputElement>;
-   @ViewChild('inputEmail') inputEmail!: ElementRef<HTMLInputElement>;
-   @ViewChild('inputLandline') inputLandline!: ElementRef<HTMLInputElement>;
-   @ViewChild('inputCellphone') inputCellphone!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputNameUser') inputNameUser!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputLastName') inputLastName!: ElementRef<HTMLInputElement>;
+  @ViewChild('selectGender') selectGender!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputBirthdate') inputBirthdate!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputCpf') inputCpf!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputEmail') inputEmail!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputLandline') inputLandline!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputCellphone') inputCellphone!: ElementRef<HTMLInputElement>;
 
   @ViewChild('spanErrorNameUser') spanErrorNameUser!: ElementRef<HTMLSpanElement>;
   @ViewChild('spanErrorLastName') spanErrorLastName!: ElementRef<HTMLSpanElement>;

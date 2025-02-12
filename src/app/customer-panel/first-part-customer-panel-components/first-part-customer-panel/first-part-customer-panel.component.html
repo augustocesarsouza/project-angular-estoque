@@ -2,8 +2,8 @@
   <div class="container-header-register">
     <span class="span-img-user-without-img">AC</span>
     <div class="container-name-user">
-      <span>Olá,</span>
-      <div class="container-name-user-and-exit">
+      <span class="span-hello">Olá,</span>
+      <div class="container-name-user-and-exit" *ngIf="user">
         <span>{{ user.name }}</span>
         <span (click)="onClickLogOut()" (keydown.enter)="onClickLogOut()" tabindex="0">Sair</span>
       </div>

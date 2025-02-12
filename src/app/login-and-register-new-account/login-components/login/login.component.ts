@@ -1,16 +1,17 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { SvgEyeOpenComponent } from '../../../all-svg/svg-eye-open/svg-eye-open.component';
 import { UserService } from '../../../services-backend/user.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EncryptedUser } from '../../../function-user/get-user-local-storage/encrypted-user';
 import { ObjCodeUserEmailToRegisterAccountService } from '../../service/obj-code-user-email-to-register-account.service';
+import { MyHttpService } from '../../service/my-http.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   @ViewChild('inputTypePassword') inputTypePassword!: ElementRef<HTMLInputElement>;
   @ViewChild('inputEmail') inputEmail!: ElementRef<HTMLInputElement>;
   @ViewChild('spanEmailErrorIsEmpty') spanEmailErrorIsEmpty!: ElementRef<HTMLSpanElement>;
@@ -26,7 +27,24 @@ export class LoginComponent {
   codeUserCreate: Record<string, string> = {};
 
   constructor(private userService: UserService, private router: Router,
-    private objCodeUserPhone: ObjCodeUserEmailToRegisterAccountService){}
+    private objCodeUserPhone: ObjCodeUserEmailToRegisterAccountService,
+  private http: MyHttpService, private route: ActivatedRoute){}
+
+  ngOnInit(): void {
+    console.log("iopdkasfiojp");
+
+    // this.route.queryParams.subscribe(params => {
+    //   if(params["code"] !== undefined){
+    //     this.http.getToken(params["code"]).subscribe(result => {
+    //       if(result == true){
+    //         console.log("private");
+    //       }else {
+    //         console.log("public");
+    //       }
+    //     });
+    //   }
+    // });
+  }
 
   onClickEnterInput() {
     const countLengthEmail = this.inputEmail.nativeElement.value.length;
@@ -99,6 +117,12 @@ export class LoginComponent {
         }
       });
     }
+  }
+
+  onClickLoginWithGoogle(){
+    this.http.get("/auth/url").subscribe((obj) => {
+      window.location.href = obj.url;
+    });
   }
 
   onChangeInputEmail(e: Event) {

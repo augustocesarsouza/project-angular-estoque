@@ -59,6 +59,15 @@
   <button><i></i>Entrar</button>
 </div>
 
+<button
+  style="cursor: pointer; margin-top: 10px"
+  (click)="onClickLoginWithGoogle()"
+  (keydown.enter)="onClickLoginWithGoogle()"
+  tabindex="0"
+>
+  Login Com google
+</button>
+
 <app-code-send-to-email
   [valueEmailPhoneCreate]="valueEmailPhoneCreate"
   *ngIf="emailSendToEmail"

@@ -29,4 +29,19 @@ describe('ModalNewsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render header feminine', () => {
+    const header = fixture.nativeElement.querySelector('.header-feminine');
+    expect(header.textContent.trim()).toBe("FEMININO");
+  });
+
+  it('should render header masculine', () => {
+    const header = fixture.nativeElement.querySelector('.header-masculine');
+    expect(header.textContent.trim()).toBe("MASCULINO");
+  });
+
+  it('should render header children', () => {
+    const header = fixture.nativeElement.querySelector('.header-children');
+    expect(header.textContent.trim()).toBe("INFANTIL");
+  });
 });

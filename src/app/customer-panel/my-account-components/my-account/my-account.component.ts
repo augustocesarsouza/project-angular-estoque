@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './my-account.component.scss'
 })
 export class MyAccountComponent {
-
+  balanceOnGiftCards = 0.0;
 }

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-main',
@@ -6,5 +7,11 @@ import { Component, Input } from '@angular/core';
   styleUrl: './header-main.component.scss'
 })
 export class HeaderMainComponent {
- @Input() header = "IDENTIFICAÇÃO";
+  @Input() header = "IDENTIFICAÇÃO";
+
+  constructor(private router: Router){}
+
+  onClickLogoEstoque(){
+    this.router.navigate(['/']);
+  }
 }

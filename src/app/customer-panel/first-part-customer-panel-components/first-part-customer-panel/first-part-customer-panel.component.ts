@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../../interface-entity/user';
 import { Router } from '@angular/router';
+import { UpdateLastContainerInfoAboutMyAccountService } from '../../service/update-last-container-info-about-my-account.service';
 
 @Component({
   selector: 'app-first-part-customer-panel',
@@ -14,13 +15,15 @@ export class FirstPartCustomerPanelComponent implements OnInit, AfterViewInit {
   whichContainerWasClicked = "my-account";
 
   containerMyOrders!: HTMLDivElement;
+  containerInfoAboutMyOrders!: HTMLDivElement;
   containerMyAccount!: HTMLDivElement;
   containerMyAccountSpan!: HTMLDivElement;
+  spanRequestedExchangesAndReturns!: HTMLSpanElement;
   spanMyOrders!: HTMLSpanElement;
 
   nameUser = "Augusto";
 
-  constructor(private router: Router){
+  constructor(private router: Router, private updateLastContainerInfoAboutMyAccountService: UpdateLastContainerInfoAboutMyAccountService){
   }
 
   ngOnInit(): void {
@@ -35,6 +38,12 @@ export class FirstPartCustomerPanelComponent implements OnInit, AfterViewInit {
 
     const containerMyOrders = document.querySelector(".container-my-orders") as HTMLDivElement;
     this.containerMyOrders = containerMyOrders;
+
+    const containerInfoAboutMyOrders = document.querySelector(".container-info-about-my-orders") as HTMLDivElement;
+    this.containerInfoAboutMyOrders = containerInfoAboutMyOrders;
+
+    const spanRequestedExchangesAndReturns = document.querySelector(".span-requested-exchanges-and-returns") as HTMLSpanElement;
+    this.spanRequestedExchangesAndReturns = spanRequestedExchangesAndReturns;
 
     const containerMyAccountSpan = document.querySelector(".container-my-account-span") as HTMLDivElement;
     this.containerMyAccountSpan = containerMyAccountSpan;
@@ -51,9 +60,19 @@ export class FirstPartCustomerPanelComponent implements OnInit, AfterViewInit {
     this.updateWhichContainerWasClicked("vale-purchase");
     this.containerMyOrders.style.borderLeft = "none";
     this.containerMyAccount.style.borderLeft = "none";
+    this.containerInfoAboutMyOrders.style.borderLeft = "none";
+    this.spanRequestedExchangesAndReturns.style.borderBottom = "none";
     this.containerValePurchase.nativeElement.style.borderLeft = "5px solid rgb(0, 0, 0)";
     this.containerMyAccountSpan.style.borderBottom = "none";
     this.spanMyOrders.style.borderBottom = "none";
+
+    const containerMyAccountSubSection = document.querySelectorAll(".container-my-account-sub-section") as NodeListOf<HTMLDivElement>;
+    containerMyAccountSubSection.forEach(element => {
+      const firstChild = element.firstChild as HTMLSpanElement;
+      firstChild.style.borderBottom = "none";
+    });
+
+    this.updateLastContainerInfoAboutMyAccountService.updateupdateContainerNumber(-1);
   }
 
   onMouseEnter(spanValePurchase: HTMLSpanElement) {

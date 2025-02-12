@@ -2,7 +2,7 @@
 
 import CryptoJS from 'crypto-js';
 import { ResultGetUserFromLocalStorage } from './ResultGetUserFromLocalStorage';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 export const UserLocalStorage = (): ResultGetUserFromLocalStorage => {
   const ResultGetUserFromLocalStorage: ResultGetUserFromLocalStorage = {

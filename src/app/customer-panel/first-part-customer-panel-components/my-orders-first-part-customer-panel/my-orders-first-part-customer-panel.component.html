@@ -13,8 +13,18 @@
     </div>
   </div>
 </div>
-<div class="container-info-about-my-orders">
+<div
+  class="container-info-about-my-orders"
+  (click)="onClickRequestedExchangesAndReturns()"
+  (keydown.enter)="onClickRequestedExchangesAndReturns()"
+  tabindex="0"
+  #containerInfoAboutMyOrders
+  (mouseenter)="onMouseEnter(spanRequestedExchangesAndReturns)"
+  (mouseleave)="onMouseLeaveRequestedExchangesAndReturns(spanRequestedExchangesAndReturns)"
+>
   <div>
-    <span>Trocas e Devoluções solicitadas</span>
+    <span #spanRequestedExchangesAndReturns class="span-requested-exchanges-and-returns"
+      >Trocas e Devoluções solicitadas</span
+    >
   </div>
 </div>

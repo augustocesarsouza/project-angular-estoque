@@ -1,0 +1,104 @@
+<div class="container-type-code-verification">
+  <div class="container-type-code">
+    <div class="container-svg-arrow">
+      <app-svg-arrow-register width="25px" height="25px" fill="#ee4d2d"></app-svg-arrow-register>
+    </div>
+    <span>Digite o código de verificação</span>
+  </div>
+
+  <div class="code-is-wrong" *ngIf="codeIsWrong">
+    <app-code-is-wrong-x width="17px" height="17px" fill="red"></app-code-is-wrong-x>
+    <span>Código de verificação inválido. </span>
+  </div>
+  <div class="container-your-code-was-send-sms-main">
+    <div class="container-your-code-was-send-sms">
+      <span>Seu código de verificação foi enviado por mensagem SMS para</span>
+      <span class="span-phone">{{ valueEmailPhoneCreate }}</span>
+      <div class="container-input-code">
+        <input
+          class="input-celphone"
+          type="text"
+          maxlength="1"
+          placeholder="·"
+          autocomplete="off"
+          [value]="valueInputPhoneOne"
+          (click)="clickInputVerificationCode()"
+          (input)="changeInputVerificationCode($event, 0)"
+          (keydown)="keyDownVerificationCode($event, 0)"
+        />
+        <input
+          class="input-celphone"
+          type="text"
+          maxlength="1"
+          placeholder="·"
+          autoComplete="off"
+          [value]="valueInputPhoneTwo"
+          (click)="clickInputVerificationCode()"
+          (input)="changeInputVerificationCode($event, 1)"
+          (keydown)="keyDownVerificationCode($event, 1)"
+        />
+        <input
+          class="input-celphone"
+          type="text"
+          maxlength="1"
+          placeholder="·"
+          autoComplete="off"
+          [value]="valueInputPhoneThree"
+          (click)="clickInputVerificationCode()"
+          (keydown)="keyDownVerificationCode($event, 2)"
+          (input)="changeInputVerificationCode($event, 2)"
+        />
+        <input
+          class="input-celphone"
+          type="text"
+          maxlength="1"
+          placeholder="·"
+          autoComplete="off"
+          (click)="clickInputVerificationCode()"
+          [value]="valueInputPhoneFour"
+          (input)="changeInputVerificationCode($event, 3)"
+          (keydown)="keyDownVerificationCode($event, 3)"
+        />
+        <input
+          class="input-celphone"
+          type="text"
+          maxlength="1"
+          placeholder="·"
+          autoComplete="off"
+          [value]="valueInputPhoneFive"
+          (click)="clickInputVerificationCode()"
+          (input)="changeInputVerificationCode($event, 4)"
+          (keydown)="keyDownVerificationCode($event, 4)"
+        />
+        <input
+          class="input-celphone"
+          type="text"
+          maxlength="1"
+          placeholder="·"
+          autoComplete="off"
+          [value]="valueInputPhoneSix"
+          (click)="clickInputVerificationCode()"
+          (input)="changeInputVerificationCode($event, 5)"
+          (keydown)="keyDownVerificationCode($event, 5)"
+        />
+      </div>
+      <div class="container-split"></div>
+      <div class="container-code-correct" *ngIf="codeFoundSuccessfully">
+        <span>Codigo Correto {{ secondsPass }}s</span>
+      </div>
+      <div class="container-did-not-receive-the-code-and-button-next">
+        <div class="container-did-not-receive-the-code">
+          <span>Não recebeu o código?</span>
+          <span>
+            <button (click)="onClickResendCode()">Reenviar</button> ou tente
+            <button>Outros métodos</button>
+          </span>
+        </div>
+
+        <div class="container-button-next">
+          <button class="button-next" (click)="clickNextStep()">PRÓXIMO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

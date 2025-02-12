@@ -7,7 +7,6 @@
 .container-my-orders {
   display: flex;
   align-items: center;
-  margin-bottom: 13px;
   padding-left: 14px;
   height: 51px;
 }
@@ -53,6 +52,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  height: 51px;
 
   >div {
     width: 100%;

@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import Inputmask from 'inputmask';
 import { CepService } from '../../../service/cep.service';
-import { environment } from '../../../../../environments/environment';
 import { Router } from '@angular/router';
-import CryptoJS from 'crypto-js';
 import { WhereIsComingCustomerPanelAndRegisterUserService } from '../../../service/where-is-coming-customer-panel-and-register-user.service';
 import { UserService } from '../../../../services-backend/user.service';
+import { UpdateUserService } from '../../../../customer-panel/service/update-user.service';
+import { EncryptedUser } from '../../../../function-user/get-user-local-storage/encrypted-user';
 
 interface AllStates {
   state: string;
@@ -56,7 +56,6 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
   genderIsValid = false;
   cpfIsValid = false;
   emailIsValid = false;
-  // landlineIsValid = false;
   cellPhoneIsValid = false;
 
   cepIsValid = false;
@@ -68,14 +67,14 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
   stateIsValid = false;
 
    // Complete Your Registration
-   @ViewChild('inputNameUser') inputNameUser!: ElementRef<HTMLInputElement>;
-   @ViewChild('inputLastName') inputLastName!: ElementRef<HTMLInputElement>;
-   @ViewChild('selectGender') selectGender!: ElementRef<HTMLInputElement>;
-   @ViewChild('inputBirthdate') inputBirthdate!: ElementRef<HTMLInputElement>;
-   @ViewChild('inputCpf') inputCpf!: ElementRef<HTMLInputElement>;
-   @ViewChild('inputEmail') inputEmail!: ElementRef<HTMLInputElement>;
-   @ViewChild('inputLandline') inputLandline!: ElementRef<HTMLInputElement>;
-   @ViewChild('inputCellphone') inputCellphone!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputNameUser') inputNameUser!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputLastName') inputLastName!: ElementRef<HTMLInputElement>;
+  @ViewChild('selectGender') selectGender!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputBirthdate') inputBirthdate!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputCpf') inputCpf!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputEmail') inputEmail!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputLandline') inputLandline!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputCellphone') inputCellphone!: ElementRef<HTMLInputElement>;
 
   @ViewChild('spanErrorNameUser') spanErrorNameUser!: ElementRef<HTMLSpanElement>;
   @ViewChild('spanErrorLastName') spanErrorLastName!: ElementRef<HTMLSpanElement>;
@@ -149,7 +148,8 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
   selectedState = '';
 
   constructor(private cepService: CepService, private userService: UserService, private router: Router,
-    private whereIsComingCustomerPanelAndRegisterUserService: WhereIsComingCustomerPanelAndRegisterUserService
+    private whereIsComingCustomerPanelAndRegisterUserService: WhereIsComingCustomerPanelAndRegisterUserService,
+    private updateUserService: UpdateUserService
   ){}
 
   ngOnInit(): void {
@@ -325,7 +325,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
           this.valueInputCity = addressValue.localidade;
           this.valueInputAddress = addressValue.logradouro;
 
-          console.log(addressValue);
+          // console.log(addressValue);
         }
       }else {
         input.style.borderColor = "red";
@@ -577,6 +577,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
     const input = e.target as HTMLInputElement;
     const valueInput = input.value;
     this.valueInputRecipientName = valueInput;
+    console.log(label);
   }
 
   changeInputAddress(e: Event, label: HTMLLabelElement) {
@@ -613,6 +614,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
     const input = e.target as HTMLInputElement;
     const valueInput = input.value;
     this.valueInputComplementOptional = valueInput;
+    console.log(label);
   }
 
   changeInputNeighborhood(e: Event, label: HTMLLabelElement) {
@@ -661,6 +663,8 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
     const input = e.target as HTMLInputElement;
     const valueInput = input.value;
     this.valueInputReferencePoint = valueInput;
+    console.log(label);
+
     // if(valueInput.length > 0){
     //   this.changeInputToBlack(input, this.spanErrorCity.nativeElement, label);
     //   this.cityIsValid = true;
@@ -717,6 +721,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
   }
 
   setTimeoutId!: number;
+  clickRegister = false;
 
   onClickRegister() {
     if(typeof window === 'undefined')return;
@@ -820,20 +825,19 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
         userImage: ""
       };
 
+      if(this.clickRegister) return;
+
       this.userService.createAccount(objCreate).subscribe({
         next: (success) => {
+          this.clickRegister = true;
           const userDTO = success.data;
 
-          const secretKey = environment.angularAppSecretKeyUser;
+          EncryptedUser(userDTO);
 
-          const encrypted = CryptoJS.AES.encrypt(JSON.stringify(userDTO), secretKey).toString();
-
-          localStorage.setItem('user', encrypted);
           this.whereIsComingCustomerPanelAndRegisterUserService.updateUrlName("register");
+          this.updateUserService.updateupdateUser(userDTO);
 
-          this.setTimeoutId = setTimeout(() => {
-            this.router.navigate(['/painel-do-cliente']);
-          }, 500)as unknown as number;
+          this.router.navigate(['/painel-do-cliente']);
           // se for com sucesso transferir para a rota "painel-do-cliente" e Passe o data que foi criado agora no "Local Storage"
         },
         error: error => {
@@ -842,8 +846,6 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
           }
         }
       });
-
-      console.log(objCreate);
     }
   }
 

@@ -12,6 +12,7 @@ import { SecondPartRegisterMainComponent } from './register-components/second-pa
 import { MyAccountFirstPartComponent } from './register-components/first-part-register-components/my-account-first-part/my-account-first-part.component';
 import { MyOrdersFirstPartComponent } from './register-components/first-part-register-components/my-orders-first-part/my-orders-first-part.component';
 import { HeaderAndFooterLoginAndRegisterModule } from '../header-and-footer-login-and-register/header-and-footer-login-and-register.module';
+import { CodeSendToEmailComponent } from './login-components/code-send-to-email/code-send-to-email.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HeaderAndFooterLoginAndRegisterModule } from '../header-and-footer-logi
     SecondPartRegisterMainComponent,
     MyAccountFirstPartComponent,
     MyOrdersFirstPartComponent,
+    CodeSendToEmailComponent,
   ],
   imports: [
     CommonModule,

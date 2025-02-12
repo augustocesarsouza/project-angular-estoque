@@ -27,8 +27,19 @@
     #ContainerModalAccount
     (mouseenter)="mouseEnterAccount()"
     (mouseleave)="mouseLeaveAccount()"
+    *ngIf="!user"
   >
     <app-modal-account></app-modal-account>
+  </div>
+
+  <div
+    class="container-modal-account-log-in"
+    #ContainerModalAccountLogIn
+    (mouseenter)="mouseEnterAccountLogIn()"
+    (mouseleave)="mouseLeaveAccountLogIn()"
+    *ngIf="user"
+  >
+    <app-modal-account-log-in [user]="user"></app-modal-account-log-in>
   </div>
 
   <div

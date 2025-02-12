@@ -14,16 +14,36 @@
   </div>
   <div class="container-info-about-my-account">
     <div
-      (click)="onClickRegistrationData()"
-      (keydown.enter)="onClickRegistrationData()"
+      (click)="onClickSpanSubSection(0)"
+      (keydown.enter)="onClickSpanSubSection(0)"
       tabindex="0"
+      (mouseenter)="onMouseEnterSpanSubSection($event)"
+      (mouseleave)="onMouseLeaveSpanPersonalData($event)"
+      #containerMyAccountSubSection
+      class="container-my-account-sub-section"
     >
       <span>Dados pessoais</span>
     </div>
-    <div>
+    <div
+      (click)="onClickSpanSubSection(1)"
+      (keydown.enter)="onClickSpanSubSection(1)"
+      tabindex="0"
+      #containerMyAccountSubSection
+      (mouseenter)="onMouseEnterSpanSubSection($event)"
+      (mouseleave)="onMouseLeaveSpanChangePassword($event)"
+      class="container-my-account-sub-section"
+    >
       <span>Alterar senha</span>
     </div>
-    <div>
+    <div
+      (click)="onClickSpanSubSection(2)"
+      (keydown.enter)="onClickSpanSubSection(2)"
+      tabindex="0"
+      #containerMyAccountSubSection
+      (mouseenter)="onMouseEnterSpanSubSection($event)"
+      (mouseleave)="onMouseLeaveSpanAddress($event)"
+      class="container-my-account-sub-section"
+    >
       <span>Endereços</span>
     </div>
   </div>

@@ -1,4 +1,8 @@
 <h1 class="header-already-client">Já sou cliente</h1>
+<div class="container-error-when-log-in" *ngIf="errorWhenLogin">
+  <app-svg-exit width="40px" height="40px" fill="#000000a6"></app-svg-exit>
+  <span>Erro alguma informações do login está Incorreta</span>
+</div>
 <div class="container-input-email-and-type-password">
   <div class="container-input-email-and-password">
     <label for="email">E-mail:</label>
@@ -54,3 +58,8 @@
 >
   <button><i></i>Entrar</button>
 </div>
+
+<app-code-send-to-email
+  [valueEmailPhoneCreate]="valueEmailPhoneCreate"
+  *ngIf="emailSendToEmail"
+></app-code-send-to-email>

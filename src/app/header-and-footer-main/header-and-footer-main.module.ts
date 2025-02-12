@@ -17,6 +17,7 @@ import { ModalChildrenComponent } from './header-main/modal-children/modal-child
 import { ModalHomeComponent } from './header-main/modal-home/modal-home.component';
 import { ModalBranchComponent } from './header-main/modal-branch/modal-branch.component';
 import { BranchLelisLelisHomeImgBoboComponent } from './header-main/branch-lelis-lelis-home-img-bobo/branch-lelis-lelis-home-img-bobo.component';
+import { ModalAccountLogInComponent } from './header-main/modal-account-log-in/modal-account-log-in.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { BranchLelisLelisHomeImgBoboComponent } from './header-main/branch-lelis
     ModalChildrenComponent,
     ModalHomeComponent,
     ModalBranchComponent,
-    BranchLelisLelisHomeImgBoboComponent
+    BranchLelisLelisHomeImgBoboComponent,
+    ModalAccountLogInComponent
   ],
   exports: [HeaderComponent],
   imports: [

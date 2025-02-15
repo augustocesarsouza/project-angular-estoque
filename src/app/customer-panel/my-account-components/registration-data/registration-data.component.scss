@@ -1,0 +1,122 @@
+.container-finish-your-register {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  width: 600px;
+  padding-left: 30px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  margin-bottom: 20px;
+
+  >h1 {
+    font-size: 16px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+}
+
+.container-all-info-finish-your-register {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  user-select: none;
+}
+
+.container-info-input-finish-your-register {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%;
+}
+
+.container-input-all {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  >label {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  >input {
+    border: 0;
+    filter: none;
+    flex: 1;
+    flex-shrink: 0;
+    padding: 12px;
+    border: 1px solid #73737347;
+    font-size: 13.2px;
+    height: 44px !important;
+    flex: 0 !important;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #00000063;
+    }
+  }
+
+  >select {
+    display: block;
+    width: 100%;
+    height: 45px;
+    padding: 6px 20px;
+    box-sizing: border-box;
+    color: #000;
+    font-family: Roboto;
+    background-color: #fff;
+    background-image: none;
+    border: 1.5px solid #ddd;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+
+    &:focus{
+      outline: none;
+    }
+  }
+}
+
+.span-info-botton-telefone {
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.span-errors-form {
+  font-size: 12px;
+  color: red;
+  line-height: 1;
+  margin-top: 3px;
+  display: none;
+}
+
+
+.valid::before {
+  content: "✔";
+  color: green;
+}
+
+.invalid::before {
+  content: "✖";
+  color: red;
+}
+
+.button-save-register{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  color: #fff;
+  width: 325px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  border-radius: 2px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

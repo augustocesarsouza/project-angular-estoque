@@ -20,7 +20,7 @@ export class HeaderFirstComponent implements AfterViewInit, OnDestroy {
   }
 
   startRotation(): void {
-    if(typeof window === 'undefined')return;
+    if (typeof window === "undefined" || typeof localStorage === "undefined")return;
 
     const container = this.containerAllSpans.nativeElement as HTMLElement;
     if (!container) return;

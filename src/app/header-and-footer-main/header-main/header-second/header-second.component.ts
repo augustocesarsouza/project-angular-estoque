@@ -1,36 +1,35 @@
-import {  Component, OnInit } from '@angular/core';
-import { Message, MyHttpService } from '../../../login-and-register-new-account/service/my-http.service';
-import { ActivatedRoute } from '@angular/router';
+import {  Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { GoogleApiService } from '../../../login-and-register-new-account/service/google-api.service';
+import { User } from '../../../interface-entity/user';
 
 @Component({
   selector: 'app-header-second',
   templateUrl: './header-second.component.html',
   styleUrl: './header-second.component.scss'
 })
-export class HeaderSecondComponent implements OnInit {
+export class HeaderSecondComponent implements OnInit, OnDestroy {
   ShowModalAccount = false;
+  alreadyVefifyIfUserIsRegistered = false;
+  user!: User;
+  setTimeoutId!: number;
 
-  constructor(private http: MyHttpService, private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private googleApiService: GoogleApiService, private router: Router
+  ) {
+  }
 
   ngOnInit(): void {
-    this.route.queryParams
-      .subscribe(params => {
-        const code = params["code"];
-
-        if (code !== undefined) {
-          this.http.getToken(code).subscribe(result => {
-            if (result === true) {
-              this.http.authenticationLoginGoogle("/login-google").subscribe((data: Message) => {
-                console.log(data); // Aqui da para retornar um objeto "User" para salvar no "localStorage" com token dentro dele
-
-              });
-            } else {
-              console.log("algum erro no login");
-            }
-          });
-        }
+    this.googleApiService.userProfile$.subscribe((user) => {
+      if(user){
+        this.user = user;
       }
-    );
+    });
+    // "this.googleApiService.logout();" esse metodo apaga o usuario meio que deleta igua lse você clicar em "Sair e o usuario logou com google
+    // usar esse metodo de cima para deletar e nao ter historico dele
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.setTimeoutId);
   }
 }
 

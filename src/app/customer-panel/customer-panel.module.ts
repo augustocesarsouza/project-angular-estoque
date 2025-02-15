@@ -9,6 +9,7 @@ import { MyOrdersFirstPartCustomerPanelComponent } from './first-part-customer-p
 import { HeaderAndFooterLoginAndRegisterModule } from '../header-and-footer-login-and-register/header-and-footer-login-and-register.module';
 import { RegistrationDataComponent } from './my-account-components/registration-data/registration-data.component';
 import { MyAccountComponent } from './my-account-components/my-account/my-account.component';
+import { ChangePasswordComponent } from './my-account-components/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MyAccountComponent } from './my-account-components/my-account/my-accoun
     MyOrdersFirstPartCustomerPanelComponent,
     RegistrationDataComponent,
     MyAccountComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     CommonModule,

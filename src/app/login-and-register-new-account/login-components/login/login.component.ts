@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EncryptedUser } from '../../../function-user/get-user-local-storage/encrypted-user';
 import { ObjCodeUserEmailToRegisterAccountService } from '../../service/obj-code-user-email-to-register-account.service';
 import { MyHttpService } from '../../service/my-http.service';
+import { User } from '../../../interface-entity/user';
+import { GoogleApiService } from '../../service/google-api.service';
 
 @Component({
   selector: 'app-login',
@@ -25,25 +27,14 @@ export class LoginComponent implements OnInit {
   emailSendToEmail = false;
   valueEmailPhoneCreate = "";
   codeUserCreate: Record<string, string> = {};
+  user!: User;
 
   constructor(private userService: UserService, private router: Router,
     private objCodeUserPhone: ObjCodeUserEmailToRegisterAccountService,
-  private http: MyHttpService, private route: ActivatedRoute){}
+  private http: MyHttpService, private route: ActivatedRoute, private googleApiService: GoogleApiService){}
 
   ngOnInit(): void {
-    console.log("iopdkasfiojp");
-
-    // this.route.queryParams.subscribe(params => {
-    //   if(params["code"] !== undefined){
-    //     this.http.getToken(params["code"]).subscribe(result => {
-    //       if(result == true){
-    //         console.log("private");
-    //       }else {
-    //         console.log("public");
-    //       }
-    //     });
-    //   }
-    // });
+    this.codeIsRightEmail = this.codeIsRightEmail.bind(this);
   }
 
   onClickEnterInput() {
@@ -82,8 +73,7 @@ export class LoginComponent implements OnInit {
 
           if(dataLoggin.passwordIsCorrect){
             const user = dataLoggin.userDTO;
-
-            EncryptedUser(user);
+            this.user = user;
 
             // Quando quiser testar para mandar para email real só comentar esse block
             let numberRandom = '';
@@ -119,10 +109,22 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  codeIsRightEmail () {
+    if(this.user){
+      EncryptedUser(this.user);
+    }
+  }
+
   onClickLoginWithGoogle(){
-    this.http.get("/auth/url").subscribe((obj) => {
-      window.location.href = obj.url;
-    });
+    // this.http.authUrl().subscribe((obj) => {
+    //   window.location.href = obj.url;
+    // });
+
+    this.googleApiService.functionLogin();
+  }
+
+  onClickLogout() {
+    this.googleApiService.logout();
   }
 
   onChangeInputEmail(e: Event) {

@@ -13,6 +13,9 @@ import { UserService } from '../../../services-backend/user.service';
 })
 export class CodeSendToEmailComponent implements AfterViewInit, OnDestroy, OnInit {
   @Input() valueEmailPhoneCreate!: string;
+  @Input() codeIsRightEmail!: () => void;
+  @Input() user!: User;
+
   allInputs!: NodeListOf<HTMLInputElement>;
   buttonNext!: HTMLInputElement;
   private SubscriptionAll: Subscription[] = [];
@@ -28,7 +31,6 @@ export class CodeSendToEmailComponent implements AfterViewInit, OnDestroy, OnIni
   codeUserCreate: Record<string, string> = {};
   codeFull = '';
   codeIsWrong = false;
-  user!: User;
   codeFoundSuccessfully = false;
   intervalId!: number;
   secondsPass = 5;
@@ -111,8 +113,8 @@ export class CodeSendToEmailComponent implements AfterViewInit, OnDestroy, OnIni
     if (event.code === 'Backspace' && index > 0) {
       if (input.value.length === 1) {
         // allInputs[index].value = '';
-
         this.allInputs[index - 1].focus();
+        this.allInputs[index].value = '';
       } else {
         this.allInputs[index - 1].focus();
         this.allInputs[index - 1].value = '';
@@ -201,6 +203,7 @@ export class CodeSendToEmailComponent implements AfterViewInit, OnDestroy, OnIni
 
     if(this.codeUserCreate[userId] === this.codeFull){
       this.codeFoundSuccessfully = true;
+      this.codeIsRightEmail();
 
       if(this.codeFoundSuccessfully){
         this.ngZone.runOutsideAngular(() => this.startRotation());
@@ -236,7 +239,7 @@ export class CodeSendToEmailComponent implements AfterViewInit, OnDestroy, OnIni
   }
 
   startRotation(): void {
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined" || typeof localStorage === "undefined")return;
 
     clearTimeout(this.intervalId);
     this.intervalId = window.setInterval(() => {

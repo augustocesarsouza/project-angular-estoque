@@ -7,11 +7,15 @@ export interface EncryptedUser {
 }
 
 export const EncryptedUser = (user: User): EncryptedUser => {
-  const secretKey = environment.angularAppSecretKeyUser;
+  if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+    const secretKey = environment.angularAppSecretKeyUser;
 
-  const encrypted = CryptoJS.AES.encrypt(JSON.stringify(user), secretKey).toString();
+    const encrypted = CryptoJS.AES.encrypt(JSON.stringify(user), secretKey).toString();
 
-  localStorage.setItem('user', encrypted);
+    localStorage.setItem("user", encrypted);
 
-  return { encryptionSuccessful: true };
+    return { encryptionSuccessful: true };
+  }
+
+  return { encryptionSuccessful: false };
 };

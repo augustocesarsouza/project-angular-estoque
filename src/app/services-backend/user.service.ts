@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.prod';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { take } from 'rxjs';
 import { User } from '../interface-entity/user';
+import { UserAddress } from '../interface-entity/user-address';
 
 export interface ResultData {
   data: User;
+}
+
+export interface ResultDataGetInfoUserAddress {
+  data: UserAddress;
 }
 
 export interface ResultDataLogin {
@@ -15,8 +20,40 @@ export interface ResultDataLogin {
   }
 }
 
+export interface ResultDataChangePassword {
+  data: ChangePassword;
+}
+
 export interface ResultDataVerifyCodeToLogin {
   data: CodeVerify;
+}
+
+export interface UserUpdate {
+  userId: string;
+  name: string;
+  lastName: string;
+  birthDate: string;
+  gender: string;
+  cpf: string;
+  email: string;
+  landline: string;
+  cellPhone: string;
+  userImage: string | null;
+  confirmEmail: number;
+  token: string;
+}
+
+export interface UserUpdatePassword {
+  actualPassword: string
+  newPassword: string
+  userId: string;
+  email: string;
+}
+
+
+export interface ChangePassword {
+  changePasswordSuccessfully: boolean;
+  passwordValid: boolean;
 }
 
 interface CodeVerify {
@@ -36,11 +73,11 @@ export class UserService {
       'Content-Type': 'application/json'
     });
 
-    const options = {
-      headers: headers,
-    };
+    const params = new HttpParams()
+    .set('email', email)
+    .set('password', password);
 
-    return this._http.get<ResultDataLogin>(`/api/public/user/login/${email}/${password}`, options).pipe(take(1));
+    return this._http.get<ResultDataLogin>(`/api/public/user/login`, {headers, params}).pipe(take(1));
   }
 
   GetUser(userId: string){
@@ -55,6 +92,22 @@ export class UserService {
     };
 
     return this._http.get<ResultData>(`/api/public/user/find-by-id/${userId}`, options).pipe(take(1));
+  }
+
+  FindByIdToDatePersonal(user: User){
+    const userId = user.id;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${user.token}`,
+      'uid': userId
+    });
+
+    const options = {
+      headers: headers,
+    };
+
+    return this._http.get<ResultDataGetInfoUserAddress>(`/api/user/find-by-id-to-date-personal/${userId}`, options).pipe(take(1));
   }
 
   VerifyCodeToLogin(user: unknown){
@@ -81,8 +134,53 @@ export class UserService {
       headers: headers,
     };
 
-    // Colocar "Bearer" token e validar se der error o token tiver sem validação vai lançar error
-
     return this._http.post<ResultData>(`/api/public/user/create`, user, options).pipe(take(1));
+  }
+
+  createAccountWithGoogle(user: unknown){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      // 'Authorization': 'Bearer your-auth-token' // Se necessário
+    });
+
+    const options = {
+      headers: headers,
+    };
+
+    return this._http.post<ResultData>(`/api/public/user/verify-if-user-exist-to-create-login-with-google`, user, options).pipe(take(1));
+  }
+
+  PutUserInfo(user: UserUpdate){
+    const userId = user.userId;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${user.token}`,
+      'uid': userId
+    });
+
+    const options = {
+      headers: headers,
+    };
+
+    // return this._http.put<ResultData>(`/api/user/update-info`, options).pipe(take(1));
+    return this._http.put<ResultData>(`/api/user/update-info`, user, options).pipe(take(1));
+  }
+
+  PutChangePassword(user: UserUpdatePassword, token: string){
+    const userId = user.userId;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+      'uid': userId
+    });
+
+    const options = {
+      headers: headers,
+    };
+
+    // return this._http.put<ResultData>(`/api/user/update-info`, options).pipe(take(1));
+    return this._http.put<ResultDataChangePassword>(`/api/user/change-password`, user, options).pipe(take(1));
   }
 }

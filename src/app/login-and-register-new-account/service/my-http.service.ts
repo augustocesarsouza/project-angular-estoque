@@ -1,13 +1,14 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import { User } from '../../interface-entity/user';
 
-interface ResultAuth {
+export interface ResultAuth {
   url: string;
 }
 
-interface ResultAuthPrivate {
-  message: string;
+export interface ResultAuthPrivate {
+  data: User;
 }
 
 @Injectable({
@@ -19,13 +20,13 @@ export class MyHttpService {
 
   constructor(private http: HttpClient) { }
 
-  get(url: string): Observable<ResultAuth>  {
-    const result = this.http.get("http://localhost:8080/v1" + url) as Observable<ResultAuth>;
+  authUrl(): Observable<ResultAuth>  {
+    const result = this.http.get("http://localhost:8080/v1/auth/url") as Observable<ResultAuth>;
     return result;
   }
 
-  authenticationLoginGoogle(url: string): Observable<ResultAuthPrivate> {
-    return this.http.get("http://localhost:8080/v1" + url, {headers: new HttpHeaders({"Authorization": "Bearer " + this.token})}) as Observable<ResultAuthPrivate>;
+  authenticationLoginGoogle(): Observable<ResultAuthPrivate> {
+    return this.http.get("http://localhost:8080/v1/login-google" , {headers: new HttpHeaders({"Authorization": "Bearer " + this.token})}) as Observable<ResultAuthPrivate>;
   }
 
   getToken(code: string): Observable<boolean> {

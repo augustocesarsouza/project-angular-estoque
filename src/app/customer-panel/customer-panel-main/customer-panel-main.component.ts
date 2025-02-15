@@ -28,11 +28,8 @@ export class CustomerPanelMainComponent implements OnInit, OnDestroy {
       const user = userResult.user;
       if(user){
         this.user = user;
-        console.log(user);
       }
     }
-
-    // CONTINUAR painel-do-cliente
 
     if(userResult.isNullUserLocalStorage){
       localStorage.removeItem('user');

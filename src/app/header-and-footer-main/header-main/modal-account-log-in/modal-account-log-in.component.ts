@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../../interface-entity/user';
+import { GoogleApiService } from '../../../login-and-register-new-account/service/google-api.service';
 
 @Component({
   selector: 'app-modal-account-log-in',
@@ -10,7 +11,10 @@ import { User } from '../../../interface-entity/user';
 export class ModalAccountLogInComponent {
   @Input() user!: User;
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private googleApiService: GoogleApiService
+  ){
+  }
+
 
   onClickMyAccount(){
     this.router.navigate(['/painel-do-cliente']);
@@ -18,6 +22,7 @@ export class ModalAccountLogInComponent {
 
   onClickExitMyAccount(){
     localStorage.removeItem("user");
+    this.googleApiService.logout();
     this.router.navigate(['/user/login']);
   }
 }

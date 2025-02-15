@@ -1,1 +1,104 @@
-<h1>DADOS PESSOAS</h1>
+<div class="container-finish-your-register">
+  <h1 class="header-finish-your-register">COMPLETE SEU CADASTRO</h1>
+
+  <div class="container-all-info-finish-your-register">
+    <div class="container-info-input-finish-your-register">
+      <div class="container-input-all">
+        <label for="name" #labelName>* Nome:</label>
+        <input
+          type="text"
+          id="name"
+          (input)="changeInputNameUser($event, labelName)"
+          #inputNameUser
+        />
+        <span class="span-errors-form" #spanErrorNameUser
+          >nome do usuario deve ter pelo menos 3 caracteres</span
+        >
+      </div>
+      <div class="container-input-all">
+        <label for="last-name" #labelLastName>* Sobrenome:</label>
+        <input
+          type="text"
+          id="last-name"
+          (input)="changeInputLastName($event, labelLastName)"
+          #inputLastName
+        />
+        <span class="span-errors-form" #spanErrorLastName
+          >sobrenome deve ter pelo menos 3 caracteres</span
+        >
+      </div>
+    </div>
+    <div class="container-info-input-finish-your-register">
+      <div class="container-input-all">
+        <label for="birthdate" #labelBirthdate>* Data de Nascimento:</label>
+        <input
+          type="text"
+          id="birthdate"
+          #inputBirthdate
+          (input)="changeInputBirthdate($event, labelBirthdate)"
+        />
+        <span class="span-errors-form" #spanErrorBirthDate
+          >Data de Nascimento não está completo</span
+        >
+      </div>
+      <div class="container-input-all">
+        <label for="gender" #labelGender>* Sexo:</label>
+        <select (change)="onGenderChange($event, labelGender)" #selectGender>
+          <option value="">Selecione</option>
+          <option value="F">Feminino</option>
+          <option value="M">Masculino</option>
+          <option value="I">Não Informado</option>
+        </select>
+        <span class="span-errors-form" #spanErrorGender>Deve ser selecionado um campo Genero</span>
+      </div>
+    </div>
+    <div class="container-info-input-finish-your-register">
+      <div class="container-input-all">
+        <label for="cpf" #labelCpf>* CPF:</label>
+        <input type="text" id="cpf" (input)="changeInputCpf($event, labelCpf)" #inputCpf />
+        <span class="span-errors-form" #spanErrorCpf>Cpf é Inválido</span>
+      </div>
+      <div class="container-input-all">
+        <label for="email" #labelEmail>* E-mail:</label>
+        <input type="text" id="email" (input)="changeInputEmail($event, labelEmail)" #inputEmail />
+        <span class="span-errors-form" #spanErrorEmail
+          >Email é Inválido deve ter &#64;gmail, &#64;hotmail</span
+        >
+      </div>
+    </div>
+    <div class="container-info-input-finish-your-register">
+      <div class="container-input-all">
+        <label for="landline" #labelLandline>Telefone Fixo:</label>
+        <input
+          type="text"
+          id="landline"
+          #inputLandline
+          (input)="changeInputLandline($event, labelLandline)"
+        />
+        <span class="span-info-botton-telefone">Ex: DDD + Telefone</span>
+        <span class="span-errors-form" #spanErrorLandline>Telefone Fixo é Inválido</span>
+      </div>
+      <div class="container-input-all">
+        <label for="cell-phone" #labelCellPhone>* Telefone Celular:</label>
+        <input
+          type="text"
+          id="cell-phone"
+          #inputCellphone
+          (input)="changeInputCellPhone($event, labelCellPhone)"
+        />
+        <span class="span-info-botton-telefone">Ex: DDD + Telefone</span>
+        <span class="span-errors-form" #spanErrorCellPhone>Telefone Celular é Inválido</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button
+  class="button-save-register"
+  (click)="onClickSaveInfo()"
+  (keydown.enter)="onClickSaveInfo()"
+  tabindex="0"
+  #buttonRegisterAccount
+>
+  SALVAR
+</button>

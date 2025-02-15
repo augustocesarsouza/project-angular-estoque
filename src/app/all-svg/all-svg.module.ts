@@ -7,10 +7,11 @@ import { SvgEyeOpenComponent } from './svg-eye-open/svg-eye-open.component';
 import { SvgEyeCloseComponent } from './svg-eye-close/svg-eye-close.component';
 import { SvgArrowRegisterComponent } from './svg-arrow-register/svg-arrow-register.component';
 import { CodeIsWrongXComponent } from './code-is-wrong-x/code-is-wrong-x.component';
+import { SvgGoogleComponent } from './svg-google/svg-google.component';
 
 @NgModule({
-  declarations: [SvgExitComponent, SvgMicrophoneComponent, SvgLoupeComponent, SvgEyeOpenComponent, SvgEyeCloseComponent, SvgArrowRegisterComponent, CodeIsWrongXComponent],
-  exports: [SvgExitComponent, SvgMicrophoneComponent, SvgLoupeComponent, SvgEyeOpenComponent, SvgEyeCloseComponent, SvgArrowRegisterComponent, CodeIsWrongXComponent],
+  declarations: [SvgExitComponent, SvgMicrophoneComponent, SvgLoupeComponent, SvgEyeOpenComponent, SvgEyeCloseComponent, SvgArrowRegisterComponent, CodeIsWrongXComponent, SvgGoogleComponent],
+  exports: [SvgExitComponent, SvgMicrophoneComponent, SvgLoupeComponent, SvgEyeOpenComponent, SvgEyeCloseComponent, SvgArrowRegisterComponent, CodeIsWrongXComponent, SvgGoogleComponent],
   imports: [CommonModule],
 })
 export class AllSvgModule {}

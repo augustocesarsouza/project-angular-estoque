@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { UpdateLastContainerInfoAboutMyAccountService } from '../../service/update-last-container-info-about-my-account.service';
+import { GoogleApiService } from '../../../login-and-register-new-account/service/google-api.service';
+import { UserLoggedWithGoogle } from '../../../function-user/get-user-local-storage/user-logged-with-google';
 
 @Component({
   selector: 'app-my-account-first-part-customer-panel',
@@ -22,14 +24,35 @@ export class MyAccountFirstPartCustomerPanelComponent implements AfterViewInit, 
   @ViewChildren('containerMyAccountSubSection') containerMyAccountSubSection!: QueryList<ElementRef<HTMLDivElement>>;
   lastContainerInfoAboutMyAccount = -1;
 
-  constructor(private router: Router,
+  constructor(private router: Router, private googleApiService: GoogleApiService,
     private updateLastContainerInfoAboutMyAccountService: UpdateLastContainerInfoAboutMyAccountService){}
 
     ngOnInit(): void {
+      const userResult = UserLoggedWithGoogle();
+
+      if(!userResult.isNullUserLoggedGoogleLocalStorage){
+        const userLogged = userResult.userLogged;
+        if(userLogged){
+          console.log(userLogged);
+          // AGORA PEGA ESSE E QUANDO O USUARIO LOGAR NORMAL SEM O GOOGLE
+          // COLOCAR O VALOR "userLoggedWithGoogle" que está dentro de "userLogged" false e salva no LocalStorage
+          // e tem que fazer Quando carregar o "http://localhost:4200/painel-do-cliente" e aparecer "Alterar senha"
+          // Só pode alterar quando tiver logado "SEM O GOOGLE"
+
+        }
+      }
+
+      // CONTINUAR painel-do-cliente
+
+      if(userResult.isNullUserLoggedGoogleLocalStorage){
+        // this.googleApiService.logout();
+        // localStorage.removeItem('user');
+        // this.router.navigate(['/']);
+        return;
+      };
+
       this.updateLastContainerInfoAboutMyAccountService.updateLastContainerNumber$.subscribe((containerNumber) => {
         if(containerNumber){
-          console.log(containerNumber);
-
           this.lastContainerInfoAboutMyAccount = containerNumber;
         }
       });
@@ -139,6 +162,12 @@ export class MyAccountFirstPartCustomerPanelComponent implements AfterViewInit, 
       firstChild.style.borderBottom = "none";
     });
 
-    this.router.navigate(['/painel-do-cliente/dados-cadastrais']);
+    if(i === 0){
+      this.router.navigate(['/painel-do-cliente/dados-cadastrais']);
+    }
+
+    if(i === 1){
+      this.router.navigate(['/painel-do-cliente/alterar-senha']);
+    }
   }
 }

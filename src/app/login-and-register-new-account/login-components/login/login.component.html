@@ -59,16 +59,26 @@
   <button><i></i>Entrar</button>
 </div>
 
+<div class="container-or-loggin-with-google">
+  <div class="container-line-white-google"></div>
+  <span>Ou entre com uma rede social</span>
+  <div class="container-line-white-google"></div>
+</div>
+
 <button
-  style="cursor: pointer; margin-top: 10px"
+  class="button-continue-with-google-login"
   (click)="onClickLoginWithGoogle()"
   (keydown.enter)="onClickLoginWithGoogle()"
   tabindex="0"
 >
-  Login Com google
+  <app-svg-google width="25px" height="25px"></app-svg-google>
+  Continuar com o Google
 </button>
+<button (click)="onClickLogout()" (keydown.enter)="onClickLogout()" tabindex="0">logout</button>
 
 <app-code-send-to-email
   [valueEmailPhoneCreate]="valueEmailPhoneCreate"
+  [codeIsRightEmail]="codeIsRightEmail"
+  [user]="user"
   *ngIf="emailSendToEmail"
 ></app-code-send-to-email>

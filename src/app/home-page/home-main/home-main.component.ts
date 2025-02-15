@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserLocalStorage } from '../../function-user/get-user-local-storage/user-local-storage';
 import { VerifyTokenIsExpired } from '../../function-user/function-token-user/verify-token-is-expired';
+import { GoogleApiService } from '../../login-and-register-new-account/service/google-api.service';
 // import { decodeJwt, JWTPayload } from 'jose';
 
 @Component({
@@ -11,7 +12,7 @@ import { VerifyTokenIsExpired } from '../../function-user/function-token-user/ve
 })
 export class HomeMainComponent implements OnInit {
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private googleApiService: GoogleApiService){}
 
   ngOnInit(): void {
     const userResult = UserLocalStorage();
@@ -23,7 +24,6 @@ export class HomeMainComponent implements OnInit {
 
         if(token){
           const tokenIsExpired = VerifyTokenIsExpired(token);
-          console.log(tokenIsExpired);
 
           if(tokenIsExpired){
             localStorage.removeItem('user');
@@ -37,6 +37,7 @@ export class HomeMainComponent implements OnInit {
     // CONTINUAR painel-do-cliente
 
     if(userResult.isNullUserLocalStorage){
+      this.googleApiService.logout();
       localStorage.removeItem('user');
       this.router.navigate(['/']);
       return;

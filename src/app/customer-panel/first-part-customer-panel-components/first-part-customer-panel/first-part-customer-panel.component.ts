@@ -2,6 +2,8 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '
 import { User } from '../../../interface-entity/user';
 import { Router } from '@angular/router';
 import { UpdateLastContainerInfoAboutMyAccountService } from '../../service/update-last-container-info-about-my-account.service';
+import { GoogleApiService } from '../../../login-and-register-new-account/service/google-api.service';
+import { UpdateUserService } from '../../service/update-user.service';
 
 @Component({
   selector: 'app-first-part-customer-panel',
@@ -21,13 +23,23 @@ export class FirstPartCustomerPanelComponent implements OnInit, AfterViewInit {
   spanRequestedExchangesAndReturns!: HTMLSpanElement;
   spanMyOrders!: HTMLSpanElement;
 
-  nameUser = "Augusto";
+  nameUser = "";
 
-  constructor(private router: Router, private updateLastContainerInfoAboutMyAccountService: UpdateLastContainerInfoAboutMyAccountService){
+  constructor(private router: Router, private updateLastContainerInfoAboutMyAccountService: UpdateLastContainerInfoAboutMyAccountService,
+    private googleApiService: GoogleApiService, private updateUserService: UpdateUserService
+  ){
   }
 
   ngOnInit(): void {
     this.updateWhichContainerWasClicked = this.updateWhichContainerWasClicked.bind(this);
+
+    this.nameUser = this.user.name;
+
+    this.updateUserService.updateUser$.subscribe((user) => {
+      if(user){
+        this.nameUser = user.name;
+      }
+    });
   }
 
   ngAfterViewInit(): void {
@@ -88,6 +100,7 @@ export class FirstPartCustomerPanelComponent implements OnInit, AfterViewInit {
   }
 
   onClickLogOut(){
+    this.googleApiService.logout();
     localStorage.removeItem("user");
     this.router.navigate(['/user/login']);
   }

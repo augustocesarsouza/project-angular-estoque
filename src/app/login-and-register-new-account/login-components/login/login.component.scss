@@ -100,6 +100,7 @@
 .container-enter-input {
   display: flex;
   width: 100%;
+  margin-bottom: 20px;
 
   >button {
     width: 100%;
@@ -126,5 +127,48 @@
     &:hover {
       opacity: .8;
     }
+  }
+}
+
+.container-or-loggin-with-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  margin-bottom: 20px;
+
+  >span {
+    font-size: 13px;
+    width: auto;
+    text-align: center;
+    padding: 0px 10px;
+  }
+}
+
+.container-line-white-google {
+  display: flex;
+  background: black;
+  flex-grow: 1;
+  height: 2px;
+}
+
+.button-continue-with-google-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgb(33, 38, 45);
+  text-align: center;
+  font-size: 14px;
+  height: 47px;
+  cursor: pointer;
+  border: none;
+
+  >app-svg-google {
+    margin-right: 10px;
+  }
+
+  &:hover {
+    opacity: 0.9;
   }
 }

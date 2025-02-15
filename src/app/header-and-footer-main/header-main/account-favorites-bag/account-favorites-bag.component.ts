@@ -1,4 +1,4 @@
-import {  AfterViewInit, Component, ElementRef, OnDestroy, ViewChild, OnInit } from '@angular/core';
+import {  AfterViewInit, Component, ElementRef, OnDestroy, ViewChild, OnInit, Input } from '@angular/core';
 import { User } from '../../../interface-entity/user';
 import { UserLocalStorage } from '../../../function-user/get-user-local-storage/user-local-storage';
 
@@ -15,7 +15,7 @@ export class AccountFavoritesBagComponent implements OnDestroy, AfterViewInit, O
 
   @ViewChild('ContainerModalAccountLogIn') ContainerModalAccountLogIn!: ElementRef<HTMLDivElement>;
 
-  user!: User;
+  @Input() user!: User;
   intervalId!: number;
 
   ngOnInit(): void {
@@ -35,10 +35,10 @@ export class AccountFavoritesBagComponent implements OnDestroy, AfterViewInit, O
   }
 
   ngAfterViewInit(): void {
-    if(!this.user){
+    this.ContainerModalAccountLogIn.nativeElement.style.display = 'none';
+
+    if(this.ContainerModalAccount){
       this.ContainerModalAccount.nativeElement.style.display = 'none';
-    }else {
-      this.ContainerModalAccountLogIn.nativeElement.style.display = 'none';
     }
 
     this.ContainerModalBag.nativeElement.style.display = 'none';
@@ -48,10 +48,15 @@ export class AccountFavoritesBagComponent implements OnDestroy, AfterViewInit, O
     console.log('Account clicked');
   }
 
+  mouseEnterAccountLogInValue = false;
+
   mouseEnterAccount(){
+    this.mouseEnterAccountLogInValue = true;
+
     if(!this.user){
       this.ContainerModalAccount.nativeElement.style.display = 'flex';
     }else {
+
       this.ContainerModalAccountLogIn.nativeElement.style.display = 'flex';
     }
 
@@ -59,6 +64,8 @@ export class AccountFavoritesBagComponent implements OnDestroy, AfterViewInit, O
   }
 
   mouseLeaveAccount(){
+    this.mouseEnterAccountLogInValue = false;
+
     if(!this.user){
       this.ContainerModalAccount.nativeElement.style.display = 'none';
     }else {
@@ -83,7 +90,11 @@ export class AccountFavoritesBagComponent implements OnDestroy, AfterViewInit, O
     this.spanBagHeader.nativeElement.style.borderBottom = "none";
   }
 
+
+
   mouseEnterAccountLogIn(){
+    this.mouseEnterAccountLogInValue = true;
+
     if(this.user){
       this.ContainerModalAccountLogIn.nativeElement.style.display = 'flex';
     }
@@ -92,6 +103,8 @@ export class AccountFavoritesBagComponent implements OnDestroy, AfterViewInit, O
   }
 
   mouseLeaveAccountLogIn(){
+    this.mouseEnterAccountLogInValue = false;
+
     if(this.user){
       this.ContainerModalAccountLogIn.nativeElement.style.display = 'none';
     }

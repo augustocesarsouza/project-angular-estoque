@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { UpdateLastContainerInfoAboutMyAccountService } from '../../service/update-last-container-info-about-my-account.service';
-import { GoogleApiService, UserLogged } from '../../../login-and-register-new-account/service/google-api.service';
+import {  UserLogged } from '../../../login-and-register-new-account/service/google-api.service';
 import { UserLoggedWithGoogle } from '../../../function-user/get-user-local-storage/user-logged-with-google';
 
 @Component({
@@ -25,8 +25,7 @@ export class MyAccountFirstPartCustomerPanelComponent implements AfterViewInit, 
   lastContainerInfoAboutMyAccount = -1;
   userLogged!: UserLogged;
 
-  constructor(private router: Router, private googleApiService: GoogleApiService,
-    private updateLastContainerInfoAboutMyAccountService: UpdateLastContainerInfoAboutMyAccountService){}
+  constructor(private router: Router,private updateLastContainerInfoAboutMyAccountService: UpdateLastContainerInfoAboutMyAccountService){}
 
   ngOnInit(): void {
     this.updateLastContainerInfoAboutMyAccountService.updateLastContainerNumber$.subscribe((containerNumber) => {

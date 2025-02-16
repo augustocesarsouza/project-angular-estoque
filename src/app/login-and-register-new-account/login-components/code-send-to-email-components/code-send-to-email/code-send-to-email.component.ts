@@ -4,7 +4,6 @@ import { ObjCodeUserEmailToRegisterAccountService } from '../../../service/obj-c
 import { UserLocalStorage } from '../../../../function-user/get-user-local-storage/user-local-storage';
 import { User } from '../../../../interface-entity/user';
 import { Router } from '@angular/router';
-import { UserService } from '../../../../services-backend/user.service';
 import { UserLogged } from '../../../service/google-api.service';
 import { EncryptedUserLoggedWithGoogle } from '../../../../function-user/get-user-local-storage/encrypted-user-logged-with-google';
 
@@ -38,7 +37,7 @@ export class CodeSendToEmailComponent implements AfterViewInit, OnDestroy, OnIni
   secondsPass = 5;
 
   constructor(private objCodeUserPhone: ObjCodeUserEmailToRegisterAccountService,
-     private router: Router, private userService: UserService, private ngZone: NgZone){}
+     private router: Router,  private ngZone: NgZone){}
 
   ngOnInit(): void {
     this.onClickResendCode = this.onClickResendCode.bind(this);

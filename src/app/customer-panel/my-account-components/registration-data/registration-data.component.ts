@@ -6,7 +6,6 @@ import { UserService, UserUpdate } from '../../../services-backend/user.service'
 import { Router } from '@angular/router';
 import { GoogleApiService } from '../../../login-and-register-new-account/service/google-api.service';
 import { UserAddress } from '../../../interface-entity/user-address';
-import { UpdateUserService } from '../../service/update-user.service';
 
 @Component({
   selector: 'app-registration-data',
@@ -64,8 +63,7 @@ export class RegistrationDataComponent implements OnInit, AfterViewInit {
   addressUser!:UserAddress;
 
   constructor(private userService: UserService, private router: Router,
-    private googleApiService: GoogleApiService, private updateUserService: UpdateUserService
-  ){}
+    private googleApiService: GoogleApiService){}
 
   ngOnInit(): void {
     const userResult = UserLocalStorage();

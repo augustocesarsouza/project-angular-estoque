@@ -12,9 +12,8 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, HomePageModule, AllSvgModule, HeaderAndFooterLoginAndRegisterModule, CustomerPanelModule,
-    OAuthModule.forRoot()
-  ],
+  imports: [BrowserModule, AppRoutingModule, HomePageModule, AllSvgModule, HeaderAndFooterLoginAndRegisterModule,
+    CustomerPanelModule, OAuthModule.forRoot()],
   providers: [provideClientHydration(), provideHttpClient(withFetch()),],
   bootstrap: [AppComponent],
 })

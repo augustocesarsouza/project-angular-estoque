@@ -1,5 +1,4 @@
 import {  Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { GoogleApiService } from '../../../login-and-register-new-account/service/google-api.service';
 import { User } from '../../../interface-entity/user';
 
@@ -14,8 +13,7 @@ export class HeaderSecondComponent implements OnInit, OnDestroy {
   user!: User;
   setTimeoutId!: number;
 
-  constructor(private route: ActivatedRoute, private googleApiService: GoogleApiService, private router: Router
-  ) {
+  constructor(private googleApiService: GoogleApiService) {
   }
 
   ngOnInit(): void {

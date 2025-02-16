@@ -44,7 +44,6 @@ export class CustomerPanelMainComponent implements OnInit, OnDestroy {
         this.setTimeoutId = setTimeout(() => {
           this.urlName = "a";
         }, 4000)as unknown as number;
-        // Na Pagina inicial quando passar o mouse na "Conta" se tiver usuario é para mostrar algo diferente quando eu passar o mouse falando que eu já loguei
       }
     });
 

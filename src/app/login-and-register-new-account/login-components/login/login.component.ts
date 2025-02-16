@@ -1,10 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { SvgEyeOpenComponent } from '../../../all-svg/svg-eye-open/svg-eye-open.component';
 import { UserService } from '../../../services-backend/user.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { EncryptedUser } from '../../../function-user/get-user-local-storage/encrypted-user';
 import { ObjCodeUserEmailToRegisterAccountService } from '../../service/obj-code-user-email-to-register-account.service';
-import { MyHttpService } from '../../service/my-http.service';
 import { User } from '../../../interface-entity/user';
 import { GoogleApiService } from '../../service/google-api.service';
 
@@ -29,9 +27,8 @@ export class LoginComponent implements OnInit {
   codeUserCreate: Record<string, string> = {};
   user!: User;
 
-  constructor(private userService: UserService, private router: Router,
-    private objCodeUserPhone: ObjCodeUserEmailToRegisterAccountService,
-  private http: MyHttpService, private route: ActivatedRoute, private googleApiService: GoogleApiService){}
+  constructor(private userService: UserService, private objCodeUserPhone: ObjCodeUserEmailToRegisterAccountService,
+    private googleApiService: GoogleApiService){}
 
   ngOnInit(): void {
     this.onClickEnterInput = this.onClickEnterInput.bind(this);

@@ -37,9 +37,7 @@ export class ChangePasswordComponent {
   @ViewChild('labelPasswordCurrent') labelPasswordCurrent!: ElementRef<HTMLLabelElement>;
   @ViewChild('spanErrorPasswordInformed') spanErrorPasswordInformed!: ElementRef<HTMLSpanElement>;
 
-  constructor(private router: Router, private googleApiService: GoogleApiService,
-    private userService: UserService
-  ){}
+  constructor(private router: Router, private googleApiService: GoogleApiService,private userService: UserService){}
 
   changeInputPasswordActual(e: Event, labelPasswordCurrent: HTMLLabelElement, inputPassowrdCurrent: HTMLInputElement){
     const input = e.target as HTMLInputElement;

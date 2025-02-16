@@ -7,6 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "build:stats": "ng build --stats-json",
+    "analyze-webpack": "ng build --stats-json && webpack-bundle-analyzer dist/project-angular-estoque/stats.json",
     "serve:ssr:project-angular-estoque": "node dist/project-angular-estoque/server/server.mjs"
   },
   "private": true,
@@ -50,6 +52,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "prettier": "^3.4.2",
     "typescript": "~5.4.2",
-    "typescript-eslint": "^8.22.0"
+    "typescript-eslint": "^8.22.0",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }

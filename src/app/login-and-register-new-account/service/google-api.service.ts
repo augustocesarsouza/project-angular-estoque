@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -37,17 +37,12 @@ export interface UserInfo {
 export class GoogleApiService {
   private userProfileSubject = new BehaviorSubject<User | null>(null);
   userProfile$ = this.userProfileSubject.asObservable();
-  private alreadyVerifiedIfUserIsRegistered = false; // Flag de controle
 
   constructor(
     private readonly oAuthService: OAuthService,
     private http: HttpClient,
-    private userService: UserService, // Injetando o UserService
-    @Inject(PLATFORM_ID) private platformId: object
+    private userService: UserService
   ) {
-    // if (isPlatformBrowser(this.platformId)) {
-    //   this.configure();
-    // }
     this.configure();
   }
 
@@ -95,8 +90,6 @@ export class GoogleApiService {
             lastName: profile.family_name
           };
 
-          this.alreadyVerifiedIfUserIsRegistered = true;
-
           // Chamar API para criar conta do usuário no backend
           this.userService.createAccountWithGoogle(userObj).subscribe({
             next: async (success) => {
@@ -120,6 +113,5 @@ export class GoogleApiService {
   logout() {
     this.oAuthService.logOut();
     this.userProfileSubject.next(null);
-    this.alreadyVerifiedIfUserIsRegistered = false; // Resetar flag ao deslogar
   }
 }

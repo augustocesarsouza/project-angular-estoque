@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-part-bottom-code-send-to-email',
@@ -11,6 +10,4 @@ export class PartBottomCodeSendToEmailComponent {
   @Input() clickNextStep!: () => void;
   @Input() codeFoundSuccessfully!: boolean;
   @Input() secondsPass!: number;
-
-  constructor(private router: Router){}
 }

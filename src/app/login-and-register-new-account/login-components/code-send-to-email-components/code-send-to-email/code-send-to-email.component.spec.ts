@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CodeSendToEmailComponent } from './code-send-to-email.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { AllSvgModule } from '../../../all-svg/all-svg.module';
+import { AllSvgModule } from '../../../../all-svg/all-svg.module';
 
 describe('CodeSendToEmailComponent', () => {
   let component: CodeSendToEmailComponent;

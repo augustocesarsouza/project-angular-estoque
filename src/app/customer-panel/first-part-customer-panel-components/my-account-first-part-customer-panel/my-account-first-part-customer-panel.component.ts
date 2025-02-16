@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { UpdateLastContainerInfoAboutMyAccountService } from '../../service/update-last-container-info-about-my-account.service';
-import { GoogleApiService } from '../../../login-and-register-new-account/service/google-api.service';
+import { GoogleApiService, UserLogged } from '../../../login-and-register-new-account/service/google-api.service';
 import { UserLoggedWithGoogle } from '../../../function-user/get-user-local-storage/user-logged-with-google';
 
 @Component({
@@ -23,40 +23,18 @@ export class MyAccountFirstPartCustomerPanelComponent implements AfterViewInit, 
   @ViewChild('containerMyAccountSpan') containerMyAccountSpan!: ElementRef<HTMLDivElement>;
   @ViewChildren('containerMyAccountSubSection') containerMyAccountSubSection!: QueryList<ElementRef<HTMLDivElement>>;
   lastContainerInfoAboutMyAccount = -1;
+  userLogged!: UserLogged;
 
   constructor(private router: Router, private googleApiService: GoogleApiService,
     private updateLastContainerInfoAboutMyAccountService: UpdateLastContainerInfoAboutMyAccountService){}
 
-    ngOnInit(): void {
-      const userResult = UserLoggedWithGoogle();
-
-      if(!userResult.isNullUserLoggedGoogleLocalStorage){
-        const userLogged = userResult.userLogged;
-        if(userLogged){
-          console.log(userLogged);
-          // AGORA PEGA ESSE E QUANDO O USUARIO LOGAR NORMAL SEM O GOOGLE
-          // COLOCAR O VALOR "userLoggedWithGoogle" que está dentro de "userLogged" false e salva no LocalStorage
-          // e tem que fazer Quando carregar o "http://localhost:4200/painel-do-cliente" e aparecer "Alterar senha"
-          // Só pode alterar quando tiver logado "SEM O GOOGLE"
-
-        }
+  ngOnInit(): void {
+    this.updateLastContainerInfoAboutMyAccountService.updateLastContainerNumber$.subscribe((containerNumber) => {
+      if(containerNumber){
+        this.lastContainerInfoAboutMyAccount = containerNumber;
       }
-
-      // CONTINUAR painel-do-cliente
-
-      if(userResult.isNullUserLoggedGoogleLocalStorage){
-        // this.googleApiService.logout();
-        // localStorage.removeItem('user');
-        // this.router.navigate(['/']);
-        return;
-      };
-
-      this.updateLastContainerInfoAboutMyAccountService.updateLastContainerNumber$.subscribe((containerNumber) => {
-        if(containerNumber){
-          this.lastContainerInfoAboutMyAccount = containerNumber;
-        }
-      });
-    }
+    });
+  }
 
   ngAfterViewInit(): void {
     if(typeof document === "undefined" || document === null) return;
@@ -75,6 +53,37 @@ export class MyAccountFirstPartCustomerPanelComponent implements AfterViewInit, 
 
     const spanValePurchase = document.querySelector(".span-vale-purchase") as HTMLSpanElement;
     this.spanValePurchase = spanValePurchase;
+
+    const userResult = UserLoggedWithGoogle();
+
+      if(!userResult.isNullUserLoggedGoogleLocalStorage){
+        const userLogged = userResult.userLogged;
+        if(userLogged){
+          console.log(userLogged);
+          this.userLogged = userLogged;
+
+          if(userLogged.userLoggedWithGoogle){
+            const containerChangePassword = this.containerMyAccountSubSection.toArray()[1];
+            const spanChangePassword = containerChangePassword.nativeElement.firstChild as HTMLSpanElement;
+            spanChangePassword.style.color = "rgb(175 175 175 / 71%)";
+            spanChangePassword.style.cursor = "not-allowed";
+            spanChangePassword.style.userSelect = "none";
+          }
+
+          // AGORA PEGA ESSE E QUANDO O USUARIO LOGAR NORMAL SEM O GOOGLE
+          // COLOCAR O VALOR "userLoggedWithGoogle" que está dentro de "userLogged" false e salva no LocalStorage
+          // e tem que fazer Quando carregar o "http://localhost:4200/painel-do-cliente" e aparecer "Alterar senha"
+          // Só pode alterar quando tiver logado "SEM O GOOGLE"
+
+        }
+      }
+
+      if(userResult.isNullUserLoggedGoogleLocalStorage){
+        // this.googleApiService.logout();
+        // localStorage.removeItem('user');
+        // this.router.navigate(['/']);
+        return;
+      };
   }
 
   onClickMyAccount(){

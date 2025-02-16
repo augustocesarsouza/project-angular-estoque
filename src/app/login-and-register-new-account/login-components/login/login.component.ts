@@ -34,6 +34,10 @@ export class LoginComponent implements OnInit {
   private http: MyHttpService, private route: ActivatedRoute, private googleApiService: GoogleApiService){}
 
   ngOnInit(): void {
+    this.onClickEnterInput = this.onClickEnterInput.bind(this);
+    this.onClickLoginWithGoogle = this.onClickLoginWithGoogle.bind(this);
+    this.onClickLogout = this.onClickLogout.bind(this);
+
     this.codeIsRightEmail = this.codeIsRightEmail.bind(this);
   }
 

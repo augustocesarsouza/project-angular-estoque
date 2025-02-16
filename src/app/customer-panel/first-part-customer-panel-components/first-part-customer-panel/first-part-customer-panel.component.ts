@@ -102,6 +102,7 @@ export class FirstPartCustomerPanelComponent implements OnInit, AfterViewInit {
   onClickLogOut(){
     this.googleApiService.logout();
     localStorage.removeItem("user");
+    localStorage.removeItem("userLogged");
     this.router.navigate(['/user/login']);
   }
 }

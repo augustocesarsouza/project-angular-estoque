@@ -248,39 +248,18 @@
       </div>
     </div>
 
-    <div class="container-info-require-to-register-password">
-      <span #spanMinimumEightCharacter class="invalid">Mínimo 8 caracteres</span>
-      <span #spanOneLetterUpperCase class="invalid">1 letra maíuscula</span>
-      <span #spanOneLetterLowerCase class="invalid">1 letra minúscula</span>
-      <span #spanMinimumOneNumber class="invalid">1 número</span>
-      <span #spanOneSpecialCharacter class="invalid">1 caractere especial</span>
-    </div>
-
-    <div class="container-checkout-confirm-password">
-      <label>
-        <input
-          type="checkbox"
-          name="eu-aceito"
-          (change)="verificarSelecao($event, 'aceitoNovidades')"
-        />Eu aceito receber novidades, promoções e conteúdo Estoque através dos contatos
-        informados</label
-      >
-      <label>
-        <input
-          type="checkbox"
-          name="eu-aceito"
-          (change)="verificarSelecao($event, 'concordoPolitica')"
-        />Declaro que li e concordo com a Política de Privacidade da Estoque</label
-      >
-    </div>
+    <app-register-password-validate-part
+      [verificarSelecao]="verificarSelecao"
+      [getSpanMinimumEightCharacter]="getSpanMinimumEightCharacter"
+      [getSpanOneLetterUpperCase]="getSpanOneLetterUpperCase"
+      [getSpanOneLetterLowerCase]="getSpanOneLetterLowerCase"
+      [getSpanMinimumOneNumber]="getSpanMinimumOneNumber"
+      [getSpanOneSpecialCharacter]="getSpanOneSpecialCharacter"
+    ></app-register-password-validate-part>
   </div>
 
-  <div
-    class="container-button-register"
-    (click)="onClickRegister()"
-    (keydown.enter)="onClickRegister()"
-    tabindex="0"
-  >
-    <button #buttonRegisterAccount>CADASTRAR</button>
-  </div>
+  <app-button-register
+    [onClickRegister]="onClickRegister"
+    [getButtonRegisterAccount]="getButtonRegisterAccount"
+  ></app-button-register>
 </div>

@@ -82,23 +82,12 @@
           (keydown)="keyDownVerificationCode($event, 5)"
         />
       </div>
-      <div class="container-split"></div>
-      <div class="container-code-correct" *ngIf="codeFoundSuccessfully">
-        <span>Codigo Correto {{ secondsPass }}s</span>
-      </div>
-      <div class="container-did-not-receive-the-code-and-button-next">
-        <div class="container-did-not-receive-the-code">
-          <span>Não recebeu o código?</span>
-          <span>
-            <button (click)="onClickResendCode()">Reenviar</button> ou tente
-            <button>Outros métodos</button>
-          </span>
-        </div>
-
-        <div class="container-button-next">
-          <button class="button-next" (click)="clickNextStep()">PRÓXIMO</button>
-        </div>
-      </div>
+      <app-part-bottom-code-send-to-email
+        [onClickResendCode]="onClickResendCode"
+        [clickNextStep]="clickNextStep"
+        [codeFoundSuccessfully]="codeFoundSuccessfully"
+        [secondsPass]="secondsPass"
+      ></app-part-bottom-code-send-to-email>
     </div>
   </div>
 </div>

@@ -1,10 +1,12 @@
 import { AfterViewInit, Component, Input, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ObjCodeUserEmailToRegisterAccountService } from '../../service/obj-code-user-email-to-register-account.service';
-import { UserLocalStorage } from '../../../function-user/get-user-local-storage/user-local-storage';
-import { User } from '../../../interface-entity/user';
+import { ObjCodeUserEmailToRegisterAccountService } from '../../../service/obj-code-user-email-to-register-account.service';
+import { UserLocalStorage } from '../../../../function-user/get-user-local-storage/user-local-storage';
+import { User } from '../../../../interface-entity/user';
 import { Router } from '@angular/router';
-import { UserService } from '../../../services-backend/user.service';
+import { UserService } from '../../../../services-backend/user.service';
+import { UserLogged } from '../../../service/google-api.service';
+import { EncryptedUserLoggedWithGoogle } from '../../../../function-user/get-user-local-storage/encrypted-user-logged-with-google';
 
 @Component({
   selector: 'app-code-send-to-email',
@@ -39,6 +41,9 @@ export class CodeSendToEmailComponent implements AfterViewInit, OnDestroy, OnIni
      private router: Router, private userService: UserService, private ngZone: NgZone){}
 
   ngOnInit(): void {
+    this.onClickResendCode = this.onClickResendCode.bind(this);
+    this.clickNextStep = this.clickNextStep.bind(this);
+
     if(typeof window === 'undefined')return;
 
     const userResult = UserLocalStorage();
@@ -205,6 +210,12 @@ export class CodeSendToEmailComponent implements AfterViewInit, OnDestroy, OnIni
       this.codeFoundSuccessfully = true;
       this.codeIsRightEmail();
 
+      const userLogged: UserLogged = {
+        userLoggedWithGoogle: false,
+      };
+
+      EncryptedUserLoggedWithGoogle(userLogged);
+
       if(this.codeFoundSuccessfully){
         this.ngZone.runOutsideAngular(() => this.startRotation());
       }
@@ -217,7 +228,8 @@ export class CodeSendToEmailComponent implements AfterViewInit, OnDestroy, OnIni
       email: email,
       code: Number(this.codeFull),
     };
-    console.log(objCode); // DESCOMENTAR PARA MANDAR EMAIL PARA VERIFICAR CODIGO E
+    console.log(objCode);
+    // DESCOMENTAR PARA MANDAR EMAIL PARA VERIFICAR CODIGO E
     // DESCOMENTAR NO DB, PARA MANDAR PARA O EMAIL QUE LÁ ESTÁ COMENTADO
 
     // this.userService.VerifyCodeToLogin(objCode).subscribe({

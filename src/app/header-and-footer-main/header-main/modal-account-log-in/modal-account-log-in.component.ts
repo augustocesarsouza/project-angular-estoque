@@ -22,6 +22,7 @@ export class ModalAccountLogInComponent {
 
   onClickExitMyAccount(){
     localStorage.removeItem("user");
+    localStorage.removeItem("userLogged");
     this.googleApiService.logout();
     this.router.navigate(['/user/login']);
   }

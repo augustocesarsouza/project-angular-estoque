@@ -1,0 +1,14 @@
+.container-button-register {
+  display: flex;
+  height: 32px;
+
+  >button {
+    width: 100%;
+    background-color: rgb(179, 179, 179);
+    color: rgb(102, 102, 102);
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: not-allowed;
+  }
+}

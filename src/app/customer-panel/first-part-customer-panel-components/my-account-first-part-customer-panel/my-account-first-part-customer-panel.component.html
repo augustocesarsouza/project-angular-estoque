@@ -25,12 +25,12 @@
       <span>Dados pessoais</span>
     </div>
     <div
-      (click)="onClickSpanSubSection(1)"
+      (click)="userLogged.userLoggedWithGoogle ? null : onClickSpanSubSection(1)"
       (keydown.enter)="onClickSpanSubSection(1)"
       tabindex="0"
       #containerMyAccountSubSection
-      (mouseenter)="onMouseEnterSpanSubSection($event)"
-      (mouseleave)="onMouseLeaveSpanChangePassword($event)"
+      (mouseenter)="userLogged.userLoggedWithGoogle ? null : onMouseEnterSpanSubSection($event)"
+      (mouseleave)="userLogged.userLoggedWithGoogle ? null : onMouseLeaveSpanChangePassword($event)"
       class="container-my-account-sub-section"
     >
       <span>Alterar senha</span>

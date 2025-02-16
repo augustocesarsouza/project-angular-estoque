@@ -1,7 +1,5 @@
 :host {
-  // width: 66%;
   width: 100%;
-
 }
 
 .container-second-part-register-user {
@@ -80,7 +78,6 @@
     padding: 6px 20px;
     box-sizing: border-box;
     color: #000;
-    font-family: Roboto;
     background-color: #fff;
     background-image: none;
     border: 1.5px solid #ddd;
@@ -108,71 +105,6 @@
     border-bottom: 1px solid rgb(112, 112, 112);
     text-transform: uppercase;
     color: rgb(112, 112, 112);
-  }
-}
-
-.container-info-require-to-register-password {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-
-  >span {
-    font-size: 12px;
-    color: rgb(255, 0, 0);
-
-    &::before {
-      margin-right: 5px;
-      font-family: 'Lato', sans-serif;
-    }
-  }
-}
-
-.valid::before {
-  content: "✔";
-  color: green;
-}
-
-.invalid::before {
-  content: "✖";
-  color: red;
-}
-
-.container-checkout-confirm-password {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 14px;
-  margin-top: 15px;
-  user-select: none;
-
-  >label {
-    display: flex;
-    align-items: center;
-    line-height: 1.1;
-
-    >input {
-      margin-right: 5px;
-
-      width: 17px;
-      height: 15px;
-      position: relative;
-      top: -1px;
-    }
-  }
-}
-
-.container-button-register {
-  display: flex;
-  height: 32px;
-
-  >button {
-    width: 100%;
-    background-color: rgb(179, 179, 179);
-    color: rgb(102, 102, 102);
-    border: none;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: not-allowed;
   }
 }
 

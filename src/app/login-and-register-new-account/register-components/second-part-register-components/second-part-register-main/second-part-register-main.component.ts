@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import Inputmask from 'inputmask';
 import { CepService } from '../../../service/cep.service';
 import { Router } from '@angular/router';
 import { WhereIsComingCustomerPanelAndRegisterUserService } from '../../../service/where-is-coming-customer-panel-and-register-user.service';
 import { UserService } from '../../../../services-backend/user.service';
 import { UpdateUserService } from '../../../../customer-panel/service/update-user.service';
 import { EncryptedUser } from '../../../../function-user/get-user-local-storage/encrypted-user';
+import Inputmask from 'inputmask';
 
 interface AllStates {
   state: string;
@@ -39,11 +39,11 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
   cpfError = false;
   allTheValidatePasswordIsRight = false;
 
-  @ViewChild('spanMinimumEightCharacter') spanMinimumEightCharacter!: ElementRef<HTMLSpanElement>;
-  @ViewChild('spanOneLetterUpperCase') spanOneLetterUpperCase!: ElementRef<HTMLSpanElement>;
-  @ViewChild('spanOneLetterLowerCase') spanOneLetterLowerCase!: ElementRef<HTMLSpanElement>;
-  @ViewChild('spanMinimumOneNumber') spanMinimumOneNumber!: ElementRef<HTMLSpanElement>;
-  @ViewChild('spanOneSpecialCharacter') spanOneSpecialCharacter!: ElementRef<HTMLSpanElement>;
+  spanMinimumEightCharacter!: HTMLSpanElement;
+  spanOneLetterUpperCase!: HTMLSpanElement;
+  spanOneLetterLowerCase!: HTMLSpanElement;
+  spanMinimumOneNumber!: HTMLSpanElement;
+  spanOneSpecialCharacter!: HTMLSpanElement;
 
   @ViewChild('spanConfirmPasswordIsNotEqualPassword') spanConfirmPasswordIsNotEqualPassword!: ElementRef<HTMLSpanElement>;
 
@@ -103,7 +103,8 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
   @ViewChild('inputCity') inputCity!: ElementRef<HTMLInputElement>;
   @ViewChild('inputComplementOptional') inputComplementOptional!: ElementRef<HTMLInputElement>;
   @ViewChild('selectStates') selectStates!: ElementRef<HTMLInputElement>;
-  @ViewChild('buttonRegisterAccount') buttonRegisterAccount!: ElementRef<HTMLButtonElement>;
+  // @ViewChild('buttonRegisterAccount') buttonRegisterAccount!: ElementRef<HTMLButtonElement>;
+  buttonRegisterAccount!: HTMLButtonElement;
 
   @ViewChild('spanErrorCep') spanErrorCep!: ElementRef<HTMLSpanElement>;
   @ViewChild('spanErrorTitle') spanErrorTitle!: ElementRef<HTMLSpanElement>;
@@ -153,6 +154,15 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
   ){}
 
   ngOnInit(): void {
+    this.verificarSelecao = this.verificarSelecao.bind(this);
+    this.getSpanMinimumEightCharacter = this.getSpanMinimumEightCharacter.bind(this);
+    this.getSpanOneLetterUpperCase = this.getSpanOneLetterUpperCase.bind(this);
+    this.getSpanOneLetterLowerCase = this.getSpanOneLetterLowerCase.bind(this);
+    this.getSpanMinimumOneNumber = this.getSpanMinimumOneNumber.bind(this);
+    this.getSpanOneSpecialCharacter = this.getSpanOneSpecialCharacter.bind(this);
+    this.getButtonRegisterAccount = this.getButtonRegisterAccount.bind(this);
+    this.onClickRegister = this.onClickRegister.bind(this);
+
     this.allStates = [
       { state: "Acre", sigla: "AC" },
       { state: "Alagoas", sigla: "AL" },
@@ -260,6 +270,30 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
     }
   }
 
+  getSpanMinimumEightCharacter(span: HTMLSpanElement) {
+    this.spanMinimumEightCharacter = span;
+  }
+
+  getSpanOneLetterUpperCase(span: HTMLSpanElement) {
+    this.spanOneLetterUpperCase = span;
+  }
+
+  getSpanOneLetterLowerCase(span: HTMLSpanElement) {
+    this.spanOneLetterLowerCase = span;
+  }
+
+  getSpanMinimumOneNumber(span: HTMLSpanElement) {
+    this.spanMinimumOneNumber = span;
+  }
+
+  getSpanOneSpecialCharacter(span: HTMLSpanElement) {
+    this.spanOneSpecialCharacter = span;
+  }
+
+  getButtonRegisterAccount(button: HTMLButtonElement) {
+    this.buttonRegisterAccount = button;
+  }
+
   async changeInputCep(e: Event, divCep: HTMLDivElement, label: HTMLLabelElement){
     const input = e.target as HTMLInputElement;
     const valueCep = input.value.replace(/[_]/g, "").replace(/\D/g, '');
@@ -353,15 +387,15 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
     }
 
     if(valuePassword.length < 8){
-      this.spanMinimumEightCharacter.nativeElement.style.color = "red";
-      this.spanMinimumEightCharacter.nativeElement.classList.remove("valid");
-      this.spanMinimumEightCharacter.nativeElement.classList.add("invalid");
+      this.spanMinimumEightCharacter.style.color = "red";
+      this.spanMinimumEightCharacter.classList.remove("valid");
+      this.spanMinimumEightCharacter.classList.add("invalid");
 
       validatePassword = false;
     }else {
-      this.spanMinimumEightCharacter.nativeElement.style.color = "green";
-      this.spanMinimumEightCharacter.nativeElement.classList.remove("invalid");
-      this.spanMinimumEightCharacter.nativeElement.classList.add("valid");
+      this.spanMinimumEightCharacter.style.color = "green";
+      this.spanMinimumEightCharacter.classList.remove("invalid");
+      this.spanMinimumEightCharacter.classList.add("valid");
 
       validatePassword = true;
     }
@@ -372,50 +406,50 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
     const oneSpecialCharacter = /^(?=.*[!@#$%^&*()_+{}|:"<>?]).+$/;
 
     if(oneLetterUppercase.test(valuePassword)){
-      this.spanOneLetterUpperCase.nativeElement.style.color = "green";
-      this.spanOneLetterUpperCase.nativeElement.classList.remove("invalid");
-      this.spanOneLetterUpperCase.nativeElement.classList.add("valid");
+      this.spanOneLetterUpperCase.style.color = "green";
+      this.spanOneLetterUpperCase.classList.remove("invalid");
+      this.spanOneLetterUpperCase.classList.add("valid");
       validatePassword = true;
     }else {
-      this.spanOneLetterUpperCase.nativeElement.style.color = "red";
-      this.spanOneLetterUpperCase.nativeElement.classList.remove("valid");
-      this.spanOneLetterUpperCase.nativeElement.classList.add("invalid");
+      this.spanOneLetterUpperCase.style.color = "red";
+      this.spanOneLetterUpperCase.classList.remove("valid");
+      this.spanOneLetterUpperCase.classList.add("invalid");
       validatePassword = false;
     }
 
     if(oneLetterLowercase.test(valuePassword)){
-      this.spanOneLetterLowerCase.nativeElement.style.color = "green";
-      this.spanOneLetterLowerCase.nativeElement.classList.remove("invalid");
-      this.spanOneLetterLowerCase.nativeElement.classList.add("valid");
+      this.spanOneLetterLowerCase.style.color = "green";
+      this.spanOneLetterLowerCase.classList.remove("invalid");
+      this.spanOneLetterLowerCase.classList.add("valid");
       validatePassword = true;
     }else {
-      this.spanOneLetterLowerCase.nativeElement.style.color = "red";
-      this.spanOneLetterLowerCase.nativeElement.classList.remove("valid");
-      this.spanOneLetterLowerCase.nativeElement.classList.add("invalid");
+      this.spanOneLetterLowerCase.style.color = "red";
+      this.spanOneLetterLowerCase.classList.remove("valid");
+      this.spanOneLetterLowerCase.classList.add("invalid");
       validatePassword = false;
     }
 
     if(oneNumber.test(valuePassword)){
-      this.spanMinimumOneNumber.nativeElement.style.color = "green";
-      this.spanMinimumOneNumber.nativeElement.classList.remove("invalid");
-      this.spanMinimumOneNumber.nativeElement.classList.add("valid");
+      this.spanMinimumOneNumber.style.color = "green";
+      this.spanMinimumOneNumber.classList.remove("invalid");
+      this.spanMinimumOneNumber.classList.add("valid");
       validatePassword = true;
     }else {
-      this.spanMinimumOneNumber.nativeElement.style.color = "red";
-      this.spanMinimumOneNumber.nativeElement.classList.remove("valid");
-      this.spanMinimumOneNumber.nativeElement.classList.add("invalid");
+      this.spanMinimumOneNumber.style.color = "red";
+      this.spanMinimumOneNumber.classList.remove("valid");
+      this.spanMinimumOneNumber.classList.add("invalid");
       validatePassword = false;
     }
 
     if(oneSpecialCharacter.test(valuePassword)){
-      this.spanOneSpecialCharacter.nativeElement.style.color = "green";
-      this.spanOneSpecialCharacter.nativeElement.classList.remove("invalid");
-      this.spanOneSpecialCharacter.nativeElement.classList.add("valid");
+      this.spanOneSpecialCharacter.style.color = "green";
+      this.spanOneSpecialCharacter.classList.remove("invalid");
+      this.spanOneSpecialCharacter.classList.add("valid");
       validatePassword = true;
     }else {
-      this.spanOneSpecialCharacter.nativeElement.style.color = "red";
-      this.spanOneSpecialCharacter.nativeElement.classList.remove("valid");
-      this.spanOneSpecialCharacter.nativeElement.classList.add("invalid");
+      this.spanOneSpecialCharacter.style.color = "red";
+      this.spanOneSpecialCharacter.classList.remove("valid");
+      this.spanOneSpecialCharacter.classList.add("invalid");
       validatePassword = false;
     }
 
@@ -694,15 +728,15 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
 
   validateIfCheckboxIsCheckedAndPasswordAndConfirmPasswordIsEqual () {
     if(this.acceptedNews && this.agreePolitics && this.valueInputPassword === this.valueConfirmPassword){
-      this.buttonRegisterAccount.nativeElement.style.backgroundColor = "#000";
-      this.buttonRegisterAccount.nativeElement.style.color = "#fff";
-      this.buttonRegisterAccount.nativeElement.style.cursor = "pointer";
+      this.buttonRegisterAccount.style.backgroundColor = "#000";
+      this.buttonRegisterAccount.style.color = "#fff";
+      this.buttonRegisterAccount.style.cursor = "pointer";
 
       this.canClickedRegisterUser = true;
     }else {
-      this.buttonRegisterAccount.nativeElement.style.backgroundColor = "rgb(179, 179, 179)";
-      this.buttonRegisterAccount.nativeElement.style.color = "rgb(102, 102, 102)";
-      this.buttonRegisterAccount.nativeElement.style.cursor = "not-allowed";
+      this.buttonRegisterAccount.style.backgroundColor = "rgb(179, 179, 179)";
+      this.buttonRegisterAccount.style.color = "rgb(102, 102, 102)";
+      this.buttonRegisterAccount.style.cursor = "not-allowed";
       this.canClickedRegisterUser = false;
     }
   }
@@ -725,7 +759,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
 
   onClickRegister() {
     if(typeof window === 'undefined')return;
-    this.router.navigate(['/painel-do-cliente']);
+    // this.router.navigate(['/painel-do-cliente']);
 
     if(!this.canClickedRegisterUser)return;
 

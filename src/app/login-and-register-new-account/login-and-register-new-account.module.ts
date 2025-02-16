@@ -12,7 +12,11 @@ import { SecondPartRegisterMainComponent } from './register-components/second-pa
 import { MyAccountFirstPartComponent } from './register-components/first-part-register-components/my-account-first-part/my-account-first-part.component';
 import { MyOrdersFirstPartComponent } from './register-components/first-part-register-components/my-orders-first-part/my-orders-first-part.component';
 import { HeaderAndFooterLoginAndRegisterModule } from '../header-and-footer-login-and-register/header-and-footer-login-and-register.module';
-import { CodeSendToEmailComponent } from './login-components/code-send-to-email/code-send-to-email.component';
+import { CodeSendToEmailComponent } from './login-components/code-send-to-email-components/code-send-to-email/code-send-to-email.component';
+import { PartBottomCodeSendToEmailComponent } from './login-components/code-send-to-email-components/part-bottom-code-send-to-email/part-bottom-code-send-to-email.component';
+import { LoginPartBottomComponent } from './login-components/login-part-bottom/login-part-bottom.component';
+import { RegisterPasswordValidatePartComponent } from './register-components/second-part-register-components/register-password-validate-part/register-password-validate-part.component';
+import { ButtonRegisterComponent } from './register-components/second-part-register-components/button-register/button-register.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,10 @@ import { CodeSendToEmailComponent } from './login-components/code-send-to-email/
     MyAccountFirstPartComponent,
     MyOrdersFirstPartComponent,
     CodeSendToEmailComponent,
+    PartBottomCodeSendToEmailComponent,
+    LoginPartBottomComponent,
+    RegisterPasswordValidatePartComponent,
+    ButtonRegisterComponent,
   ],
   imports: [
     CommonModule,

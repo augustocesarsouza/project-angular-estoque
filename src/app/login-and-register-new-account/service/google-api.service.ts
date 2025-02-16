@@ -7,6 +7,7 @@ import { UserService } from '../../services-backend/user.service';
 import { EncryptedUser } from '../../function-user/get-user-local-storage/encrypted-user';
 import { User } from '../../interface-entity/user';
 import { EncryptedUserLoggedWithGoogle } from '../../function-user/get-user-local-storage/encrypted-user-logged-with-google';
+// import { isPlatformBrowser } from '@angular/common';
 
 export interface UserLogged {
   userLoggedWithGoogle: boolean;
@@ -44,6 +45,9 @@ export class GoogleApiService {
     private userService: UserService, // Injetando o UserService
     @Inject(PLATFORM_ID) private platformId: object
   ) {
+    // if (isPlatformBrowser(this.platformId)) {
+    //   this.configure();
+    // }
     this.configure();
   }
 
@@ -85,7 +89,6 @@ export class GoogleApiService {
       })
       .pipe(
         tap(profile => {
-          // Criar objeto para enviar ao backend
           const userObj = {
             name: profile.name,
             email: profile.email,

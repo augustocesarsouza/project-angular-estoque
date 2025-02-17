@@ -6,27 +6,29 @@ import { UserService } from '../../../../services-backend/user.service';
 import { UpdateUserService } from '../../../../customer-panel/service/update-user.service';
 import { EncryptedUser } from '../../../../function-user/get-user-local-storage/encrypted-user';
 import Inputmask from 'inputmask';
+import { UserLogged } from '../../../service/google-api.service';
+import { EncryptedUserLoggedWithGoogle } from '../../../../function-user/get-user-local-storage/encrypted-user-logged-with-google';
 
 interface AllStates {
   state: string;
   sigla: string;
 }
 
-interface AddressCep {
-  bairro: string;
-  cep: string;
-  complemento: string;
-  ddd: string;
-  estado: string;
-  gia: string;
-  ibge: string;
-  localidade: string;
-  logradouro: string;
-  regiao: string;
-  siafi: string;
-  uf: string;
-  unidade: string;
-}
+// interface AddressCep {
+//   bairro: string;
+//   cep: string;
+//   complemento: string;
+//   ddd: string;
+//   estado: string;
+//   gia: string;
+//   ibge: string;
+//   localidade: string;
+//   logradouro: string;
+//   regiao: string;
+//   siafi: string;
+//   uf: string;
+//   unidade: string;
+// }
 
 @Component({
   selector: 'app-second-part-register-main',
@@ -95,14 +97,14 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
   @ViewChild('labelCellPhone') labelCellPhone!: ElementRef<HTMLLabelElement>;
 
   // AddAddress
-  @ViewChild('inputCep') inputCep!: ElementRef<HTMLInputElement>;
-  @ViewChild('inputTitle') inputTitle!: ElementRef<HTMLInputElement>;
-  @ViewChild('inputAddress') inputAddress!: ElementRef<HTMLInputElement>;
-  @ViewChild('inputNumberHome') inputNumberHome!: ElementRef<HTMLInputElement>;
-  @ViewChild('inputNeighborhood') inputNeighborhood!: ElementRef<HTMLInputElement>;
-  @ViewChild('inputCity') inputCity!: ElementRef<HTMLInputElement>;
-  @ViewChild('inputComplementOptional') inputComplementOptional!: ElementRef<HTMLInputElement>;
-  @ViewChild('selectStates') selectStates!: ElementRef<HTMLInputElement>;
+  // @ViewChild('inputCep') inputCep!: ElementRef<HTMLInputElement>;
+  // @ViewChild('inputTitle') inputTitle!: ElementRef<HTMLInputElement>;
+  // @ViewChild('inputAddress') inputAddress!: ElementRef<HTMLInputElement>;
+  // @ViewChild('inputNumberHome') inputNumberHome!: ElementRef<HTMLInputElement>;
+  // @ViewChild('inputNeighborhood') inputNeighborhood!: ElementRef<HTMLInputElement>;
+  // @ViewChild('inputCity') inputCity!: ElementRef<HTMLInputElement>;
+  // @ViewChild('inputComplementOptional') inputComplementOptional!: ElementRef<HTMLInputElement>;
+  // @ViewChild('selectStates') selectStates!: ElementRef<HTMLInputElement>;
   // @ViewChild('buttonRegisterAccount') buttonRegisterAccount!: ElementRef<HTMLButtonElement>;
   buttonRegisterAccount!: HTMLButtonElement;
 
@@ -136,7 +138,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
   valueInputCellPhone = "";
 
   valueInputCep = "";
-  valueInputTitle = "";
+  valueInputTitle = -1;
   valueInputRecipientName = "";
   valueInputAddress = "";
   valueInputNumberHome = "";
@@ -200,8 +202,8 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
     const inputCpf = this.inputCpf.nativeElement;
     const inputLandline = this.inputLandline.nativeElement;
     const inputCellphone = this.inputCellphone.nativeElement;
-    const inputCep = this.inputCep.nativeElement;
-    const inputNumberHome = this.inputNumberHome.nativeElement;
+    // const inputCep = this.inputCep.nativeElement;
+    // const inputNumberHome = this.inputNumberHome.nativeElement;
 
     if(inputBirthdate){
       const mask = Inputmask({
@@ -238,35 +240,13 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
 
     if(inputCellphone){
       const mask = Inputmask({
-        mask: '(99) 99999-9999',
-        placeholder: "(__) _____-____",
+        mask: '(+99) 99 99999 9999',
+        placeholder: '(+__) __ _____ ____',
         insertMode: true, // Ensure the mask does not insert mode to avoid jumping characters
         showMaskOnHover: false,
-        showMaskOnFocus: true,
+        showMaskOnFocus: false,
       });
       mask.mask(inputCellphone);
-    }
-
-    if(inputCep){
-      const mask = Inputmask({
-        mask: '99999-999',
-        placeholder: "_____-___",
-        insertMode: true, // Ensure the mask does not insert mode to avoid jumping characters
-        showMaskOnHover: false,
-        showMaskOnFocus: true,
-      });
-      mask.mask(inputCep);
-    }
-
-    if(inputNumberHome){
-      const mask = Inputmask({
-        mask: '99999999',
-        placeholder: "",
-        insertMode: true, // Ensure the mask does not insert mode to avoid jumping characters
-        showMaskOnHover: false,
-        showMaskOnFocus: true,
-      });
-      mask.mask(inputNumberHome);
     }
   }
 
@@ -292,84 +272,6 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
 
   getButtonRegisterAccount(button: HTMLButtonElement) {
     this.buttonRegisterAccount = button;
-  }
-
-  async changeInputCep(e: Event, divCep: HTMLDivElement, label: HTMLLabelElement){
-    const input = e.target as HTMLInputElement;
-    const valueCep = input.value.replace(/[_]/g, "").replace(/\D/g, '');
-    this.valueInputCep = input.value;
-
-    if(valueCep.length <= 0){
-      input.style.borderColor = "red";
-      input.style.color = "red";
-      label.style.color = "red";
-      this.spanErrorCep.nativeElement.style.display = "flex";
-
-      this.cepIsValid = false;
-    }else {
-      input.style.borderColor = "rgba(115, 115, 115, 0.2784313725)";
-      input.style.color = "black";
-      label.style.color = "black";
-
-      if(valueCep.length < 8){
-        this.cepIsValid = false;
-      }
-
-      const json = await this.cepService.consultaCEP(valueCep);
-
-      if(json){
-        if(json.erro){
-          input.style.borderColor = "red";
-          input.style.color = "red";
-          label.style.color = "red";
-          this.spanErrorCep.nativeElement.style.display = "flex";
-
-          this.cepIsValid = false;
-        }else {
-          input.style.borderColor = "rgba(115, 115, 115, 0.2784313725)";
-          input.style.color = "black";
-          label.style.color = "black";
-          this.spanErrorCep.nativeElement.style.display = "none";
-
-          this.cepIsValid = true;
-
-          const addressValue: AddressCep = json;
-          this.inputAddress.nativeElement.value = addressValue.logradouro;
-          this.inputComplementOptional.nativeElement.value = addressValue.complemento;
-          this.inputNeighborhood.nativeElement.value = addressValue.bairro;
-          this.inputCity.nativeElement.value = addressValue.localidade;
-
-          this.changeInputToBlack(this.inputAddress.nativeElement, this.spanErrorAddress.nativeElement, this.labelAddress.nativeElement);
-          this.changeInputToBlack(this.inputNeighborhood.nativeElement, this.spanErrorNeighborhood.nativeElement, this.labelNeighborhood.nativeElement);
-          this.changeInputToBlack(this.inputCity.nativeElement, this.spanErrorCity.nativeElement, this.labelCity.nativeElement);
-          this.changeInputToBlack(this.selectStates.nativeElement, this.spanErrorState.nativeElement, this.labelState.nativeElement);
-
-          this.addressIsValid = true;
-          this.neighborhoodIsValid = true;
-          this.cityIsValid = true;
-          this.stateIsValid = true;
-
-          // this.selectStates.nativeElement.value = addressValue.estado;
-
-          const selectElement = this.selectStates.nativeElement;
-          selectElement.value = addressValue.uf;
-
-          this.selectedState = addressValue.uf;
-          this.valueInputNeighborhood = addressValue.bairro;
-          this.valueInputCity = addressValue.localidade;
-          this.valueInputAddress = addressValue.logradouro;
-
-          // console.log(addressValue);
-        }
-      }else {
-        input.style.borderColor = "red";
-        input.style.color = "red";
-        label.style.color = "red";
-        this.spanErrorCep.nativeElement.style.display = "flex";
-
-        this.cepIsValid = false;
-      }
-    }
   }
 
   changeInputPassword(e: Event, labelPassword: HTMLLabelElement, inputConfirmPassword: HTMLInputElement, labelConfirmPassword: HTMLLabelElement){
@@ -581,7 +483,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
     const valueInput = input.value.replace(/[_\-\s()]/g, "");
     this.valueInputCellPhone = valueInputClean;
 
-    if(valueInput.length >= 11){
+    if(valueInput.length >= 14){
       this.changeInputToBlack(input, this.spanErrorCellPhone.nativeElement, label);
       this.cellPhoneIsValid = true;
 
@@ -595,14 +497,20 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
   }
 
   changeInputTitle(e: Event, label: HTMLLabelElement) {
-    const input = e.target as HTMLInputElement;
-    const valueInput = input.value;
-    this.valueInputTitle = valueInput;
-    if(valueInput.length > 0){
-      this.changeInputToBlack(input, this.spanErrorTitle.nativeElement, label);
+    const selected = e.target as HTMLInputElement;
+    const selectValue = selected.value;
+
+    if(selectValue.length > 0){
+      this.changeInputToBlack(selected, this.spanErrorTitle.nativeElement, label);
       this.titleIsValid = true;
+
+      if(selectValue === "H"){
+        this.valueInputTitle = 0;
+      }else if(selectValue === "W"){
+        this.valueInputTitle = 1;
+      }
     }else {
-      this.changeInputToRed(input, this.spanErrorTitle.nativeElement, label);
+      this.changeInputToRed(selected, this.spanErrorTitle.nativeElement, label);
       this.titleIsValid = false;
     }
   }
@@ -765,7 +673,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
 
     let canSendRegister = false;
 
-    if(this.inputNameIsValid && this.lastNameIsValid && this.birthdateIsValid && this.genderIsValid && this.cpfIsValid && this.emailIsValid && this.cellPhoneIsValid && this.cepIsValid && this.titleIsValid && this.addressIsValid && this.numberHomeIsValid && this.neighborhoodIsValid && this.cityIsValid && this.stateIsValid){
+    if(this.inputNameIsValid && this.lastNameIsValid && this.birthdateIsValid && this.genderIsValid && this.cpfIsValid && this.emailIsValid && this.cellPhoneIsValid){
       canSendRegister = true;
     }else {
       canSendRegister = false;
@@ -800,34 +708,6 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
       this.changeInputToRed(this.inputCellphone.nativeElement, this.spanErrorCellPhone.nativeElement, this.labelCellPhone.nativeElement);
     }
 
-    if(!this.cepIsValid){
-      this.changeInputToRed(this.inputCep.nativeElement, this.spanErrorCep.nativeElement, this.labelCep.nativeElement);
-    }
-
-    if(!this.titleIsValid){
-      this.changeInputToRed(this.inputTitle.nativeElement, this.spanErrorTitle.nativeElement, this.labelTitle.nativeElement);
-    }
-
-    if(!this.addressIsValid){
-      this.changeInputToRed(this.inputAddress.nativeElement, this.spanErrorAddress.nativeElement, this.labelAddress.nativeElement);
-    }
-
-    if(!this.numberHomeIsValid){
-      this.changeInputToRed(this.inputNumberHome.nativeElement, this.spanErrorNumberHome.nativeElement, this.labelNumberHome.nativeElement);
-    }
-
-    if(!this.neighborhoodIsValid){
-      this.changeInputToRed(this.inputNeighborhood.nativeElement, this.spanErrorNeighborhood.nativeElement, this.labelNeighborhood.nativeElement);
-    }
-
-    if(!this.cityIsValid){
-      this.changeInputToRed(this.inputCity.nativeElement, this.spanErrorCity.nativeElement, this.labelCity.nativeElement);
-    }
-
-    if(!this.stateIsValid){
-      this.changeInputToRed(this.selectStates.nativeElement, this.spanErrorState.nativeElement, this.labelState.nativeElement);
-    }
-
     if (!canSendRegister) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -843,19 +723,6 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
         landline: this.valueInputLandline,
         cellPhone: this.valueInputCellPhone,
         password: this.valueInputPassword,
-        userAddressCreateValidatorDTO: {
-            cep: this.valueInputCep,
-            title: this.valueInputTitle,
-            recipientName: this.valueInputRecipientName,
-            address: this.valueInputAddress,
-            numberHome: this.valueInputNumberHome,
-            complement: this.valueInputComplementOptional,
-            neighborhood: this.valueInputNeighborhood,
-            city: this.valueInputCity,
-            state: this.selectedState,
-            referencePoint: this.valueInputReferencePoint,
-            userId: ""
-        },
         userImage: ""
       };
 
@@ -864,9 +731,15 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
       this.userService.createAccount(objCreate).subscribe({
         next: (success) => {
           this.clickRegister = true;
-          const userDTO = success.data;
 
+          const userDTO = success.data;
           EncryptedUser(userDTO);
+
+          const userLogged: UserLogged = {
+            userLoggedWithGoogle: false,
+          };
+
+          EncryptedUserLoggedWithGoogle(userLogged);
 
           this.whereIsComingCustomerPanelAndRegisterUserService.updateUrlName("register");
           this.updateUserService.updateupdateUser(userDTO);

@@ -1,0 +1,43 @@
+<div class="container-main-address">
+  <!-- G -->
+  <div class="container-main-addresses">
+    <h1>Meus endereços</h1>
+
+    <div
+      class="container-insert-address-main"
+      (click)="onClickContainerInsertAddress()"
+      (keydown.enter)="onClickContainerInsertAddress()"
+      tabindex="0"
+    >
+      <div class="container-insert-address">
+        <div class="container-svg-plus">
+          <app-svg-more width="15px" height="15px" fill="#fff"></app-svg-more>
+        </div>
+        <span class="span-insert">Inserir novo endereço</span>
+      </div>
+    </div>
+  </div>
+  <!-- G -->
+
+  <div class="container-svg-there-is-no-addresses" *ngIf="addressArray.length <= 0">
+    <app-svg-address width="140px" height="140px"></app-svg-address>
+    <span>Você ainda não tem endereços.</span>
+  </div>
+
+  <app-view-address-user
+    *ngIf="addressArray.length > 0"
+    [clickInEditAddress]="clickInEditAddress"
+    [updateArrayAddressDefault]="updateArrayAddressDefault"
+    [deleteAddress]="deleteAddress"
+    [address]="addressArray"
+    [user]="user"
+  ></app-view-address-user>
+
+  <app-modal-new-address
+    [changeValueNewAddress]="changeValueNewAddress"
+    [createNewAddress]="createNewAddress"
+    [updateArrayAddress]="updateArrayAddress"
+    [addressEdit]="addressEdit"
+    *ngIf="newAddress || addressEdit"
+  ></app-modal-new-address>
+</div>

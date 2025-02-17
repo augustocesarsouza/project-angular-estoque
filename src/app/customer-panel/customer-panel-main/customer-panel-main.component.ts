@@ -49,8 +49,6 @@ export class CustomerPanelMainComponent implements OnInit, OnDestroy {
 
     this.updateUserService.updateUser$.subscribe((userUpdate) => {
       if(userUpdate){
-        console.log("osidudh9i");
-
         this.user = userUpdate;
       }
     });

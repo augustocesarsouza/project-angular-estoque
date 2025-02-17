@@ -4,6 +4,7 @@ import { CustomerPanelMainComponent } from './customer-panel-main/customer-panel
 import { RegistrationDataComponent } from './my-account-components/registration-data/registration-data.component';
 import { MyAccountComponent } from './my-account-components/my-account/my-account.component';
 import { ChangePasswordComponent } from './my-account-components/change-password/change-password.component';
+import { UserAddressComponent } from './my-account-components/address-components/user-address/user-address.component';
 
 const routes: Routes = [
   { path: '', component:  CustomerPanelMainComponent,
@@ -11,6 +12,7 @@ const routes: Routes = [
       { path: '', component: MyAccountComponent },
       { path: 'dados-cadastrais', component: RegistrationDataComponent },
       { path: 'alterar-senha', component: ChangePasswordComponent },
+      { path: 'enderecos', component: UserAddressComponent },
       { path: '', redirectTo: '', pathMatch: 'full' },
       { path: '**', redirectTo: '' }
     ]

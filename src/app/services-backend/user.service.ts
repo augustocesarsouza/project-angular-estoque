@@ -3,14 +3,14 @@ import { environment } from '../../environments/environment.prod';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { take } from 'rxjs';
 import { User } from '../interface-entity/user';
-import { UserAddress } from '../interface-entity/user-address';
+// import { UserAddress } from '../interface-entity/user-address';
 
 export interface ResultData {
   data: User;
 }
 
 export interface ResultDataGetInfoUserAddress {
-  data: UserAddress;
+  data: User;
 }
 
 export interface ResultDataLogin {

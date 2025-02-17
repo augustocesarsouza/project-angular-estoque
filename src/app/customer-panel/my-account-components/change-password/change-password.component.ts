@@ -228,7 +228,6 @@ export class ChangePasswordComponent {
           this.userService.PutChangePassword(objChangePassword, user.token).subscribe({
             next: (success) => {
               const data: ChangePassword = success.data;
-              console.log(data);
 
               if(data.changePasswordSuccessfully){
                 this.valueInputPasswordActual = '';

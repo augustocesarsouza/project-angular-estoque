@@ -1,0 +1,68 @@
+<div class="container-address-user-main">
+  <h1 class="header-user-address">Meus Endereços</h1>
+
+  <div
+    class="container-address-user-details"
+    *ngFor="let el of address; let i = index"
+    [ngClass]="{
+      'container-address-user-details-red': i < address.length - 1,
+    }"
+  >
+    <div class="container-name-and-phone-number-and-button-edit-delete">
+      <div class="container-name-and-phone-number">
+        <span>{{ el.fullName }}</span>
+        <div></div>
+        <span>{{ el.phoneNumber }}</span>
+      </div>
+
+      <div class="container-button">
+        <button (click)="onClickEditAddress(el)">Editar</button>
+        <button
+          *ngIf="el.defaultAddress === 0 || address.length <= 1"
+          (click)="onClickDeleteAddress(el)"
+        >
+          Excluir
+        </button>
+      </div>
+    </div>
+    <div class="container-street-number-complement-neighborhood-and-set-as-default">
+      <div class="container-street-number-complement-neighborhood">
+        <span *ngIf="el.complement">
+          {{ el.street }}, {{ el.numberHome }}, {{ el.complement }}, {{ el.neighborhood }}
+        </span>
+        <span *ngIf="!el.complement">
+          {{ el.street }}, {{ el.numberHome }}, {{ el.neighborhood }}
+        </span>
+        <span>
+          {{ el.stateCity.split('-')[1].trim() }}, {{ el.stateCity.split('-')[0].trim() }},
+          {{ el.cep.replace('-', '') }}
+        </span>
+      </div>
+      <div class="container-set-as-default-button">
+        <button
+          (click)="el.defaultAddress === 0 && onClickSetAsDefault(el)"
+          [ngClass]="{
+            'button-set-as-default': el.defaultAddress === 0,
+            'button-not-set-as-default': el.defaultAddress === 1,
+          }"
+        >
+          Definir como padrão
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="el.defaultAddress === 1" class="container-button-standard">
+      <button>Padrão</button>
+    </div>
+  </div>
+
+  <div class="container-modal-delete-address" *ngIf="showModalDeleteAddress">
+    <div class="container-modal-main" [class.show]="showModalDeleteAddress">
+      <h1>Excluir endereço?</h1>
+      <div class="container-button-cancel-and-delete">
+        <button (click)="onClickCancelDeleteAddress()">CANCELAR</button>
+        <button (click)="onClickDeleteAddressModal()">EXCLUIR</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,16 +1,17 @@
+:host {
+  width: 100%;
+  background: #fff;
+  padding: 20px 30px;
+}
+
 .container-finish-your-register {
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  width: 600px;
-  padding-left: 30px;
-  padding-right: 20px;
-  padding-bottom: 40px;
-  margin-bottom: 20px;
+  width: 100%;
 
   >h1 {
     font-size: 16px;
-    margin-top: 30px;
     margin-bottom: 15px;
   }
 }
@@ -20,6 +21,7 @@
   flex-direction: column;
   gap: 30px;
   user-select: none;
+  margin-bottom: 30px;
 }
 
 .container-info-input-finish-your-register {
@@ -108,8 +110,8 @@
   justify-content: center;
   background: black;
   color: #fff;
-  width: 325px;
-  height: 32px;
+  width: 80px;
+  height: 40px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;

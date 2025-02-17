@@ -1,11 +1,18 @@
+import { User } from "./user";
+
 export interface UserAddress {
-  birthDate: string;
-  cellPhone: string;
-  cpf: string;
-  email: string;
-  gender: string;
   id: string;
-  landline: string;
-  lastName: string;
-  name: string;
+  fullName: string;
+  phoneNumber: string;
+  cep: string;
+  stateCity: string;
+  neighborhood: string;
+  street: string;
+  numberHome: string;
+  complement: string;
+  defaultAddress: number;
+
+  userId: string;
+  userDTO: User | null;
+  saveAs: number;
 }

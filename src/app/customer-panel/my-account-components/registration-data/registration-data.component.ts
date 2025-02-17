@@ -5,7 +5,6 @@ import Inputmask from 'inputmask';
 import { UserService, UserUpdate } from '../../../services-backend/user.service';
 import { Router } from '@angular/router';
 import { GoogleApiService } from '../../../login-and-register-new-account/service/google-api.service';
-import { UserAddress } from '../../../interface-entity/user-address';
 
 @Component({
   selector: 'app-registration-data',
@@ -60,7 +59,7 @@ export class RegistrationDataComponent implements OnInit, AfterViewInit {
   @ViewChild('spanErrorLandline') spanErrorLandline!: ElementRef<HTMLSpanElement>;
   @ViewChild('spanErrorCellPhone') spanErrorCellPhone!: ElementRef<HTMLSpanElement>;
 
-  addressUser!:UserAddress;
+  addressUser!:User;
 
   constructor(private userService: UserService, private router: Router,
     private googleApiService: GoogleApiService){}
@@ -97,7 +96,7 @@ export class RegistrationDataComponent implements OnInit, AfterViewInit {
     }
   }
 
-  fillFormUserAddress(data: UserAddress) {
+  fillFormUserAddress(data: User) {
     const name = data.name;
     const lastName = data.lastName;
     const cpf = data.cpf;
@@ -439,8 +438,6 @@ export class RegistrationDataComponent implements OnInit, AfterViewInit {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    console.log(canSendRegister);
-
     if(canSendRegister){
       const userSave = {
         userId: this.user.id,
@@ -456,6 +453,9 @@ export class RegistrationDataComponent implements OnInit, AfterViewInit {
         token: this.user.token
       } as UserUpdate;
       console.log(userSave);
+      // AQUI AMANHA QUANDO SALVAR USER, VOCÊ JÁ SALVA O USER nó LocalStorage, Porque se tiver logado com "google"
+      // Lá o 'cellPhone' vai estar vazio e ai quando salvar aqui já coloca ele no "LocalStorage" porque eu tenho que pegar no "app-modal-new-address"
+      // ele colocar para ele clicar no Campo Input "CellPhone" salva aqui "EncryptedUser"
 
       // this.userService.PutUserInfo(userSave).subscribe({
       //   next: (success) => {

@@ -1,0 +1,188 @@
+.container-address-user-main{
+  display: flex;
+  flex-direction: column;
+
+  >h1 {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 20px;
+  }
+}
+
+.container-address-user-details{
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.container-address-user-details-red {
+  border-bottom: 1px solid #0000001f;
+}
+
+.container-name-and-phone-number-and-button-edit-delete{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+
+.container-name-and-phone-number{
+  display: flex;
+  align-items: center;
+  line-height: 1;
+
+  span:nth-child(1) {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  >div {
+    border-left: 1px solid rgba(0, 0, 0, .26);
+    margin: 0 8px;
+    height: 25px;
+  }
+
+  span:nth-child(3) {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.54);
+  }
+}
+
+.container-button{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  >button {
+    font-size: 15px;
+    font-weight: 400;
+    border: none;
+    color: #08f;
+    cursor: pointer;
+  }
+}
+
+.container-street-number-complement-neighborhood-and-set-as-default{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.container-street-number-complement-neighborhood{
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.54);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.container-set-as-default-button{
+  display: flex;
+
+  >button {
+    padding: 0px 10px;
+    height: 28px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+}
+
+.button-set-as-default {
+  border: 1px solid rgb(143 143 143 / 22%);
+  color: #000000bd;
+  cursor: pointer;
+}
+
+.button-not-set-as-default {
+  border: 1px solid rgb(143 143 143 / 22%);
+  color: rgb(143 143 143 / 71%);
+  cursor: not-allowed;
+}
+
+
+.container-button-standard{
+  display: flex;
+
+  >button {
+    border: 1px solid #ff0000c7;
+    color: #ff0000c7;
+    padding: 4px 5px;
+  }
+}
+
+.container-modal-delete-address {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,.4);
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes modalEffect {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.5) translateY(-0%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.container-modal-main{
+  width: 445px;
+  height: 155px;
+  background-color: #fff;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  >h1 {
+    margin: 0px;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1;
+    color: rgb(85, 85, 85);
+  }
+
+  opacity: 0;
+  transform: scale(0.5) translateY(-50%);
+  animation: modalEffect 0.6s ease forwards;
+}
+
+.container-button-cancel-and-delete {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  height: 42px;
+
+  > button:nth-of-type(1) {
+    border: none;
+    color: #555;
+    font-size: 15px;
+    width: 140px;
+    cursor: pointer;
+  }
+
+  > button:nth-of-type(2) {
+    border: none;
+    color: #fff;
+    background: #ee4d2d;
+    font-size: 15px;
+    width: 140px;
+    cursor: pointer;
+
+    &:hover {
+      background: #ee6449;
+    }
+  }
+}

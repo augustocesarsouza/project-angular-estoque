@@ -58,7 +58,6 @@ export class MyAccountFirstPartCustomerPanelComponent implements AfterViewInit, 
       if(!userResult.isNullUserLoggedGoogleLocalStorage){
         const userLogged = userResult.userLogged;
         if(userLogged){
-          console.log(userLogged);
           this.userLogged = userLogged;
 
           if(userLogged.userLoggedWithGoogle){
@@ -68,12 +67,6 @@ export class MyAccountFirstPartCustomerPanelComponent implements AfterViewInit, 
             spanChangePassword.style.cursor = "not-allowed";
             spanChangePassword.style.userSelect = "none";
           }
-
-          // AGORA PEGA ESSE E QUANDO O USUARIO LOGAR NORMAL SEM O GOOGLE
-          // COLOCAR O VALOR "userLoggedWithGoogle" que está dentro de "userLogged" false e salva no LocalStorage
-          // e tem que fazer Quando carregar o "http://localhost:4200/painel-do-cliente" e aparecer "Alterar senha"
-          // Só pode alterar quando tiver logado "SEM O GOOGLE"
-
         }
       }
 
@@ -176,6 +169,10 @@ export class MyAccountFirstPartCustomerPanelComponent implements AfterViewInit, 
 
     if(i === 1){
       this.router.navigate(['/painel-do-cliente/alterar-senha']);
+    }
+
+    if(i === 2){
+      this.router.navigate(['/painel-do-cliente/enderecos']);
     }
   }
 }

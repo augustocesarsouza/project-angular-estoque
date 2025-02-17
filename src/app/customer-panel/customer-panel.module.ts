@@ -10,6 +10,10 @@ import { HeaderAndFooterLoginAndRegisterModule } from '../header-and-footer-logi
 import { RegistrationDataComponent } from './my-account-components/registration-data/registration-data.component';
 import { MyAccountComponent } from './my-account-components/my-account/my-account.component';
 import { ChangePasswordComponent } from './my-account-components/change-password/change-password.component';
+import { AllSvgModule } from '../all-svg/all-svg.module';
+import { ViewAddressUserComponent } from './my-account-components/address-components/view-address-user/view-address-user.component';
+import { UserAddressComponent } from './my-account-components/address-components/user-address/user-address.component';
+import { ModalNewAddressComponent } from './my-account-components/address-components/modal-new-address/modal-new-address.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +24,15 @@ import { ChangePasswordComponent } from './my-account-components/change-password
     RegistrationDataComponent,
     MyAccountComponent,
     ChangePasswordComponent,
+    ViewAddressUserComponent,
+    UserAddressComponent,
+    ModalNewAddressComponent
   ],
   imports: [
     CommonModule,
     CustomerPanelRoutingModule,
     HeaderAndFooterLoginAndRegisterModule,
+    AllSvgModule
   ]
 })
 export class CustomerPanelModule { }

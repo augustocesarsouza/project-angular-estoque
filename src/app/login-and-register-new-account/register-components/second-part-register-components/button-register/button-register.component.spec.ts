@@ -11,13 +11,24 @@ describe('ButtonRegisterComponent', () => {
       declarations: [ButtonRegisterComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ButtonRegisterComponent);
     component = fixture.componentInstance;
+
+    component.onClickRegister = jasmine.createSpy('onClickRegister');
+    component.getButtonRegisterAccount = jasmine.createSpy('getButtonRegisterAccount');
+
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render button register', () => {
+    fixture.detectChanges();
+
+    const button = fixture.nativeElement.querySelector('.container-button-register > button');
+    expect(button.textContent.trim()).toBe('CADASTRAR');
   });
 });

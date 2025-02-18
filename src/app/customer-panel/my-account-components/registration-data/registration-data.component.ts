@@ -5,6 +5,8 @@ import Inputmask from 'inputmask';
 import { UserService, UserUpdate } from '../../../services-backend/user.service';
 import { Router } from '@angular/router';
 import { GoogleApiService } from '../../../login-and-register-new-account/service/google-api.service';
+import { UpdateUserService } from '../../service/update-user.service';
+import { EncryptedUser } from '../../../function-user/get-user-local-storage/encrypted-user';
 
 @Component({
   selector: 'app-registration-data',
@@ -20,6 +22,7 @@ export class RegistrationDataComponent implements OnInit, AfterViewInit {
   valueInputCpf = "";
   valueInputEmail = "";
   valueInputLandline = "";
+  valueInputCellPhoneClean = "";
   valueInputCellPhone = "";
   selectedGender = '';
 
@@ -62,7 +65,7 @@ export class RegistrationDataComponent implements OnInit, AfterViewInit {
   addressUser!:User;
 
   constructor(private userService: UserService, private router: Router,
-    private googleApiService: GoogleApiService){}
+    private googleApiService: GoogleApiService, private updateUserService: UpdateUserService){}
 
   ngOnInit(): void {
     const userResult = UserLocalStorage();
@@ -80,7 +83,6 @@ export class RegistrationDataComponent implements OnInit, AfterViewInit {
           },
           error: error => {
             if(error.status === 400){
-
               // this.confirmEmail = false;
             }
 
@@ -88,7 +90,6 @@ export class RegistrationDataComponent implements OnInit, AfterViewInit {
               this.googleApiService.logout();
               localStorage.removeItem('user');
               this.router.navigate(['/user/login']);
-              // this.confirmEmail = false;
             }
           }
         });
@@ -235,8 +236,8 @@ export class RegistrationDataComponent implements OnInit, AfterViewInit {
 
     if(inputCellphone){
       const mask = Inputmask({
-        mask: '(99) 99999-9999',
-        placeholder: "(__) _____-____",
+        mask: '(+99) 99 99999 9999',
+        placeholder: '(+__) __ _____ ____',
         insertMode: true, // Ensure the mask does not insert mode to avoid jumping characters
         showMaskOnHover: false,
         showMaskOnFocus: true,
@@ -348,17 +349,13 @@ export class RegistrationDataComponent implements OnInit, AfterViewInit {
       this.valueInputLandline = valueInputClean;
       this.landlineIsValid = true;
     }
-
-    // if(valueInput.length >= 10){
-    //   this.valueInputLandline = valueInputClean;
-    // }else {
-    //   this.valueInputLandline = "";
-    // }
   }
 
   changeInputCellPhone(e: Event, label: HTMLLabelElement) {
     const input = e.target as HTMLInputElement;
     const valueInputClean = input.value;
+
+    this.valueInputCellPhoneClean = valueInputClean;
     const valueInput = input.value.replace(/[_\-\s()]/g, "");
     this.valueInputCellPhone = valueInputClean;
 
@@ -448,54 +445,47 @@ export class RegistrationDataComponent implements OnInit, AfterViewInit {
         cpf: this.valueInputCpf,
         email: this.valueInputEmail,
         landline: this.valueInputLandline,
-        cellPhone: this.valueInputCellPhone,
+        cellPhone: this.valueInputCellPhoneClean,
         userImage: "",
         token: this.user.token
       } as UserUpdate;
-      console.log(userSave);
-      // AQUI AMANHA QUANDO SALVAR USER, VOCÊ JÁ SALVA O USER nó LocalStorage, Porque se tiver logado com "google"
-      // Lá o 'cellPhone' vai estar vazio e ai quando salvar aqui já coloca ele no "LocalStorage" porque eu tenho que pegar no "app-modal-new-address"
-      // ele colocar para ele clicar no Campo Input "CellPhone" salva aqui "EncryptedUser"
 
-      // this.userService.PutUserInfo(userSave).subscribe({
-      //   next: (success) => {
-      //       const data = success.data;
+      this.userService.PutUserInfo(userSave).subscribe({
+        next: (success) => {
+            const data = success.data;
 
-      //       const userSaveLocalstorage = {
-      //         email: data.email,
-      //         id: data.id,
-      //         name: data.name,
-      //         token: this.user.token,
-      //         lastName: data.lastName,
-      //         birthDate: data.birthDate,
-      //         gender: data.gender,
-      //         cpf: data.cpf,
-      //         landline: data.landline,
-      //         cellPhone: data.cellPhone,
-      //         userImage: data.userImage,
-      //         confirmEmail: data.confirmEmail,
+            const user = {
+              id: this.user.id,
+              cellPhone: userSave.cellPhone,
+              email: this.user.email,
+              name: this.user.name,
+              token: this.user.token,
+              lastName: "",
+              birthDate: "",
+              gender: "",
+              cpf: "",
+              landline: "",
+              userImage: "",
+              confirmEmail: 0,
+            };
 
-      //       } as User;
+            EncryptedUser(user);
 
-      //       EncryptedUser(userSaveLocalstorage);
+            this.updateUserService.updateupdateUser(data);
+            this.fillFormUserAddress(data);
+        },
+        error: error => {
+          if(error.status === 400){
+            // this.confirmEmail = false;
+          }
 
-      //       this.updateUserService.updateupdateUser(data);
-      //       this.fillFormUserAddress(data);
-      //   },
-      //   error: error => {
-      //     if(error.status === 400){
-
-      //       // this.confirmEmail = false;
-      //     }
-
-      //     if(error.status === 403){
-      //       this.googleApiService.logout();
-      //       localStorage.removeItem('user');
-      //       this.router.navigate(['/user/login']);
-      //       // this.confirmEmail = false;
-      //     }
-      //   }
-      // });
+          if(error.status === 403){
+            this.googleApiService.logout();
+            localStorage.removeItem('user');
+            this.router.navigate(['/user/login']);
+          }
+        }
+      });
     }
   }
 }

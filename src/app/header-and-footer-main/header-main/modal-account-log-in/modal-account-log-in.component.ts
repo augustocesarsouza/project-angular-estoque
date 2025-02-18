@@ -11,8 +11,7 @@ import { GoogleApiService } from '../../../login-and-register-new-account/servic
 export class ModalAccountLogInComponent {
   @Input() user!: User;
 
-  constructor(private router: Router, private googleApiService: GoogleApiService
-  ){
+  constructor(private router: Router, private googleApiService: GoogleApiService){
   }
 
 

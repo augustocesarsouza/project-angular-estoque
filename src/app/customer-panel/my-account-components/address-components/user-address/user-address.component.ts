@@ -10,8 +10,6 @@ import { User } from '../../../../interface-entity/user';
   styleUrl: './user-address.component.scss'
 })
 export class UserAddressComponent implements OnInit {
-  // address: UserAddress[] = [];
-
   addressArray: UserAddress[] = [];
 
   addressToDelete!: UserAddress;

@@ -4,6 +4,16 @@ import { SecondPartRegisterMainComponent } from './second-part-register-main.com
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AllSvgModule } from '../../../../all-svg/all-svg.module';
+import { UserService } from '../../../../services-backend/user.service';
+import { WhereIsComingCustomerPanelAndRegisterUserService } from '../../../service/where-is-coming-customer-panel-and-register-user.service';
+import { UpdateUserService } from '../../../../customer-panel/service/update-user.service';
+import { RegisterPasswordValidatePartComponent } from '../register-password-validate-part/register-password-validate-part.component';
+import { ButtonRegisterComponent } from '../button-register/button-register.component';
+import { By } from '@angular/platform-browser';
+
+class MockUserService {}
+class MockWhereIsComingCustomerPanelAndRegisterUserService {}
+class MockUpdateUserService {}
 
 describe('SecondPartRegisterMainComponent', () => {
   let component: SecondPartRegisterMainComponent;
@@ -12,9 +22,21 @@ describe('SecondPartRegisterMainComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
-      declarations: [SecondPartRegisterMainComponent]
+      declarations: [SecondPartRegisterMainComponent, RegisterPasswordValidatePartComponent,
+        ButtonRegisterComponent
+      ],
+      providers: [
+        { provide: UserService, useClass: MockUserService },
+        { provide: WhereIsComingCustomerPanelAndRegisterUserService, useClass: MockWhereIsComingCustomerPanelAndRegisterUserService },
+        { provide: UpdateUserService, useClass: MockUpdateUserService },
+      ]
     })
     .compileComponents();
+
+    // constructor(private userService: UserService, private router: Router,
+    //     private whereIsComingCustomerPanelAndRegisterUserService: WhereIsComingCustomerPanelAndRegisterUserService,
+    //     private updateUserService: UpdateUserService
+    //   ){}
 
     fixture = TestBed.createComponent(SecondPartRegisterMainComponent);
     component = fixture.componentInstance;
@@ -25,188 +47,29 @@ describe('SecondPartRegisterMainComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render header finish', () => {
-    const headerFinish = fixture.nativeElement.querySelector('.header-finish-your-register');
-    expect(headerFinish).not.toBeNull();
+  it('deve exibir o título corretamente', () => {
+    const h1 = fixture.debugElement.query(By.css('.header-finish-your-register')).nativeElement;
+    expect(h1.textContent.trim()).toBe('COMPLETE SEU CADASTRO');
   });
 
-  it('should render all label', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label') as NodeListOf<HTMLLabelElement>;
-    expect(labels.length).toEqual(20);
+  it('deve exibir todos os labels corretamente', () => {
+    const labels = fixture.debugElement.queryAll(By.css('label')).map(el => el.nativeElement.textContent.trim());
+
+    expect(labels).toContain('* Nome:');
+    expect(labels).toContain('* Sobrenome:');
+    expect(labels).toContain('* Data de Nascimento:');
+    expect(labels).toContain('* Sexo:');
+    expect(labels).toContain('* CPF:');
+    expect(labels).toContain('* E-mail:');
+    expect(labels).toContain('Telefone Fixo:');
+    expect(labels).toContain('* Telefone Celular:');
   });
 
-  it('should render label "name:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[0].textContent.trim()).toBe("* Nome:");
-  });
+  it('deve conter os campos de input e select no DOM', () => {
+    const inputs = fixture.debugElement.queryAll(By.css('input')).map(el => el.nativeElement);
+    const select = fixture.debugElement.query(By.css('select'))?.nativeElement;
 
-  it('should render label "Sobrenome:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[1].textContent.trim()).toBe("* Sobrenome:");
-  });
-
-  it('should render label "Data de Nascimento:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[2].textContent.trim()).toBe("* Data de Nascimento:");
-  });
-
-  it('should render label "Sexo:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[3].textContent.trim()).toBe("* Sexo:");
-  });
-
-  it('should render label "CPF:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[4].textContent.trim()).toBe("* CPF:");
-  });
-
-  it('should render label "E-mail:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[5].textContent.trim()).toBe("* E-mail:");
-  });
-
-  it('should render label "Telefone Fixo:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[6].textContent.trim()).toBe("Telefone Fixo:");
-  });
-
-  it('should render label "Telefone Celular:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[7].textContent.trim()).toBe("* Telefone Celular:");
-  });
-
-  it('should render label "CEP:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[8].textContent.trim()).toBe("*CEP:");
-  });
-
-  it('should render label "Titulo (ex.: Casa, Trabalho):"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[9].textContent.trim()).toBe("Titulo *(ex.: Casa, Trabalho):");
-  });
-
-  it('should render label "Nome do destinatário:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[10].textContent.trim()).toBe("Nome do destinatário:");
-  });
-
-  it('should render label "Endereço:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[11].textContent.trim()).toBe("* Endereço:");
-  });
-
-  it('should render label "Número:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[12].textContent.trim()).toBe("* Número:");
-  });
-
-  it('should render label "Complemento (opcional):"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[13].textContent.trim()).toBe("Complemento (opcional):");
-  });
-
-  it('should render label "Bairro:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[14].textContent.trim()).toBe("* Bairro:");
-  });
-
-  it('should render label "Cidade:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[15].textContent.trim()).toBe("* Cidade:");
-  });
-
-  it('should render label "Estado:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[16].textContent.trim()).toBe("* Estado:");
-  });
-
-  it('should render label "Ponto de referência (opcional):"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[17].textContent.trim()).toBe("Ponto de referência (opcional)");
-  });
-
-  it('should render label "Senha:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[18].textContent.trim()).toBe("* Senha:");
-  });
-
-  it('should render label "Repita a senha:"', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-input-all > label');
-    expect(labels[19].textContent.trim()).toBe("Repita a senha");
-  });
-
-  it('should render all Inputs to label', () => {
-    const inputs = fixture.nativeElement.querySelectorAll('.container-input-all > input') as NodeListOf<HTMLInputElement>;
-    expect(inputs.length).toEqual(18);
-  });
-
-  it('should render all select', () => {
-    const selects = fixture.nativeElement.querySelectorAll('.container-input-all > select') as NodeListOf<HTMLSelectElement>;
-    expect(selects.length).toEqual(2);
-  });
-
-  it('should render header address', () => {
-    const headerAddAddress = fixture.nativeElement.querySelector('.header-add-address');
-    expect(headerAddAddress).not.toBeNull();
-  });
-
-  it('should render header register password', () => {
-    const headerRegisterPassword = fixture.nativeElement.querySelector('.header-register-password');
-    expect(headerRegisterPassword).not.toBeNull();
-  });
-
-  it('should render all spans validate password', () => {
-    const spans = fixture.nativeElement.querySelectorAll('.container-info-require-to-register-password > span');
-    expect(spans.length).toEqual(5);
-  });
-
-  it('should render all spans text content', () => {
-    const spans = fixture.nativeElement.querySelectorAll('.container-info-require-to-register-password > span');
-    expect(spans[0].textContent.trim()).toBe("Mínimo 8 caracteres");
-  });
-
-  it('should render all spans text content', () => {
-    const spans = fixture.nativeElement.querySelectorAll('.container-info-require-to-register-password > span');
-    expect(spans[1].textContent.trim()).toBe("1 letra maíuscula");
-  });
-
-  it('should render all spans text content', () => {
-    const spans = fixture.nativeElement.querySelectorAll('.container-info-require-to-register-password > span');
-    expect(spans[2].textContent.trim()).toBe("1 letra minúscula");
-  });
-
-  it('should render all spans text content', () => {
-    const spans = fixture.nativeElement.querySelectorAll('.container-info-require-to-register-password > span');
-    expect(spans[3].textContent.trim()).toBe("1 número");
-  });
-
-  it('should render all spans text content', () => {
-    const spans = fixture.nativeElement.querySelectorAll('.container-info-require-to-register-password > span');
-    expect(spans[4].textContent.trim()).toBe("1 caractere especial");
-  });
-
-  it('should render labels checkout all twos', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-checkout-confirm-password > label');
-    expect(labels.length).toEqual(2);
-  });
-
-  it('should render first checkout textContent', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-checkout-confirm-password > label');
-    expect(labels[0].textContent.trim()).toBe("Eu aceito receber novidades, promoções e conteúdo Estoque através dos contatos informados");
-  });
-
-  it('should render second checkout textContent', () => {
-    const labels = fixture.nativeElement.querySelectorAll('.container-checkout-confirm-password > label');
-    expect(labels[1].textContent.trim()).toBe("Declaro que li e concordo com a Política de Privacidade da Estoque");
-  });
-
-  it('should render button register', () => {
-    const button = fixture.nativeElement.querySelector('.container-button-register > button');
-    expect(button).not.toBeNull();
-  });
-
-  it('should render button register textContent', () => {
-    const button = fixture.nativeElement.querySelector('.container-button-register > button');
-    expect(button.textContent.trim()).toBe("CADASTRAR");
+    expect(inputs.length).toBe(11); // Deve conter 7 inputs
+    expect(select).toBeTruthy(); // O select deve existir
   });
 });

@@ -28,11 +28,13 @@ export class MyAccountFirstPartCustomerPanelComponent implements AfterViewInit, 
   constructor(private router: Router,private updateLastContainerInfoAboutMyAccountService: UpdateLastContainerInfoAboutMyAccountService){}
 
   ngOnInit(): void {
-    this.updateLastContainerInfoAboutMyAccountService.updateLastContainerNumber$.subscribe((containerNumber) => {
-      if(containerNumber){
-        this.lastContainerInfoAboutMyAccount = containerNumber;
-      }
-    });
+    if(this.updateLastContainerInfoAboutMyAccountService.updateLastContainerNumber$){
+      this.updateLastContainerInfoAboutMyAccountService.updateLastContainerNumber$.subscribe((containerNumber) => {
+        if(containerNumber){
+          this.lastContainerInfoAboutMyAccount = containerNumber;
+        }
+      });
+    }
   }
 
   ngAfterViewInit(): void {

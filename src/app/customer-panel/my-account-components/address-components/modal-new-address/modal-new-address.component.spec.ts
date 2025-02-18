@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalNewAddressComponent } from './modal-new-address.component';
-import { User } from '../../../../login-and-register-user/interface/user';
 import { AllSvgModule } from '../../../../all-svg/all-svg.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
+import { User } from '../../../../interface-entity/user';
 
 describe('ModalNewAddressComponent', () => {
   let component: ModalNewAddressComponent;
@@ -75,15 +75,18 @@ describe('ModalNewAddressComponent', () => {
     const userObj: User = {
       id: "",
       name: "",
-      email: "",
-      phone: phone,
-      cpf: "",
+      lastName: "",
       birthDate: "",
       gender: "",
-      token: "asasdsd",
+      cpf: "",
+      email: "",
+      landline: "",
+      cellPhone: phone,
+      userImage: "",
       confirmEmail: 0,
-      userImage: ""
+      token: "asasdsd"
     }
+
     component.user = userObj;
     fixture.detectChanges();
 

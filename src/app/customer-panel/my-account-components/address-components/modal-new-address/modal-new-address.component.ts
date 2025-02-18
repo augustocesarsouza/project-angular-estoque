@@ -135,7 +135,6 @@ export class ModalNewAddressComponent implements OnInit, AfterViewInit, OnDestro
       const user = userResult.user;
       console.log(user);
 
-
       if(user === null) return;
 
       this.token = user.token;

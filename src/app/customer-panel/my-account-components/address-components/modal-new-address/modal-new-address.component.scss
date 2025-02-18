@@ -35,10 +35,6 @@
   margin-bottom: 7px;
 }
 
-// interface ContainerInputAllProps {
-//   $width: string;
-// }
-
 .container-input-all{
   border: 1px solid rgba(0, 0, 0, .14);
   border-radius: 2px;
@@ -48,14 +44,11 @@
   position: relative;
   transition: border-color .3s ease-in-out, box-shadow .3s ease-in-out, background-color .3s ease-in-out;
   width: 100%;
-
-  // width: ${props => props.$width};
 }
 
 .container-name-input{
   background: #fff;
   color: rgba(0, 0, 0, .4);
-  // display: none;
   display: none;
   font-size: 12px;
   font-weight: 500;
@@ -63,8 +56,6 @@
   padding: 0 3px;
   position: absolute;
   top: -9px;
-
-  /* display: block; */
 }
 
 input.placeholder-red::placeholder {
@@ -79,10 +70,6 @@ input::placeholder {
   color: #bbb;
   opacity: 1;
 }
-
-// interface InputProps {
-//   $placeholdercolor: string;
-// }
 
 .input-all{
   background-color: initial;
@@ -99,7 +86,6 @@ input::placeholder {
 
   &::placeholder {
     color: rgb(0 0 0 / 43%);
-    // color: ${props => props.$placeholdercolor};
   }
 }
 
@@ -124,10 +110,6 @@ input::placeholder {
   user-select: none;
 }
 
-// interface ContainerSaveHomeProps {
-//   $whatwasclicksave: string;
-// }
-
 .container-save-home{
   align-items: center;
   border: 1px solid rgba(0, 0, 0, .09);
@@ -140,19 +122,8 @@ input::placeholder {
   padding: 0 12px;
   color: rgb(0 0 0 / 42%);
   background: #fff;
-  // color: ${props => props.$whatwasclicksave === "home" ? "#fff" : "rgb(0 0 0 / 42%)"};
-  // background: ${props => props.$whatwasclicksave === "home" ? "#ff6c00" : "#fff"};
   cursor: pointer;
-
-  // &:hover {
-  //   border: 1px solid #ee4d2d;
-  //   color: #ee4d2d;
-  // }
 }
-
-// interface ContainerSaveWorkProps {
-//   $whatwasclicksave: string;
-// }
 
 .container-save-work{
   align-items: center;
@@ -166,8 +137,6 @@ input::placeholder {
   padding: 0 12px;
   color: rgb(0 0 0 / 42%);
   background: #fff;
-  // color: ${props => props.$whatwasclicksave === "work" ? "#fff" : "rgb(0 0 0 / 42%)"};
-  // background: ${props => props.$whatwasclicksave === "work" ? "#ff6c00" : "#fff"};
   cursor: pointer;
 }
 
@@ -196,7 +165,6 @@ input::placeholder {
   background-color: #ee4d2d;
   color: #fff;
   align-items: center;
-  /* background: none; */
   border: 0;
   border-radius: 2px;
   cursor: pointer;

@@ -25,7 +25,8 @@ export class FirstPartCustomerPanelComponent implements OnInit, AfterViewInit {
 
   nameUser = "";
 
-  constructor(private router: Router, private updateLastContainerInfoAboutMyAccountService: UpdateLastContainerInfoAboutMyAccountService,
+  constructor(private router: Router,
+    private updateLastContainerInfoAboutMyAccountService: UpdateLastContainerInfoAboutMyAccountService,
     private googleApiService: GoogleApiService, private updateUserService: UpdateUserService
   ){
   }

@@ -8,6 +8,10 @@ import { LoginComponent } from '../login/login.component';
 import { CreateAccountComponent } from '../create-account/create-account.component';
 import { HeaderMainComponent } from '../../../header-and-footer-login-and-register/header-components/header-main/header-main.component';
 import { FooterMainComponent } from '../../../header-and-footer-login-and-register/footer-components/footer-main/footer-main.component';
+import { GoogleApiService } from '../../service/google-api.service';
+import { LoginPartBottomComponent } from '../login-part-bottom/login-part-bottom.component';
+
+class MockGoogleApiService {}
 
 describe('LoginMainComponent', () => {
   let component: LoginMainComponent;
@@ -17,8 +21,11 @@ describe('LoginMainComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
       declarations: [LoginMainComponent, HeaderMainComponent, FooterMainComponent, LoginComponent,
-        CreateAccountComponent
+        CreateAccountComponent, LoginPartBottomComponent
       ],
+      providers: [
+        { provide: GoogleApiService, useClass: MockGoogleApiService },
+      ]
     })
     .compileComponents();
 

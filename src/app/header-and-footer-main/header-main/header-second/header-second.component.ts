@@ -17,11 +17,13 @@ export class HeaderSecondComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.googleApiService.userProfile$.subscribe((user) => {
-      if(user){
-        this.user = user;
-      }
-    });
+    if(this.googleApiService.userProfile$){
+      this.googleApiService.userProfile$.subscribe((user) => {
+        if(user){
+          this.user = user;
+        }
+      });
+    }
     // "this.googleApiService.logout();" esse metodo apaga o usuario meio que deleta igua lse você clicar em "Sair e o usuario logou com google
     // usar esse metodo de cima para deletar e nao ter historico dele
   }

@@ -8,6 +8,9 @@ import { AccountFavoritesBagComponent } from '../account-favorites-bag/account-f
 import { ModalAccountComponent } from '../modal-account/modal-account.component';
 import { BagEmptyComponent } from '../bag-empty/bag-empty.component';
 import { SvgArrowTopComponent } from '../svg-arrow-top/svg-arrow-top.component';
+import { GoogleApiService } from '../../../login-and-register-new-account/service/google-api.service';
+
+class MockGoogleApiService {}
 
 describe('HeaderSecondComponent', () => {
   let component: HeaderSecondComponent;
@@ -19,7 +22,9 @@ describe('HeaderSecondComponent', () => {
       declarations: [HeaderSecondComponent, AccountFavoritesBagComponent, ModalAccountComponent,
         BagEmptyComponent, SvgArrowTopComponent
       ],
-      // providers: [FlashSaleProductAllInfoService],
+      providers: [
+        { provide: GoogleApiService, useClass: MockGoogleApiService }
+      ]
     })
     .compileComponents();
 

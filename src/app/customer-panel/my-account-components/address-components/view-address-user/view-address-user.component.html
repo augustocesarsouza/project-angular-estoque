@@ -1,5 +1,5 @@
 <div class="container-address-user-main">
-  <h1 class="header-user-address">Meus Endereços</h1>
+  <h1 class="header-my-address">Meus Endereços</h1>
 
   <div
     class="container-address-user-details"
@@ -27,9 +27,9 @@
     </div>
     <div class="container-street-number-complement-neighborhood-and-set-as-default">
       <div class="container-street-number-complement-neighborhood">
-        <span *ngIf="el.complement">
-          {{ el.street }}, {{ el.numberHome }}, {{ el.complement }}, {{ el.neighborhood }}
-        </span>
+        <span *ngIf="el.complement"
+          >{{ el.street }}, {{ el.numberHome }}, {{ el.complement }}, {{ el.neighborhood }}</span
+        >
         <span *ngIf="!el.complement">
           {{ el.street }}, {{ el.numberHome }}, {{ el.neighborhood }}
         </span>

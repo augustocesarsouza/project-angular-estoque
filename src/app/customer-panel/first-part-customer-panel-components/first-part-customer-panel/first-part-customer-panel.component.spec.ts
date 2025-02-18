@@ -6,20 +6,52 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AllSvgModule } from '../../../all-svg/all-svg.module';
 import { MyAccountFirstPartCustomerPanelComponent } from '../my-account-first-part-customer-panel/my-account-first-part-customer-panel.component';
 import { MyOrdersFirstPartCustomerPanelComponent } from '../my-orders-first-part-customer-panel/my-orders-first-part-customer-panel.component';
+import { GoogleApiService } from '../../../login-and-register-new-account/service/google-api.service';
+import { UpdateLastContainerInfoAboutMyAccountService } from '../../service/update-last-container-info-about-my-account.service';
+import { UpdateUserService } from '../../service/update-user.service';
+import { of } from 'rxjs';
+
+const mockUpdateUserService = {
+  updateUser$: of({ name: 'Usuário Teste' }) // 🔥 Simula um observable com um usuário de teste
+};
+
+const mockUpdateLastContainerInfoAboutMyAccountService = {}; // Se este serviço precisar de métodos, adicione mocks aqui
+const mockGoogleApiService = {};
 
 describe('FirstPartCustomerPanelComponent', () => {
   let component: FirstPartCustomerPanelComponent;
   let fixture: ComponentFixture<FirstPartCustomerPanelComponent>;
 
+  const user = {
+    id: "76b6665d-ae61-4120-ac32-1c9db9a7fefd",
+    name: "Augusto",
+    lastName: "lastName",
+    birthDate: "birthDate",
+    gender: "gender",
+    cpf: "cpf",
+    email: "augustocesarsantana90@gmail.com",
+    landline: "landline",
+    cellPhone: "cellPhone",
+    userImage: null,
+    confirmEmail: 0,
+    token: "asdasd",
+  };
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
-      declarations: [FirstPartCustomerPanelComponent, MyAccountFirstPartCustomerPanelComponent, MyOrdersFirstPartCustomerPanelComponent]
+      declarations: [FirstPartCustomerPanelComponent, MyAccountFirstPartCustomerPanelComponent, MyOrdersFirstPartCustomerPanelComponent],
+      providers: [
+        { provide: UpdateUserService, useValue: mockUpdateUserService },
+        { provide: UpdateLastContainerInfoAboutMyAccountService, useValue: mockUpdateLastContainerInfoAboutMyAccountService },
+        { provide: GoogleApiService, useValue: mockGoogleApiService }
+      ]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(FirstPartCustomerPanelComponent);
     component = fixture.componentInstance;
+    component.user = user;
     fixture.detectChanges();
   });
 
@@ -33,23 +65,6 @@ describe('FirstPartCustomerPanelComponent', () => {
   });
 
   it('should render span name user', () => {
-    const user = {
-      id: "76b6665d-ae61-4120-ac32-1c9db9a7fefd",
-      name: "Augusto",
-      lastName: "lastName",
-      birthDate: "birthDate",
-      gender: "gender",
-      cpf: "cpf",
-      email: "augustocesarsantana90@gmail.com",
-      landline: "landline",
-      cellPhone: "cellPhone",
-      userImage: null,
-      confirmEmail: 0,
-      token: "asdasd",
-    };
-
-    component = fixture.componentInstance;
-    component.user = user;
     fixture.detectChanges();
 
     const spans = fixture.nativeElement.querySelectorAll('.container-name-user-and-exit > span');

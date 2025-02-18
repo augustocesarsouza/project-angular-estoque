@@ -18,6 +18,11 @@ import { ModalChildrenComponent } from '../modal-children/modal-children.compone
 import { ModalHomeComponent } from '../modal-home/modal-home.component';
 import { ModalBranchComponent } from '../modal-branch/modal-branch.component';
 import { BranchLelisLelisHomeImgBoboComponent } from '../branch-lelis-lelis-home-img-bobo/branch-lelis-lelis-home-img-bobo.component';
+import { GoogleApiService } from '../../../login-and-register-new-account/service/google-api.service';
+import { OAuthService } from 'angular-oauth2-oidc';
+
+class MockGoogleApiService {}
+class MockOAuthService {}
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -32,7 +37,10 @@ describe('HeaderComponent', () => {
         ModalFeminineComponent,ModalMasculineComponent,
         ModalChildrenComponent, ModalHomeComponent, ModalBranchComponent, BranchLelisLelisHomeImgBoboComponent
       ],
-      // providers: [UserService],
+      providers: [
+        { provide: GoogleApiService, useClass: MockGoogleApiService },
+        { provide: OAuthService, useClass: MockOAuthService }
+      ]
     })
     .compileComponents();
 

@@ -10,6 +10,8 @@ import { MyAccountFirstPartComponent } from '../first-part-register-components/m
 import { MyOrdersFirstPartComponent } from '../first-part-register-components/my-orders-first-part/my-orders-first-part.component';
 import { HeaderMainComponent } from '../../../header-and-footer-login-and-register/header-components/header-main/header-main.component';
 import { FooterMainComponent } from '../../../header-and-footer-login-and-register/footer-components/footer-main/footer-main.component';
+import { RegisterPasswordValidatePartComponent } from '../second-part-register-components/register-password-validate-part/register-password-validate-part.component';
+import { ButtonRegisterComponent } from '../second-part-register-components/button-register/button-register.component';
 
 describe('RegisterMainComponent', () => {
   let component: RegisterMainComponent;
@@ -20,7 +22,7 @@ describe('RegisterMainComponent', () => {
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
       declarations: [RegisterMainComponent, HeaderMainComponent, FirstPartRegisterComponent,
         SecondPartRegisterMainComponent, FooterMainComponent, MyAccountFirstPartComponent,
-        MyOrdersFirstPartComponent
+        MyOrdersFirstPartComponent, RegisterPasswordValidatePartComponent, ButtonRegisterComponent
       ]
     })
     .compileComponents();

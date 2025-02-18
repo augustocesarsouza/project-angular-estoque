@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { CepService } from '../../../service/cep.service';
 import { Router } from '@angular/router';
 import { WhereIsComingCustomerPanelAndRegisterUserService } from '../../../service/where-is-coming-customer-panel-and-register-user.service';
 import { UserService } from '../../../../services-backend/user.service';
@@ -13,22 +12,6 @@ interface AllStates {
   state: string;
   sigla: string;
 }
-
-// interface AddressCep {
-//   bairro: string;
-//   cep: string;
-//   complemento: string;
-//   ddd: string;
-//   estado: string;
-//   gia: string;
-//   ibge: string;
-//   localidade: string;
-//   logradouro: string;
-//   regiao: string;
-//   siafi: string;
-//   uf: string;
-//   unidade: string;
-// }
 
 @Component({
   selector: 'app-second-part-register-main',
@@ -150,7 +133,7 @@ export class SecondPartRegisterMainComponent implements OnInit, AfterViewInit, O
   selectedGender = '';
   selectedState = '';
 
-  constructor(private cepService: CepService, private userService: UserService, private router: Router,
+  constructor(private userService: UserService, private router: Router,
     private whereIsComingCustomerPanelAndRegisterUserService: WhereIsComingCustomerPanelAndRegisterUserService,
     private updateUserService: UpdateUserService
   ){}

@@ -4,6 +4,14 @@ import { LoginComponent } from './login.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AllSvgModule } from '../../../all-svg/all-svg.module';
+import { GoogleApiService } from '../../service/google-api.service';
+import { UserService } from '../../../services-backend/user.service';
+import { ObjCodeUserEmailToRegisterAccountService } from '../../service/obj-code-user-email-to-register-account.service';
+import { LoginPartBottomComponent } from '../login-part-bottom/login-part-bottom.component';
+
+class MockUserService {}
+class MockObjCodeUserEmailToRegisterAccountService {}
+class MockGoogleApiService {}
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -12,7 +20,12 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
-      declarations: [LoginComponent]
+      declarations: [LoginComponent, LoginPartBottomComponent],
+      providers: [
+        { provide: UserService, useClass: MockUserService },
+        { provide: ObjCodeUserEmailToRegisterAccountService, useClass: MockObjCodeUserEmailToRegisterAccountService },
+        { provide: GoogleApiService, useClass: MockGoogleApiService }
+      ]
     })
     .compileComponents();
 

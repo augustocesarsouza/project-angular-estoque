@@ -8,11 +8,13 @@
 
   <div class="code-is-wrong" *ngIf="codeIsWrong">
     <app-code-is-wrong-x width="17px" height="17px" fill="red"></app-code-is-wrong-x>
-    <span>Código de verificação inválido. </span>
+    <span>Código de verificação inválido.</span>
   </div>
   <div class="container-your-code-was-send-sms-main">
     <div class="container-your-code-was-send-sms">
-      <span>Seu código de verificação foi enviado por mensagem SMS para</span>
+      <span class="span-your-code-of-verifify"
+        >Seu código de verificação foi enviado por Email para</span
+      >
       <span class="span-phone">{{ valueEmailPhoneCreate }}</span>
       <div class="container-input-code">
         <input

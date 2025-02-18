@@ -19,6 +19,13 @@ import { ModalChildrenComponent } from '../../header-and-footer-main/header-main
 import { ModalHomeComponent } from '../../header-and-footer-main/header-main/modal-home/modal-home.component';
 import { ModalBranchComponent } from '../../header-and-footer-main/header-main/modal-branch/modal-branch.component';
 import { BranchLelisLelisHomeImgBoboComponent } from '../../header-and-footer-main/header-main/branch-lelis-lelis-home-img-bobo/branch-lelis-lelis-home-img-bobo.component';
+import { GoogleApiService } from '../../login-and-register-new-account/service/google-api.service';
+
+class MockGoogleApiService {
+  logout = jasmine.createSpy('logout');
+ // Adiciona um método mock para evitar o erro
+}
+
 
 describe('HomeMainComponent', () => {
   let component: HomeMainComponent;
@@ -31,6 +38,9 @@ describe('HomeMainComponent', () => {
         AccountFavoritesBagComponent, ModalAccountComponent, BagEmptyComponent, SvgArrowTopComponent, AllNavCategoryComponent, ModalNewsComponent, ModalFeminineComponent,ModalMasculineComponent,
         ModalChildrenComponent, ModalHomeComponent, ModalBranchComponent,
          BranchLelisLelisHomeImgBoboComponent
+      ],
+      providers: [
+        { provide: GoogleApiService, useClass: MockGoogleApiService }
       ]
     })
     .compileComponents();

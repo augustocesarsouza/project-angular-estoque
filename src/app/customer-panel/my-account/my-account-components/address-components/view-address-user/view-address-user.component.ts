@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UserAddress } from '../../../../../interface-entity/user-address';
 import { AddressUserService } from '../../../../../services-backend/address-user.service';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { User } from '../../../../../interface-entity/user';
   templateUrl: './view-address-user.component.html',
   styleUrl: './view-address-user.component.scss'
 })
-export class ViewAddressUserComponent {
+export class ViewAddressUserComponent implements OnInit {
   @Input() address!: UserAddress[];
   @Input() clickInEditAddress!: (editAddress: UserAddress) => void;
   @Input() updateArrayAddressDefault!: (addressDefault: UserAddress) => void;
@@ -51,6 +51,12 @@ export class ViewAddressUserComponent {
 
   constructor(private router: Router, private addressUserService: AddressUserService){}
 
+  ngOnInit(): void {
+    this.onClickEditAddress = this.onClickEditAddress.bind(this);
+    this.onClickDeleteAddress = this.onClickDeleteAddress.bind(this);
+    this.onClickSetAsDefault = this.onClickSetAsDefault.bind(this);
+  }
+
   onClickEditAddress(el: UserAddress){
     this.clickInEditAddress(el);
   }
@@ -61,6 +67,8 @@ export class ViewAddressUserComponent {
   }
 
   onClickSetAsDefault(el: UserAddress){
+    console.log(el);
+
     const addressUpdateDefault = {
       id: el.id,
       defaultAddress: 1

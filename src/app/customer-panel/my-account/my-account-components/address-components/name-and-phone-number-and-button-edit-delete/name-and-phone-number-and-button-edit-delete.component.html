@@ -1,0 +1,17 @@
+<div class="container-name-and-phone-number-and-button-edit-delete">
+  <div class="container-name-and-phone-number">
+    <span>{{ el.fullName }}</span>
+    <div></div>
+    <span>{{ el.phoneNumber }}</span>
+  </div>
+
+  <div class="container-button">
+    <button (click)="onClickEditAddress(el)">Editar</button>
+    <button
+      *ngIf="el.defaultAddress === 0 || address.length <= 1"
+      (click)="onClickDeleteAddress(el)"
+    >
+      Excluir
+    </button>
+  </div>
+</div>

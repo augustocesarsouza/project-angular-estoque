@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserLocalStorage } from '../../function-user/get-user-local-storage/user-local-storage';
 import { VerifyTokenIsExpired } from '../../function-user/function-token-user/verify-token-is-expired';
@@ -10,6 +10,7 @@ import { GoogleApiService } from '../../login-and-register-new-account/service/g
   styleUrl: './home-main.component.scss'
 })
 export class HomeMainComponent implements OnInit {
+
   constructor(private router: Router, private googleApiService: GoogleApiService){}
 
   ngOnInit(): void {

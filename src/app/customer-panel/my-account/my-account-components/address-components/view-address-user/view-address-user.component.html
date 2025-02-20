@@ -8,48 +8,17 @@
       'container-address-user-details-red': i < address.length - 1,
     }"
   >
-    <div class="container-name-and-phone-number-and-button-edit-delete">
-      <div class="container-name-and-phone-number">
-        <span>{{ el.fullName }}</span>
-        <div></div>
-        <span>{{ el.phoneNumber }}</span>
-      </div>
+    <app-name-and-phone-number-and-button-edit-delete
+      [el]="el"
+      [address]="address"
+      [onClickEditAddress]="onClickEditAddress"
+      [onClickDeleteAddress]="onClickDeleteAddress"
+    ></app-name-and-phone-number-and-button-edit-delete>
 
-      <div class="container-button">
-        <button (click)="onClickEditAddress(el)">Editar</button>
-        <button
-          *ngIf="el.defaultAddress === 0 || address.length <= 1"
-          (click)="onClickDeleteAddress(el)"
-        >
-          Excluir
-        </button>
-      </div>
-    </div>
-    <div class="container-street-number-complement-neighborhood-and-set-as-default">
-      <div class="container-street-number-complement-neighborhood">
-        <span *ngIf="el.complement"
-          >{{ el.street }}, {{ el.numberHome }}, {{ el.complement }}, {{ el.neighborhood }}</span
-        >
-        <span *ngIf="!el.complement">
-          {{ el.street }}, {{ el.numberHome }}, {{ el.neighborhood }}
-        </span>
-        <span>
-          {{ el.stateCity.split('-')[1].trim() }}, {{ el.stateCity.split('-')[0].trim() }},
-          {{ el.cep.replace('-', '') }}
-        </span>
-      </div>
-      <div class="container-set-as-default-button">
-        <button
-          (click)="el.defaultAddress === 0 && onClickSetAsDefault(el)"
-          [ngClass]="{
-            'button-set-as-default': el.defaultAddress === 0,
-            'button-not-set-as-default': el.defaultAddress === 1,
-          }"
-        >
-          Definir como padrão
-        </button>
-      </div>
-    </div>
+    <app-street-number-complement-neighborhood-and-set-as-default
+      [el]="el"
+      [onClickSetAsDefault]="onClickSetAsDefault"
+    ></app-street-number-complement-neighborhood-and-set-as-default>
 
     <div *ngIf="el.defaultAddress === 1" class="container-button-standard">
       <button>Padrão</button>

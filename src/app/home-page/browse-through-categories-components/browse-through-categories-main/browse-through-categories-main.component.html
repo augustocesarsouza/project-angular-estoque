@@ -1,0 +1,24 @@
+<div class="container-browse-through-categories-main">
+  <div class="container-browse-through-categories">
+    <h1>Navegue pelas Categorias</h1>
+
+    <div class="container-arrow-left" #containerArrowLeft>
+      <span></span>
+    </div>
+
+    <div class="container-imgs-categories" #containerCarouselCustom>
+      <img
+        *ngFor="let item of allImgsCategories; let i = index"
+        src="{{ item }}"
+        alt="img-categories"
+        [ngClass]="{
+          'img-categories-last-one': allImgsCategories.length === i + 1,
+        }"
+      />
+    </div>
+
+    <div class="container-arrow-right" #containerArrowRight>
+      <span></span>
+    </div>
+  </div>
+</div>

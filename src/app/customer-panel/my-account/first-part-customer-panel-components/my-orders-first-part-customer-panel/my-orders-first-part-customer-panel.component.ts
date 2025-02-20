@@ -1,13 +1,14 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild, OnDestroy } from '@angular/core';
 import { UpdateLastContainerInfoAboutMyAccountService } from '../../service/update-last-container-info-about-my-account.service';
 import { Router } from '@angular/router';
+import { WhichUrlWasClickedCustomerPanelService } from '../../service/which-url-was-clicked-customer-panel.service';
 
 @Component({
   selector: 'app-my-orders-first-part-customer-panel',
   templateUrl: './my-orders-first-part-customer-panel.component.html',
   styleUrl: './my-orders-first-part-customer-panel.component.scss'
 })
-export class MyOrdersFirstPartCustomerPanelComponent implements AfterViewInit {
+export class MyOrdersFirstPartCustomerPanelComponent implements AfterViewInit, OnDestroy {
   @Input() updateWhichContainerWasClicked!: (clicked: string) => void;
   @Input() whichContainerWasClicked!: string;
 
@@ -21,10 +22,23 @@ export class MyOrdersFirstPartCustomerPanelComponent implements AfterViewInit {
   containerValePurchase!: HTMLDivElement;
   spanValePurchase!: HTMLSpanElement;
 
-  constructor(private router:Router, private updateLastContainerInfoAboutMyAccountService: UpdateLastContainerInfoAboutMyAccountService){}
+  setTimeoutId!: number;
+
+  constructor(private router:Router, private updateLastContainerInfoAboutMyAccountService: UpdateLastContainerInfoAboutMyAccountService,
+    private whichUrlWasClickedCustomerPanelService: WhichUrlWasClickedCustomerPanelService){}
 
   ngAfterViewInit(): void {
     if(typeof document === "undefined" || document === null) return;
+
+    this.whichUrlWasClickedCustomerPanelService.WhichUrl$.subscribe((url: string) => {
+      clearTimeout(this.setTimeoutId);
+
+      if(url === "/painel-do-cliente/pedidos"){
+        this.setTimeoutId = setTimeout(() => {
+          this.onClickMyOrders();
+        }, 50)as unknown as number;
+      }
+    });
 
     const containerMyAccount = document.querySelector(".container-my-account") as HTMLDivElement;
     this.containerMyAccount = containerMyAccount;
@@ -110,5 +124,9 @@ export class MyOrdersFirstPartCustomerPanelComponent implements AfterViewInit {
       const targer = span as HTMLSpanElement;
       targer.style.borderBottom = "none";
     }
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.setTimeoutId);
   }
 }

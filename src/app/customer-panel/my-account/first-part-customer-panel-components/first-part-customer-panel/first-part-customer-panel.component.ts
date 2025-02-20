@@ -27,8 +27,7 @@ export class FirstPartCustomerPanelComponent implements OnInit, AfterViewInit {
 
   constructor(private router: Router,
     private updateLastContainerInfoAboutMyAccountService: UpdateLastContainerInfoAboutMyAccountService,
-    private googleApiService: GoogleApiService, private updateUserService: UpdateUserService
-  ){
+    private googleApiService: GoogleApiService, private updateUserService: UpdateUserService){
   }
 
   ngOnInit(): void {

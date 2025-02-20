@@ -22,7 +22,12 @@
       <i class=""></i>
       <span>Minha conta</span>
     </div>
-    <div class="container-my-orders">
+    <div
+      class="container-my-orders"
+      (click)="onClickMyOrders()"
+      (keydown.enter)="onClickMyOrders()"
+      tabindex="0"
+    >
       <i class=""></i>
       <span>Minha pedidos</span>
     </div>

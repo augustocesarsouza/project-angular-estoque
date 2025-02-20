@@ -10,7 +10,6 @@ import { GoogleApiService } from '../../login-and-register-new-account/service/g
   styleUrl: './home-main.component.scss'
 })
 export class HomeMainComponent implements OnInit {
-
   constructor(private router: Router, private googleApiService: GoogleApiService){}
 
   ngOnInit(): void {
@@ -32,8 +31,6 @@ export class HomeMainComponent implements OnInit {
         }
       }
     }
-
-    // CONTINUAR painel-do-cliente
 
     if(userResult.isNullUserLocalStorage){
       this.googleApiService.logout();

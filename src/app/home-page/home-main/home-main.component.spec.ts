@@ -20,6 +20,7 @@ import { ModalHomeComponent } from '../../header-and-footer-main/header-main/mod
 import { ModalBranchComponent } from '../../header-and-footer-main/header-main/modal-branch/modal-branch.component';
 import { BranchLelisLelisHomeImgBoboComponent } from '../../header-and-footer-main/header-main/branch-lelis-lelis-home-img-bobo/branch-lelis-lelis-home-img-bobo.component';
 import { GoogleApiService } from '../../login-and-register-new-account/service/google-api.service';
+import { ImgHighlightMainComponent } from '../imgs-highlight-components/img-highlight-main/img-highlight-main.component';
 
 class MockGoogleApiService {
   logout = jasmine.createSpy('logout');
@@ -34,7 +35,7 @@ describe('HomeMainComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
-      declarations: [HomeMainComponent, HeaderComponent, HeaderFirstComponent, HeaderSecondComponent,
+      declarations: [HomeMainComponent, ImgHighlightMainComponent, HeaderComponent, HeaderFirstComponent, HeaderSecondComponent,
         AccountFavoritesBagComponent, ModalAccountComponent, BagEmptyComponent, SvgArrowTopComponent, AllNavCategoryComponent, ModalNewsComponent, ModalFeminineComponent,ModalMasculineComponent,
         ModalChildrenComponent, ModalHomeComponent, ModalBranchComponent,
          BranchLelisLelisHomeImgBoboComponent

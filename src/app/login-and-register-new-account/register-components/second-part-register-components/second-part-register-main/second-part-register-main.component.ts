@@ -2,11 +2,11 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, OnDestroy } fr
 import { Router } from '@angular/router';
 import { WhereIsComingCustomerPanelAndRegisterUserService } from '../../../service/where-is-coming-customer-panel-and-register-user.service';
 import { UserService } from '../../../../services-backend/user.service';
-import { UpdateUserService } from '../../../../customer-panel/service/update-user.service';
 import { EncryptedUser } from '../../../../function-user/get-user-local-storage/encrypted-user';
 import Inputmask from 'inputmask';
 import { UserLogged } from '../../../service/google-api.service';
 import { EncryptedUserLoggedWithGoogle } from '../../../../function-user/get-user-local-storage/encrypted-user-logged-with-google';
+import { UpdateUserService } from '../../../../customer-panel/my-account/service/update-user.service';
 
 interface AllStates {
   state: string;

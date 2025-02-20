@@ -1,0 +1,73 @@
+:host {
+  width: 100%;
+  background: #fff;
+  padding: 20px 30px;
+  height: 550px;
+}
+
+.container-balance-on-gift-cards {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+
+  >h1 {
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+}
+
+.container-span-balance-and-button-use-balance {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.span-value-balance {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(45, 167, 113);
+}
+
+.button-use-balance {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(0, 0, 0);
+  font-weight: 600;
+  padding: 0px 10px;
+  height: 100%;
+}
+
+.container-my-vale-orders {
+  display: flex;
+  flex-direction: column;
+
+  >h1 {
+    font-size: 14px;
+  }
+}
+
+.table-my-vale-orders{
+  padding: 7px 0px;
+  background: black;
+
+  padding-left: 10px;
+}
+
+.table-row-first {
+
+
+  >th {
+    font-size: 14px;
+    color: #fff;
+  }
+
+  >th:nth-of-type(1) {
+    text-align: left;
+  }
+
+  >th:nth-of-type(1)::after {
+    content: "Código";
+
+    text-transform: none;
+  }
+}

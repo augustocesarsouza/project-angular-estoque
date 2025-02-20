@@ -1,0 +1,25 @@
+:host {
+  width: 100%;
+  background: #fff;
+  padding: 20px 30px;
+  height: 550px;
+
+  border: 1px solid #00000029;
+}
+
+.container-enchange-and-return-main{
+  display: flex;
+  flex-direction: column;
+
+  line-height: 1;
+
+  >h1 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+
+  >span {
+    font-size: 12px;
+  }
+}

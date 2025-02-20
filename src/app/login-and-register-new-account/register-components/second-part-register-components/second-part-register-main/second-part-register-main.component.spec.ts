@@ -6,10 +6,10 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AllSvgModule } from '../../../../all-svg/all-svg.module';
 import { UserService } from '../../../../services-backend/user.service';
 import { WhereIsComingCustomerPanelAndRegisterUserService } from '../../../service/where-is-coming-customer-panel-and-register-user.service';
-import { UpdateUserService } from '../../../../customer-panel/service/update-user.service';
 import { RegisterPasswordValidatePartComponent } from '../register-password-validate-part/register-password-validate-part.component';
 import { ButtonRegisterComponent } from '../button-register/button-register.component';
 import { By } from '@angular/platform-browser';
+import { UpdateUserService } from '../../../../customer-panel/my-account/service/update-user.service';
 
 class MockUserService {}
 class MockWhereIsComingCustomerPanelAndRegisterUserService {}

@@ -1,4 +1,10 @@
 import { Component, ElementRef, NgZone, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+interface Category {
+  name: string;
+  type: string;
+}
 
 @Component({
   selector: 'app-browse-through-categories-main',
@@ -10,14 +16,19 @@ export class BrowseThroughCategoriesMainComponent implements OnInit, AfterViewIn
   @ViewChild('containerArrowLeft') containerArrowLeft!: ElementRef<HTMLDivElement>;
   @ViewChild('containerArrowRight') containerArrowRight!: ElementRef<HTMLDivElement>;
 
-  allImgsCategories: string[] = [];
+  allImgsCategories: Category[] = [];
 
-  constructor(private ngZone: NgZone){}
+  constructor(private router: Router, private ngZone: NgZone){}
 
   ngOnInit(): void {
-    const imgs = ["https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/42/42_banner638730496910630227.webp", "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/43/43_banner638730497014289733.webp", "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/45/45_banner638730497187171879.webp", "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/46/46_banner638730497274514403.webp", "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/44/44_banner638730497103213645.webp", "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/42/42_banner638730496910630227.webp", "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/43/43_banner638730497014289733.webp", "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/45/45_banner638730497187171879.webp", "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/46/46_banner638730497274514403.webp", "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/44/44_banner638730497103213645.webp"];
+    const objCategory1 = {name: "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/42/42_banner638730496910630227.webp", type: "blusas"};
+    const objCategory2 = {name: "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/43/43_banner638730497014289733.webp", type: "acessorios"};
+    const objCategory3 = {name: "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/45/45_banner638757262555236067.webp", type: "vestidos"};
+    const objCategory4 = {name: "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/46/46_banner638730497274514403.webp", type: "casacos"};
+    const objCategory5 = {name: "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/44/44_banner638730497103213645.webp", type: "calcas"};
 
-    this.allImgsCategories = imgs;
+    this.allImgsCategories.push(objCategory1, objCategory2, objCategory3, objCategory4, objCategory5);
+    console.log(this.allImgsCategories);
   }
 
   ngAfterViewInit(): void {
@@ -25,8 +36,6 @@ export class BrowseThroughCategoriesMainComponent implements OnInit, AfterViewIn
   }
 
   private scrollCarousel(amount: number): void {
-    console.log(amount);
-
     this.containerCarouselCustom.nativeElement?.scrollBy({ left: amount, behavior: 'smooth' });
     this.updateArrowsVisibility();
   }
@@ -47,5 +56,12 @@ export class BrowseThroughCategoriesMainComponent implements OnInit, AfterViewIn
     window.addEventListener('resize', () => this.updateArrowsVisibility());
 
     this.updateArrowsVisibility();
+  }
+
+  onClickImg(item: Category){
+    if(item.type === "blusas"){
+      // feminino/roupas/blusa
+      this.router.navigate(['feminino/roupas/blusa']);
+    }
   }
 }

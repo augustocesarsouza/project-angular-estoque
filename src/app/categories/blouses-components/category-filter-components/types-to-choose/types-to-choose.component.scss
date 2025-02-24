@@ -1,0 +1,29 @@
+:host {
+  z-index: 35;
+}
+
+.container-types-to-choose {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 1;
+  width: 215px;
+  height: 45px;
+  background: #fff;
+  padding: 0px 15px;
+  border: 1.5px solid #ffffff;
+  cursor: pointer;
+
+  >span {
+    font-size: 15px;
+    font-weight: 500;
+    color: #707070;
+  }
+
+  >svg {
+    display: flex;
+    width: 13px;
+    height: 13px;
+    fill: #707070;
+  }
+}

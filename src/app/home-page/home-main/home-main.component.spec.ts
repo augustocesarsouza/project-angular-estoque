@@ -28,7 +28,6 @@ class MockGoogleApiService {
  // Adiciona um método mock para evitar o erro
 }
 
-
 describe('HomeMainComponent', () => {
   let component: HomeMainComponent;
   let fixture: ComponentFixture<HomeMainComponent>;

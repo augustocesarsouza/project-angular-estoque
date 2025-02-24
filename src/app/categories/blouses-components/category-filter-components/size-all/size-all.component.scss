@@ -1,0 +1,37 @@
+.container-size{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 1;
+  padding: 9px 13px;
+  background: #f2f2f2;
+  cursor: pointer;
+  margin-bottom: 9px;
+
+  &:hover {
+    .container-size-span-text a {
+      text-decoration: underline;
+    }
+  }
+}
+
+.container-size-span-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  >div {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.527);
+  }
+
+  >a {
+    line-height: 1;
+    font-weight: 400;
+    color: #000;
+    margin-top: 3px;
+    text-decoration: none;
+  }
+}

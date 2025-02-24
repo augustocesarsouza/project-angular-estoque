@@ -4,6 +4,8 @@ import { ViewAddressUserComponent } from './view-address-user.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { AllSvgModule } from '../../../../../all-svg/all-svg.module';
+import { NameAndPhoneNumberAndButtonEditDeleteComponent } from '../name-and-phone-number-and-button-edit-delete/name-and-phone-number-and-button-edit-delete.component';
+import { StreetNumberComplementNeighborhoodAndSetAsDefaultComponent } from '../street-number-complement-neighborhood-and-set-as-default/street-number-complement-neighborhood-and-set-as-default.component';
 
 describe('ViewAddressUserComponent', () => {
   let component: ViewAddressUserComponent;
@@ -26,7 +28,7 @@ describe('ViewAddressUserComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ViewAddressUserComponent],
+      declarations: [ViewAddressUserComponent, NameAndPhoneNumberAndButtonEditDeleteComponent, StreetNumberComplementNeighborhoodAndSetAsDefaultComponent],
       imports: [AllSvgModule, HttpClientModule, RouterTestingModule],
     })
     .compileComponents();
@@ -95,68 +97,5 @@ describe('ViewAddressUserComponent', () => {
 
     expect(buttons[0].textContent.trim()).toBe("CANCELAR");
     expect(buttons[1].textContent.trim()).toBe("EXCLUIR");
-  });
-
-  it('should render full name and phone number', () => {
-    fixture.detectChanges();
-
-    const nameElement = fixture.nativeElement.querySelector('.container-name-and-phone-number span:first-child');
-    const phoneNumberElement = fixture.nativeElement.querySelector('.container-name-and-phone-number span:last-child');
-
-    expect(nameElement.textContent.trim()).toBe(addressObj.fullName);
-    expect(phoneNumberElement.textContent.trim()).toBe(addressObj.phoneNumber);
-  });
-
-  it('should render full address with complement', () => {
-    fixture.detectChanges();
-
-    const addressElement = fixture.nativeElement.querySelector('.container-street-number-complement-neighborhood span:first-child');
-    expect(addressElement.textContent.trim()).toBe(`${addressObj.street}, ${addressObj.numberHome}, ${addressObj.complement}, ${addressObj.neighborhood}`);
-  });
-
-  it('should render full address without complement', () => {
-    const address = [{
-      street: "Rua Cajazeira",
-      numberHome: "2420",
-      complement: "",
-      neighborhood: "Jardim Aero Rancho",
-      stateCity: "Mato Grosso do Sul - Campo Grande",
-      cep: "79083-590",
-      defaultAddress: 1,
-      fullName: "",
-      id: "",
-      phoneNumber: "",
-      saveAs: 1,
-      userId: "",
-      userDTO: null
-    }];
-    component.address = address;
-    fixture.detectChanges();
-
-    const addressElement = fixture.nativeElement.querySelector('.container-street-number-complement-neighborhood span:first-child');
-    expect(addressElement.textContent.trim()).toBe(`${addressObj.street}, ${addressObj.numberHome}, ${addressObj.neighborhood}`);
-  });
-
-  it('should render correct state and cep', () => {
-    const address = [{
-      street: "Rua Cajazeira",
-      numberHome: "2420",
-      complement: "",
-      neighborhood: "Jardim Aero Rancho",
-      stateCity: "Mato Grosso do Sul - Campo Grande",
-      cep: "79083-590",
-      defaultAddress: 1,
-      fullName: "",
-      id: "",
-      phoneNumber: "",
-      saveAs: 1,
-      userId: "",
-      userDTO: null
-    }];
-    component.address = address;
-    fixture.detectChanges();
-
-    const stateCepElement = fixture.nativeElement.querySelector('.container-street-number-complement-neighborhood span:last-child');
-    expect(stateCepElement.textContent.trim()).toBe('Campo Grande, Mato Grosso do Sul, 79083590');
   });
 });

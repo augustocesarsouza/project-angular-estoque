@@ -17,6 +17,8 @@ import { UserAddressComponent } from './my-account/my-account-components/address
 import { OrdersComponent } from './my-orders/orders/orders.component';
 import { ExchangeAndReturnComponent } from './my-orders/exchange-and-return/exchange-and-return.component';
 import { ValeComponent } from './vale-purchases/vale/vale.component';
+import { StreetNumberComplementNeighborhoodAndSetAsDefaultComponent } from './my-account/my-account-components/address-components/street-number-complement-neighborhood-and-set-as-default/street-number-complement-neighborhood-and-set-as-default.component';
+import { NameAndPhoneNumberAndButtonEditDeleteComponent } from './my-account/my-account-components/address-components/name-and-phone-number-and-button-edit-delete/name-and-phone-number-and-button-edit-delete.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ValeComponent } from './vale-purchases/vale/vale.component';
     ModalNewAddressComponent,
     OrdersComponent,
     ExchangeAndReturnComponent,
-    ValeComponent
+    ValeComponent,
+    StreetNumberComplementNeighborhoodAndSetAsDefaultComponent,
+    NameAndPhoneNumberAndButtonEditDeleteComponent
   ],
   imports: [
     CommonModule,

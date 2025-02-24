@@ -1,0 +1,34 @@
+.container-brand{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 1;
+  padding: 9px 13px;
+  background: #f2f2f2;
+  cursor: pointer;
+  margin-bottom: 9px;
+
+  &:hover {
+    >div {
+      >span {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.548);
+      }
+    }
+  }
+
+  >span {
+    color: #777;
+    font-weight: 400;
+  }
+}
+
+.container-brand-span-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  >a {
+    font-weight: 400;
+    color: #000;
+  }
+}

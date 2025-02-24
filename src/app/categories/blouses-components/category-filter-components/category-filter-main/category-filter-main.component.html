@@ -1,0 +1,68 @@
+<app-types-to-choose
+  [onClickColorPriceRangeBrandSize]="onClickColorPriceRangeBrandSize"
+  typeClicked="color"
+  typeSpan="Cor"
+  #appTypesToColor
+></app-types-to-choose>
+
+<div class="container-floating-color" #containerFloatingColor>
+  <span>Limpar Filtros</span>
+  <app-colors-all
+    *ngFor="let item of colorsAll"
+    color="{{ item.color }}"
+    spanText="{{ item.spanText }}"
+    quantity="{{ item.quantity }}"
+    indexApp="{{ item.indexApp }}"
+  ></app-colors-all>
+</div>
+
+<app-types-to-choose
+  [onClickColorPriceRangeBrandSize]="onClickColorPriceRangeBrandSize"
+  typeClicked="price-range"
+  typeSpan="Faixa de Preço"
+  #appTypesToPriceRange
+></app-types-to-choose>
+
+<div class="container-floating-price-range" #containerFloatingPriceRange>
+  <span>Limpar Filtros</span>
+  <app-price-all
+    *ngFor="let price of priceAll"
+    spanText="{{ price.spanText }}"
+    quantity="{{ price.quantity }}"
+    indexApp="{{ price.indexApp }}"
+  ></app-price-all>
+</div>
+
+<app-types-to-choose
+  [onClickColorPriceRangeBrandSize]="onClickColorPriceRangeBrandSize"
+  typeClicked="brand"
+  typeSpan="Marca"
+  #appTypesToBrand
+></app-types-to-choose>
+
+<div class="container-floating-brand" #containerFloatingBrand>
+  <span>Limpar Filtros</span>
+  <app-brand-all
+    spanText="{{ brand.spanText }}"
+    quantity="{{ brand.quantity }}"
+    indexApp="{{ brand.indexApp }}"
+    *ngFor="let brand of brandAll"
+  ></app-brand-all>
+</div>
+
+<app-types-to-choose
+  [onClickColorPriceRangeBrandSize]="onClickColorPriceRangeBrandSize"
+  typeClicked="size"
+  typeSpan="Tamanho"
+  #appTypesToSize
+></app-types-to-choose>
+
+<div class="container-floating-size" #containerFloatingSize>
+  <span>Limpar Filtros</span>
+  <app-size-all
+    spanText="{{ size.spanText }}"
+    quantity="{{ size.quantity }}"
+    indexApp="{{ size.indexApp }}"
+    *ngFor="let size of sizeAll"
+  ></app-size-all>
+</div>

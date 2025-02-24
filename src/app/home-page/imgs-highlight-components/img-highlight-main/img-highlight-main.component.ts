@@ -1,4 +1,9 @@
 import { Component, NgZone, AfterViewInit, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { ImgHighlightService } from '../../../services-backend/img-highlight.service';
+import { User } from '../../../interface-entity/user';
+import { UserLocalStorage } from '../../../function-user/get-user-local-storage/user-local-storage';
+import { Router } from '@angular/router';
+import { ImgHighlight } from '../../../interface-entity/img-highlight';
 
 @Component({
   selector: 'app-img-highlight-main',
@@ -13,15 +18,46 @@ export class ImgHighlightMainComponent implements OnInit, AfterViewInit {
   intervalId!: number;
   setTimeoutId!: number;
 
-  imgsHighlight: string[] = [];
+  imgsHighlight: ImgHighlight[] = [];
+  user!: User;
 
-  constructor(private ngZone: NgZone){}
+  constructor(private imgHighlightService: ImgHighlightService, private router: Router, private ngZone: NgZone){}
 
   whichImgNow = 0;
 
   ngOnInit(): void {
-    const array = ["https://res.cloudinary.com/dyqsqg7pk/image/upload/v1740056375/imgs-backend-estoque/img-home-page/859_banner638754756089097391_g3zqvy.webp", "https://res.cloudinary.com/dyqsqg7pk/image/upload/v1740056380/imgs-backend-estoque/img-home-page/1651_banner638749719514083764_ujkvcx.webp"];
-    this.imgsHighlight = array;
+    const userResult = UserLocalStorage();
+
+    if(!userResult.isNullUserLocalStorage){
+      const user = userResult.user;
+      if(user){
+        this.user = user;
+
+        this.imgHighlightService.GetAllImgHighlights(user).subscribe({
+          next: (success) => {
+            const listImgHighlight = success.data;
+
+            this.imgsHighlight = listImgHighlight;
+          },
+          error: error => {
+            if(error.status === 400){
+              console.log(error);
+            }
+
+            if(error.status === 403){
+              localStorage.removeItem('user');
+              this.router.navigate(['/buyer/login']);
+            }
+          }
+        });
+      }
+    }
+
+    if(userResult.isNullUserLocalStorage){
+      localStorage.removeItem('user');
+      this.router.navigate(['/user/login']);
+      return;
+    };
   }
 
   ngAfterViewInit(): void {
@@ -54,12 +90,15 @@ export class ImgHighlightMainComponent implements OnInit, AfterViewInit {
   }
 
   private updateArrowsVisibility(): void {
-    if (!this.containerCarouselCustom.nativeElement) return;
+    if(this.containerCarouselCustom && this.containerCarouselCustom.nativeElement){
+      let maxScrollLeft = this.containerCarouselCustom.nativeElement.scrollWidth - this.containerCarouselCustom.nativeElement.clientWidth;
+      if(maxScrollLeft === 0){
+        maxScrollLeft = 1;
+      }
 
-    const maxScrollLeft = this.containerCarouselCustom.nativeElement.scrollWidth - this.containerCarouselCustom.nativeElement.clientWidth;
-
-    this.containerArrowLeft.nativeElement!.style.display = this.containerCarouselCustom.nativeElement.scrollLeft > 0 ? 'flex' : 'none';
+      this.containerArrowLeft.nativeElement!.style.display = this.containerCarouselCustom.nativeElement.scrollLeft > 0 ? 'flex' : 'none';
     this.containerArrowRight.nativeElement!.style.display = this.containerCarouselCustom.nativeElement.scrollLeft >= maxScrollLeft ? 'none' : 'flex';
+    }
   }
 
   private initCarousel(): void {
@@ -73,5 +112,10 @@ export class ImgHighlightMainComponent implements OnInit, AfterViewInit {
     window.addEventListener('resize', () => this.updateArrowsVisibility());
 
     this.updateArrowsVisibility();
+  }
+
+  onClickArrowRightAndLeft(){
+    clearInterval(this.intervalId); // Corrigido para clearInterval
+    this.startToggleScroll(); // Reinicia o setInterval
   }
 }

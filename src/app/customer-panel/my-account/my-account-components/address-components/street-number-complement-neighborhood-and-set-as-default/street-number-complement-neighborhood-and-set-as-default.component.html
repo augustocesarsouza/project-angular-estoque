@@ -1,0 +1,25 @@
+<div class="container-street-number-complement-neighborhood-and-set-as-default">
+  <div class="container-street-number-complement-neighborhood">
+    <span *ngIf="el.complement"
+      >{{ el.street }}, {{ el.numberHome }}, {{ el.complement }}, {{ el.neighborhood }}</span
+    >
+    <span *ngIf="!el.complement">
+      {{ el.street }}, {{ el.numberHome }}, {{ el.neighborhood }}
+    </span>
+    <span>
+      {{ el.stateCity.split('-')[1].trim() }}, {{ el.stateCity.split('-')[0].trim() }},
+      {{ el.cep.replace('-', '') }}
+    </span>
+  </div>
+  <div class="container-set-as-default-button">
+    <button
+      (click)="el.defaultAddress === 0 && onClickSetAsDefault(el)"
+      [ngClass]="{
+        'button-set-as-default': el.defaultAddress === 0,
+        'button-not-set-as-default': el.defaultAddress === 1,
+      }"
+    >
+      Definir como padrão
+    </button>
+  </div>
+</div>

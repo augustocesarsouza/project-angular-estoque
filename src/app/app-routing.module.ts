@@ -14,6 +14,9 @@ const routes: Routes = [
   {path: 'painel-do-cliente',
     loadChildren: () => import('./customer-panel/customer-panel.module').then(m => m.CustomerPanelModule)
   },
+  {path: 'feminino',
+    loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule)
+  },
 ];
 
 @NgModule({

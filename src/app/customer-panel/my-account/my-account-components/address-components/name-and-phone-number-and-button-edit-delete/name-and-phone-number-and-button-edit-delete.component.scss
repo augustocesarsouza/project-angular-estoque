@@ -1,0 +1,42 @@
+.container-name-and-phone-number-and-button-edit-delete{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+
+.container-name-and-phone-number{
+  display: flex;
+  align-items: center;
+  line-height: 1;
+
+  span:nth-child(1) {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  >div {
+    border-left: 1px solid rgba(0, 0, 0, .26);
+    margin: 0 8px;
+    height: 25px;
+  }
+
+  span:nth-child(3) {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.54);
+  }
+}
+
+.container-button{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  >button {
+    font-size: 15px;
+    font-weight: 400;
+    border: none;
+    color: #08f;
+    cursor: pointer;
+  }
+}

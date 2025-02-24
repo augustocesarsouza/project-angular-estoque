@@ -1,0 +1,49 @@
+:host{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  z-index: 100;
+}
+
+.container-floating-color,
+.container-floating-price-range,
+.container-floating-brand,
+.container-floating-size {
+  display: none;
+  width: 258px;
+  padding: 20px;
+  position: absolute;
+  top: 44px;
+  border-left: 1.5px solid rgb(221, 221, 221);
+  border-right: 1.5px solid rgb(221, 221, 221);
+  border-bottom: 1.5px solid rgb(221, 221, 221);
+  background: #fff;
+  border-top: 1.5px solid #ddd;
+  font-size: 14px;
+  flex-direction: column;
+
+  >span {
+    line-height: 1;
+  }
+}
+
+.container-floating-color {
+  left: 0px;
+  z-index: 40;
+}
+
+.container-floating-price-range {
+  left: 235px;
+  z-index: 40;
+}
+
+.container-floating-brand {
+  left: 470px;
+  z-index: 40;
+}
+
+.container-floating-size {
+  left: 705px;
+  z-index: 40;
+}

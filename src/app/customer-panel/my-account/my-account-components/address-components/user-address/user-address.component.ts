@@ -39,8 +39,6 @@ export class UserAddressComponent implements OnInit {
         this.addressUserService.GetAddressByUserId(user).subscribe({
           next: (success) => {
             const data = success.data;
-            console.log(data);
-
             this.addressArray = data;
           },
           error: error => {

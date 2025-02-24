@@ -36,8 +36,6 @@ export class ImgHighlightMainComponent implements OnInit, AfterViewInit {
         this.imgHighlightService.GetAllImgHighlights(user).subscribe({
           next: (success) => {
             const listImgHighlight = success.data;
-            console.log(success.data);
-
 
             this.imgsHighlight = listImgHighlight;
           },

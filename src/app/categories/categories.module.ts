@@ -12,6 +12,9 @@ import { PriceAllComponent } from './blouses-components/category-filter-componen
 import { BrandAllComponent } from './blouses-components/category-filter-components/brand-all/brand-all.component';
 import { SizeAllComponent } from './blouses-components/category-filter-components/size-all/size-all.component';
 import { CategoryFilterMainComponent } from './blouses-components/category-filter-components/category-filter-main/category-filter-main.component';
+import { SvgArrowBlousesComponent } from './blouses-components/svg-arrow-blouses/svg-arrow-blouses.component';
+import { BlouseFirstComponent } from './blouses-components/blouse-infos-components/blouse-first/blouse-first.component';
+import { BlouseInfoMainComponent } from './blouses-components/blouse-infos-components/blouse-info-main/blouse-info-main.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { CategoryFilterMainComponent } from './blouses-components/category-filte
     PriceAllComponent,
     BrandAllComponent,
     SizeAllComponent,
-    CategoryFilterMainComponent
+    CategoryFilterMainComponent,
+    SvgArrowBlousesComponent,
+    BlouseFirstComponent,
+    BlouseInfoMainComponent
   ],
   imports: [
     CommonModule,

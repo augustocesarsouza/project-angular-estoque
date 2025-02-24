@@ -1,8 +1,8 @@
 export interface Item {
   id: string;
   name: string;
-  price_product: number;
-  discount_percentage: number;
+  priceProduct: number;
+  discountPercentage: number;
   size: string;
   brand: string;
   category: string;

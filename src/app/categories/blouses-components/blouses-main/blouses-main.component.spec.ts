@@ -13,6 +13,9 @@ import { ColorsAllComponent } from '../category-filter-components/colors-all/col
 import { PriceAllComponent } from '../category-filter-components/price-all/price-all.component';
 import { BrandAllComponent } from '../category-filter-components/brand-all/brand-all.component';
 import { SizeAllComponent } from '../category-filter-components/size-all/size-all.component';
+import { BlouseInfoMainComponent } from '../blouse-infos-components/blouse-info-main/blouse-info-main.component';
+import { BlouseFirstComponent } from '../blouse-infos-components/blouse-first/blouse-first.component';
+import { SvgArrowBlousesComponent } from '../svg-arrow-blouses/svg-arrow-blouses.component';
 
 class MockGoogleApiService {
   logout = jasmine.createSpy('logout');
@@ -27,7 +30,7 @@ describe('BlousesMainComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule, HeaderAndFooterMainModule],
       declarations: [BlousesMainComponent, BrowsingRoteComponent, CategoryFilterMainComponent,
-        TypesToChooseComponent, ColorsAllComponent, PriceAllComponent, BrandAllComponent, SizeAllComponent
+        TypesToChooseComponent, ColorsAllComponent, PriceAllComponent, BrandAllComponent, SizeAllComponent, BlouseInfoMainComponent, BlouseFirstComponent, SvgArrowBlousesComponent
       ],
       providers: [
         { provide: GoogleApiService, useClass: MockGoogleApiService }

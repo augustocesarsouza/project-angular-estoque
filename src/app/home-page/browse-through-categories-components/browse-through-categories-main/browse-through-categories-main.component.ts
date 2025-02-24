@@ -28,7 +28,6 @@ export class BrowseThroughCategoriesMainComponent implements OnInit, AfterViewIn
     const objCategory5 = {name: "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/44/44_banner638730497103213645.webp", type: "calcas"};
 
     this.allImgsCategories.push(objCategory1, objCategory2, objCategory3, objCategory4, objCategory5);
-    console.log(this.allImgsCategories);
   }
 
   ngAfterViewInit(): void {

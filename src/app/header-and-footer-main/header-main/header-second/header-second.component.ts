@@ -1,6 +1,7 @@
 import {  Component, OnInit, OnDestroy } from '@angular/core';
 import { GoogleApiService } from '../../../login-and-register-new-account/service/google-api.service';
 import { User } from '../../../interface-entity/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-second',
@@ -13,7 +14,7 @@ export class HeaderSecondComponent implements OnInit, OnDestroy {
   user!: User;
   setTimeoutId!: number;
 
-  constructor(private googleApiService: GoogleApiService) {
+  constructor(private router: Router, private googleApiService: GoogleApiService) {
   }
 
   ngOnInit(): void {
@@ -26,6 +27,10 @@ export class HeaderSecondComponent implements OnInit, OnDestroy {
     }
     // "this.googleApiService.logout();" esse metodo apaga o usuario meio que deleta igua lse você clicar em "Sair e o usuario logou com google
     // usar esse metodo de cima para deletar e nao ter historico dele
+  }
+
+  onClickRedirectUserHome(){
+    this.router.navigate(['/']);
   }
 
   ngOnDestroy(): void {

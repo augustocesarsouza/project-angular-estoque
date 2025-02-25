@@ -1,9 +1,8 @@
 <div class="container-blouse-first">
   <div class="container-quantity-imgs-blouse-and-before-after">
     <div class="container-quantity-imgs">
-      <span *ngIf="itemList" class="span-quantity-products-main"
-        ><span class="span-quantity-products">{{ itemList.length }}</span> produtos
-        encontrados</span
+      <span class="span-quantity-products-main"
+        ><span class="span-quantity-products">{{ quantityItems }}</span> produtos encontrados</span
       >
     </div>
     <div class="container-blouse-before-after">
@@ -27,7 +26,7 @@
         #containerNumbers
         *ngFor="let number of quantityNumbers; let i = index"
       >
-        {{ number }}
+        <span>{{ number }}</span>
       </div>
       <span
         class="span-after"
@@ -40,43 +39,12 @@
     </div>
   </div>
 
-  <div class="container-quantity-and-select-news">
-    <div class="container-quantity-column-to-show">
-      <div
-        class="container-column-first"
-        (click)="onClickColumnFirst()"
-        (keydown.enter)="onClickColumnFirst()"
-        tabindex="0"
-        #containerColumnFirst
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <span class="span-line-column"></span>
-      <div
-        class="container-column-second"
-        (click)="onClickColumnSecond()"
-        (keydown.enter)="onClickColumnSecond()"
-        tabindex="0"
-        #containerColumnSecond
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
+  <div class="container-quantity-column-main">
+    <app-quantity-column-main
+      [onClickColumnFirst]="onClickColumnFirst"
+      [onClickColumnSecond]="onClickColumnSecond"
+    ></app-quantity-column-main>
 
-    <div class="container-select">
-      <select>
-        <option value="novidades">Novidades</option>
-        <option value="mais-vistos">Mais Vistos</option>
-        <option value="maior-preco">Maior Preço</option>
-        <option value="menor-preco">Menor Preço</option>
-      </select>
-    </div>
+    <app-select-news></app-select-news>
   </div>
 </div>

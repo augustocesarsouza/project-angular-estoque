@@ -1,13 +1,13 @@
-import { Component, ElementRef, Input, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { Item } from '../../../../interface-entity/item';
+import { Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-blouse-first',
   templateUrl: './blouse-first.component.html',
   styleUrl: './blouse-first.component.scss'
 })
-export class BlouseFirstComponent {
-  @Input() itemList!: Item[];
+export class BlouseFirstComponent implements OnInit {
+  @Input() quantityItems!: number;
+  @Input() functionClickFirstColumnOrSecond!: (whichClicked: string) => void;
 
   numberIndex = 0;
   quantityNumbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
@@ -15,6 +15,11 @@ export class BlouseFirstComponent {
   @ViewChildren('containerNumbers') containerNumbers!: QueryList<ElementRef<HTMLDivElement>>;
   @ViewChild('containerColumnFirst') containerColumnFirst!: ElementRef<HTMLDivElement>;
   @ViewChild('containerColumnSecond') containerColumnSecond!: ElementRef<HTMLDivElement>;
+
+  ngOnInit(): void {
+    this.onClickColumnFirst = this.onClickColumnFirst.bind(this);
+    this.onClickColumnSecond = this.onClickColumnSecond.bind(this);
+  }
 
   onClickNumbers(numberClicked: number){
     this.numberIndex = numberClicked;
@@ -65,6 +70,7 @@ export class BlouseFirstComponent {
   }
 
   onClickColumnFirst(){
+    this.functionClickFirstColumnOrSecond("first");
     const spansFirst = this.containerColumnFirst.nativeElement.querySelectorAll("span") as NodeListOf<HTMLSpanElement>;
     const spansSecond = this.containerColumnSecond.nativeElement.querySelectorAll("span") as NodeListOf<HTMLSpanElement>;
 
@@ -78,6 +84,7 @@ export class BlouseFirstComponent {
   }
 
   onClickColumnSecond(){
+    this.functionClickFirstColumnOrSecond("second");
     const spansFirst = this.containerColumnFirst.nativeElement.querySelectorAll("span") as NodeListOf<HTMLSpanElement>;
     const spansSecond = this.containerColumnSecond.nativeElement.querySelectorAll("span") as NodeListOf<HTMLSpanElement>;
 

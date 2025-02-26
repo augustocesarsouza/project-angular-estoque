@@ -54,8 +54,6 @@ export class CodeSendToEmailComponent implements AfterViewInit, OnDestroy, OnIni
       }
     }
 
-    // CONTINUAR painel-do-cliente
-
     if(userResult.isNullUserLocalStorage){
       localStorage.removeItem('user');
       this.router.navigate(['/user/login']);

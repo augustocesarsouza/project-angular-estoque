@@ -35,8 +35,10 @@ export class BrowseThroughCategoriesMainComponent implements OnInit, AfterViewIn
   }
 
   private scrollCarousel(amount: number): void {
-    this.containerCarouselCustom.nativeElement?.scrollBy({ left: amount, behavior: 'smooth' });
-    this.updateArrowsVisibility();
+    if(this.containerCarouselCustom && this.containerCarouselCustom.nativeElement){
+      this.containerCarouselCustom.nativeElement.scrollBy({ left: amount, behavior: 'smooth' });
+      this.updateArrowsVisibility();
+    }
   }
 
   private updateArrowsVisibility(): void {
@@ -49,12 +51,14 @@ export class BrowseThroughCategoriesMainComponent implements OnInit, AfterViewIn
   }
 
   private initCarousel(): void {
-    this.containerArrowLeft.nativeElement?.addEventListener('click', () => this.scrollCarousel(-230));
-    this.containerArrowRight.nativeElement?.addEventListener('click', () => this.scrollCarousel(230));
-    this.containerCarouselCustom.nativeElement?.addEventListener('scroll', () => this.updateArrowsVisibility());
-    window.addEventListener('resize', () => this.updateArrowsVisibility());
+    if(this.containerArrowLeft.nativeElement && this.containerArrowRight.nativeElement && this.containerCarouselCustom.nativeElement){
+      this.containerArrowLeft.nativeElement.addEventListener('click', () => this.scrollCarousel(-230));
+      this.containerArrowRight.nativeElement.addEventListener('click', () => this.scrollCarousel(230));
+      this.containerCarouselCustom.nativeElement.addEventListener('scroll', () => this.updateArrowsVisibility());
+      window.addEventListener('resize', () => this.updateArrowsVisibility());
 
-    this.updateArrowsVisibility();
+      this.updateArrowsVisibility();
+    }
   }
 
   onClickImg(item: Category){

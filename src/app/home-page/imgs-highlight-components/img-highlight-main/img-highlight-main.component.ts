@@ -85,8 +85,10 @@ export class ImgHighlightMainComponent implements OnInit, AfterViewInit {
   }
 
   private scrollCarousel(amount: number): void {
-    this.containerCarouselCustom.nativeElement?.scrollBy({ left: amount, behavior: 'smooth' });
-    this.updateArrowsVisibility();
+    if(this.containerCarouselCustom && this.containerCarouselCustom.nativeElement){
+      this.containerCarouselCustom.nativeElement.scrollBy({ left: amount, behavior: 'smooth' });
+      this.updateArrowsVisibility();
+    }
   }
 
   private updateArrowsVisibility(): void {
@@ -106,12 +108,14 @@ export class ImgHighlightMainComponent implements OnInit, AfterViewInit {
     const containerLeft: HTMLElement | null = document.querySelector('.container-arrow-left');
     const containerRight: HTMLElement | null = document.querySelector('.container-arrow-right');
 
-    containerLeft?.addEventListener('click', () => this.scrollCarousel(-1200));
-    containerRight?.addEventListener('click', () => this.scrollCarousel(1200));
-    scrollElement?.addEventListener('scroll', () => this.updateArrowsVisibility());
-    window.addEventListener('resize', () => this.updateArrowsVisibility());
+    if(containerLeft && containerRight && scrollElement){
+      containerLeft.addEventListener('click', () => this.scrollCarousel(-1200));
+      containerRight.addEventListener('click', () => this.scrollCarousel(1200));
+      scrollElement.addEventListener('scroll', () => this.updateArrowsVisibility());
+      window.addEventListener('resize', () => this.updateArrowsVisibility());
 
-    this.updateArrowsVisibility();
+      this.updateArrowsVisibility();
+    }
   }
 
   onClickArrowRightAndLeft(){

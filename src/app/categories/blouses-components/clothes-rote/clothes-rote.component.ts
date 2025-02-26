@@ -1,25 +1,29 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Item } from '../../../interface-entity/item';
 import { Router } from '@angular/router';
 import { ItemService } from '../../../services-backend/item.service';
+import { GoogleApiService } from '../../../login-and-register-new-account/service/google-api.service';
 import { UserLocalStorage } from '../../../function-user/get-user-local-storage/user-local-storage';
 import { VerifyTokenIsExpired } from '../../../function-user/function-token-user/verify-token-is-expired';
-import { GoogleApiService } from '../../../login-and-register-new-account/service/google-api.service';
-import { Item } from '../../../interface-entity/item';
+import { UpdateCurrentUrlCategoriesService } from '../../service/update-current-url-categories.service';
 
 @Component({
-  selector: 'app-blouses-main',
-  templateUrl: './blouses-main.component.html',
-  styleUrl: './blouses-main.component.scss'
+  selector: 'app-clothes-rote',
+  templateUrl: './clothes-rote.component.html',
+  styleUrl: './clothes-rote.component.scss'
 })
-export class BlousesMainComponent implements OnInit {
-  nameCategory = "Feminino>Roupas>Blusa";
+export class ClothesRoteComponent implements OnInit {
+  nameCategory = "Feminino>Roupas";
   itemList!: Item[];
-  routeBrowsing = "Blusa";
 
-  constructor(private router: Router, private itemService: ItemService, private googleApiService: GoogleApiService){}
+  constructor(private router: Router, private itemService: ItemService, private googleApiService: GoogleApiService,
+    private updateCurrentUrlCategoriesService: UpdateCurrentUrlCategoriesService
+  ){}
 
   ngOnInit(): void {
-    this.onClickBrowsingRote = this.onClickBrowsingRote.bind(this);
+    const currentUrl = this.router.url;
+
+    this.updateCurrentUrlCategoriesService.updateUrlCurrent(currentUrl);
 
     const userResult = UserLocalStorage();
 
@@ -43,6 +47,7 @@ export class BlousesMainComponent implements OnInit {
           next: (success) => {
             const data = success.data;
             this.itemList = data;
+            console.log(data);
           },
           error: error => {
             if(error.status === 400){
@@ -64,19 +69,5 @@ export class BlousesMainComponent implements OnInit {
       this.router.navigate(['/']);
       return;
     };
-  }
-
-  onClickBrowsingRote (rote: string) {
-    if(rote === "Roupas"){
-      this.routeBrowsing = rote;
-      const roteUser = "feminino/roupas";
-      this.router.navigate([roteUser]);
-    }
-
-    if(rote === "Feminino"){
-      this.routeBrowsing = rote;
-      const roteUser = "feminino/";
-      this.router.navigate([roteUser]);
-    }
   }
 }

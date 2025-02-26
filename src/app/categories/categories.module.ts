@@ -18,6 +18,9 @@ import { BlouseInfoMainComponent } from './blouses-components/blouse-infos-compo
 import { BlouseItemComponent } from './blouses-components/blouse-infos-components/blouse-item/blouse-item.component';
 import { SelectNewsComponent } from './blouses-components/blouse-infos-components/select-news/select-news.component';
 import { QuantityColumnMainComponent } from './blouses-components/blouse-infos-components/quantity-column-main/quantity-column-main.component';
+import { BlouseRouteComponent } from './blouses-components/blouse-route/blouse-route.component';
+import { ClothesRoteComponent } from './blouses-components/clothes-rote/clothes-rote.component';
+import { FeminineRoteComponent } from './blouses-components/feminine-rote/feminine-rote.component';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { QuantityColumnMainComponent } from './blouses-components/blouse-infos-c
     BlouseInfoMainComponent,
     BlouseItemComponent,
     SelectNewsComponent,
-    QuantityColumnMainComponent
+    QuantityColumnMainComponent,
+    BlouseRouteComponent,
+    ClothesRoteComponent,
+    FeminineRoteComponent
   ],
   imports: [
     CommonModule,

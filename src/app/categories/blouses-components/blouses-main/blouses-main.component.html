@@ -1,6 +1,9 @@
 <app-header></app-header>
 
-<app-browsing-rote></app-browsing-rote>
+<app-browsing-rote
+  [onClickBrowsingRote]="onClickBrowsingRote"
+  [routeBrowsing]="routeBrowsing"
+></app-browsing-rote>
 
 <div class="container-color-price-range-brand-size">
   <div>
@@ -8,4 +11,5 @@
   </div>
 </div>
 
-<app-blouse-info-main *ngIf="itemList" [itemList]="itemList"></app-blouse-info-main>
+<!-- <app-blouse-info-main *ngIf="itemList" [itemList]="itemList"></app-blouse-info-main> -->
+<router-outlet></router-outlet>

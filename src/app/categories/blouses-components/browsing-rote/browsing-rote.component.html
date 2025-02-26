@@ -1,21 +1,49 @@
 <div class="browsing-rote-main">
   <div class="browsing-rote">
-    <span>
-      <span>Página Inicial</span>
+    <span class="span-browsing-rote span-browsing-rote-arrow-right">
+      <span
+        tabindex="0"
+        (click)="onClickBrowsingRote('PaginaInicial')"
+        (keydown.enter)="onClickBrowsingRote('Feminino')"
+        >Página Inicial</span
+      >
     </span>
-    <span>
-      <span #allSpan>Feminino</span>
+    <span
+      [ngClass]="{
+        'span-browsing-rote span-browsing-rote-arrow-right': quantityShow >= 1,
+      }"
+    >
+      <span
+        class="span-inner-browsing"
+        #allSpan
+        tabindex="0"
+        (click)="onClickBrowsingRote('Feminino')"
+        (keydown.enter)="onClickBrowsingRote('Feminino')"
+        >Feminino</span
+      >
     </span>
-    <span>
-      <span #allSpan>Roupas</span>
+    <span
+      [ngClass]="{
+        'span-browsing-rote span-browsing-rote-arrow-right': quantityShow >= 2,
+      }"
+    >
+      <span
+        class="span-inner-browsing"
+        #allSpan
+        tabindex="0"
+        (click)="onClickBrowsingRote('Roupas')"
+        (keydown.enter)="onClickBrowsingRote('Roupas')"
+        *ngIf="quantityShow >= 1"
+        >Roupas</span
+      >
     </span>
-    <span>
-      <span #allSpan>Blusa</span>
+    <span *ngIf="quantityShow >= 2">
+      <span class="span-inner-browsing" #allSpan>Blusa</span>
     </span>
   </div>
 </div>
 
 <div *ngIf="spanTextNav" class="container-main-blouse-headline">
-  <h1>BLUSA</h1>
+  <h1>{{ routeBrowsing }}</h1>
   <span>{{ spanTextNav }}</span>
 </div>

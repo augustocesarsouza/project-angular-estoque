@@ -21,11 +21,11 @@ export class BrowseThroughCategoriesMainComponent implements OnInit, AfterViewIn
   constructor(private router: Router, private ngZone: NgZone){}
 
   ngOnInit(): void {
-    const objCategory1 = {name: "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/42/42_banner638730496910630227.webp", type: "blusas"};
-    const objCategory2 = {name: "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/43/43_banner638730497014289733.webp", type: "acessorios"};
-    const objCategory3 = {name: "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/45/45_banner638757262555236067.webp", type: "vestidos"};
-    const objCategory4 = {name: "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/46/46_banner638730497274514403.webp", type: "casacos"};
-    const objCategory5 = {name: "https://d1ug6lpn0d6ze6.cloudfront.net/Custom/Content/Banners/44/44_banner638730497103213645.webp", type: "calcas"};
+    const objCategory1 = {name: "https://res.cloudinary.com/dyqsqg7pk/image/upload/v1740580063/imgs-backend-estoque/img-home-page/Blusas_dzss8y.webp", type: "blusas"};
+    const objCategory2 = {name: "https://res.cloudinary.com/dyqsqg7pk/image/upload/v1740580143/imgs-backend-estoque/img-home-page/acessorios_ahgrgh.webp", type: "acessorios"};
+    const objCategory3 = {name: "https://res.cloudinary.com/dyqsqg7pk/image/upload/v1740580208/imgs-backend-estoque/img-home-page/vestidos_sj137h.webp", type: "vestidos"};
+    const objCategory4 = {name: "https://res.cloudinary.com/dyqsqg7pk/image/upload/v1740580273/imgs-backend-estoque/img-home-page/casacos_ilo6iy.webp", type: "casacos"};
+    const objCategory5 = {name: "https://res.cloudinary.com/dyqsqg7pk/image/upload/v1740580349/imgs-backend-estoque/img-home-page/calcas_anfumi.webp", type: "calcas"};
 
     this.allImgsCategories.push(objCategory1, objCategory2, objCategory3, objCategory4, objCategory5);
   }

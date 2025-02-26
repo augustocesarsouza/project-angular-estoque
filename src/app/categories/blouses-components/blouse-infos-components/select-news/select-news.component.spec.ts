@@ -11,7 +11,7 @@ describe('SelectNewsComponent', () => {
       declarations: [SelectNewsComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(SelectNewsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,5 +19,10 @@ describe('SelectNewsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should get all options from select', () => {
+    const options = fixture.nativeElement.querySelectorAll('select option');
+    expect(options.length).toBe(4); // Confere se são 4 opções
   });
 });

@@ -7,6 +7,7 @@ import { Item } from '../../../../interface-entity/item';
   styleUrl: './blouse-item.component.scss'
 })
 export class BlouseItemComponent implements OnInit, AfterViewInit, OnChanges {
+  // FAZER TEST
   @Input() item!: Item;
   @Input() whichClicked!: string;
 

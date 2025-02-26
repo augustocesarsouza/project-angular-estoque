@@ -1,0 +1,169 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0px;
+}
+
+.container-item{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+
+  max-width: 290px;
+}
+
+.containe-img-item-and-button-add-car {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.containe-img-item{
+  position: relative;
+  width: 100%;
+  height: 369px;
+}
+
+.containe-img-item:hover .flip {
+  transform: rotateY(180deg);
+}
+
+.flip {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: .5s;
+}
+
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.back {
+  transform: rotateY(180deg );
+}
+
+.span-discount-percentage {
+  position: absolute;
+  bottom: -30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  padding: 6px 10px;
+
+  color: #fff;
+  background: black;
+  border-radius: 2px;
+
+  >b {
+    font-size: 12px;
+    margin-bottom: 3px;
+  }
+
+  >span {
+    font-size: 13px;
+  }
+}
+
+.button-add-car {
+  display: flex;
+  max-width: 60%;
+  border: none;
+  background-color: #fff;
+  font-size: 0px;
+  padding: 8px 11px;
+  font-weight: 500;
+  cursor: pointer;
+  height: 25px;
+}
+
+.container-info-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container-colors {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 7px;
+}
+
+.color-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid #a7a7a7;
+  width: 18px;
+  height: 18px;
+
+  >span {
+    background: black;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+}
+
+.container-info-name-price {
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.container-span-name-item {
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.span-name-item{
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.container-price-original-and-price-with-discount {
+  display: flex;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.span-price-original {
+  text-decoration: line-through;
+  color: rgb(112, 112, 112);
+  margin-right: 17px;
+}
+
+.span-price-with-discount{
+  font-weight: 700;
+}
+
+.span-installment-3x {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.button-sizes{
+  background: #fff;
+  padding: 6px 0px;
+  font-size: 0px;
+  color: #fff;
+  border: none;
+  height: 26px;
+  cursor: pointer;
+  width: 100%;
+}

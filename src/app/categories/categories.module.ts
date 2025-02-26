@@ -15,6 +15,9 @@ import { CategoryFilterMainComponent } from './blouses-components/category-filte
 import { SvgArrowBlousesComponent } from './blouses-components/svg-arrow-blouses/svg-arrow-blouses.component';
 import { BlouseFirstComponent } from './blouses-components/blouse-infos-components/blouse-first/blouse-first.component';
 import { BlouseInfoMainComponent } from './blouses-components/blouse-infos-components/blouse-info-main/blouse-info-main.component';
+import { BlouseItemComponent } from './blouses-components/blouse-infos-components/blouse-item/blouse-item.component';
+import { SelectNewsComponent } from './blouses-components/blouse-infos-components/select-news/select-news.component';
+import { QuantityColumnMainComponent } from './blouses-components/blouse-infos-components/quantity-column-main/quantity-column-main.component';
 
 
 @NgModule({
@@ -29,13 +32,16 @@ import { BlouseInfoMainComponent } from './blouses-components/blouse-infos-compo
     CategoryFilterMainComponent,
     SvgArrowBlousesComponent,
     BlouseFirstComponent,
-    BlouseInfoMainComponent
+    BlouseInfoMainComponent,
+    BlouseItemComponent,
+    SelectNewsComponent,
+    QuantityColumnMainComponent
   ],
   imports: [
     CommonModule,
     CategoriesRoutingModule,
     HeaderAndFooterMainModule,
-    AllSvgModule
+    AllSvgModule,
   ]
 })
 export class CategoriesModule { }

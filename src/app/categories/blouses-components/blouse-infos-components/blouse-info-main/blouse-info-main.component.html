@@ -1,6 +1,23 @@
 <div class="container-blouse-infos-main">
   <div class="container-blouse-infos">
-    <app-blouse-first [itemList]="itemList"></app-blouse-first>
-    <div class="container-blouse-second"></div>
+    <app-blouse-first
+      *ngIf="itemList && itemList.length > 0"
+      [quantityItems]="itemList.length"
+      [functionClickFirstColumnOrSecond]="functionClickFirstColumnOrSecond"
+    ></app-blouse-first>
+    <div class="container-blouse-second" #containerBlouseSecond>
+      <app-blouse-item
+        *ngFor="
+          let item of itemList
+            .concat(itemList)
+            .concat(itemList)
+            .concat(itemList)
+            .concat(itemList)
+            .concat(itemList)
+        "
+        [item]="item"
+        [whichClicked]="whichClicked"
+      ></app-blouse-item>
+    </div>
   </div>
 </div>

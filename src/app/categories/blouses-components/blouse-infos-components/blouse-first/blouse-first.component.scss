@@ -22,8 +22,8 @@
 .container-blouse-before-after{
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: 13px;
-  line-height: 1;
   user-select: none;
 
   >svg:nth-of-type(1) {
@@ -64,90 +64,38 @@
 
 .container-numbers-before-after-clicked{
   display: flex;
-
+  align-items: center;
+  justify-content: center;
   border: 1px solid rgb(0 0 0 / 16%);
-  padding: 1px 5px;
   margin: 1px;
   color: #999;
   font-weight: 700;
   font-size: 12px;
+  line-height: 1;
+  height: 19px;
+  width: 19px;
 }
 
 .container-numbers-before-after{
   display: flex;
-
+  align-items: center;
+  justify-content: center;
   border: 1px solid rgba(0, 0, 0, 0);
-  padding: 1px 5px;
 
   cursor: pointer;
   color: #999;
   font-size: 12px;
+  line-height: 1;
+  height: 17px;
+  width: 17px;
+  margin: 0px 2px;
 
   &:hover {
     text-decoration: underline;
   }
 }
 
-.container-quantity-and-select-news{
+.container-quantity-column-main{
   display: flex;
   gap: 35px;
-}
-
-.container-quantity-column-to-show{
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.container-column-first {
-  display: flex;
-  gap: 5px;
-  cursor: pointer;
-
-  >span {
-    background: #999;
-    width: 12px;
-    height: 20px;
-  }
-}
-
-.span-line-column {
-  display: flex;
-  background: #ddd;
-  width: 1px;
-  height: 100%;
-}
-
-.container-column-second {
-  display: flex;
-  gap: 5px;
-  cursor: pointer;
-
-  >span {
-    background: rgba(153, 153, 153, 0.4);
-    width: 12px;
-    height: 20px;
-  }
-}
-
-.container-select {
-  display: flex;
-
-  >select {
-    display: block;
-    width: 260px;
-    padding: 6px 20px;
-    box-sizing: border-box;
-    color: #3d3d3d;
-    font-weight: 400;
-    font-size: 15px;
-    background-color: #fff;
-    background-image: none;
-    border: 1.5px solid #ddd;
-    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-
-    &:focus{
-      outline: none;
-    }
-  }
 }

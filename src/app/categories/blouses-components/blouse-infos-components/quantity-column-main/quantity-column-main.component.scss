@@ -1,0 +1,41 @@
+:host {
+  display: flex;
+  align-items: center;
+}
+
+.container-quantity-column-to-show{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.container-column-first {
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
+
+  >span {
+    background: #999;
+    width: 12px;
+    height: 20px;
+  }
+}
+
+.span-line-column {
+  display: flex;
+  background: #ddd;
+  width: 1px;
+  height: 100%;
+}
+
+.container-column-second {
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
+
+  >span {
+    background: rgba(153, 153, 153, 0.4);
+    width: 12px;
+    height: 20px;
+  }
+}

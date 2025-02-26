@@ -1,0 +1,43 @@
+<div
+  class="container-item"
+  (mouseenter)="onMouseEnterContainerItem()"
+  (mouseleave)="onMouseLeaveContainerItem()"
+  #containerItem
+>
+  <div class="containe-img-item-and-button-add-car">
+    <div class="containe-img-item">
+      <div class="flip">
+        <div class="front" #containerFront></div>
+        <div class="back" #containerBack></div>
+      </div>
+
+      <span class="span-discount-percentage"
+        ><b>{{ item.discountPercentage }}%</b> <span>OFF</span></span
+      >
+    </div>
+    <button class="button-add-car" #buttonAddCar>ADICIONAR AO CARRINHO</button>
+  </div>
+
+  <div class="container-info-item">
+    <div class="container-colors">
+      <div class="color-item">
+        <span></span>
+      </div>
+    </div>
+
+    <div class="container-info-name-price">
+      <div class="container-span-name-item">
+        <span class="span-name-item">{{ funcionNameSubstring(item.name) }}</span>
+      </div>
+      <div class="container-price-original-and-price-with-discount">
+        <span class="span-price-original">{{ funcionPriceOriginal(item.priceProduct) }}</span>
+        <span class="span-price-with-discount">{{
+          funcionPriceWithDiscount(item.priceProduct)
+        }}</span>
+      </div>
+      <span class="span-installment-3x">{{ funcionPriceInstallment(item.priceProduct) }}</span>
+    </div>
+  </div>
+
+  <button class="button-sizes" #buttonSizes>{{ sizeText }}</button>
+</div>

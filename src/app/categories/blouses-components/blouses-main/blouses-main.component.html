@@ -8,4 +8,4 @@
   </div>
 </div>
 
-<app-blouse-info-main [itemList]="itemList"></app-blouse-info-main>
+<app-blouse-info-main *ngIf="itemList" [itemList]="itemList"></app-blouse-info-main>

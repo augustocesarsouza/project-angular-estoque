@@ -1,0 +1,26 @@
+
+:host {
+  display: flex;
+}
+
+.container-select {
+  display: flex;
+
+  >select {
+    display: block;
+    width: 260px;
+    padding: 6px 20px;
+    box-sizing: border-box;
+    color: #3d3d3d;
+    font-weight: 400;
+    font-size: 15px;
+    background-color: #fff;
+    background-image: none;
+    border: 1.5px solid #ddd;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+
+    &:focus{
+      outline: none;
+    }
+  }
+}

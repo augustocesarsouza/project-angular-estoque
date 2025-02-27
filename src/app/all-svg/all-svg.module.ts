@@ -10,11 +10,12 @@ import { CodeIsWrongXComponent } from './code-is-wrong-x/code-is-wrong-x.compone
 import { SvgGoogleComponent } from './svg-google/svg-google.component';
 import { SvgMoreComponent } from './svg-more/svg-more.component';
 import { AppSvgAddressComponent } from './app-svg-address/app-svg-address.component';
+import { SvgArrowFontawesomeComponent } from './svg-arrow-fontawesome/svg-arrow-fontawesome.component';
 
 @NgModule({
-  declarations: [SvgExitComponent, SvgMicrophoneComponent, SvgLoupeComponent, SvgEyeOpenComponent, SvgEyeCloseComponent, SvgArrowRegisterComponent, CodeIsWrongXComponent, SvgGoogleComponent, SvgMoreComponent, AppSvgAddressComponent],
+  declarations: [SvgExitComponent, SvgMicrophoneComponent, SvgLoupeComponent, SvgEyeOpenComponent, SvgEyeCloseComponent, SvgArrowRegisterComponent, CodeIsWrongXComponent, SvgGoogleComponent, SvgMoreComponent, AppSvgAddressComponent, SvgArrowFontawesomeComponent],
   exports: [SvgExitComponent, SvgMicrophoneComponent, SvgLoupeComponent, SvgEyeOpenComponent, SvgEyeCloseComponent, SvgArrowRegisterComponent, CodeIsWrongXComponent, SvgGoogleComponent,
-    SvgMoreComponent, AppSvgAddressComponent
+    SvgMoreComponent, AppSvgAddressComponent, SvgArrowFontawesomeComponent
   ],
   imports: [CommonModule],
 })

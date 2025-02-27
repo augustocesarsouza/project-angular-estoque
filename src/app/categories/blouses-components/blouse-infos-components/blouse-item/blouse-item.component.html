@@ -5,7 +5,12 @@
   #containerItem
 >
   <div class="containe-img-item-and-button-add-car">
-    <div class="containe-img-item">
+    <div
+      class="containe-img-item"
+      (click)="onClickItem()"
+      (keydown.enter)="onClickItem()"
+      tabindex="0"
+    >
       <div class="flip">
         <div class="front" #containerFront></div>
         <div class="back" #containerBack></div>

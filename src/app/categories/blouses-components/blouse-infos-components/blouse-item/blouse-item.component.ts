@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { Item } from '../../../../interface-entity/item';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blouse-item',
@@ -7,7 +8,6 @@ import { Item } from '../../../../interface-entity/item';
   styleUrl: './blouse-item.component.scss'
 })
 export class BlouseItemComponent implements OnInit, AfterViewInit, OnChanges {
-  // FAZER TEST
   @Input() item!: Item;
   @Input() whichClicked!: string;
 
@@ -20,6 +20,8 @@ export class BlouseItemComponent implements OnInit, AfterViewInit, OnChanges {
   @ViewChild('buttonSizes') buttonSizes!: ElementRef<HTMLButtonElement>;
 
   @ViewChild('containerItem') containerItem!: ElementRef<HTMLDivElement>;
+
+  constructor(private router: Router){}
 
   ngOnInit(): void {
     const imgMain = this.item.imgProductAll[0];
@@ -111,5 +113,10 @@ export class BlouseItemComponent implements OnInit, AfterViewInit, OnChanges {
     this.buttonAddCar.nativeElement.style.fontSize = "0px";
     this.buttonSizes.nativeElement.style.fontSize = "0px";
     this.buttonSizes.nativeElement.style.background = "#fff";
+  }
+
+  onClickItem() {
+    const formattedName = this.item.name.replace(/\s+/g, '-').toLowerCase();
+    this.router.navigate([`item/${formattedName}`], { state: { itemId: this.item.id } });
   }
 }

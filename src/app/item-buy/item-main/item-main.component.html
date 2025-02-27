@@ -1,0 +1,52 @@
+<app-header></app-header>
+
+<app-browsing-rote *ngIf="item" [item]="item"></app-browsing-rote>
+
+<div class="container-item-user-main">
+  <div class="container-item-user">
+    <div class="container-all-imgs-item">
+      <div *ngFor="let el of imgProductAll; let i = index">
+        <img
+          #containerImgHighlight
+          (click)="onClickImgHighlight(containerImgHighlight, i)"
+          (keydown.enter)="onClickImgHighlight(containerImgHighlight, i)"
+          tabindex="0"
+          src="{{ el }}"
+          alt="img-item"
+          [ngClass]="{
+            'img-highlight': i === 0,
+          }"
+        />
+      </div>
+    </div>
+
+    <div class="container-img-show">
+      <app-svg-arrow-fontawesome
+        width="40px"
+        height="40px"
+        fill="black"
+        rotate="rotate(0)"
+        (click)="onClickSvgLeft()"
+      ></app-svg-arrow-fontawesome>
+      <div class="image-container-to-zoom">
+        <img
+          #zoomImage
+          class="img-zoom"
+          src="{{ whichImgShowUser }}"
+          alt="img-show-user"
+          (mousemove)="onZoom($event, zoomImage)"
+          (mouseleave)="onLeave(zoomImage)"
+          (mouseenter)="onEnter(zoomImage)"
+        />
+      </div>
+      <app-svg-arrow-fontawesome
+        width="40px"
+        height="40px"
+        fill="black"
+        rotate="rotate(180)"
+        (click)="onClickSvgRight()"
+      ></app-svg-arrow-fontawesome>
+    </div>
+    <span>HERE ITEM</span>
+  </div>
+</div>

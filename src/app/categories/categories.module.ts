@@ -22,7 +22,6 @@ import { BlouseRouteComponent } from './blouses-components/blouse-route/blouse-r
 import { ClothesRoteComponent } from './blouses-components/clothes-rote/clothes-rote.component';
 import { FeminineRoteComponent } from './blouses-components/feminine-rote/feminine-rote.component';
 
-
 @NgModule({
   declarations: [
     BlousesMainComponent,

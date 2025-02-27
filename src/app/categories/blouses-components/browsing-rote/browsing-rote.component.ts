@@ -18,38 +18,41 @@ export class BrowsingRoteComponent implements AfterViewInit, OnChanges {
   constructor(private cdr: ChangeDetectorRef, private router: Router, private updateCurrentUrlCategoriesService: UpdateCurrentUrlCategoriesService){}
 
   ngAfterViewInit(): void {
-    this.updateCurrentUrlCategoriesService.updateUrl$.subscribe((data) => {
+    if(this.updateCurrentUrlCategoriesService.updateUrl$){
+      this.updateCurrentUrlCategoriesService.updateUrl$.subscribe((data) => {
+        if(data === "/feminino/roupas"){
+          this.quantityShow = 1;
+        } else if(data === "/feminino"){
+          this.quantityShow = 0;
+        } else {
+          this.quantityShow = 2;
+        }
 
-      if(data === "/feminino/roupas"){
-        this.quantityShow = 1;
-      } else if(data === "/feminino"){
-        this.quantityShow = 0;
-      } else {
-        this.quantityShow = 2;
-      }
+        setTimeout(() => {
+          let spanTextNavFor = "";
+          const allSpanInnerBrowing = document.querySelectorAll(".span-inner-browsing") as NodeListOf<HTMLSpanElement>;
 
-      setTimeout(() => {
-        let spanTextNavFor = "";
-        const allSpanInnerBrowing = document.querySelectorAll(".span-inner-browsing") as NodeListOf<HTMLSpanElement>;
+          for (let i = 0; i <= this.quantityShow; i++) {
+            const element = allSpanInnerBrowing[i];
 
-        for (let i = 0; i <= this.quantityShow; i++) {
-          const element = allSpanInnerBrowing[i];
+            spanTextNavFor += element.textContent?.trim().toLowerCase();
 
-          spanTextNavFor += element.textContent?.trim().toLowerCase();
-
-          if(i < this.quantityShow){
-            spanTextNavFor += ".";
+            if(i < this.quantityShow){
+              spanTextNavFor += ".";
+            }
           }
-        }
 
-        const spanLastOne = allSpanInnerBrowing[allSpanInnerBrowing.length - 1].textContent?.trim().toUpperCase();
-        if(spanLastOne){
-          this.routeBrowsing = spanLastOne;
-        }
+          const spanLastOne = allSpanInnerBrowing[allSpanInnerBrowing.length - 1].textContent?.trim().toUpperCase();
+          console.log(spanLastOne);
 
-        this.spanTextNav = spanTextNavFor;
-      }, 50);
-    })
+          if(spanLastOne){
+            this.routeBrowsing = spanLastOne;
+          }
+
+          this.spanTextNav = spanTextNavFor;
+        }, 50);
+      });
+    }
 
     const currentUrl = this.router.url;
 
@@ -85,6 +88,7 @@ export class BrowsingRoteComponent implements AfterViewInit, OnChanges {
     }
 
     this.spanTextNav = spanTextNavFor;
+
     this.cdr.detectChanges();
   }
 
@@ -122,4 +126,3 @@ export class BrowsingRoteComponent implements AfterViewInit, OnChanges {
     }
   }
 }
-// CONTINUAR ARRUMANDO ISSO DE CLICAR E CARREGAR DINAMICO E MUDAR O "browsing-rote"

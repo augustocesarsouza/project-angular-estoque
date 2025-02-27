@@ -67,6 +67,12 @@ export class BlousesMainComponent implements OnInit {
   }
 
   onClickBrowsingRote (rote: string) {
+    if(rote === "PaginaInicial"){
+      this.routeBrowsing = rote;
+      const roteUser = "/";
+      this.router.navigate([roteUser]);
+    }
+
     if(rote === "Roupas"){
       this.routeBrowsing = rote;
       const roteUser = "feminino/roupas";

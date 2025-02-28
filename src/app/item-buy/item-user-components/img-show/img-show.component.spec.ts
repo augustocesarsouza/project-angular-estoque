@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ImgShowComponent } from './img-show.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { AllSvgModule } from '../../../all-svg/all-svg.module';
 
 describe('ImgShowComponent', () => {
   let component: ImgShowComponent;
@@ -12,6 +15,7 @@ describe('ImgShowComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
       declarations: [ImgShowComponent]
     })
     .compileComponents();
@@ -20,6 +24,9 @@ describe('ImgShowComponent', () => {
     component = fixture.componentInstance;
 
     component.whichImgShowUser = imgProductAll[0];
+
+    component.updateValueWhichIndexImgIs = jasmine.createSpy('updateValueWhichIndexImgIs');
+    component.updateValueWhichImgShowUser = jasmine.createSpy('updateValueWhichImgShowUser');
 
     fixture.detectChanges();
   });
@@ -31,5 +38,10 @@ describe('ImgShowComponent', () => {
   it('should render img main', () => {
     const img = fixture.nativeElement.querySelector('.image-container-to-zoom > img');
     expect(img.src).toBe(imgProductAll[0]);
+  });
+
+  it('should render all svg left and right', () => {
+    const svgs = fixture.nativeElement.querySelectorAll('.container-img-show > app-svg-arrow-fontawesome');
+    expect(svgs.length).toBe(2);
   });
 });

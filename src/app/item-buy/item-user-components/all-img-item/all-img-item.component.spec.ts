@@ -21,6 +21,9 @@ describe('AllImgItemComponent', () => {
 
     component.imgProductAll = imgProductAll;
 
+    component.updateValueWhichIndexImgIs = jasmine.createSpy('updateValueWhichIndexImgIs');
+    component.updateValueWhichImgShowUser = jasmine.createSpy('updateValueWhichImgShowUser');
+    component.getValueContainerImgHighlight = jasmine.createSpy('getValueContainerImgHighlight');
 
     fixture.detectChanges();
   });

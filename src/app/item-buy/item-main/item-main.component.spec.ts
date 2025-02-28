@@ -8,6 +8,17 @@ import { ItemService } from '../../services-backend/item.service';
 import { GoogleApiService } from '../../login-and-register-new-account/service/google-api.service';
 import { HeaderAndFooterMainModule } from '../../header-and-footer-main/header-and-footer-main.module';
 import { BrowsingRoteComponent } from '../browsing-rote/browsing-rote.component';
+import { Item } from '../../interface-entity/item';
+import { Category } from '../../interface-entity/category';
+import { AllImgItemComponent } from '../item-user-components/all-img-item/all-img-item.component';
+import { HeaderBrandNameItemComponent } from '../item-user-components/header-brand-name-item/header-brand-name-item.component';
+import { PriceRealAndDiscountComponent } from '../item-user-components/price-real-and-discount/price-real-and-discount.component';
+import { ColorsItemComponent } from '../item-user-components/colors-item/colors-item.component';
+import { SizesComponent } from '../item-user-components/sizes/sizes.component';
+import { BuyAndHeartComponent } from '../item-user-components/buy-and-heart/buy-and-heart.component';
+import { TypeYourCepComponent } from '../item-user-components/type-your-cep/type-your-cep.component';
+import { CheckDeliveryComponent } from '../item-user-components/check-delivery/check-delivery.component';
+import { ImgShowComponent } from '../item-user-components/img-show/img-show.component';
 
 class MockGoogleApiService {
   logout = jasmine.createSpy('logout');
@@ -18,14 +29,30 @@ describe('ItemMainComponent', () => {
   let component: ItemMainComponent;
   let fixture: ComponentFixture<ItemMainComponent>;
 
-  const imgProductAll: string[] = ["https://res.cloudinary.com/dyqsqg7pk/image/upload/v1740683876/imgs-backend-estoque/images-item/lold7rshovjrq9tv8ndb.png",
-    "https://res.cloudinary.com/dyqsqg7pk/image/upload/v1740683877/imgs-backend-estoque/images-item/wkew9znjwnxthsrkqgql.png"
-  ];
+  const category: Category = {
+    id: "dad8ba00-1e55-4b09-808f-0e6d706c288f",
+    nameCategory: "Feminino>Roupas>Blusa",
+    items: null,
+  };
+
+  const item: Item = {
+    id: "0f17df0b-1a56-4052-a636-498aac76a363",
+    brand: "JOHN JOHN FEM",
+    category: category,
+    discountPercentage: 50,
+    imgProductAll: ["https://res.cloudinary.com/dyqsqg7pk/image/upload/v1740683876/imgs-backend-estoque/images-item/lold7rshovjrq9tv8ndb.png"] ,
+    name: "Blusa Ampla Jim John John Feminina",
+    priceProduct: 349.96,
+    size: "PP,P,M,G,GG",
+  }
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule, HeaderAndFooterMainModule],
-      declarations: [ItemMainComponent, BrowsingRoteComponent],
+      declarations: [ItemMainComponent, BrowsingRoteComponent, AllImgItemComponent, HeaderBrandNameItemComponent,
+        PriceRealAndDiscountComponent, ColorsItemComponent, SizesComponent, BuyAndHeartComponent,
+        TypeYourCepComponent, CheckDeliveryComponent, ImgShowComponent
+      ],
       providers: [ItemService, { provide: GoogleApiService, useClass: MockGoogleApiService }]
     })
     .compileComponents();
@@ -33,29 +60,12 @@ describe('ItemMainComponent', () => {
     fixture = TestBed.createComponent(ItemMainComponent);
     component = fixture.componentInstance;
 
-    component.imgProductAll = imgProductAll;
-    component.whichImgShowUser = imgProductAll[0];
+    component.item = item;
 
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should render all imgs', () => {
-    const imgs = fixture.nativeElement.querySelectorAll('.container-all-imgs-item > div > img');
-    expect(imgs[0].src).toBe(imgProductAll[0]);
-    expect(imgs[1].src).toBe(imgProductAll[1]);
-  });
-
-  it('should render quantity of the 2 svg both left and right', () => {
-    const svgs = fixture.nativeElement.querySelectorAll('.container-img-show > app-svg-arrow-fontawesome');
-    expect(svgs.length).toBe(2);
-  });
-
-  it('should render img main', () => {
-    const img = fixture.nativeElement.querySelector('.image-container-to-zoom > img');
-    expect(img.src).toBe(imgProductAll[0]);
   });
 });

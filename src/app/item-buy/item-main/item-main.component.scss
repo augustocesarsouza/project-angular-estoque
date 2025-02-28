@@ -11,48 +11,6 @@
   user-select: none;
 }
 
-.container-all-imgs-item {
-  display: flex;
-  flex-direction: column;
-  width: 90px;
-  gap: 10px;
-  margin-right: 40px;
-
-  >div {
-    cursor: pointer;
-    width: 80px;
-
-    >img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-  }
-}
-
-.img-highlight {
-  outline: 3px solid rgb(0, 0, 0);
-}
-
-.container-img-show {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-
-  app-svg-arrow-fontawesome {
-    cursor: pointer;
-  }
-
-  >img {
-    object-fit: cover;
-  }
-}
-
-.image-container-to-zoom {
-  position: relative;
-  overflow: hidden;
-}
-
 .zoom-img {
   width: 100%;
   transition: transform 0.2s ease-out;
@@ -65,4 +23,11 @@
   background: rgba(255, 255, 255, 0.3);
   border: 1px solid #aaa;
   pointer-events: none;
+}
+
+.container-info-item{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 37%;
 }

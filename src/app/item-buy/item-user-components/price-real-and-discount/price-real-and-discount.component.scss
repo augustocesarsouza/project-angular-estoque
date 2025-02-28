@@ -1,0 +1,36 @@
+.container-price-real-and-discount {
+  margin-bottom: 20px;
+}
+
+.container-discount-and-price-original{
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.span-discount-percentage {
+  font-size: 14px;
+  font-weight: 500;
+  background: black;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 2px;
+  margin-right: 10px;
+}
+
+.span-price-original{
+  font-size: 13px;
+  color: rgb(112, 112, 112);
+  text-decoration: line-through;
+}
+
+.span-price-discount {
+  font-size: 21px;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.span-installment{
+  font-size: 14px;
+}

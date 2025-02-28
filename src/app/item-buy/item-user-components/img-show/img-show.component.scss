@@ -1,0 +1,21 @@
+.container-img-show {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: auto;
+  padding-right: 50px;
+
+  app-svg-arrow-fontawesome {
+    cursor: pointer;
+  }
+
+  >img {
+    object-fit: cover;
+  }
+}
+
+.image-container-to-zoom {
+  position: relative;
+  overflow: hidden;
+}
+

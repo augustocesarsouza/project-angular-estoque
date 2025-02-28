@@ -1,0 +1,8 @@
+<div class="container-colors-item">
+  <h1>COR: Preto</h1>
+  <div class="container-all-color">
+    <div *ngFor="let color of colorsItem" class="container-color">
+      <span [ngStyle]="{ 'background-color': color }"></span>
+    </div>
+  </div>
+</div>

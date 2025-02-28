@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ChangeDetectorRef } from '@angular/core';
 import { ItemService } from '../../services-backend/item.service';
 import { Item } from '../../interface-entity/item';
 import { UserLocalStorage } from '../../function-user/get-user-local-storage/user-local-storage';
@@ -17,13 +17,19 @@ export class ItemMainComponent implements OnInit {
 
   whichImgShowUser!: string;
   whichIndexImgIs = 0;
-  isZoomActive = false;
+  colorsItem = ["black", "red"];
+  sizes!: string[];
 
-  @ViewChildren('containerImgHighlight') containerImgHighlight!: QueryList<ElementRef<HTMLDivElement>>;
+  // @ViewChildren('containerImgHighlight') containerImgHighlight!: QueryList<ElementRef<HTMLDivElement>>;
+  containerImgHighlight!: QueryList<ElementRef<HTMLDivElement>>;
 
-  constructor(private itemService: ItemService, private googleApiService: GoogleApiService, private router: Router){}
+  constructor(private cdr: ChangeDetectorRef, private itemService: ItemService, private googleApiService: GoogleApiService, private router: Router){}
 
   ngOnInit(): void {
+    this.updateValueWhichIndexImgIs = this.updateValueWhichIndexImgIs.bind(this);
+    this.updateValueWhichImgShowUser = this.updateValueWhichImgShowUser.bind(this);
+    this.getValueContainerImgHighlight = this.getValueContainerImgHighlight.bind(this);
+
     if (typeof window === "undefined" || typeof localStorage === "undefined")return;
 
     const state = window.history.state;
@@ -54,10 +60,13 @@ export class ItemMainComponent implements OnInit {
         this.itemService.GetItemByIdWithCategory(user, itemId).subscribe({
           next: (success) => {
             const data = success.data;
+            console.log(data);
+
             this.item = data;
             this.imgProductAll = data.imgProductAll;
 
             this.whichImgShowUser = this.imgProductAll[0];
+            this.getSizeItem(data);
           },
           error: error => {
             if(error.status === 400){
@@ -81,83 +90,21 @@ export class ItemMainComponent implements OnInit {
     };
   }
 
-  onClickImgHighlight(imgHighlight: HTMLDivElement, indexImg: number){
-
-    const img = this.imgProductAll[indexImg];
-    this.whichIndexImgIs = indexImg;
-    this.whichImgShowUser = img;
-
-    this.containerImgHighlight.toArray().forEach((img) => {
-      img.nativeElement.className = "";
-    });
-
-    imgHighlight.className = "img-highlight";
+  updateValueWhichIndexImgIs(value: number){
+    this.whichIndexImgIs = value;
   }
 
-  onClickSvgLeft() {
-    if(this.whichIndexImgIs <= 0){
-      const lastIndex = this.imgProductAll.length - 1;
-
-      this.whichIndexImgIs = lastIndex;
-      const img = this.imgProductAll[lastIndex];
-      this.whichImgShowUser = img;
-    }else {
-      const img = this.imgProductAll[this.whichIndexImgIs - 1];
-      this.whichIndexImgIs = this.whichIndexImgIs - 1;
-      this.whichImgShowUser = img;
-    }
-
-    this.putBorderContainerImgHighlight(this.whichIndexImgIs);
+  updateValueWhichImgShowUser(value: string){
+    this.whichImgShowUser = value;
   }
 
-  onClickSvgRight() {
-    const valueMax = this.imgProductAll.length - 1;
-
-    if(this.whichIndexImgIs >= valueMax){
-      const firstIndex = 0;
-      this.whichIndexImgIs = firstIndex;
-      const img = this.imgProductAll[firstIndex];
-      this.whichImgShowUser = img;
-    }else {
-      const nextImg = this.whichIndexImgIs + 1;
-      this.whichIndexImgIs= nextImg;
-      const img = this.imgProductAll[nextImg];
-      this.whichImgShowUser = img;
-    }
-
-    this.putBorderContainerImgHighlight(this.whichIndexImgIs);
+  getValueContainerImgHighlight(value: QueryList<ElementRef<HTMLDivElement>>){
+    this.containerImgHighlight = value;
+    this.cdr.detectChanges();
   }
 
-  putBorderContainerImgHighlight (index: number){
-    this.containerImgHighlight.toArray().forEach((img) => {
-      img.nativeElement.className = "";
-    });
-
-    this.containerImgHighlight.toArray()[index].nativeElement.className = "img-highlight";
-  }
-
-  onEnter(img: HTMLImageElement) {
-    this.isZoomActive = true;
-    img.style.transition = 'none'; // Remove transição para um efeito imediato
-  }
-
-  onZoom(event: MouseEvent, img: HTMLImageElement) {
-    if (!this.isZoomActive) return;
-
-    const { offsetX, offsetY } = event;
-    const { width, height } = img;
-
-    // Calcula a posição do zoom com base no mouse
-    const xPercent = (offsetX / width) * 100;
-    const yPercent = (offsetY / height) * 100;
-
-    img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-    img.style.transform = 'scale(2)'; // Ajuste conforme necessário
-  }
-
-  onLeave(img: HTMLImageElement) {
-    this.isZoomActive = false;
-    img.style.transition = 'transform 0.2s ease-out';
-    img.style.transform = 'scale(1)'; // Volta ao tamanho original
+  getSizeItem (data: Item) {
+    const sizes = data.size.split(",");
+    this.sizes = sizes;
   }
 }

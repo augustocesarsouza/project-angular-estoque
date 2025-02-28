@@ -1,0 +1,43 @@
+.container-type-your-cep{
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  line-height: 1;
+  margin-bottom: 20px;
+
+  >span {
+    font-size: 14px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.container-input-cep-and-loupe{
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid #00000024;
+  width: 50%;
+  padding: 0px 10px;
+
+  >input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 16px;
+
+    &:focus{
+      outline: none;
+    }
+  }
+
+  >svg {
+    width: 20px;
+    height: 20px;
+
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}

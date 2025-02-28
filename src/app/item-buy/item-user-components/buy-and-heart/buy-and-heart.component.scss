@@ -1,0 +1,32 @@
+.container-buy-and-heart {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  margin-bottom: 30px;
+}
+
+.container-buy-and-heart > button {
+  background-color: black;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  width: 90%;
+}
+
+.container-heart{
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(0, 0, 0);
+  width: 45px;
+}
+
+.container-heart::before {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  background-image: url(https://res.cloudinary.com/dyqsqg7pk/image/upload/v1738324151/imgs-backend-estoque/img-home-page/sprite_qjrjg8.png);
+  background-position: -79px -60px;
+  width: 22px;
+  height: 19px;
+}

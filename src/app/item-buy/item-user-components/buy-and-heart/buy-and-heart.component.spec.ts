@@ -11,7 +11,7 @@ describe('BuyAndHeartComponent', () => {
       declarations: [BuyAndHeartComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(BuyAndHeartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,5 +19,17 @@ describe('BuyAndHeartComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render button buy', () => {
+    const button = fixture.nativeElement.querySelector('.container-buy-and-heart > button');
+
+    expect(button.textContent.trim()).toBe("COMPRAR");
+  });
+
+  it('should render container heart', () => {
+    const heart = fixture.nativeElement.querySelector('.container-heart');
+
+    expect(heart).not.toBeNull();
   });
 });

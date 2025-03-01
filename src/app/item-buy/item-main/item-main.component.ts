@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, QueryList, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services-backend/item.service';
 import { Item } from '../../interface-entity/item';
 import { UserLocalStorage } from '../../function-user/get-user-local-storage/user-local-storage';
@@ -13,23 +13,13 @@ import { GoogleApiService } from '../../login-and-register-new-account/service/g
 })
 export class ItemMainComponent implements OnInit {
   item!: Item;
-  imgProductAll!: string[];
-
-  whichImgShowUser!: string;
-  whichIndexImgIs = 0;
-  colorsItem = ["black", "red"];
-  sizes!: string[];
 
   // @ViewChildren('containerImgHighlight') containerImgHighlight!: QueryList<ElementRef<HTMLDivElement>>;
-  containerImgHighlight!: QueryList<ElementRef<HTMLDivElement>>;
+  // containerImgHighlight!: QueryList<ElementRef<HTMLDivElement>>;
 
-  constructor(private cdr: ChangeDetectorRef, private itemService: ItemService, private googleApiService: GoogleApiService, private router: Router){}
+  constructor(private itemService: ItemService, private googleApiService: GoogleApiService, private router: Router){}
 
   ngOnInit(): void {
-    this.updateValueWhichIndexImgIs = this.updateValueWhichIndexImgIs.bind(this);
-    this.updateValueWhichImgShowUser = this.updateValueWhichImgShowUser.bind(this);
-    this.getValueContainerImgHighlight = this.getValueContainerImgHighlight.bind(this);
-
     if (typeof window === "undefined" || typeof localStorage === "undefined")return;
 
     const state = window.history.state;
@@ -63,10 +53,10 @@ export class ItemMainComponent implements OnInit {
             console.log(data);
 
             this.item = data;
-            this.imgProductAll = data.imgProductAll;
+            // this.imgProductAll = data.imgProductAll;
 
-            this.whichImgShowUser = this.imgProductAll[0];
-            this.getSizeItem(data);
+            // this.whichImgShowUser = this.imgProductAll[0];
+            // this.getSizeItem(data);
           },
           error: error => {
             if(error.status === 400){
@@ -90,21 +80,21 @@ export class ItemMainComponent implements OnInit {
     };
   }
 
-  updateValueWhichIndexImgIs(value: number){
-    this.whichIndexImgIs = value;
-  }
+  // updateValueWhichIndexImgIs(value: number){
+  //   this.whichIndexImgIs = value;
+  // }
 
-  updateValueWhichImgShowUser(value: string){
-    this.whichImgShowUser = value;
-  }
+  // updateValueWhichImgShowUser(value: string){
+  //   this.whichImgShowUser = value;
+  // }
 
-  getValueContainerImgHighlight(value: QueryList<ElementRef<HTMLDivElement>>){
-    this.containerImgHighlight = value;
-    this.cdr.detectChanges();
-  }
+  // getValueContainerImgHighlight(value: QueryList<ElementRef<HTMLDivElement>>){
+  //   this.containerImgHighlight = value;
+  //   this.cdr.detectChanges();
+  // }
 
-  getSizeItem (data: Item) {
-    const sizes = data.size.split(",");
-    this.sizes = sizes;
-  }
+  // getSizeItem (data: Item) {
+  //   const sizes = data.size.split(",");
+  //   this.sizes = sizes;
+  // }
 }

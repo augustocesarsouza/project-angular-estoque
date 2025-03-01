@@ -19,6 +19,7 @@ import { BuyAndHeartComponent } from '../item-user-components/buy-and-heart/buy-
 import { TypeYourCepComponent } from '../item-user-components/type-your-cep/type-your-cep.component';
 import { CheckDeliveryComponent } from '../item-user-components/check-delivery/check-delivery.component';
 import { ImgShowComponent } from '../item-user-components/img-show/img-show.component';
+import { ItemUserMainComponent } from '../item-user-components/item-user-main/item-user-main.component';
 
 class MockGoogleApiService {
   logout = jasmine.createSpy('logout');
@@ -49,7 +50,7 @@ describe('ItemMainComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule, HeaderAndFooterMainModule],
-      declarations: [ItemMainComponent, BrowsingRoteComponent, AllImgItemComponent, HeaderBrandNameItemComponent,
+      declarations: [ItemMainComponent, ItemUserMainComponent, BrowsingRoteComponent, AllImgItemComponent, HeaderBrandNameItemComponent,
         PriceRealAndDiscountComponent, ColorsItemComponent, SizesComponent, BuyAndHeartComponent,
         TypeYourCepComponent, CheckDeliveryComponent, ImgShowComponent
       ],

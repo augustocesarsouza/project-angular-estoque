@@ -15,6 +15,7 @@ import { SizesComponent } from './item-user-components/sizes/sizes.component';
 import { BuyAndHeartComponent } from './item-user-components/buy-and-heart/buy-and-heart.component';
 import { TypeYourCepComponent } from './item-user-components/type-your-cep/type-your-cep.component';
 import { CheckDeliveryComponent } from './item-user-components/check-delivery/check-delivery.component';
+import { ItemUserMainComponent } from './item-user-components/item-user-main/item-user-main.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CheckDeliveryComponent } from './item-user-components/check-delivery/ch
     SizesComponent,
     BuyAndHeartComponent,
     TypeYourCepComponent,
-    CheckDeliveryComponent
+    CheckDeliveryComponent,
+    ItemUserMainComponent
   ],
   imports: [
     CommonModule,

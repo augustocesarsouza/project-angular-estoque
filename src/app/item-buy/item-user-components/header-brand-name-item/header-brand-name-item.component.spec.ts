@@ -9,6 +9,9 @@ describe('HeaderBrandNameItemComponent', () => {
   let component: HeaderBrandNameItemComponent;
   let fixture: ComponentFixture<HeaderBrandNameItemComponent>;
 
+  const brand = "brand1";
+  const itemName = "BLUSA AMPLA JIM JOHN JOHN FEMININA";
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
@@ -18,10 +21,24 @@ describe('HeaderBrandNameItemComponent', () => {
 
     fixture = TestBed.createComponent(HeaderBrandNameItemComponent);
     component = fixture.componentInstance;
+
+    component.brand = brand;
+    component.itemName = itemName;
+
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render brand', () => {
+    const header = fixture.nativeElement.querySelector('.header-brand');
+    expect(header.textContent).toBe(brand);
+  });
+
+  it('should render item name', () => {
+    const header = fixture.nativeElement.querySelector('.header-name-item');
+    expect(header.textContent).toBe(itemName);
   });
 });

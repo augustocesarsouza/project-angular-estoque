@@ -16,6 +16,7 @@ import { BuyAndHeartComponent } from './item-user-components/buy-and-heart/buy-a
 import { TypeYourCepComponent } from './item-user-components/type-your-cep/type-your-cep.component';
 import { CheckDeliveryComponent } from './item-user-components/check-delivery/check-delivery.component';
 import { ItemUserMainComponent } from './item-user-components/item-user-main/item-user-main.component';
+import { HeaderAndFooterLoginAndRegisterModule } from '../header-and-footer-login-and-register/header-and-footer-login-and-register.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ItemUserMainComponent } from './item-user-components/item-user-main/ite
     ItemBuyRoutingModule,
     HeaderAndFooterMainModule,
     AllSvgModule,
+    HeaderAndFooterLoginAndRegisterModule
   ]
 })
 export class ItemBuyModule { }

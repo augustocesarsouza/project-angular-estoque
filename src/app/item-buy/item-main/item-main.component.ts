@@ -80,21 +80,15 @@ export class ItemMainComponent implements OnInit {
     };
   }
 
-  // updateValueWhichIndexImgIs(value: number){
-  //   this.whichIndexImgIs = value;
-  // }
+  alreadyClickedButtonSeeMoreDetails = false;
 
-  // updateValueWhichImgShowUser(value: string){
-  //   this.whichImgShowUser = value;
-  // }
+  onClickButton(containerProductDetails: HTMLDivElement){
+    containerProductDetails.style.height = "auto";
+    this.alreadyClickedButtonSeeMoreDetails = true;
+  }
 
-  // getValueContainerImgHighlight(value: QueryList<ElementRef<HTMLDivElement>>){
-  //   this.containerImgHighlight = value;
-  //   this.cdr.detectChanges();
-  // }
-
-  // getSizeItem (data: Item) {
-  //   const sizes = data.size.split(",");
-  //   this.sizes = sizes;
-  // }
+  onClickButtonSeeLess(containerProductDetails: HTMLDivElement){
+    containerProductDetails.style.height = "100px";
+    this.alreadyClickedButtonSeeMoreDetails = false;
+  }
 }

@@ -8,5 +8,6 @@ export interface Item {
   size: string;
   brand: string;
   category: Category;
+  description: string;
   imgProductAll: string[];
 }

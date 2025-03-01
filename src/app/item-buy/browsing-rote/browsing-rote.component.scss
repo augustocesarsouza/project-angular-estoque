@@ -1,8 +1,16 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #0000001f;
+}
+
 .browsing-rote-main {
   display: flex;
   height: 49px;
-  padding: 0px 104px;
-  border-bottom: 1px solid #0000001f;
+  padding: 0px 20px;
+
+  width: 1400px;
 }
 
 .browsing-rote {

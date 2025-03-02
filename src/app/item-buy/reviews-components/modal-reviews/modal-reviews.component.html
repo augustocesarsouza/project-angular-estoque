@@ -1,3 +1,96 @@
 <div class="container-modal-main">
-  <p>modal-reviews works!</p>
+  <h1>Avalie este produto</h1>
+
+  <div class="container-all-types-reviews">
+    <app-review-type nameType="Caimento:"></app-review-type>
+    <app-review-type nameType="Qualidade:"></app-review-type>
+    <app-review-type nameType="Preço:"></app-review-type>
+  </div>
+
+  <div class="container-all-inputs">
+    <div class="container-cpf-and-errors">
+      <div class="container-input-all" #divContainerInputNameFull>
+        <div class="container-name-input" #divNameInput>Nome</div>
+        <input
+          type="text"
+          class="input-all"
+          autocomplete="off"
+          placeholder="Nome"
+          id="input-name-full"
+          #inputNameFull
+          (input)="changeInputNameFull($event, divNameInput, divContainerInputNameFull)"
+        />
+      </div>
+      <span class="span-name-full-error" *ngIf="NameFullError"
+        >O nome é muito curto. Ele deve ter 2 caracteres ou mais.</span
+      >
+    </div>
+    <div class="container-cpf-and-errors">
+      <div class="container-input-all" #divContainerInputEmail>
+        <div class="container-name-input" #divEmailInput>E-mail</div>
+        <input
+          type="text"
+          class="input-all"
+          autocomplete="off"
+          placeholder="E-mail"
+          id="input-email"
+          #inputNameFull
+          (input)="changeInputEmail($event, divEmailInput, divContainerInputEmail)"
+        />
+      </div>
+      <span class="span-name-full-error" *ngIf="EmailError"
+        >O E-mail é muito curto. Ele deve ter 2 caracteres ou mais.</span
+      >
+    </div>
+
+    <div class="container-cpf-and-errors">
+      <div class="container-input-all" #divContainerInputReviewTitle>
+        <div class="container-name-input" #divReviewTitleInput>Titulo da avaliação</div>
+        <input
+          type="text"
+          class="input-all"
+          autocomplete="off"
+          placeholder="Titulo da avaliação"
+          id="input-review-title"
+          #inputNameFull
+          (input)="
+            changeInputReviewTitle($event, divReviewTitleInput, divContainerInputReviewTitle)
+          "
+        />
+      </div>
+      <span class="span-name-full-error" *ngIf="ReviewTitleError"
+        >O Titulo da avaliação é muito curto. Ele deve ter 2 caracteres ou mais.</span
+      >
+    </div>
+
+    <div class="container-textarea-and-warning">
+      <textarea name="ReviewBody" id="review-reviewbody"></textarea>
+    </div>
+
+    <re-captcha
+      class="container-re-captcha"
+      siteKey="6LfmSOcqAAAAAK1pCxrsoCxmNj8_F1e3a-ZLBltK"
+      (resolved)="recaptchaCallback($event)"
+    ></re-captcha>
+
+    <button
+      #buttonSubmitEvaluation
+      class="button-submit-evaluation"
+      (click)="onClickSubmitEvaluation()"
+      (keydown.enter)="onClickSubmitEvaluation()"
+      tabindex="0"
+      (mouseenter)="onMouseEnterSubmitEvaluation(buttonSubmitEvaluation)"
+      (mouseleave)="onMouseLeaveSubmitEvaluation(buttonSubmitEvaluation)"
+    >
+      ENVIAR AVALIAÇÃO
+    </button>
+  </div>
 </div>
+<app-svg-exit
+  width="40px"
+  height="40px"
+  fill="black"
+  (click)="onClickExitModal()"
+  (keydown.enter)="onClickExitModal()"
+  tabindex="0"
+></app-svg-exit>

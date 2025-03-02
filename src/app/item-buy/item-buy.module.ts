@@ -20,6 +20,8 @@ import { HeaderAndFooterLoginAndRegisterModule } from '../header-and-footer-logi
 import { ProductDetailsAndExchangesAndReturnsMainComponent } from './product-details-and-exchanges-and-returns-components/product-details-and-exchanges-and-returns-main/product-details-and-exchanges-and-returns-main.component';
 import { ReviewsMainComponent } from './reviews-components/reviews-main/reviews-main.component';
 import { ModalReviewsComponent } from './reviews-components/modal-reviews/modal-reviews.component';
+import { ReviewTypeComponent } from './reviews-components/review-type/review-type.component';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -37,14 +39,16 @@ import { ModalReviewsComponent } from './reviews-components/modal-reviews/modal-
     ItemUserMainComponent,
     ProductDetailsAndExchangesAndReturnsMainComponent,
     ReviewsMainComponent,
-    ModalReviewsComponent
+    ModalReviewsComponent,
+    ReviewTypeComponent
   ],
   imports: [
     CommonModule,
     ItemBuyRoutingModule,
     HeaderAndFooterMainModule,
     AllSvgModule,
-    HeaderAndFooterLoginAndRegisterModule
+    HeaderAndFooterLoginAndRegisterModule,
+    RecaptchaModule
   ]
 })
 export class ItemBuyModule { }

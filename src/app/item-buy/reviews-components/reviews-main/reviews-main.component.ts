@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Item } from '../../../interface-entity/item';
 
 @Component({
@@ -6,11 +6,25 @@ import { Item } from '../../../interface-entity/item';
   templateUrl: './reviews-main.component.html',
   styleUrl: './reviews-main.component.scss'
 })
-export class ReviewsMainComponent {
+export class ReviewsMainComponent implements OnInit {
   @Input() item!: Item;
+  itWasClickedReviews = false;
 
+  ngOnInit(): void {
+    this.changeValueModalReviews = this.changeValueModalReviews.bind(this);
+  }
 
   onClickReviews(){
-    //reviews
+    this.itWasClickedReviews = true;
+  }
+
+  changeValueModalReviews(value: boolean){
+    if(!value){
+      if (typeof window === "undefined" || typeof document === "undefined")return;
+
+      document.body.style.overflow = "auto";
+    }
+
+    this.itWasClickedReviews = value;
   }
 }

@@ -1,0 +1,22 @@
+<div class="container-review">
+  <span>{{ nameType }}</span>
+  <!-- <div class="container-stars" id="starsContainer"></div> -->
+  <div class="container-quantity-star">
+    <div class="container-star-red-svg">
+      <app-svg-star
+        *ngFor="let el of countStarArray; let i = index"
+        (click)="onClickStar(i)"
+        (keydown.enter)="onClickStar(i)"
+        tabindex="0"
+      ></app-svg-star>
+    </div>
+    <div class="container-star-black-svg" *ngIf="countStarArray">
+      <app-svg-star
+        *ngFor="let star of emptyStars; let i = index"
+        (click)="onClickStarBlack(i)"
+        (keydown.enter)="onClickStarBlack(i)"
+        tabindex="0"
+      ></app-svg-star>
+    </div>
+  </div>
+</div>

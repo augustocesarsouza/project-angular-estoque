@@ -20,6 +20,8 @@ import { TypeYourCepComponent } from '../item-user-components/type-your-cep/type
 import { CheckDeliveryComponent } from '../item-user-components/check-delivery/check-delivery.component';
 import { ImgShowComponent } from '../item-user-components/img-show/img-show.component';
 import { ItemUserMainComponent } from '../item-user-components/item-user-main/item-user-main.component';
+import { ProductDetailsAndExchangesAndReturnsMainComponent } from '../product-details-and-exchanges-and-returns-components/product-details-and-exchanges-and-returns-main/product-details-and-exchanges-and-returns-main.component';
+import { FooterMainComponent } from '../../header-and-footer-login-and-register/footer-components/footer-main/footer-main.component';
 
 class MockGoogleApiService {
   logout = jasmine.createSpy('logout');
@@ -45,14 +47,15 @@ describe('ItemMainComponent', () => {
     name: "Blusa Ampla Jim John John Feminina",
     priceProduct: 349.96,
     size: "PP,P,M,G,GG",
+    description: "seila seila"
   }
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule, HeaderAndFooterMainModule],
-      declarations: [ItemMainComponent, ItemUserMainComponent, BrowsingRoteComponent, AllImgItemComponent, HeaderBrandNameItemComponent,
-        PriceRealAndDiscountComponent, ColorsItemComponent, SizesComponent, BuyAndHeartComponent,
-        TypeYourCepComponent, CheckDeliveryComponent, ImgShowComponent
+      declarations: [ItemMainComponent, ItemUserMainComponent, BrowsingRoteComponent, AllImgItemComponent, HeaderBrandNameItemComponent, PriceRealAndDiscountComponent, ColorsItemComponent, SizesComponent,
+        BuyAndHeartComponent,TypeYourCepComponent, CheckDeliveryComponent, ImgShowComponent,
+        ProductDetailsAndExchangesAndReturnsMainComponent, FooterMainComponent
       ],
       providers: [ItemService, { provide: GoogleApiService, useClass: MockGoogleApiService }]
     })

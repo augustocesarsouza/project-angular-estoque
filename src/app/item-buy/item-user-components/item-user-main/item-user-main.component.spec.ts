@@ -36,6 +36,7 @@ describe('ItemUserMainComponent', () => {
       name: "Blusa Ampla Jim John John Feminina",
       priceProduct: 349.96,
       size: "PP,P,M,G,GG",
+      description: "description123"
     }
 
   beforeEach(async () => {

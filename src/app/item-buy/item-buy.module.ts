@@ -17,6 +17,7 @@ import { TypeYourCepComponent } from './item-user-components/type-your-cep/type-
 import { CheckDeliveryComponent } from './item-user-components/check-delivery/check-delivery.component';
 import { ItemUserMainComponent } from './item-user-components/item-user-main/item-user-main.component';
 import { HeaderAndFooterLoginAndRegisterModule } from '../header-and-footer-login-and-register/header-and-footer-login-and-register.module';
+import { ProductDetailsAndExchangesAndReturnsMainComponent } from './product-details-and-exchanges-and-returns-components/product-details-and-exchanges-and-returns-main/product-details-and-exchanges-and-returns-main.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HeaderAndFooterLoginAndRegisterModule } from '../header-and-footer-logi
     BuyAndHeartComponent,
     TypeYourCepComponent,
     CheckDeliveryComponent,
-    ItemUserMainComponent
+    ItemUserMainComponent,
+    ProductDetailsAndExchangesAndReturnsMainComponent
   ],
   imports: [
     CommonModule,

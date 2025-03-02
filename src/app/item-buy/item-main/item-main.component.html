@@ -4,62 +4,9 @@
 
 <app-item-user-main *ngIf="item" [item]="item"></app-item-user-main>
 
-<div class="container-product-details-and-exchanges-and-returns-main" *ngIf="item">
-  <div class="container-product-details-and-exchanges-and-returns" #containerProductDetails>
-    <div class="container-product-details">
-      <h1>Detalhes do Produto</h1>
-      <span>{{ item.description }}</span>
-    </div>
-
-    <div class="container-exchanges-and-returns">
-      <h1>Trocas e Devoluções</h1>
-      <span
-        >Caso não fique satisfeito com o produto adquirido, não se preocupe, nosso prazo de trocas é
-        de 07 dias corridos.</span
-      >
-      <span
-        >Você pode efetuar a troca por Vale Compras, podendo ser utilizado aqui no site em um novo
-        pedido.</span
-      >
-      <span>Para maiores informações, <span class="span-link">clique aqui.</span></span>
-    </div>
-  </div>
-
-  <div class="container-button-deatils">
-    <div class="container-transparente"></div>
-    <div class="button-close-deatils">
-      <button
-        class="button-open-deatils"
-        (click)="onClickButton(containerProductDetails)"
-        (keydown.enter)="onClickButton(containerProductDetails)"
-        tabindex="0"
-        *ngIf="!alreadyClickedButtonSeeMoreDetails"
-      >
-        ABRIR DETALHES
-        <app-svg-arrow-fontawesome
-          width="40px"
-          height="40px"
-          fill="black"
-          rotate="rotate(270)"
-        ></app-svg-arrow-fontawesome>
-      </button>
-      <button
-        class="button-close-deatils"
-        (click)="onClickButtonSeeLess(containerProductDetails)"
-        (keydown.enter)="onClickButtonSeeLess(containerProductDetails)"
-        tabindex="0"
-        *ngIf="alreadyClickedButtonSeeMoreDetails"
-      >
-        FECHAR DETALHES
-        <app-svg-arrow-fontawesome
-          width="40px"
-          height="40px"
-          fill="black"
-          rotate="rotate(90)"
-        ></app-svg-arrow-fontawesome>
-      </button>
-    </div>
-  </div>
-</div>
+<app-product-details-and-exchanges-and-returns-main
+  *ngIf="item"
+  [item]="item"
+></app-product-details-and-exchanges-and-returns-main>
 
 <app-footer-main></app-footer-main>

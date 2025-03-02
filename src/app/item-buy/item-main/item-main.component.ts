@@ -14,9 +14,6 @@ import { GoogleApiService } from '../../login-and-register-new-account/service/g
 export class ItemMainComponent implements OnInit {
   item!: Item;
 
-  // @ViewChildren('containerImgHighlight') containerImgHighlight!: QueryList<ElementRef<HTMLDivElement>>;
-  // containerImgHighlight!: QueryList<ElementRef<HTMLDivElement>>;
-
   constructor(private itemService: ItemService, private googleApiService: GoogleApiService, private router: Router){}
 
   ngOnInit(): void {
@@ -53,10 +50,6 @@ export class ItemMainComponent implements OnInit {
             console.log(data);
 
             this.item = data;
-            // this.imgProductAll = data.imgProductAll;
-
-            // this.whichImgShowUser = this.imgProductAll[0];
-            // this.getSizeItem(data);
           },
           error: error => {
             if(error.status === 400){
@@ -78,17 +71,5 @@ export class ItemMainComponent implements OnInit {
       this.router.navigate(['/']);
       return;
     };
-  }
-
-  alreadyClickedButtonSeeMoreDetails = false;
-
-  onClickButton(containerProductDetails: HTMLDivElement){
-    containerProductDetails.style.height = "auto";
-    this.alreadyClickedButtonSeeMoreDetails = true;
-  }
-
-  onClickButtonSeeLess(containerProductDetails: HTMLDivElement){
-    containerProductDetails.style.height = "100px";
-    this.alreadyClickedButtonSeeMoreDetails = false;
   }
 }

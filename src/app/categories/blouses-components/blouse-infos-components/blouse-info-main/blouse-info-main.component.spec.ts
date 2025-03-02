@@ -22,7 +22,7 @@ describe('BlouseInfoMainComponent', () => {
     nameCategory: "asds>asdasd>asdasd",
     items: null,
   };
-  const objItem = {
+  const objItem: Item = {
     id: "74b20ea3-b09b-4802-b2db-84acceaf911e",
     name: "name1",
     priceProduct: 133.45,
@@ -31,6 +31,7 @@ describe('BlouseInfoMainComponent', () => {
     brand: "brand1",
     category: category,
     imgProductAll: ["asasdsd"],
+    description: "description1",
   };
 
   itemList.push(objItem);

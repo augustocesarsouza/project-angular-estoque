@@ -18,6 +18,8 @@ import { CheckDeliveryComponent } from './item-user-components/check-delivery/ch
 import { ItemUserMainComponent } from './item-user-components/item-user-main/item-user-main.component';
 import { HeaderAndFooterLoginAndRegisterModule } from '../header-and-footer-login-and-register/header-and-footer-login-and-register.module';
 import { ProductDetailsAndExchangesAndReturnsMainComponent } from './product-details-and-exchanges-and-returns-components/product-details-and-exchanges-and-returns-main/product-details-and-exchanges-and-returns-main.component';
+import { ReviewsMainComponent } from './reviews-components/reviews-main/reviews-main.component';
+import { ModalReviewsComponent } from './reviews-components/modal-reviews/modal-reviews.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ProductDetailsAndExchangesAndReturnsMainComponent } from './product-det
     TypeYourCepComponent,
     CheckDeliveryComponent,
     ItemUserMainComponent,
-    ProductDetailsAndExchangesAndReturnsMainComponent
+    ProductDetailsAndExchangesAndReturnsMainComponent,
+    ReviewsMainComponent,
+    ModalReviewsComponent
   ],
   imports: [
     CommonModule,

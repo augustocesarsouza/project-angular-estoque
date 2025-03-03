@@ -1,5 +1,5 @@
 <div class="container-modal-main">
-  <h1>Avalie este produto</h1>
+  <h1 class="header-modal-review">Avalie este produto</h1>
 
   <div class="container-all-types-reviews">
     <app-review-type nameType="Caimento:"></app-review-type>
@@ -27,14 +27,14 @@
     </div>
     <div class="container-cpf-and-errors">
       <div class="container-input-all" #divContainerInputEmail>
-        <div class="container-name-input" #divEmailInput>E-mail</div>
+        <div class="container-email-input" #divEmailInput>E-mail</div>
         <input
           type="text"
           class="input-all"
           autocomplete="off"
           placeholder="E-mail"
           id="input-email"
-          #inputNameFull
+          #inputEmail
           (input)="changeInputEmail($event, divEmailInput, divContainerInputEmail)"
         />
       </div>
@@ -45,14 +45,14 @@
 
     <div class="container-cpf-and-errors">
       <div class="container-input-all" #divContainerInputReviewTitle>
-        <div class="container-name-input" #divReviewTitleInput>Titulo da avaliação</div>
+        <div class="container-review-title-input" #divReviewTitleInput>Titulo da avaliação</div>
         <input
           type="text"
           class="input-all"
           autocomplete="off"
           placeholder="Titulo da avaliação"
           id="input-review-title"
-          #inputNameFull
+          #inputReviewTitle
           (input)="
             changeInputReviewTitle($event, divReviewTitleInput, divContainerInputReviewTitle)
           "
@@ -64,7 +64,7 @@
     </div>
 
     <div class="container-textarea-and-warning">
-      <textarea name="ReviewBody" id="review-reviewbody"></textarea>
+      <textarea name="ReviewBody" id="review-reviewbody" #textareaReview></textarea>
     </div>
 
     <re-captcha
@@ -85,12 +85,13 @@
       ENVIAR AVALIAÇÃO
     </button>
   </div>
+
+  <app-svg-exit
+    width="20px"
+    height="20px"
+    fill="black"
+    (click)="onClickExitModal()"
+    (keydown.enter)="onClickExitModal()"
+    tabindex="0"
+  ></app-svg-exit>
 </div>
-<app-svg-exit
-  width="40px"
-  height="40px"
-  fill="black"
-  (click)="onClickExitModal()"
-  (keydown.enter)="onClickExitModal()"
-  tabindex="0"
-></app-svg-exit>

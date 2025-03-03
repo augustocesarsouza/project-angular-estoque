@@ -4,6 +4,9 @@ import { ReviewsMainComponent } from './reviews-main.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AllSvgModule } from '../../../all-svg/all-svg.module';
+import { ModalReviewsComponent } from '../modal-reviews/modal-reviews.component';
+import { ReviewTypeComponent } from '../review-type/review-type.component';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 describe('ReviewsMainComponent', () => {
   let component: ReviewsMainComponent;
@@ -11,8 +14,8 @@ describe('ReviewsMainComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule],
-      declarations: [ReviewsMainComponent]
+      imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule, RecaptchaModule],
+      declarations: [ReviewsMainComponent, ModalReviewsComponent, ReviewTypeComponent]
     })
     .compileComponents();
 

@@ -12,12 +12,17 @@ export class ModalReviewsComponent implements AfterViewInit {
   ReviewTitleError: null | boolean = null;
   clickRecaptcha = false;
 
+  @ViewChild('inputNameFull') inputNameFull!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputEmail') inputEmail!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputReviewTitle') inputReviewTitle!: ElementRef<HTMLInputElement>;
+  @ViewChild('textareaReview') textareaReview!: ElementRef<HTMLTextAreaElement>;
+
   @ViewChild('buttonSubmitEvaluation') buttonSubmitEvaluation!: ElementRef<HTMLButtonElement>;
 
   ngAfterViewInit(): void {
     if (typeof window === "undefined" || typeof document === "undefined")return;
 
-    document.body.style.overflow = "hidden"; // FAZER TESTES AGORA
+    document.body.style.overflow = "hidden";
   }
 
   changeInputNameFull(e: Event, divNameInput: HTMLDivElement, divContainerInputNameFull: HTMLDivElement){
@@ -107,7 +112,15 @@ export class ModalReviewsComponent implements AfterViewInit {
 
   onClickSubmitEvaluation() {
     if(!this.clickRecaptcha)return;
-    console.log("can submit");
+
+    const review = {
+      name: this.inputNameFull.nativeElement.value,
+      email: this.inputEmail.nativeElement.value,
+      reviewTitle: this.inputReviewTitle.nativeElement.value,
+      review: this.textareaReview.nativeElement.value
+    }
+
+    console.log(review);
   }
 
   onMouseEnterSubmitEvaluation(buttonSubmitEvaluation: HTMLButtonElement) {

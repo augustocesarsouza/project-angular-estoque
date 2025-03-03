@@ -74,4 +74,9 @@ describe('ItemMainComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render span footer', () => {
+    const span = fixture.nativeElement.querySelector('.container-span-footer > span');
+    expect(span.textContent.trim()).toBe("Estoque é o outlet oficial das marcas Le Lis, Rosa Chá, Bo.Bô, John John, Dudalina, Individual, Le Lis Petit e John John Kids e pertence à Veste S.A Estilo. Na loja online da Estoque você encontra peças novas e limitadas, sem defeitos, de coleções passadas das maiores grifes do Brasil. Aproveite a oportunidade da nossa loja online pelo seu computador ou celular.");
+  });
 });

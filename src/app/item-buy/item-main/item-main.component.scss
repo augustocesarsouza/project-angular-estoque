@@ -15,3 +15,25 @@ app-browsing-rote {
 app-footer-main {
   width: 1200px;
 }
+
+.container-span-footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 50px 0px;
+
+  >span {
+    font-size: 15px;
+    width: 1040px;
+    line-height: 1.5;
+    text-align: center;
+  }
+}
+
+.container-app-footer-main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #f2f2f2;
+  padding-bottom: 30px;
+}

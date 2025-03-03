@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { Item } from '../../interface-entity/item';
+import { Item } from '../interface-entity/item';
 
 @Component({
   selector: 'app-you-would-like-receiver-news',
@@ -117,7 +117,10 @@ export class YouWouldLikeReceiverNewsComponent {
     }
   }
 
-  onCheckboxChange() {
+  onCheckboxChange(event: Event) {
+    const checkbox = event.target as HTMLInputElement;
+    this.isChecked = checkbox.checked;
+
     if (this.isChecked) {
       this.labelCheckbox.nativeElement.style.color = "black";
     } else {

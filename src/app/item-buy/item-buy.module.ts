@@ -23,9 +23,8 @@ import { ModalReviewsComponent } from './reviews-components/modal-reviews/modal-
 import { ReviewTypeComponent } from './reviews-components/review-type/review-type.component';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { BannerItemComponent } from './banner-item/banner-item.component';
-import { YouWouldLikeReceiverNewsComponent } from './you-would-like-receiver-news/you-would-like-receiver-news.component';
-import { FormsModule } from '@angular/forms';
 import { AllTypesReviewsComponent } from './reviews-components/all-types-reviews/all-types-reviews.component';
+import { YouWouldLikeReceiverNewsComponent } from '../you-would-like-receiver-news/you-would-like-receiver-news.component';
 
 @NgModule({
   declarations: [
@@ -46,8 +45,8 @@ import { AllTypesReviewsComponent } from './reviews-components/all-types-reviews
     ModalReviewsComponent,
     ReviewTypeComponent,
     BannerItemComponent,
-    YouWouldLikeReceiverNewsComponent,
-    AllTypesReviewsComponent
+    AllTypesReviewsComponent,
+    YouWouldLikeReceiverNewsComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +55,6 @@ import { AllTypesReviewsComponent } from './reviews-components/all-types-reviews
     AllSvgModule,
     HeaderAndFooterLoginAndRegisterModule,
     RecaptchaModule,
-    FormsModule
   ]
 })
 export class ItemBuyModule { }

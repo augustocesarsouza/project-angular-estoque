@@ -76,12 +76,7 @@
     </div>
 
     <div class="container-checkbox">
-      <input
-        type="checkbox"
-        id="terms-checkbox"
-        [(ngModel)]="isChecked"
-        (change)="onCheckboxChange()"
-      />
+      <input type="checkbox" id="terms-checkbox" (change)="onCheckboxChange($event)" />
       <label for="terms-checkbox" #labelCheckbox>
         Aceito receber conteúdos e promoções e estou de acordo com sua
         <span class="span-privacy-policy-link">Política de Privacidade</span>

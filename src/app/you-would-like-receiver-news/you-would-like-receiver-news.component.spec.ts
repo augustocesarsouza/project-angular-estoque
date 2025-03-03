@@ -4,7 +4,7 @@ import { YouWouldLikeReceiverNewsComponent } from './you-would-like-receiver-new
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { AllSvgModule } from '../../all-svg/all-svg.module';
+import { AllSvgModule } from '../all-svg/all-svg.module';
 
 describe('YouWouldLikeReceiverNewsComponent', () => {
   let component: YouWouldLikeReceiverNewsComponent;

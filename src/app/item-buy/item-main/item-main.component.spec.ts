@@ -22,6 +22,8 @@ import { ImgShowComponent } from '../item-user-components/img-show/img-show.comp
 import { ItemUserMainComponent } from '../item-user-components/item-user-main/item-user-main.component';
 import { ProductDetailsAndExchangesAndReturnsMainComponent } from '../product-details-and-exchanges-and-returns-components/product-details-and-exchanges-and-returns-main/product-details-and-exchanges-and-returns-main.component';
 import { FooterMainComponent } from '../../header-and-footer-login-and-register/footer-components/footer-main/footer-main.component';
+import { ReviewsMainComponent } from '../reviews-components/reviews-main/reviews-main.component';
+import { BannerItemComponent } from '../banner-item/banner-item.component';
 
 class MockGoogleApiService {
   logout = jasmine.createSpy('logout');
@@ -53,9 +55,8 @@ describe('ItemMainComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule, HeaderAndFooterMainModule],
-      declarations: [ItemMainComponent, ItemUserMainComponent, BrowsingRoteComponent, AllImgItemComponent, HeaderBrandNameItemComponent, PriceRealAndDiscountComponent, ColorsItemComponent, SizesComponent,
-        BuyAndHeartComponent,TypeYourCepComponent, CheckDeliveryComponent, ImgShowComponent,
-        ProductDetailsAndExchangesAndReturnsMainComponent, FooterMainComponent
+      declarations: [ItemMainComponent, ItemUserMainComponent, BrowsingRoteComponent, AllImgItemComponent, HeaderBrandNameItemComponent, PriceRealAndDiscountComponent, ColorsItemComponent, SizesComponent, BuyAndHeartComponent,TypeYourCepComponent, CheckDeliveryComponent, ImgShowComponent,
+        ProductDetailsAndExchangesAndReturnsMainComponent, FooterMainComponent, ReviewsMainComponent, BannerItemComponent
       ],
       providers: [ItemService, { provide: GoogleApiService, useClass: MockGoogleApiService }]
     })

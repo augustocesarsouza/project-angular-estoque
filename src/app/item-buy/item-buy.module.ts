@@ -22,6 +22,9 @@ import { ReviewsMainComponent } from './reviews-components/reviews-main/reviews-
 import { ModalReviewsComponent } from './reviews-components/modal-reviews/modal-reviews.component';
 import { ReviewTypeComponent } from './reviews-components/review-type/review-type.component';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { BannerItemComponent } from './banner-item/banner-item.component';
+import { YouWouldLikeReceiverNewsComponent } from './you-would-like-receiver-news/you-would-like-receiver-news.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,9 @@ import { RecaptchaModule } from 'ng-recaptcha';
     ProductDetailsAndExchangesAndReturnsMainComponent,
     ReviewsMainComponent,
     ModalReviewsComponent,
-    ReviewTypeComponent
+    ReviewTypeComponent,
+    BannerItemComponent,
+    YouWouldLikeReceiverNewsComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +53,8 @@ import { RecaptchaModule } from 'ng-recaptcha';
     HeaderAndFooterMainModule,
     AllSvgModule,
     HeaderAndFooterLoginAndRegisterModule,
-    RecaptchaModule
+    RecaptchaModule,
+    FormsModule
   ]
 })
 export class ItemBuyModule { }

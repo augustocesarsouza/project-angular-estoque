@@ -25,6 +25,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { BannerItemComponent } from './banner-item/banner-item.component';
 import { YouWouldLikeReceiverNewsComponent } from './you-would-like-receiver-news/you-would-like-receiver-news.component';
 import { FormsModule } from '@angular/forms';
+import { AllTypesReviewsComponent } from './reviews-components/all-types-reviews/all-types-reviews.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { FormsModule } from '@angular/forms';
     ModalReviewsComponent,
     ReviewTypeComponent,
     BannerItemComponent,
-    YouWouldLikeReceiverNewsComponent
+    YouWouldLikeReceiverNewsComponent,
+    AllTypesReviewsComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,44 @@
+:host {
+  width: 100%;
+}
+
+.container-reviews-main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0 70px;
+  border-bottom: 1.5px solid #ddd;
+  width: 100%;
+}
+
+.container-reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-reviews {
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  line-height: 1;
+}
+
+.span-reviews {
+  font-size: 18px;
+}
+
+.container-reviews > button {
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid rgb(0, 0, 0);
+  background-color: none;
+  padding: 14px 20px;
+  cursor: pointer;
+  margin-top: 20px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.123);
+  }
+}

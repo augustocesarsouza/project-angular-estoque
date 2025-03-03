@@ -1,0 +1,37 @@
+.container-review{
+  display: flex;
+  justify-content: space-between;
+  align-items: normal;
+  line-height: 1;
+
+  >span {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+.container-quantity-star {
+  display: flex;
+}
+
+.container-star-red-svg{
+  display: flex;
+
+  >app-svg-star {
+    width: 17px;
+    height: 17px;
+    stroke: #000000;
+    fill: #000000;
+  }
+}
+
+.container-star-black-svg{
+  display: flex;
+
+  >app-svg-star {
+    width: 17px;
+    height: 17px;
+    stroke: #000000;
+    fill: #fff;
+  }
+}

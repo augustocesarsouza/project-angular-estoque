@@ -1,0 +1,27 @@
+<div class="container-img-show">
+  <app-svg-arrow-fontawesome
+    width="40px"
+    height="40px"
+    fill="black"
+    rotate="rotate(0)"
+    (click)="onClickSvgLeft()"
+  ></app-svg-arrow-fontawesome>
+  <div class="image-container-to-zoom">
+    <img
+      #zoomImage
+      class="img-zoom"
+      src="{{ whichImgShowUser }}"
+      alt="img-show-user"
+      (mousemove)="onZoom($event, zoomImage)"
+      (mouseleave)="onLeave(zoomImage)"
+      (mouseenter)="onEnter(zoomImage)"
+    />
+  </div>
+  <app-svg-arrow-fontawesome
+    width="40px"
+    height="40px"
+    fill="black"
+    rotate="rotate(180)"
+    (click)="onClickSvgRight()"
+  ></app-svg-arrow-fontawesome>
+</div>

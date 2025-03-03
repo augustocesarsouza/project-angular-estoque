@@ -1,0 +1,27 @@
+<div class="browsing-rote-main">
+  <div class="browsing-rote">
+    <span class="span-browsing-rote span-browsing-rote-arrow-right">
+      <span
+        tabindex="0"
+        (click)="onClickBrowsingRote('PaginaInicial')"
+        (keydown.enter)="onClickBrowsingRote('Feminino')"
+        >Página Inicial</span
+      >
+    </span>
+    <span
+      class="span-browsing-rote span-browsing-rote-arrow-right"
+      *ngFor="let item of nameCategory"
+    >
+      <span
+        #allSpan
+        tabindex="0"
+        (click)="onClickBrowsingRote(item)"
+        (keydown.enter)="onClickBrowsingRote(item)"
+        >{{ item }}</span
+      >
+    </span>
+    <span>
+      <span class="span-name-item" #allSpan>{{ item.name }}</span>
+    </span>
+  </div>
+</div>

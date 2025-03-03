@@ -1,0 +1,19 @@
+.container-banner-item-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 40px 0px;
+}
+
+.container-banner-item {
+  display: flex;
+
+  width: 1180px;
+
+  >img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}

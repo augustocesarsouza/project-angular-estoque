@@ -1,0 +1,15 @@
+<div class="container-all-imgs-item">
+  <div *ngFor="let el of imgProductAll; let i = index">
+    <img
+      #containerImgHighlight
+      (click)="onClickImgHighlight(containerImgHighlight, i)"
+      (keydown.enter)="onClickImgHighlight(containerImgHighlight, i)"
+      tabindex="0"
+      src="{{ el }}"
+      alt="img-item"
+      [ngClass]="{
+        'img-highlight': i === 0,
+      }"
+    />
+  </div>
+</div>

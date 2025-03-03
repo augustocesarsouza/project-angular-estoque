@@ -32,4 +32,18 @@ export class ItemService {
 
     return this._http.get<ResultDataArray>(`/api/item/get-all-item-by-name-category`, {headers, params}).pipe(take(1));
   }
+
+  GetItemByIdWithCategory(user: User, itemId: string){
+    const userId = user.id;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${user.token}`,
+      'uid': userId
+    });
+
+    const params = new HttpParams().set('itemId', itemId);
+
+    return this._http.get<ResultData>(`/api/item/get-item-with-category-by-item-id`, {headers, params}).pipe(take(1));
+  }
 }

@@ -1,0 +1,17 @@
+<div class="container-sizes">
+  <span class="span-size-item">Tamanho</span>
+  <div class="container-size-all">
+    <div
+      class="container-size"
+      *ngFor="let size of sizes; let i = index"
+      (click)="onClickContainerSize(i)"
+      (keydown.enter)="onClickContainerSize(i)"
+      tabindex="0"
+    >
+      <span
+        [ngStyle]="whichSizeChosen === i ? { 'font-weight': '700' } : { 'font-weight': '400' }"
+        >{{ size }}</span
+      >
+    </div>
+  </div>
+</div>

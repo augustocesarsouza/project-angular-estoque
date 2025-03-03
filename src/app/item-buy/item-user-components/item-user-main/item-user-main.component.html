@@ -1,0 +1,43 @@
+<div class="container-item-user-main" *ngIf="item">
+  <div class="container-item-user">
+    <app-all-img-item
+      [imgProductAll]="imgProductAll"
+      [whichIndexImgIs]="whichIndexImgIs"
+      [updateValueWhichIndexImgIs]="updateValueWhichIndexImgIs"
+      [updateValueWhichImgShowUser]="updateValueWhichImgShowUser"
+      [getValueContainerImgHighlight]="getValueContainerImgHighlight"
+    ></app-all-img-item>
+
+    <app-img-show
+      *ngIf="containerImgHighlight"
+      [whichIndexImgIs]="whichIndexImgIs"
+      [imgProductAll]="imgProductAll"
+      [whichImgShowUser]="whichImgShowUser"
+      [containerImgHighlight]="containerImgHighlight"
+      [updateValueWhichIndexImgIs]="updateValueWhichIndexImgIs"
+      [updateValueWhichImgShowUser]="updateValueWhichImgShowUser"
+    ></app-img-show>
+
+    <div class="container-info-item">
+      <app-header-brand-name-item
+        [brand]="item.brand"
+        [itemName]="item.name"
+      ></app-header-brand-name-item>
+
+      <app-price-real-and-discount
+        [discountPercentage]="item.discountPercentage"
+        [priceProduct]="item.priceProduct"
+      ></app-price-real-and-discount>
+
+      <app-colors-item [colorsItem]="colorsItem"></app-colors-item>
+
+      <app-sizes [sizes]="sizes"></app-sizes>
+
+      <app-buy-and-heart></app-buy-and-heart>
+
+      <app-type-your-cep></app-type-your-cep>
+
+      <app-check-delivery></app-check-delivery>
+    </div>
+  </div>
+</div>

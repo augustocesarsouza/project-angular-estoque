@@ -43,7 +43,6 @@ export class BrowsingRoteComponent implements AfterViewInit, OnChanges {
           }
 
           const spanLastOne = allSpanInnerBrowing[allSpanInnerBrowing.length - 1].textContent?.trim().toUpperCase();
-          console.log(spanLastOne);
 
           if(spanLastOne){
             this.routeBrowsing = spanLastOne;

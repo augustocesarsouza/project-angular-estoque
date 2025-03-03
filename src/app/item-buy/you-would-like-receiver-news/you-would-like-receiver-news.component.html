@@ -1,0 +1,91 @@
+<div class="container-you-would-like-receiver-news-main">
+  <div class="container-you-would-like-receiver-news">
+    <span class="span-top-header"
+      >Olá! Gostaria de receber novidades em primeira mão e um benefício exclusivo?
+      Inscreva-se!</span
+    >
+
+    <form class="form-input-receiver-new">
+      <div class="container-cpf-and-errors">
+        <div class="container-input-all" #divContainerInputName>
+          <div class="container-name-input" #divNameInput>Nome</div>
+          <input
+            type="text"
+            class="input-all"
+            autocomplete="off"
+            placeholder="Nome"
+            id="input-name"
+            #inputName
+            (input)="changeInputName($event, divNameInput, divContainerInputName)"
+          />
+        </div>
+        <span class="span-name-full-error" *ngIf="NameFullError"
+          >O nome é muito curto. Ele deve ter 2 caracteres ou mais.</span
+        >
+      </div>
+      <div class="container-cpf-and-errors">
+        <div class="container-input-all" #divContainerInputTypeYourEmail>
+          <div class="container-name-input" #divTypeYourEmailInput>Digite seu e-mail</div>
+          <input
+            type="text"
+            class="input-all"
+            autocomplete="off"
+            placeholder="Digite seu e-mail"
+            id="input-type-you"
+            #inputTypeYourEmail
+            (input)="
+              changeInputTypeYourEmail(
+                $event,
+                divTypeYourEmailInput,
+                divContainerInputTypeYourEmail
+              )
+            "
+          />
+        </div>
+        <span class="span-name-full-error" *ngIf="YourEmailFullError">Email inválido</span>
+      </div>
+    </form>
+
+    <div class="container-button-register">
+      <button
+        class="button-register"
+        (click)="
+          onClickSignUp(
+            inputName,
+            inputTypeYourEmail,
+            divNameInput,
+            divContainerInputName,
+            divTypeYourEmailInput,
+            divContainerInputTypeYourEmail
+          )
+        "
+        (keydown.enter)="
+          onClickSignUp(
+            inputName,
+            inputTypeYourEmail,
+            divNameInput,
+            divContainerInputName,
+            divTypeYourEmailInput,
+            divContainerInputTypeYourEmail
+          )
+        "
+        tabindex="0"
+      >
+        INSCREVA-SE
+      </button>
+    </div>
+
+    <div class="container-checkbox">
+      <input
+        type="checkbox"
+        id="terms-checkbox"
+        [(ngModel)]="isChecked"
+        (change)="onCheckboxChange()"
+      />
+      <label for="terms-checkbox" #labelCheckbox>
+        Aceito receber conteúdos e promoções e estou de acordo com sua
+        <span class="span-privacy-policy-link">Política de Privacidade</span>
+      </label>
+    </div>
+  </div>
+</div>

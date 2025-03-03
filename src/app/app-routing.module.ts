@@ -17,6 +17,9 @@ const routes: Routes = [
   {path: 'feminino',
     loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule)
   },
+  {path: 'item',
+    loadChildren: () => import('./item-buy/item-buy.module').then(m => m.ItemBuyModule)
+  },
 ];
 
 @NgModule({

@@ -2,24 +2,31 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BlouseItemComponent } from './blouse-item.component';
 import { Item } from '../../../../interface-entity/item';
+import { Category } from '../../../../interface-entity/category';
 
 describe('BlouseItemComponent', () => {
   let component: BlouseItemComponent;
   let fixture: ComponentFixture<BlouseItemComponent>;
 
   const itemList: Item[] = [];
-    const objItem = {
-      id: "74b20ea3-b09b-4802-b2db-84acceaf911e",
-      name: "name1",
-      priceProduct: 133.45,
-      discountPercentage: 60,
-      size: "23,34",
-      brand: "brand1",
-      category: "category",
-      imgProductAll: ["asasdsd"],
-    };
+  const category: Category = {
+    id: "5e176741-ef4f-4435-a8dd-5d3992451ed4",
+    nameCategory: "asds>asdasd>asdasd",
+    items: null,
+  };
+  const objItem: Item = {
+    id: "74b20ea3-b09b-4802-b2db-84acceaf911e",
+    name: "name1",
+    priceProduct: 133.45,
+    discountPercentage: 60,
+    size: "23,34",
+    brand: "brand1",
+    category: category,
+    imgProductAll: ["asasdsd"],
+    description: "description asdasd",
+  };
 
-    itemList.push(objItem);
+  itemList.push(objItem);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

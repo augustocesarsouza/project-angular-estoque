@@ -14,15 +14,9 @@ import { GoogleApiService } from '../../login-and-register-new-account/service/g
 export class ItemMainComponent implements OnInit {
   item!: Item;
 
-  // @ViewChild('containerChatOnline') containerChatOnline!: ElementRef<HTMLDivElement>;
-  // @ViewChild('containerChatOnlineMinimize') containerChatOnlineMinimize!: ElementRef<HTMLDivElement>;
-  // @ViewChild('containerModalChatOnline') containerModalChatOnline!: ElementRef<HTMLDivElement>;
-
   containerChatOnline!: ElementRef<HTMLDivElement>;
   containerChatOnlineMinimize!: ElementRef<HTMLDivElement>;
   containerModalChatOnline!: ElementRef<HTMLDivElement>;
-
-  // @ViewChild('inputCpfChatOnline') inputCpfChatOnline!: ElementRef<HTMLInputElement>;
 
   constructor(private itemService: ItemService, private googleApiService: GoogleApiService, private router: Router, private cdr: ChangeDetectorRef){}
 

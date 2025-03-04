@@ -12,12 +12,14 @@ import { SvgMoreComponent } from './svg-more/svg-more.component';
 import { AppSvgAddressComponent } from './app-svg-address/app-svg-address.component';
 import { SvgArrowFontawesomeComponent } from './svg-arrow-fontawesome/svg-arrow-fontawesome.component';
 import { SvgStarComponent } from './svg-star/svg-star.component';
+import { SvgMessageComponent } from './svg-message/svg-message.component';
+import { SvgMinimizeComponent } from './svg-minimize/svg-minimize.component';
+import { SvgExit2Component } from './svg-exit-2/svg-exit-2.component';
 
 @NgModule({
-  declarations: [SvgExitComponent, SvgMicrophoneComponent, SvgLoupeComponent, SvgEyeOpenComponent, SvgEyeCloseComponent, SvgArrowRegisterComponent, CodeIsWrongXComponent, SvgGoogleComponent, SvgMoreComponent, AppSvgAddressComponent, SvgArrowFontawesomeComponent, SvgStarComponent],
+  declarations: [SvgExitComponent, SvgMicrophoneComponent, SvgLoupeComponent, SvgEyeOpenComponent, SvgEyeCloseComponent, SvgArrowRegisterComponent, CodeIsWrongXComponent, SvgGoogleComponent, SvgMoreComponent, AppSvgAddressComponent, SvgArrowFontawesomeComponent, SvgStarComponent, SvgMessageComponent, SvgMinimizeComponent, SvgExit2Component],
   exports: [SvgExitComponent, SvgMicrophoneComponent, SvgLoupeComponent, SvgEyeOpenComponent, SvgEyeCloseComponent, SvgArrowRegisterComponent, CodeIsWrongXComponent, SvgGoogleComponent,
-    SvgMoreComponent, AppSvgAddressComponent, SvgArrowFontawesomeComponent, SvgStarComponent
-  ],
+    SvgMoreComponent, AppSvgAddressComponent, SvgArrowFontawesomeComponent, SvgStarComponent, SvgMessageComponent, SvgMinimizeComponent, SvgExit2Component],
   imports: [CommonModule],
 })
 export class AllSvgModule {}

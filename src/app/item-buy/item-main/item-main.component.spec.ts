@@ -26,6 +26,9 @@ import { ReviewsMainComponent } from '../reviews-components/reviews-main/reviews
 import { BannerItemComponent } from '../banner-item/banner-item.component';
 import { YouWouldLikeReceiverNewsComponent } from '../../you-would-like-receiver-news/you-would-like-receiver-news.component';
 import { FormsModule } from '@angular/forms';
+import { ChatOnlineComponent } from '../chat-online-components/chat-online/chat-online.component';
+import { ModalChatOnlineComponent } from '../chat-online-components/modal-chat-online/modal-chat-online.component';
+import { HeaderChatOnlineComponent } from '../chat-online-components/header-chat-online/header-chat-online.component';
 
 class MockGoogleApiService {
   logout = jasmine.createSpy('logout');
@@ -58,7 +61,8 @@ describe('ItemMainComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AllSvgModule, HttpClientTestingModule, RouterTestingModule, HeaderAndFooterMainModule, FormsModule],
       declarations: [ItemMainComponent, ItemUserMainComponent, BrowsingRoteComponent, AllImgItemComponent, HeaderBrandNameItemComponent, PriceRealAndDiscountComponent, ColorsItemComponent, SizesComponent, BuyAndHeartComponent,TypeYourCepComponent, CheckDeliveryComponent, ImgShowComponent,
-        ProductDetailsAndExchangesAndReturnsMainComponent, FooterMainComponent, ReviewsMainComponent, BannerItemComponent, YouWouldLikeReceiverNewsComponent],
+        ProductDetailsAndExchangesAndReturnsMainComponent, FooterMainComponent, ReviewsMainComponent, BannerItemComponent, YouWouldLikeReceiverNewsComponent,
+      ChatOnlineComponent, ModalChatOnlineComponent, HeaderChatOnlineComponent],
       providers: [ItemService, { provide: GoogleApiService, useClass: MockGoogleApiService }]
     })
     .compileComponents();

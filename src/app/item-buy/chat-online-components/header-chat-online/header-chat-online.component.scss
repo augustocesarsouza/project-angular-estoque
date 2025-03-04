@@ -1,0 +1,28 @@
+.header-chat-online{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(31, 30, 30);
+  padding-right: 30px;
+  padding-left: 17px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: 10px;
+  line-height: 1;
+  height: 55px;
+
+  >span {
+    color: #fff;
+    font-weight: 600;
+  }
+}
+
+.container-minimize-and-exit-svg {
+  display: flex;
+  height: 25px;
+  gap: 15px;
+
+  >app-svg-minimize, app-svg-exit-2 {
+   cursor: pointer;
+  }
+}

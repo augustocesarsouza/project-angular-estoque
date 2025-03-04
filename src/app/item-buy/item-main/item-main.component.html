@@ -27,3 +27,16 @@
 <div class="container-app-footer-main">
   <app-footer-main></app-footer-main>
 </div>
+
+<app-chat-online
+  *ngIf="containerModalChatOnline"
+  [getContainerChatOnline]="getContainerChatOnline"
+  [getContainerChatOnlineMinimize]="getContainerChatOnlineMinimize"
+  [containerModalChatOnline]="containerModalChatOnline.nativeElement"
+></app-chat-online>
+
+<app-modal-chat-online
+  [getContainerModalChatOnline]="getContainerModalChatOnline"
+  [containerChatOnline]="containerChatOnline"
+  [containerChatOnlineMinimize]="containerChatOnlineMinimize"
+></app-modal-chat-online>

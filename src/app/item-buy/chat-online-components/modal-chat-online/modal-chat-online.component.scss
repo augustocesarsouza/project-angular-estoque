@@ -1,0 +1,116 @@
+.container-modal-chat-online {
+  position: fixed;
+  bottom: 0px;
+  right: 15px;
+  z-index: 999;
+  width: 593px;
+  height: 80%;
+  background-color: #fff;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container-modal-body {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin: 5px 15px;
+  gap: 10px;
+}
+
+.container-you-are-client-or-shop{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  >select {
+    width: 100%;
+    height: 48px;
+    outline: none;
+    border: 1px solid #0000004f;
+    border-radius: 5px;
+    font-size: 15px;
+    padding-left: 10px;
+
+    &:focus{
+      outline: none;
+    }
+  }
+}
+
+.container-asterisk-and-span {
+  line-height: 1;
+}
+
+.span-warning-asterisk {
+  font-size: 12px;
+  color: red;
+  margin-right: 2px;
+  text-align: center;
+}
+
+.span-all-join {
+  font-size: 13px;
+  color: rgb(51, 51, 51);
+}
+
+.container-first-name-and-lastname-main{
+  display: flex;
+  justify-content: space-between;
+  height: 68px;
+  gap: 10px;
+}
+
+.container-first-name-and-lastname {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+}
+
+.container-first-name-and-lastname > input {
+  padding-left: 10px;
+  border-radius: 5px;
+}
+
+.input-all {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.3098039216);
+
+  &:focus{
+    outline: none;
+  }
+}
+
+.container-email-and-cpf-cell-phone{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 68px;
+}
+
+.container-email-and-cpf-cell-phone > input {
+  padding-left: 10px;
+  border-radius: 5px;
+}
+
+.container-button-start-the-chat{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 5px 15px;
+  height: auto;
+
+  >button {
+    background-color: #c1a73d;
+    color: #fff;
+    border: none;
+    width: 100%;
+    height: 44px;
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 18px;
+  }
+}

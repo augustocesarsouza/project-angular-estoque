@@ -1,0 +1,21 @@
+<div class="header-chat-online">
+  <span>CHAT</span>
+  <div class="container-minimize-and-exit-svg">
+    <app-svg-minimize
+      width="100%"
+      height="100%"
+      fill="#fff"
+      (click)="onClickMinimizeModalChat()"
+      (keydown.enter)="onClickMinimizeModalChat()"
+      tabindex="0"
+    ></app-svg-minimize>
+    <app-svg-exit-2
+      width="100%"
+      height="100%"
+      fill="#fff"
+      (click)="onClickExitModalChat()"
+      (keydown.enter)="onClickExitModalChat()"
+      tabindex="0"
+    ></app-svg-exit-2>
+  </div>
+</div>

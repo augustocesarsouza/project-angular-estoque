@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit } from '@angular/core';
 import { ItemService } from '../../services-backend/item.service';
 import { Item } from '../../interface-entity/item';
 import { UserLocalStorage } from '../../function-user/get-user-local-storage/user-local-storage';
@@ -14,9 +14,23 @@ import { GoogleApiService } from '../../login-and-register-new-account/service/g
 export class ItemMainComponent implements OnInit {
   item!: Item;
 
-  constructor(private itemService: ItemService, private googleApiService: GoogleApiService, private router: Router){}
+  // @ViewChild('containerChatOnline') containerChatOnline!: ElementRef<HTMLDivElement>;
+  // @ViewChild('containerChatOnlineMinimize') containerChatOnlineMinimize!: ElementRef<HTMLDivElement>;
+  // @ViewChild('containerModalChatOnline') containerModalChatOnline!: ElementRef<HTMLDivElement>;
+
+  containerChatOnline!: ElementRef<HTMLDivElement>;
+  containerChatOnlineMinimize!: ElementRef<HTMLDivElement>;
+  containerModalChatOnline!: ElementRef<HTMLDivElement>;
+
+  // @ViewChild('inputCpfChatOnline') inputCpfChatOnline!: ElementRef<HTMLInputElement>;
+
+  constructor(private itemService: ItemService, private googleApiService: GoogleApiService, private router: Router, private cdr: ChangeDetectorRef){}
 
   ngOnInit(): void {
+    this.getContainerChatOnline = this.getContainerChatOnline.bind(this);
+    this.getContainerChatOnlineMinimize = this.getContainerChatOnlineMinimize.bind(this);
+    this.getContainerModalChatOnline = this.getContainerModalChatOnline.bind(this);
+
     if (typeof window === "undefined" || typeof localStorage === "undefined")return;
 
     const state = window.history.state;
@@ -73,5 +87,18 @@ export class ItemMainComponent implements OnInit {
     };
   }
 
+  getContainerChatOnline(div: ElementRef<HTMLDivElement>) {
+    this.containerChatOnline = div;
+    this.cdr.detectChanges();
+  }
 
+  getContainerChatOnlineMinimize(div: ElementRef<HTMLDivElement>) {
+    this.containerChatOnlineMinimize = div;
+    this.cdr.detectChanges();
+  }
+
+  getContainerModalChatOnline(div: ElementRef<HTMLDivElement>) {
+    this.containerModalChatOnline = div;
+    this.cdr.detectChanges();
+  }
 }

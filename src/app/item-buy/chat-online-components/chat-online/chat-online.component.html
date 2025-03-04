@@ -1,0 +1,24 @@
+<div class="container-chat-online-main">
+  <div
+    class="container-chat-online-minimize"
+    (click)="onClickMessage()"
+    (keydown.enter)="onClickMessage()"
+    tabindex="0"
+    #containerChatOnlineMinimize
+  >
+    <app-svg-message width="16px" height="16px" fill="#fff"></app-svg-message>
+    <span>CHAT ONLINE</span>
+  </div>
+
+  <div
+    class="container-chat-online"
+    (click)="onClickMessage()"
+    (keydown.enter)="onClickMessage()"
+    tabindex="0"
+    #containerChatOnline
+  >
+    <app-svg-message width="13px" height="13px" fill="#fff"></app-svg-message>
+    <span *ngIf="!firstClickMessage">CHAT ONLINE</span>
+    <span *ngIf="firstClickMessage">CARREGANDO...</span>
+  </div>
+</div>

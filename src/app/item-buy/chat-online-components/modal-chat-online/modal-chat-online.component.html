@@ -1,0 +1,69 @@
+<div class="container-modal-chat-online" #containerModalChatOnline>
+  <div class="container-header-and-body-part">
+    <app-header-chat-online
+      [containerChatOnline]="containerChatOnline"
+      [containerChatOnlineMinimize]="containerChatOnlineMinimize"
+      [containerModalChatOnline]="containerModalChatOnline"
+      [selectYouAre]="selectYouAre"
+      [inputFirstName]="inputFirstName"
+      [inputLastName]="inputLastName"
+      [inputEmail]="inputEmail"
+      [inputCpfChatOnline]="inputCpfChatOnline"
+      [inputCellPhone]="inputCellPhone"
+    ></app-header-chat-online>
+
+    <div class="container-modal-body">
+      <div class="container-you-are-client-or-shop">
+        <div class="container-asterisk-and-span">
+          <span class="span-warning-asterisk">*</span>
+          <span class="span-all-join">Você é um(a)...</span>
+        </div>
+        <select #selectYouAre>
+          <option value="Cliente">Cliente</option>
+          <option value="Loja">Loja</option>
+        </select>
+      </div>
+      <div class="container-first-name-and-lastname-main">
+        <div class="container-first-name-and-lastname">
+          <div class="container-asterisk-and-span">
+            <span class="span-warning-asterisk">*</span>
+            <span class="span-all-join">Primeiro Nome</span>
+          </div>
+          <input type="text" class="input-all" #inputFirstName />
+        </div>
+        <div class="container-first-name-and-lastname">
+          <div class="container-asterisk-and-span">
+            <span class="span-warning-asterisk">*</span>
+            <span class="span-all-join">Sobrenome</span>
+          </div>
+          <input type="text" class="input-all" #inputLastName />
+        </div>
+      </div>
+      <div class="container-email-and-cpf-cell-phone">
+        <div class="container-asterisk-and-span">
+          <span class="span-warning-asterisk">*</span>
+          <span class="span-all-join">Email</span>
+        </div>
+        <input type="text" class="input-all" #inputEmail />
+      </div>
+      <div class="container-email-and-cpf-cell-phone">
+        <div class="container-asterisk-and-span">
+          <span class="span-warning-asterisk">*</span>
+          <span class="span-all-join">CPF</span>
+        </div>
+        <input type="text" class="input-all" #inputCpfChatOnline placeholder="Ex: 99988877766" />
+      </div>
+      <div class="container-email-and-cpf-cell-phone">
+        <div class="container-asterisk-and-span">
+          <span></span>
+          <span class="span-all-join">Telefone</span>
+        </div>
+        <input type="text" class="input-all" #inputCellPhone />
+      </div>
+    </div>
+  </div>
+
+  <div class="container-button-start-the-chat">
+    <button>INICIAR O CHAT</button>
+  </div>
+</div>

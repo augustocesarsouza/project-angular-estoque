@@ -25,6 +25,9 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { BannerItemComponent } from './banner-item/banner-item.component';
 import { AllTypesReviewsComponent } from './reviews-components/all-types-reviews/all-types-reviews.component';
 import { YouWouldLikeReceiverNewsComponent } from '../you-would-like-receiver-news/you-would-like-receiver-news.component';
+import { ChatOnlineComponent } from './chat-online-components/chat-online/chat-online.component';
+import { ModalChatOnlineComponent } from './chat-online-components/modal-chat-online/modal-chat-online.component';
+import { HeaderChatOnlineComponent } from './chat-online-components/header-chat-online/header-chat-online.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { YouWouldLikeReceiverNewsComponent } from '../you-would-like-receiver-ne
     ReviewTypeComponent,
     BannerItemComponent,
     AllTypesReviewsComponent,
-    YouWouldLikeReceiverNewsComponent
+    YouWouldLikeReceiverNewsComponent,
+    ChatOnlineComponent,
+    ModalChatOnlineComponent,
+    HeaderChatOnlineComponent
   ],
   imports: [
     CommonModule,

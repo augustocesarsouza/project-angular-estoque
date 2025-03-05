@@ -9,7 +9,11 @@
   [item]="item"
 ></app-product-details-and-exchanges-and-returns-main>
 
-<app-reviews-main *ngIf="item" [item]="item"></app-reviews-main>
+<app-reviews-main
+  *ngIf="item"
+  [item]="item"
+  [getCreatedNewReviewItem]="getCreatedNewReviewItem"
+></app-reviews-main>
 
 <app-banner-item></app-banner-item>
 
@@ -40,3 +44,17 @@
   [containerChatOnline]="containerChatOnline"
   [containerChatOnlineMinimize]="containerChatOnlineMinimize"
 ></app-modal-chat-online>
+
+<div class="container-created-new-reviews-item" #containerCreatedNewReviewsItem>
+  <div>
+    <div
+      class="container-app-svg-exit-2"
+      (click)="onClickExit()"
+      (keydown.enter)="onClickExit()"
+      tabindex="0"
+    >
+      <app-svg-exit-2 width="25px" height="25px" fill="black"></app-svg-exit-2>
+    </div>
+    <h1>Enviado com sucesso!</h1>
+  </div>
+</div>

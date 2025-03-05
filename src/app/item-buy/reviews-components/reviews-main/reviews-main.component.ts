@@ -8,6 +8,7 @@ import { Item } from '../../../interface-entity/item';
 })
 export class ReviewsMainComponent implements OnInit {
   @Input() item!: Item;
+  @Input() getCreatedNewReviewItem!: (value: boolean) => void;
   itWasClickedReviews = false;
 
   ngOnInit(): void {

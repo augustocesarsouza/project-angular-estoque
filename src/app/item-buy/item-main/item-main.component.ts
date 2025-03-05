@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ItemService } from '../../services-backend/item.service';
 import { Item } from '../../interface-entity/item';
 import { UserLocalStorage } from '../../function-user/get-user-local-storage/user-local-storage';
@@ -18,12 +18,17 @@ export class ItemMainComponent implements OnInit {
   containerChatOnlineMinimize!: ElementRef<HTMLDivElement>;
   containerModalChatOnline!: ElementRef<HTMLDivElement>;
 
+  createdReviewItem = false;
+
+  @ViewChild('containerCreatedNewReviewsItem') containerCreatedNewReviewsItem!: ElementRef<HTMLDivElement>;
+
   constructor(private itemService: ItemService, private googleApiService: GoogleApiService, private router: Router, private cdr: ChangeDetectorRef){}
 
   ngOnInit(): void {
     this.getContainerChatOnline = this.getContainerChatOnline.bind(this);
     this.getContainerChatOnlineMinimize = this.getContainerChatOnlineMinimize.bind(this);
     this.getContainerModalChatOnline = this.getContainerModalChatOnline.bind(this);
+    this.getCreatedNewReviewItem = this.getCreatedNewReviewItem.bind(this);
 
     if (typeof window === "undefined" || typeof localStorage === "undefined")return;
 
@@ -94,5 +99,16 @@ export class ItemMainComponent implements OnInit {
   getContainerModalChatOnline(div: ElementRef<HTMLDivElement>) {
     this.containerModalChatOnline = div;
     this.cdr.detectChanges();
+  }
+
+  getCreatedNewReviewItem (value: boolean){
+    if(value){
+      this.containerCreatedNewReviewsItem.nativeElement.style.display = "flex";
+    }
+    this.createdReviewItem = value;
+  }
+
+  onClickExit(){
+    this.containerCreatedNewReviewsItem.nativeElement.style.display = "none";
   }
 }

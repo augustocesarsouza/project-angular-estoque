@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-all-types-reviews',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './all-types-reviews.component.scss'
 })
 export class AllTypesReviewsComponent {
+  @Input() getQuantityReview!: (whichNameReview: string, quantityStar: number) => void;
 
 }

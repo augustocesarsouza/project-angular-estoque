@@ -9,6 +9,8 @@
 </div>
 
 <app-modal-reviews
-  *ngIf="itWasClickedReviews"
+  *ngIf="itWasClickedReviews && item"
   [changeValueModalReviews]="changeValueModalReviews"
+  [getCreatedNewReviewItem]="getCreatedNewReviewItem"
+  [item]="item"
 ></app-modal-reviews>

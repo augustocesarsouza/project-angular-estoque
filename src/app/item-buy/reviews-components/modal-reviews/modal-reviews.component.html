@@ -1,7 +1,7 @@
 <div class="container-modal-main">
   <h1 class="header-modal-review">Avalie este produto</h1>
 
-  <app-all-types-reviews></app-all-types-reviews>
+  <app-all-types-reviews [getQuantityReview]="getQuantityReview"></app-all-types-reviews>
 
   <div class="container-all-inputs">
     <div class="container-cpf-and-errors">
@@ -60,7 +60,12 @@
     </div>
 
     <div class="container-textarea-and-warning">
-      <textarea name="ReviewBody" id="review-reviewbody" #textareaReview></textarea>
+      <textarea
+        name="ReviewBody"
+        id="review-reviewbody"
+        #textareaReview
+        (input)="changeTextareaDescription($event, textareaReview)"
+      ></textarea>
     </div>
 
     <re-captcha

@@ -7,12 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ReviewTypeComponent implements OnInit {
   @Input() nameType!: string;
+  @Input() getQuantityReview!: (whichNameReview: string, quantityStar: number) => void;
   countStarArray: number[] | null = null;
   emptyStars: unknown[] = [];
 
   ngOnInit(): void {
     const countStarArray = [];
-    const starQuantity = 1;
+    const starQuantity = 0;
 
     for (let i = 1; i <= starQuantity; i++) {
       countStarArray.push(i);
@@ -28,7 +29,10 @@ export class ReviewTypeComponent implements OnInit {
 
   onClickStar(index: number){
     if(this.countStarArray === null) return;
+
     const starQuantityActual = index;
+
+    this.getQuantityReview(this.nameType, index);
 
     const countStarArray: number[] = [];
 
@@ -46,7 +50,9 @@ export class ReviewTypeComponent implements OnInit {
 
   onClickStarBlack(index: number){
     if(this.countStarArray === null) return;
+
     const starQuantityActual = index + 1 + this.countStarArray.length;
+    this.getQuantityReview(this.nameType, starQuantityActual);
 
     const countStarArray: number[] = [];
 
